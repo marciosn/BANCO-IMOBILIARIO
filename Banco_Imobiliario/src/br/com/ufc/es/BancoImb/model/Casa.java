@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Casa {
+	String nome;
 	List<Jogador> jogadoresNaCasa;
 	
 	public Casa() {
@@ -27,6 +28,9 @@ public class Casa {
 	}
 	public void removerJogador(Jogador jogador){
 		jogadoresNaCasa.remove(jogador);
+	}
+	public String getNome(){
+		return nome;
 	}
 
 }

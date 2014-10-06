@@ -6,6 +6,8 @@ import java.util.List;
 import br.com.ufc.es.BancoImb.interfaces.IJogador;
 
 public class Jogador implements IJogador{
+	private static int ultimoID = 0;
+	private int id;
 	private String nome;
 	private ContaBancaria conta;
 	private List<LogradouroComercializavel> meusLogradouros;	
@@ -14,6 +16,7 @@ public class Jogador implements IJogador{
 		this.nome = nome;
 		this.conta = conta;
 		meusLogradouros = new ArrayList<LogradouroComercializavel>();
+		this.id = ultimoID++;
 	}
 	@Override
 	public void comprar(LogradouroComercializavel logradouro) {
@@ -31,6 +34,9 @@ public class Jogador implements IJogador{
 		conta.depositar(logradouro.getTaxa());
 		
 	}
+	public float getSaldoJogador(){
+		return conta.getSaldo();
+	}
 	public void adicionarNovoLogradouroALista(LogradouroComercializavel logradouro){
 		meusLogradouros.add(logradouro);
 	}
@@ -42,5 +48,8 @@ public class Jogador implements IJogador{
 	}
 	public String getNome(){
 		return nome;
+	}
+	public int getID(){
+		return id;
 	}
 }

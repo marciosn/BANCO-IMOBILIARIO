@@ -8,6 +8,7 @@ import br.com.ufc.es.BancoImb.model.ContaBancaria;
 import br.com.ufc.es.BancoImb.model.Empresa;
 import br.com.ufc.es.BancoImb.model.Imovel;
 import br.com.ufc.es.BancoImb.model.Jogador;
+import br.com.ufc.es.BancoImb.model.Tabuleiro;
 
 public class TestJogador {
 	Empresa empresa = new Empresa("Google", 1000, 400);
@@ -135,7 +136,6 @@ public class TestJogador {
 		}
 		assertTrue(jogador.getSaldo() == (saldo -= empresa.getValor()));
 	}
-
 }
 
 
