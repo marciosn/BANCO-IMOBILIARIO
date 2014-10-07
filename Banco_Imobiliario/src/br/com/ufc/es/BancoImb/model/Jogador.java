@@ -10,13 +10,15 @@ public class Jogador implements IJogador{
 	private int id;
 	private String nome;
 	private ContaBancaria conta;
-	private List<LogradouroComercializavel> meusLogradouros;	
+	private List<LogradouroComercializavel> meusLogradouros;
+	private int posicaoJogador;
 	
 	public Jogador(String nome, ContaBancaria conta) {
 		this.nome = nome;
 		this.conta = conta;
 		meusLogradouros = new ArrayList<LogradouroComercializavel>();
 		this.id = ultimoID++;
+		this.posicaoJogador = 0;
 	}
 	@Override
 	public void comprar(LogradouroComercializavel logradouro) {
@@ -52,4 +54,11 @@ public class Jogador implements IJogador{
 	public int getID(){
 		return id;
 	}
+	public int getPosicaoJogador() {
+		return posicaoJogador;
+	}
+	public void setPosicaoJogador(int posicaoJogador) {
+		this.posicaoJogador = posicaoJogador;
+	}
+	
 }

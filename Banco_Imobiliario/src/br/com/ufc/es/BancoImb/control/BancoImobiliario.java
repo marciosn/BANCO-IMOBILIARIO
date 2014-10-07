@@ -49,13 +49,7 @@ public class BancoImobiliario {
 		for (Jogador j : jogadores) {
 			tabuleiroJogo.adiconarJogadoresACasa(0, j);
 			System.out.println("Classe: Banco Imobiliario"
-					+ " ----> Inserindo o jogador " + j.getNome() + " ID = " + j.getID());
-			/*System.out
-					.println("Número de jogadores inseridos "
-							+ tabuleiroJogo.getCasaPeloIndice(0)
-									.getNumJogadoresCasa() + " na casa"
-							+ tabuleiroJogo.getCasaPeloIndice(0).getNome());*/
-			
+					+ " ----> Inserindo o jogador " + j.getNome() + " ID = " + j.getID());			
 		}
 	}
 

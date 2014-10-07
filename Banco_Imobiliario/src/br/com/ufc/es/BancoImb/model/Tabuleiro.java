@@ -69,7 +69,22 @@ public class Tabuleiro {
 		destino.getNome() + " possui " + destino.getNumJogadoresCasa() + " jogadores");
 		System.out.println("==============================================================================");
 	}
-	public int calculaIndiceProximaCasa(Casa casaAtual, int resultDado) {
+	public void moverJogador(Jogador jogador, int indiceDestino) {
+		Casa origem = getCasaPeloIndice(jogador.getPosicaoJogador());
+		Casa destino = getCasaPeloIndice(indiceDestino);
+		
+		origem.removerJogador(jogador);
+		destino.adicionarJogadoresNaLista(jogador);
+		jogador.setPosicaoJogador(indiceDestino);
+		
+		System.out.println("==============================================================================");
+		System.out.println("O Jogador "+jogador.getNome()+ " foi movido da casa " +
+				getIndiceCasa(origem)+ " para a casa " + getIndiceCasa(destino) + " | a casa " +
+				destino.getNome() + " possui " + destino.getNumJogadoresCasa() + " jogadores");
+		
+	}
+	public int calculaIndiceProximaCasa(int indiceAtual, int resultDado) {
+		Casa casaAtual = getCasaPeloIndice(indiceAtual);
 		for (int i = 0; i < tabuleiro.size(); i++) {
 			if (tabuleiro.get(i).equals(casaAtual)) {
 				indiceProximaCasa = i;
@@ -110,6 +125,31 @@ public class Tabuleiro {
 		 
 		return jogador;
 	}
+	
+	public Jogador getJogadorASerMovido(int id){
+		Jogador jogador = null;
+		for (int i = 0; i < tabuleiro.size(); i++) {
+
+			System.out.println(tabuleiro.get(i).getNome()
+					+ " | "
+					+ i
+					+ " | "
+					+ "jogadores na casa: "
+					+ tabuleiro.get(i).getNumJogadoresCasa());
+			for (Jogador jog : tabuleiro.get(i).getJogadoresNaCasa()) {
+				if (jog.getID() == id) {
+					jogador = jog;
+					System.out.println("o jogador na com id " + jog.getID()
+							+ " é o jogador de nome " + jog.getNome());
+
+				}
+
+			}
+		}
+		 
+		return jogador;
+	}
+	
 	
 	public void imprimiTabuleiro() {
 		for (Casa c : tabuleiro) {

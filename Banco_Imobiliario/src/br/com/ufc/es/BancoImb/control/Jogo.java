@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import br.com.ufc.es.BancoImb.model.Casa;
 import br.com.ufc.es.BancoImb.model.ContaBancaria;
 import br.com.ufc.es.BancoImb.model.Jogador;
+import br.com.ufc.es.BancoImb.model.Tabuleiro;
 
 public class Jogo extends JFrame{
 	public static void main(String[] args) {
@@ -47,7 +48,11 @@ public class Jogo extends JFrame{
 			System.out.println("===================================");
 		}*/
 		
+		System.out.println("BANCO IMOBILIÁRIO");
+		
+		
 		System.out.println("Digite 1 para mover o usuario");
+		System.out.println("Digite 2 para mover o usuario usando um metodo diferente");
 		int opcao = entrada.nextInt();
 		while(executando){
 			switch (opcao) {
@@ -79,6 +84,38 @@ public class Jogo extends JFrame{
 				bancoImobiliario.tabuleiroJogo.moverJogador(jogador, origem, destino);
 				System.out.println("=============================================");
 				break;
+				case 2:
+					/*System.out.println("Digite o indice da casa de origem do jogador");
+					int indiceOrigem = entrada.nextInt();
+					if(indiceOrigem < 40){
+						origem = bancoImobiliario.tabuleiroJogo.getCasaPeloIndice(indiceOrigem);
+						System.out.println("---------> Nome da casa origem: " + origem.getNome());
+						System.out.println("---------> Possui: " + origem.getNumJogadoresCasa() + " jogadores na casa");
+					}*/
+					
+					System.out.println("Digite o indice da casa de destino do jogador");
+					int indiceDestino2 = entrada.nextInt();
+					if(indiceDestino2 < 40){
+						destino = bancoImobiliario.tabuleiroJogo.getCasaPeloIndice(indiceDestino2);
+						System.out.println("---------> Nome da casa origem: " + destino.getNome());
+						System.out.println("---------> Possui: " + destino.getNumJogadoresCasa() + " jogadores na casa");
+					}
+					
+					System.out.println("Digite o id do jogador que vai se mover");
+					int id2 = entrada.nextInt();
+					
+					if(id2 < 5){
+						System.out.println("passou no if");
+						Jogador jogador2 = bancoImobiliario.tabuleiroJogo.getJogadorASerMovido(id2);
+						Casa origem2 = bancoImobiliario.tabuleiroJogo.getCasaPeloIndice(jogador2.getPosicaoJogador());
+						System.out.println(jogador2.getNome());
+						System.out.println(jogador2.getSaldo());
+					
+					bancoImobiliario.tabuleiroJogo.moverJogador(jogador2, 10);
+					}
+					System.out.println("=============================================");
+					
+					break;
 
 			default:
 				break;
