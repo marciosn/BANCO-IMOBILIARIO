@@ -22,8 +22,8 @@ public class TestandoTabuleiro {
 		bancoImobiliario.InserindoJogadores(marcio);
 		bancoImobiliario.InserindoJogadores(souza);
 		bancoImobiliario.InserindoJogadores(nobre);
-		bancoImobiliario.InserindoJogadores(edu);
-		bancoImobiliario.InserindoJogadores(dudu);
+		/*bancoImobiliario.InserindoJogadores(edu);
+		bancoImobiliario.InserindoJogadores(dudu);*/
 
 		bancoImobiliario.adicionarJogadoresNaCasaDePartida(bancoImobiliario
 				.getJodagores());
@@ -56,6 +56,10 @@ public class TestandoTabuleiro {
 		
 		
 		System.out.println(bancoImobiliario.getTabuleiroJogo().calculaIndiceProximaCasa(34, 12));
+		System.out.println("\t A vez de jogar é do jogador " + bancoImobiliario.getJogadorNaVEZ().getNome() + "ID = " + bancoImobiliario.getJogadorNaVEZ().getID());
+		
+		bancoImobiliario.mudarVezDeJogar(1);
+		System.out.println("\t A vez de jogar é do jogador " + bancoImobiliario.getJogadorNaVEZ().getNome() + "ID = " + bancoImobiliario.getJogadorNaVEZ().getID());
 		
 	}
 

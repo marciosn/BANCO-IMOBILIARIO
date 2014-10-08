@@ -17,6 +17,7 @@ public class BancoImobiliario {
 
 	Tabuleiro tabuleiroJogo;
 	List<Jogador> jodagores;
+	Jogador jogadorNaVEZ;
 
 	public BancoImobiliario() {
 		tabuleiroJogo = new Tabuleiro();
@@ -51,8 +52,9 @@ public class BancoImobiliario {
 			System.out.println("Classe: Banco Imobiliario"
 					+ " ----> Inserindo o jogador " + j.getNome() + " ID = " + j.getID());			
 		}
+		jogadorNaVEZ = jogadores.get(0);
 	}
-
+	
 	public void inserirJogadorNaCasa(int posicao, Jogador jogador) {
 		tabuleiroJogo.adiconarJogadoresACasa(posicao, jogador);
 	}
@@ -90,8 +92,27 @@ public class BancoImobiliario {
 		InserindoJogadores(edu);
 		InserindoJogadores(dudu);
 		
-		
 		adicionarJogadoresNaCasaDePartida(jodagores);
+	}
+	
+	public Jogador getJogadorNaVEZ() {
+		return jogadorNaVEZ;
+	}
+
+	public void setJogadorNaVEZ(Jogador jogadorDaVEZ) {
+		this.jogadorNaVEZ = jogadorDaVEZ;
+	}
+	public void mudarVezDeJogar(int indiceJogador){
+		int indiceProx = 0, temp = 0;
+		indiceProx = indiceJogador + 1;
+		System.out.println(indiceProx);
+		if(indiceProx > jodagores.size()- 1){
+			System.out.println("entrou no IF porque indiceProx é = " + indiceProx);
+			temp = indiceProx % jodagores.size();
+			indiceProx = temp;
+			System.out.println("\t valor do percent "+ temp + " | " +  indiceProx);
+		}
+			setJogadorNaVEZ(tabuleiroJogo.getJogadorASerMovido(indiceProx));
 	}
 
 }
