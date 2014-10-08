@@ -1,14 +1,29 @@
 package br.com.testandoAPLICACAO;
 
 import br.com.ufc.es.BancoImb.control.BancoImobiliario;
+import br.com.ufc.es.BancoImb.control.VerificarEstadoCasa;
 import br.com.ufc.es.BancoImb.model.ContaBancaria;
+import br.com.ufc.es.BancoImb.model.Empresa;
+import br.com.ufc.es.BancoImb.model.Imovel;
 import br.com.ufc.es.BancoImb.model.Jogador;
+import br.com.ufc.es.BancoImb.model.LugarEspecial;
 import br.com.ufc.es.BancoImb.model.Tabuleiro;
 
 public class TestandoTabuleiro {
 	public static void main(String[] args) {
+/*		
+		VerificarEstadoCasa casa = new VerificarEstadoCasa();
+		Imovel imovel = new Imovel("teste", 5, 5);
+		Empresa empresa = new Empresa("teste1", 5, 6);
+		LugarEspecial especial = new LugarEspecial("nomeff");
 		
-		int id = 3;
+		casa.verificarEstado(imovel);
+		casa.verificarEstado(empresa);
+		casa.verificarEstado(especial);*/
+		
+		
+		
+		/*int id = 3;
 		Jogador jogador = null;
 
 		BancoImobiliario bancoImobiliario = new BancoImobiliario();
@@ -22,8 +37,8 @@ public class TestandoTabuleiro {
 		bancoImobiliario.InserindoJogadores(marcio);
 		bancoImobiliario.InserindoJogadores(souza);
 		bancoImobiliario.InserindoJogadores(nobre);
-		/*bancoImobiliario.InserindoJogadores(edu);
-		bancoImobiliario.InserindoJogadores(dudu);*/
+		bancoImobiliario.InserindoJogadores(edu);
+		bancoImobiliario.InserindoJogadores(dudu);
 
 		bancoImobiliario.adicionarJogadoresNaCasaDePartida(bancoImobiliario
 				.getJodagores());
@@ -60,7 +75,7 @@ public class TestandoTabuleiro {
 		
 		bancoImobiliario.mudarVezDeJogar(1);
 		System.out.println("\t A vez de jogar é do jogador " + bancoImobiliario.getJogadorNaVEZ().getNome() + "ID = " + bancoImobiliario.getJogadorNaVEZ().getID());
-		
+	*/	
 	}
 
 }

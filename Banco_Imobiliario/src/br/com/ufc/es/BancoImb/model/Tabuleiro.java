@@ -29,7 +29,7 @@ public class Tabuleiro {
 		tabuleiro.add(new LugarEspecial("Sorte_Reves"));											//POSICAO 13
 		tabuleiro.add(new Imovel("Avendia_Brasil", 160 , 160));										//POSICAO 14
 		tabuleiro.add(new Empresa("Companhia_De_Navegacao", 150 , 150));							//POSICAO 15
-		tabuleiro.add(new LugarEspecial("Imposto_De_renda"));										//POSICAO 16
+		tabuleiro.add(new LugarEspecial("Imposto_De_Renda"));										//POSICAO 16
 		tabuleiro.add(new Imovel("Botafogo", 100 , 100));											//POSICAO 17
 		tabuleiro.add(new LugarEspecial("Sorte_Reves"));											//POSICAO 18
 		tabuleiro.add(new Imovel("Flamengo", 120 , 120));											//POSICAO 19
@@ -67,39 +67,38 @@ public class Tabuleiro {
 		System.out.println("A casa de origem é a casa: " + origem.getNome() + " | " + getIndiceCasa(origem));
 		System.out.println("A casa de destino é a casa: " + destino.getNome()+ " | " + getIndiceCasa(destino));
 		
-		System.out.println("==============================================================================");
+		System.out.println("<<<<<<<<<<==============================================================================>>>>>>>>>>");
 		System.out.println("O Jogador "+jogador.getNome()+ " foi movido da casa " +
 		getIndiceCasa(origem)+ " para a casa " + getIndiceCasa(destino) + " | a casa " +
 		destino.getNome() + " possui " + destino.getNumJogadoresCasa() + " jogadores");
-		System.out.println("==============================================================================");
+		System.out.println("<<<<<<<<<<==============================================================================>>>>>>>>>>");
 		
-		System.out.println("Agora o jogador esta na casa de posicao: " + jogador.getPosicaoJogador());
+		//System.out.println("Agora o jogador esta na casa de posicao: " + jogador.getPosicaoJogador());
 		
 	}
 	public void moverJogador(Jogador jogador, Casa destino) {
 		Casa origem = getCasaPeloIndice(jogador.getPosicaoJogador());
 		
-		System.out.println("A casa de origem é a casa: " + origem.getNome() + " | " + getIndiceCasa(origem));
-		System.out.println("A casa de destino é a casa: " + destino.getNome()+ " | " + getIndiceCasa(destino));
+		//System.out.println("A casa de origem é a casa: " + origem.getNome() + " | " + getIndiceCasa(origem));
+		//System.out.println("A casa de destino é a casa: " + destino.getNome()+ " | " + getIndiceCasa(destino));
 		
 		origem.removerJogador(jogador);
 		jogador.setPosicaoJogador(getIndiceCasa(destino));
 		destino.adicionarJogadoresNaLista(jogador);
 		
-		System.out.println("==============================================================================");
-		System.out.println("O Jogador "+jogador.getNome()+ " foi movido da casa " +
+		System.out.println("\n");
+		System.out.println("<<<<<<<<<<==============================================================================>>>>>>>>>>");
+		System.out.println("\t" + "O Jogador "+jogador.getNome()+ " foi movido da casa " +
 				getIndiceCasa(origem)+ " para a casa " + getIndiceCasa(destino) + " | a casa " +
 				destino.getNome() + " possui " + destino.getNumJogadoresCasa() + " jogadores");
-		System.out.println("Agora o jogador esta na casa de posicao: " + jogador.getPosicaoJogador());
+		System.out.println("\t" + "Agora o jogador esta na casa de posicao: " + jogador.getPosicaoJogador());
 		
 	}
 	
 	public int calculaIndiceProximaCasa(int indiceAtual, int resultDado) {
 		indiceProximaCasa = indiceAtual + resultDado;
-		System.out.println("INDICE PROXIMA CASA " + indiceProximaCasa);
 		if(indiceProximaCasa > 39){
 			int percent = indiceProximaCasa % 40;
-			System.out.println("Divisão " + indiceProximaCasa);
 			indiceProximaCasa = percent;
 		}
 		return indiceProximaCasa;
@@ -144,7 +143,7 @@ public class Tabuleiro {
 			for (Jogador jog : tabuleiro.get(i).getJogadoresNaCasa()) {
 				if (jog.getID() == id) {
 					jogador = jog;
-					System.out.println("o jogador com id " + jog.getID()	+ " é o jogador de nome " + jog.getNome());
+					//System.out.println("o jogador com id " + jog.getID()	+ " é o jogador de nome " + jog.getNome());
 
 				}
 

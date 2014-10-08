@@ -6,6 +6,10 @@ import java.util.List;
 public class Casa {
 	String nome;
 	List<Jogador> jogadoresNaCasa;
+	Jogador proprietario;
+	boolean vendido;
+	float valor;
+	float taxa;
 	
 	public Casa() {
 		jogadoresNaCasa = new ArrayList<Jogador>();
@@ -31,6 +35,38 @@ public class Casa {
 	}
 	public String getNome(){
 		return nome;
+	}
+
+	public Jogador getProprietario() {
+		return proprietario;
+	}
+
+	public void setProprietario(Jogador proprietario) {
+		this.proprietario = proprietario;
+	}
+
+	public boolean isVendido() {
+		return vendido;
+	}
+
+	public void setVendido(boolean vendido) {
+		this.vendido = vendido;
+	}
+
+	public float getValor() {
+		return valor;
+	}
+
+	public void setValor(float valor) {
+		this.valor = valor;
+	}
+
+	public float getTaxa() {
+		return taxa;
+	}
+
+	public void setTaxa(float taxa) {
+		this.taxa = taxa;
 	}
 
 }

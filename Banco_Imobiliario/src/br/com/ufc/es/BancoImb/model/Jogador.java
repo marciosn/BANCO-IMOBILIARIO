@@ -5,41 +5,38 @@ import java.util.List;
 
 import br.com.ufc.es.BancoImb.interfaces.IJogador;
 
-public class Jogador implements IJogador{
+public class Jogador{
 	private static int ultimoID = 0;
 	private int id;
 	private String nome;
 	private ContaBancaria conta;
-	private List<LogradouroComercializavel> meusLogradouros;
+	private List<Casa> meusLogradouros;
 	private int posicaoJogador;
 	
 	public Jogador(String nome, ContaBancaria conta) {
 		this.nome = nome;
 		this.conta = conta;
-		meusLogradouros = new ArrayList<LogradouroComercializavel>();
+		meusLogradouros = new ArrayList<Casa>();
 		this.id = ultimoID++;
 		this.posicaoJogador = 0;
 	}
-	@Override
-	public void comprar(LogradouroComercializavel logradouro) {
+	public void comprar(Casa logradouro) {
 		logradouro.setProprietario(this);
 		logradouro.setVendido(true);
 		conta.sacar(logradouro.getValor());
 		adicionarNovoLogradouroALista(logradouro);
 	}
-	@Override
-	public void pagarTaxa(LogradouroComercializavel logradouro) {
+	public void pagarTaxa(Casa logradouro) {
 		conta.sacar(logradouro.getTaxa());
 	}
-	@Override
-	public void receberTaxa(LogradouroComercializavel logradouro) {
+	public void receberTaxa(Casa logradouro) {
 		conta.depositar(logradouro.getTaxa());
 		
 	}
 	public float getSaldoJogador(){
 		return conta.getSaldo();
 	}
-	public void adicionarNovoLogradouroALista(LogradouroComercializavel logradouro){
+	public void adicionarNovoLogradouroALista(Casa logradouro){
 		meusLogradouros.add(logradouro);
 	}
 	public int quantidadeLogradouros(){

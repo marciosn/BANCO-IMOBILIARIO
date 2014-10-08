@@ -1,6 +1,7 @@
 package br.com.ufc.es.BancoImb.control;
 
 import java.awt.Color;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,13 @@ import br.com.ufc.es.BancoImb.model.ContaBancaria;
 import br.com.ufc.es.BancoImb.model.Jogador;
 import br.com.ufc.es.BancoImb.model.Tabuleiro;
 
+/**
+ * 
+ * https://github.com/marciosn/Banco-Imobiliario.git
+ * 
+ * **/
+
+
 public class BancoImobiliario {
 
 	Tabuleiro tabuleiroJogo;
@@ -23,25 +31,6 @@ public class BancoImobiliario {
 		tabuleiroJogo = new Tabuleiro();
 		jodagores = new ArrayList<Jogador>();
 	}
-
-	public void criarGrid() {
-
-		JFrame janela = new JFrame("Banco Imobiliario");
-		janela.setSize(800, 600);
-		janela.setVisible(true);
-		janela.getContentPane().setBackground(Color.DARK_GRAY);
-
-		String[] colunas = new String[] { "Nome", "Idade", "Sexo" };
-
-		String[][] dados = new String[][] { { "Rodrigo", "28", "Masculino" },
-				{ "Maria", "30", "Feminino" } };
-
-		JTable tabela = new JTable(dados, colunas);
-		JScrollPane scroll = new JScrollPane();
-		scroll.setViewportView(tabela);
-		janela.add(scroll);
-	}
-
 	public void InserindoJogadores(Jogador jogador) {
 		jodagores.add(jogador);
 	}
@@ -105,12 +94,9 @@ public class BancoImobiliario {
 	public void mudarVezDeJogar(int indiceJogador){
 		int indiceProx = 0, temp = 0;
 		indiceProx = indiceJogador + 1;
-		System.out.println(indiceProx);
 		if(indiceProx > jodagores.size()- 1){
-			System.out.println("entrou no IF porque indiceProx é = " + indiceProx);
 			temp = indiceProx % jodagores.size();
 			indiceProx = temp;
-			System.out.println("\t valor do percent "+ temp + " | " +  indiceProx);
 		}
 			setJogadorNaVEZ(tabuleiroJogo.getJogadorASerMovido(indiceProx));
 	}
