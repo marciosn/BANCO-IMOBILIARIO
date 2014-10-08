@@ -7,6 +7,7 @@ import br.com.ufc.es.BancoImb.model.Tabuleiro;
 
 public class TestandoTabuleiro {
 	public static void main(String[] args) {
+		
 		int id = 3;
 		Jogador jogador = null;
 
@@ -52,7 +53,10 @@ public class TestandoTabuleiro {
 
 			}
 		}
-
+		
+		
+		System.out.println(bancoImobiliario.getTabuleiroJogo().calculaIndiceProximaCasa(34, 12));
+		
 	}
 
 }

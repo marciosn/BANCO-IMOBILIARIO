@@ -46,14 +46,6 @@ public class TestTabuleiro {
 		assertTrue(origem.getNumJogadoresCasa() == 2 && destino.getNumJogadoresCasa() == 1);
 	}
 	@Test
-	public void testIndiceCasa() {
-		tab.criarCasasNoTabuleiro();
-		tab.adiconarJogadoresACasa(0, marcio);
-		Casa c = tab.getCasaPeloIndice(4);
-		assertTrue(tab.calculaIndiceProximaCasa(4, 5) == 9);
-	}
-
-	@Test
 	public void testMoverJogadorReal() {
 		tab.adiconarJogadoresACasa(3, joao);
 		tab.adiconarJogadoresACasa(3, jose);
@@ -90,17 +82,23 @@ public class TestTabuleiro {
 		assertTrue(destino.getNumJogadoresCasa() == 1);
 	}
 	
-	@Test
+	/*@Test
 	public void testCalculaIndiceProximaCasa() {
-		
 		assertTrue(bancoImobiliario.getTabuleiroJogo().calculaIndiceProximaCasa(4, 30) == 34);
 	}
-	
-
+	*/
 	@Test
-	public void testJogadorASerMovido(){
-		Jogador jogador = bancoImobiliario.getTabuleiroJogo().getJogadorASerMovido(15);
-		assertTrue(jogador.getNome().equals("edu"));
+	public void testGetCasaPeloIndice(){
+		assertTrue(bancoImobiliario.getTabuleiroJogo().getCasaPeloIndice(10).getNome().equals("Va_Para_A_Prisao"));
+	}
+	@Test
+	public void testTamanhoTabuleiro(){
+		assertTrue(bancoImobiliario.getTabuleiroJogo().getTabuleiro().size() == 40);
+	}
+	
+	@Test
+	public void testIndiceCasa() {
+		assertTrue(tab.calculaIndiceProximaCasa(4, 5) == 9);
 	}
 }
 

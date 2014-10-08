@@ -16,6 +16,7 @@ public class Jogo extends JFrame{
 		boolean executando = true;
 		Scanner entrada = new Scanner(System.in); 
 		Casa origem = null, destino = null;
+		Jogador jogador3 = null;
 		Dimension tela = Toolkit.getDefaultToolkit().getScreenSize();  
 		
 		BancoImobiliario bancoImobiliario = new BancoImobiliario();
@@ -35,24 +36,19 @@ public class Jogo extends JFrame{
 		
 		bancoImobiliario.adicionarJogadoresNaCasaDePartida(bancoImobiliario.getJodagores());
 
-		//bancoImobiliario.tabuleiroJogo.imprimiTabuleiro();
 		
 		Casa casa = bancoImobiliario.tabuleiroJogo.getCasaPeloIndice(0);
-		System.out.println("A casa " + casa.getNome()+ " possui " +casa.getJogadoresNaCasa().size() + " joagdores");
+		System.out.println("A casa " + casa.getNome()+ " possui " +casa.getJogadoresNaCasa().size() + " jogadores");
 		for(Jogador j : casa.getJogadoresNaCasa()){
 			System.out.println("Nome: " + j.getNome() + " ID: " +j.getID());
 		}
-		/*for(int i =0; i < 5 ; i++){
-			System.out.println("Indice: " + i);
-			bancoImobiliario.tabuleiroJogo.imprimirJogadoresNaCasa(i);
-			System.out.println("===================================");
-		}*/
 		
 		System.out.println("BANCO IMOBILIÁRIO");
 		
 		
 		System.out.println("Digite 1 para mover o usuario");
 		System.out.println("Digite 2 para mover o usuario usando um metodo diferente");
+		System.out.println("Digite 3 para mover o usuario usando um metodo diferente NEW");
 		int opcao = entrada.nextInt();
 		while(executando){
 			switch (opcao) {
@@ -84,14 +80,14 @@ public class Jogo extends JFrame{
 				bancoImobiliario.tabuleiroJogo.moverJogador(jogador, origem, destino);
 				System.out.println("=============================================");
 				break;
+				
+				/**
+				 * 
+				 * 
+				 * 
+				 * */
+				
 				case 2:
-					/*System.out.println("Digite o indice da casa de origem do jogador");
-					int indiceOrigem = entrada.nextInt();
-					if(indiceOrigem < 40){
-						origem = bancoImobiliario.tabuleiroJogo.getCasaPeloIndice(indiceOrigem);
-						System.out.println("---------> Nome da casa origem: " + origem.getNome());
-						System.out.println("---------> Possui: " + origem.getNumJogadoresCasa() + " jogadores na casa");
-					}*/
 					
 					System.out.println("Digite o indice da casa de destino do jogador");
 					int indiceDestino2 = entrada.nextInt();
@@ -100,20 +96,41 @@ public class Jogo extends JFrame{
 						System.out.println("---------> Nome da casa origem: " + destino.getNome());
 						System.out.println("---------> Possui: " + destino.getNumJogadoresCasa() + " jogadores na casa");
 					}
+				
 					
 					System.out.println("Digite o id do jogador que vai se mover");
 					int id2 = entrada.nextInt();
-					
 					if(id2 < 5){
-						System.out.println("passou no if");
 						Jogador jogador2 = bancoImobiliario.tabuleiroJogo.getJogadorASerMovido(id2);
-						Casa origem2 = bancoImobiliario.tabuleiroJogo.getCasaPeloIndice(jogador2.getPosicaoJogador());
-						System.out.println(jogador2.getNome());
-						System.out.println(jogador2.getSaldo());
 					
-					bancoImobiliario.tabuleiroJogo.moverJogador(jogador2, 10);
+					bancoImobiliario.tabuleiroJogo.moverJogador(jogador2, destino);
 					}
 					System.out.println("=============================================");
+					
+					break;
+					
+					
+				case 3:
+					
+					System.out.println("Digite o id do jogador que vai se mover");
+					int id3 = entrada.nextInt();
+					if(id3 < 5){
+						jogador3 = bancoImobiliario.tabuleiroJogo.getJogadorASerMovido(id3);	
+					}
+	
+					System.out.println("Digite o resultado do lançamento dos dados");
+					int resultadoDados = entrada.nextInt();
+					if(resultadoDados <= 12){
+						int indiceCasaDestino = bancoImobiliario.tabuleiroJogo.calculaIndiceProximaCasa(jogador3.getPosicaoJogador(), resultadoDados);
+						destino = bancoImobiliario.tabuleiroJogo.getCasaPeloIndice(indiceCasaDestino);
+						System.out.println("---------> Nome da casa origem: " + destino.getNome());
+						System.out.println("---------> Possui: " + destino.getNumJogadoresCasa() + " jogadores na casa");
+						
+						bancoImobiliario.tabuleiroJogo.moverJogador(jogador3, destino);
+					}
+						System.out.println("=============================================");
+				
+					
 					
 					break;
 
