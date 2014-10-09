@@ -74,17 +74,12 @@ public class BancoImobiliario {
 	}
 	
 	public void criarJogadores(){
-		Jogador marcio = new Jogador("marcio", new ContaBancaria(1000));
-		Jogador souza = new Jogador("souza", new ContaBancaria(1000));
-		Jogador nobre = new Jogador("nobre", new ContaBancaria(1000));
-		Jogador edu = new Jogador("edu", new ContaBancaria(1000));
-		Jogador dudu = new Jogador("dudu", new ContaBancaria(1000));
 		
-		InserindoJogadores(marcio);
-		InserindoJogadores(souza);
-		InserindoJogadores(nobre);
-		InserindoJogadores(edu);
-		InserindoJogadores(dudu);
+		InserindoJogadores(new Jogador("marcio", new ContaBancaria(1000)));
+		InserindoJogadores(new Jogador("marcio", new ContaBancaria(1000)));
+		InserindoJogadores(new Jogador("nobre", new ContaBancaria(1000)));
+		InserindoJogadores(new Jogador("edu", new ContaBancaria(1000)));
+		InserindoJogadores(new Jogador("dudu", new ContaBancaria(1000)));
 		
 		adicionarJogadoresNaCasaDePartida(jodagores);
 	}
