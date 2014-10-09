@@ -1,9 +1,9 @@
 package br.com.ufc.es.BancoImb.LogradourComercializavel;
 
-import br.com.ufc.es.BancoImb.model.Casa;
+import br.com.ufc.es.BancoImb.model.CasaDoTabuleiro;
 import br.com.ufc.es.BancoImb.model.Jogador;
 
-public class LogradouroComercializavel extends Casa{
+public class LogradouroComercializavel extends CasaDoTabuleiro{
 	private String nome;
 	private float valor;
 	private Jogador proprietario;

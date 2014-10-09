@@ -4,25 +4,25 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import br.com.ufc.es.BancoImb.LogradourComercializavel.Empresa;
-import br.com.ufc.es.BancoImb.LogradourComercializavel.Imovel;
-import br.com.ufc.es.BancoImb.control.BancoImobiliario;
-import br.com.ufc.es.BancoImb.model.Casa;
+import br.com.ufc.es.BancoImb.LogradourComercializavel.LogradouroComercializavel_Empresa;
+import br.com.ufc.es.BancoImb.LogradourComercializavel.LogradouroComercializavel_Imovel;
+import br.com.ufc.es.BancoImb.control.Controlador_Banco_Imobiliario;
+import br.com.ufc.es.BancoImb.model.CasaDoTabuleiro;
 import br.com.ufc.es.BancoImb.model.ContaBancaria;
 import br.com.ufc.es.BancoImb.model.Jogador;
 import br.com.ufc.es.BancoImb.model.Tabuleiro;
 
 public class TestTabuleiro {
 
-	Empresa empresa = new Empresa("Google", 5000, 1000);
-	Imovel imovel = new Imovel("Apartamento", 3000, 1000);
+	LogradouroComercializavel_Empresa empresa = new LogradouroComercializavel_Empresa("Google", 5000, 1000);
+	LogradouroComercializavel_Imovel imovel = new LogradouroComercializavel_Imovel("Apartamento", 3000, 1000);
 	Jogador marcio = new Jogador("Marcio", new ContaBancaria(10000));
 	Jogador jose = new Jogador("Jose", new ContaBancaria(10000));
 	Jogador joao = new Jogador("Joao", new ContaBancaria(10000));
-	Casa casa = new Casa();
-	Casa casa2 = new Casa();
+	CasaDoTabuleiro casa = new CasaDoTabuleiro();
+	CasaDoTabuleiro casa2 = new CasaDoTabuleiro();
 	Tabuleiro tab = new Tabuleiro();
-	BancoImobiliario bancoImobiliario = new BancoImobiliario();
+	Controlador_Banco_Imobiliario bancoImobiliario = new Controlador_Banco_Imobiliario();
 	
 	@Test
 	public void testAdcionarJogadorCasa() {
@@ -30,7 +30,7 @@ public class TestTabuleiro {
 		tab.adiconarJogadoresACasa(0, marcio);
 		tab.adiconarJogadoresACasa(0, jose);
 		tab.adiconarJogadoresACasa(0, joao);
-		Casa c = tab.getCasaByIndice(0);
+		CasaDoTabuleiro c = tab.getCasaByIndice(0);
 		assertTrue(c.getNumJogadoresCasa() == 3);
 	}
 	
@@ -40,8 +40,8 @@ public class TestTabuleiro {
 		tab.adiconarJogadoresACasa(4, marcio);
 		tab.adiconarJogadoresACasa(4, jose);
 		tab.adiconarJogadoresACasa(4, joao);
-		Casa origem = tab.getCasaByIndice(4);
-		Casa destino = tab.getCasaByIndice(38);
+		CasaDoTabuleiro origem = tab.getCasaByIndice(4);
+		CasaDoTabuleiro destino = tab.getCasaByIndice(38);
 		tab.moverJogador(marcio, destino);
 		assertTrue(origem.getNumJogadoresCasa() == 2 && destino.getNumJogadoresCasa() == 1);
 	}
@@ -50,8 +50,8 @@ public class TestTabuleiro {
 		tab.adiconarJogadoresACasa(3, joao);
 		tab.adiconarJogadoresACasa(3, jose);
 		tab.adiconarJogadoresACasa(3, marcio);
-		Casa origem = tab.getCasaByIndice(3);
-		Casa destino = tab.getCasaByIndice(34);
+		CasaDoTabuleiro origem = tab.getCasaByIndice(3);
+		CasaDoTabuleiro destino = tab.getCasaByIndice(34);
 		tab.moverJogador(joao,destino);
 		tab.moverJogador(jose,destino);
 		tab.moverJogador(marcio,destino);
@@ -74,7 +74,7 @@ public class TestTabuleiro {
 		
 		bancoImobiliario.adicionarJogadoresNaCasaDePartida(bancoImobiliario.getJodagores());
 		
-		Casa destino = bancoImobiliario.getTabuleiroJogo().getCasaByIndice(10);
+		CasaDoTabuleiro destino = bancoImobiliario.getTabuleiroJogo().getCasaByIndice(10);
 		Jogador jogador = bancoImobiliario.getTabuleiroJogo().getJogadorByID(12);
 		bancoImobiliario.getTabuleiroJogo().moverJogador(jogador, destino);
 				

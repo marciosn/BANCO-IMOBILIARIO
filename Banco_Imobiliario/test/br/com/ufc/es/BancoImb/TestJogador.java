@@ -4,22 +4,22 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import br.com.ufc.es.BancoImb.LogradourComercializavel.Empresa;
-import br.com.ufc.es.BancoImb.LogradourComercializavel.Imovel;
+import br.com.ufc.es.BancoImb.LogradourComercializavel.LogradouroComercializavel_Empresa;
+import br.com.ufc.es.BancoImb.LogradourComercializavel.LogradouroComercializavel_Imovel;
 import br.com.ufc.es.BancoImb.model.ContaBancaria;
 import br.com.ufc.es.BancoImb.model.Jogador;
 import br.com.ufc.es.BancoImb.model.Tabuleiro;
 
 public class TestJogador {
-	Empresa empresa = new Empresa("Google", 1000, 400);
-	Empresa empresa2 = new Empresa("Facebook", 4000, 400);
-	Empresa empresa3 = new Empresa("Twitter", 2000, 400);
-	Empresa empresa4 = new Empresa("Sony", 2500, 400);
+	LogradouroComercializavel_Empresa empresa = new LogradouroComercializavel_Empresa("Google", 1000, 400);
+	LogradouroComercializavel_Empresa empresa2 = new LogradouroComercializavel_Empresa("Facebook", 4000, 400);
+	LogradouroComercializavel_Empresa empresa3 = new LogradouroComercializavel_Empresa("Twitter", 2000, 400);
+	LogradouroComercializavel_Empresa empresa4 = new LogradouroComercializavel_Empresa("Sony", 2500, 400);
 	
-	Imovel imovel = new Imovel("Casa", 500, 200);
-	Imovel imovel2 = new Imovel("Apartamento", 1500, 200);
-	Imovel imovel3 = new Imovel("Sobrado", 700, 200);
-	Imovel imovel4 = new Imovel("Galpao", 500, 200);
+	LogradouroComercializavel_Imovel imovel = new LogradouroComercializavel_Imovel("Casa", 500, 200);
+	LogradouroComercializavel_Imovel imovel2 = new LogradouroComercializavel_Imovel("Apartamento", 1500, 200);
+	LogradouroComercializavel_Imovel imovel3 = new LogradouroComercializavel_Imovel("Sobrado", 700, 200);
+	LogradouroComercializavel_Imovel imovel4 = new LogradouroComercializavel_Imovel("Galpao", 500, 200);
 	
 	Jogador jogador = new Jogador("Marcio", new ContaBancaria(10000));
 	Jogador jogador2 = new Jogador("Souza", new ContaBancaria(10000));

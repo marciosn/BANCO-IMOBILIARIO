@@ -1,18 +1,18 @@
 package br.com.testandoAPLICACAO;
 
-import br.com.ufc.es.BancoImb.LogradourComercializavel.Empresa;
-import br.com.ufc.es.BancoImb.LogradourComercializavel.Imovel;
+import br.com.ufc.es.BancoImb.LogradourComercializavel.LogradouroComercializavel_Empresa;
+import br.com.ufc.es.BancoImb.LogradourComercializavel.LogradouroComercializavel_Imovel;
 import br.com.ufc.es.BancoImb.LugarEspecial.LogradouroEspecial;
-import br.com.ufc.es.BancoImb.LugarEspecial.Partida;
-import br.com.ufc.es.BancoImb.LugarEspecial.VaParaAPrisao;
-import br.com.ufc.es.BancoImb.control.BancoImobiliario;
-import br.com.ufc.es.BancoImb.control.VerificarEstadoCasa;
+import br.com.ufc.es.BancoImb.LugarEspecial.LugarEspecial_Partida;
+import br.com.ufc.es.BancoImb.LugarEspecial.LugarEspecial_VaParaAPrisao;
+import br.com.ufc.es.BancoImb.control.Controlador_Banco_Imobiliario;
+import br.com.ufc.es.BancoImb.control.ExecutaComportamentoDaCasa;
 import br.com.ufc.es.BancoImb.model.ContaBancaria;
 import br.com.ufc.es.BancoImb.model.Jogador;
 
 public class TestandoTabuleiro {
 	public static void main(String[] args) {
-		new BancoImobiliario();
+		new Controlador_Banco_Imobiliario();
 
 /*		Partida partida = new Partida("partida");
 		partida.efeitoDaCasa();*/

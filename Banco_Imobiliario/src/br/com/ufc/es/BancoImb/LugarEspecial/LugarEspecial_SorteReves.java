@@ -6,21 +6,21 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import br.com.ufc.es.BancoImb.interfaces.ILogradouroEspecial;
-import br.com.ufc.es.BancoImb.model.Casa;
+import br.com.ufc.es.BancoImb.model.CasaDoTabuleiro;
 import br.com.ufc.es.BancoImb.model.Jogador;
 
-public class SorteReves extends LogradouroEspecial implements ILogradouroEspecial{
+public class LugarEspecial_SorteReves extends LogradouroEspecial implements ILogradouroEspecial{
 	
 	private List<Float> cartas;
 	private int indice;
-	public SorteReves(String nome) {
+	public LugarEspecial_SorteReves(String nome) {
 		super(nome);
 		cartas  = new ArrayList<Float>();
 		criarDeckCartas();
 	}
 
 	@Override
-	public void efeitoDaCasa(Jogador jogador) {
+	public void executarComportamento(Jogador jogador) {
 		sorteReves();		
 		if((indice % 2)  == 0){
 			jogador.receberTaxa(cartas.get(indice));

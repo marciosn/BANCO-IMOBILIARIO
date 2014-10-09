@@ -3,74 +3,74 @@ package br.com.ufc.es.BancoImb.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.ufc.es.BancoImb.LogradourComercializavel.Empresa;
-import br.com.ufc.es.BancoImb.LogradourComercializavel.Imovel;
-import br.com.ufc.es.BancoImb.LugarEspecial.ImpostoDeRenda;
+import br.com.ufc.es.BancoImb.LogradourComercializavel.LogradouroComercializavel_Empresa;
+import br.com.ufc.es.BancoImb.LogradourComercializavel.LogradouroComercializavel_Imovel;
+import br.com.ufc.es.BancoImb.LugarEspecial.LugarEspecial_ImpostoDeRenda;
 import br.com.ufc.es.BancoImb.LugarEspecial.LogradouroEspecial;
-import br.com.ufc.es.BancoImb.LugarEspecial.LucrosEDividendos;
-import br.com.ufc.es.BancoImb.LugarEspecial.ParadaLivre;
-import br.com.ufc.es.BancoImb.LugarEspecial.Partida;
-import br.com.ufc.es.BancoImb.LugarEspecial.Prisao;
-import br.com.ufc.es.BancoImb.LugarEspecial.SorteReves;
-import br.com.ufc.es.BancoImb.LugarEspecial.VaParaAPrisao;
+import br.com.ufc.es.BancoImb.LugarEspecial.LugarEspecial_LucrosEDividendos;
+import br.com.ufc.es.BancoImb.LugarEspecial.LugarEspecial_ParadaLivre;
+import br.com.ufc.es.BancoImb.LugarEspecial.LugarEspecial_Partida;
+import br.com.ufc.es.BancoImb.LugarEspecial.LugarEspecial_Prisao;
+import br.com.ufc.es.BancoImb.LugarEspecial.LugarEspecial_SorteReves;
+import br.com.ufc.es.BancoImb.LugarEspecial.LugarEspecial_VaParaAPrisao;
 
 public class Tabuleiro {
-	List<Casa> tabuleiro;
+	List<CasaDoTabuleiro> tabuleiro;
 	int indiceProximaCasa;
 
 	public Tabuleiro() {
-		tabuleiro = new ArrayList<Casa>();
+		tabuleiro = new ArrayList<CasaDoTabuleiro>();
 		criarCasasNoTabuleiro();
 	}
 
 	public void criarCasasNoTabuleiro() {
-		tabuleiro.add(new Partida("Partida"));														//POSICAO 00
-		tabuleiro.add(new Imovel("Brooklin", 260 , 260));											//POSICAO 01
-		tabuleiro.add(new Imovel("Jardim_Paulista", 280 , 280));									//POSICAO 02
-		tabuleiro.add(new SorteReves("Sorte_Reves"));												//POSICAO 03
-		tabuleiro.add(new Imovel("Ipanema", 300 , 300));											//POSICAO 04
-		tabuleiro.add(new Empresa("Companhia_Taxi_Aereo", 200 , 200));								//POSICAO 05
-		tabuleiro.add(new Imovel("Avendia_Atlantica", 300 , 300));									//POSICAO 06
-		tabuleiro.add(new Imovel("Avendia_Vieira_Souto", 320 , 320));								//POSICAO 07
-		tabuleiro.add(new Empresa("Companhia_De_Aviacao", 200 , 200));								//POSICAO 08
-		tabuleiro.add(new Imovel("Copacabana", 260 , 260));											//POSICAO 09
-		tabuleiro.add(new VaParaAPrisao("Va_Para_A_Prisao"));										//POSICAO 10
-		tabuleiro.add(new Imovel("Jardim_Europa", 140, 140));										//POSICAO 11
-		tabuleiro.add(new Imovel("Avendia_Paulista", 140 , 140));									//POSICAO 12
-		tabuleiro.add(new SorteReves("Sorte_Reves"));												//POSICAO 13
-		tabuleiro.add(new Imovel("Avendia_Brasil", 160 , 160));										//POSICAO 14
-		tabuleiro.add(new Empresa("Companhia_De_Navegacao", 150 , 150));							//POSICAO 15
-		tabuleiro.add(new ImpostoDeRenda("Imposto_De_Renda"));										//POSICAO 16
-		tabuleiro.add(new Imovel("Botafogo", 100 , 100));											//POSICAO 17
-		tabuleiro.add(new SorteReves("Sorte_Reves"));												//POSICAO 18
-		tabuleiro.add(new Imovel("Flamengo", 120 , 120));											//POSICAO 19
-		tabuleiro.add(new ParadaLivre("Parada_Livre"));												//POSICAO 20
-		tabuleiro.add(new Imovel("Morumbi", 120 , 120));											//POSICAO 21
-		tabuleiro.add(new LucrosEDividendos("Lucros_E_Dividendos"));								//POSICAO 22
-		tabuleiro.add(new Imovel("Interlagos", 120 , 120));											//POSICAO 23
-		tabuleiro.add(new SorteReves("Sorte_Reves"));												//POSICAO 24
-		tabuleiro.add(new Empresa("Companhia_De_Taxi", 150 , 150));									//POSICAO 25
-		tabuleiro.add(new Imovel("Avenida_Pacaembu", 180 , 180));									//POSICAO 26
-		tabuleiro.add(new Imovel("Rua_Augusta", 180 , 180));										//POSICAO 27
-		tabuleiro.add(new SorteReves("Sorte_Reves"));												//POSICAO 28
-		tabuleiro.add(new Imovel("Avenida_Europa", 	200 , 200));									//POSICAO 29
-		tabuleiro.add(new Prisao("Prisao"));														//POSICAO 30
-		tabuleiro.add(new Imovel("Avenida_9_De_Julho", 220 , 220));									//POSICAO 31
-		tabuleiro.add(new Imovel("Avenida_Reboucas", 220 , 220));									//POSICAO 32
-		tabuleiro.add(new Empresa("Companhia_De_Viacao", 200 , 200));								//POSICAO 33
-		tabuleiro.add(new Imovel("Avenida_Brigadeiro_Faria_Lima", 240 , 240));						//POSICAO 34
-		tabuleiro.add(new Empresa("Companhia_Ferroviaria", 200 , 200));								//POSICAO 35
-		tabuleiro.add(new Imovel("Avenida_Nossa_Senhora_De_Copacabana", 60 , 60));					//POSICAO 36
-		tabuleiro.add(new Imovel("Avenida_Presidente_Vargas", 60 , 60));							//POSICAO 37
-		tabuleiro.add(new SorteReves("Sorte_Reves"));												//POSICAO 38
-		tabuleiro.add(new Imovel("Leblon", 100 , 100));												//POSICAO 39
+		tabuleiro.add(new LugarEspecial_Partida("Partida"));														//POSICAO 00
+		tabuleiro.add(new LogradouroComercializavel_Imovel("Brooklin", 260 , 260));											//POSICAO 01
+		tabuleiro.add(new LogradouroComercializavel_Imovel("Jardim_Paulista", 280 , 280));									//POSICAO 02
+		tabuleiro.add(new LugarEspecial_SorteReves("Sorte_Reves"));												//POSICAO 03
+		tabuleiro.add(new LogradouroComercializavel_Imovel("Ipanema", 300 , 300));											//POSICAO 04
+		tabuleiro.add(new LogradouroComercializavel_Empresa("Companhia_Taxi_Aereo", 200 , 200));								//POSICAO 05
+		tabuleiro.add(new LogradouroComercializavel_Imovel("Avendia_Atlantica", 300 , 300));									//POSICAO 06
+		tabuleiro.add(new LogradouroComercializavel_Imovel("Avendia_Vieira_Souto", 320 , 320));								//POSICAO 07
+		tabuleiro.add(new LogradouroComercializavel_Empresa("Companhia_De_Aviacao", 200 , 200));								//POSICAO 08
+		tabuleiro.add(new LogradouroComercializavel_Imovel("Copacabana", 260 , 260));											//POSICAO 09
+		tabuleiro.add(new LugarEspecial_VaParaAPrisao("Va_Para_A_Prisao"));										//POSICAO 10
+		tabuleiro.add(new LogradouroComercializavel_Imovel("Jardim_Europa", 140, 140));										//POSICAO 11
+		tabuleiro.add(new LogradouroComercializavel_Imovel("Avendia_Paulista", 140 , 140));									//POSICAO 12
+		tabuleiro.add(new LugarEspecial_SorteReves("Sorte_Reves"));												//POSICAO 13
+		tabuleiro.add(new LogradouroComercializavel_Imovel("Avendia_Brasil", 160 , 160));										//POSICAO 14
+		tabuleiro.add(new LogradouroComercializavel_Empresa("Companhia_De_Navegacao", 150 , 150));							//POSICAO 15
+		tabuleiro.add(new LugarEspecial_ImpostoDeRenda("Imposto_De_Renda"));										//POSICAO 16
+		tabuleiro.add(new LogradouroComercializavel_Imovel("Botafogo", 100 , 100));											//POSICAO 17
+		tabuleiro.add(new LugarEspecial_SorteReves("Sorte_Reves"));												//POSICAO 18
+		tabuleiro.add(new LogradouroComercializavel_Imovel("Flamengo", 120 , 120));											//POSICAO 19
+		tabuleiro.add(new LugarEspecial_ParadaLivre("Parada_Livre"));												//POSICAO 20
+		tabuleiro.add(new LogradouroComercializavel_Imovel("Morumbi", 120 , 120));											//POSICAO 21
+		tabuleiro.add(new LugarEspecial_LucrosEDividendos("Lucros_E_Dividendos"));								//POSICAO 22
+		tabuleiro.add(new LogradouroComercializavel_Imovel("Interlagos", 120 , 120));											//POSICAO 23
+		tabuleiro.add(new LugarEspecial_SorteReves("Sorte_Reves"));												//POSICAO 24
+		tabuleiro.add(new LogradouroComercializavel_Empresa("Companhia_De_Taxi", 150 , 150));									//POSICAO 25
+		tabuleiro.add(new LogradouroComercializavel_Imovel("Avenida_Pacaembu", 180 , 180));									//POSICAO 26
+		tabuleiro.add(new LogradouroComercializavel_Imovel("Rua_Augusta", 180 , 180));										//POSICAO 27
+		tabuleiro.add(new LugarEspecial_SorteReves("Sorte_Reves"));												//POSICAO 28
+		tabuleiro.add(new LogradouroComercializavel_Imovel("Avenida_Europa", 	200 , 200));									//POSICAO 29
+		tabuleiro.add(new LugarEspecial_Prisao("Prisao"));														//POSICAO 30
+		tabuleiro.add(new LogradouroComercializavel_Imovel("Avenida_9_De_Julho", 220 , 220));									//POSICAO 31
+		tabuleiro.add(new LogradouroComercializavel_Imovel("Avenida_Reboucas", 220 , 220));									//POSICAO 32
+		tabuleiro.add(new LogradouroComercializavel_Empresa("Companhia_De_Viacao", 200 , 200));								//POSICAO 33
+		tabuleiro.add(new LogradouroComercializavel_Imovel("Avenida_Brigadeiro_Faria_Lima", 240 , 240));						//POSICAO 34
+		tabuleiro.add(new LogradouroComercializavel_Empresa("Companhia_Ferroviaria", 200 , 200));								//POSICAO 35
+		tabuleiro.add(new LogradouroComercializavel_Imovel("Avenida_Nossa_Senhora_De_Copacabana", 60 , 60));					//POSICAO 36
+		tabuleiro.add(new LogradouroComercializavel_Imovel("Avenida_Presidente_Vargas", 60 , 60));							//POSICAO 37
+		tabuleiro.add(new LugarEspecial_SorteReves("Sorte_Reves"));												//POSICAO 38
+		tabuleiro.add(new LogradouroComercializavel_Imovel("Leblon", 100 , 100));												//POSICAO 39
 	}
 
 	public void adiconarJogadoresACasa(int indice, Jogador jogador) {
 		tabuleiro.get(indice).adicionarJogadoresNaLista(jogador);
 	}
-	public void moverJogador(Jogador jogador, Casa destino) {
-		Casa origem = getCasaByIndice(jogador.getPosicaoJogador());
+	public void moverJogador(Jogador jogador, CasaDoTabuleiro destino) {
+		CasaDoTabuleiro origem = getCasaByIndice(jogador.getPosicaoJogador());
 		
 		origem.removerJogador(jogador);
 		jogador.setPosicaoJogador(getIndiceByCasa(destino));
@@ -96,10 +96,10 @@ public class Tabuleiro {
 		return indiceProximaCasa;
 	}
 
-	public Casa getCasaByIndice(int indice) {
+	public CasaDoTabuleiro getCasaByIndice(int indice) {
 		return tabuleiro.get(indice);
 	}
-	public int getIndiceByCasa(Casa casa){
+	public int getIndiceByCasa(CasaDoTabuleiro casa){
 		int indice = 0;
 		for(int i = 0 ; i < tabuleiro.size() ; i++){
 			if(tabuleiro.get(i).equals(casa)){
@@ -109,11 +109,11 @@ public class Tabuleiro {
 		return indice;
 	}
 	
-	public List<Casa> getTabuleiro() {
+	public List<CasaDoTabuleiro> getTabuleiro() {
 		return tabuleiro;
 	}
 
-	public void setTabuleiro(List<Casa> tabuleiro) {
+	public void setTabuleiro(List<CasaDoTabuleiro> tabuleiro) {
 		this.tabuleiro = tabuleiro;
 	}
 	
@@ -130,7 +130,7 @@ public class Tabuleiro {
 	}
 	
 	public void imprimiTabuleiro() {
-		for (Casa c : tabuleiro) {
+		for (CasaDoTabuleiro c : tabuleiro) {
 			System.out.println(c.getNome() + " || " + c.getNumJogadoresCasa());
 		}
 	}

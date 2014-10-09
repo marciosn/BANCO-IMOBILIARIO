@@ -10,29 +10,29 @@ public class Jogador{
 	private int id;
 	private String nome;
 	private ContaBancaria conta;
-	private List<Casa> meusLogradouros;
+	private List<CasaDoTabuleiro> meusLogradouros;
 	private int posicaoJogador;
 	
 	public Jogador(String nome, ContaBancaria conta) {
 		this.nome = nome;
 		this.conta = conta;
-		meusLogradouros = new ArrayList<Casa>();
+		meusLogradouros = new ArrayList<CasaDoTabuleiro>();
 		this.id = ultimoID++;
 		this.posicaoJogador = 0;
 	}
-	public void comprar(Casa logradouro) {
+	public void comprar(CasaDoTabuleiro logradouro) {
 		logradouro.setProprietario(this);
 		logradouro.setVendido(true);
 		conta.sacar(logradouro.getValor());
 		adicionarNovoLogradouroALista(logradouro);
 	}
-	public void pagarTaxa(Casa logradouro) {
+	public void pagarTaxa(CasaDoTabuleiro logradouro) {
 		conta.sacar(logradouro.getTaxa());
 	}
 	public void pagarTaxa(float taxa) {
 		conta.sacar(taxa);
 	}
-	public void receberTaxa(Casa logradouro) {
+	public void receberTaxa(CasaDoTabuleiro logradouro) {
 		conta.depositar(logradouro.getTaxa());
 		
 	}
@@ -40,10 +40,7 @@ public class Jogador{
 		conta.depositar(taxa);
 		
 	}
-	public float getSaldoJogador(){
-		return conta.getSaldo();
-	}
-	public void adicionarNovoLogradouroALista(Casa logradouro){
+	public void adicionarNovoLogradouroALista(CasaDoTabuleiro logradouro){
 		meusLogradouros.add(logradouro);
 	}
 	public int quantidadeLogradouros(){

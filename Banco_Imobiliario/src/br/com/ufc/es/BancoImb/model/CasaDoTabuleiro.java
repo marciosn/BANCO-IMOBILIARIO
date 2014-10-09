@@ -3,7 +3,7 @@ package br.com.ufc.es.BancoImb.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Casa {
+public class CasaDoTabuleiro {
 	String nome;
 	List<Jogador> jogadoresNaCasa;
 	Jogador proprietario;
@@ -11,7 +11,7 @@ public class Casa {
 	float valor;
 	float taxa;
 	
-	public Casa() {
+	public CasaDoTabuleiro() {
 		jogadoresNaCasa = new ArrayList<Jogador>();
 	}
 
@@ -34,7 +34,7 @@ public class Casa {
 		jogadoresNaCasa.remove(jogador);
 	}
 	
-	public void efeitoDaCasa(Jogador jogador){
+	public void executarComportamento(Jogador jogador){
 	}
 	
 	public String getNome(){

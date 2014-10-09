@@ -2,20 +2,18 @@ package br.com.ufc.es.BancoImb.control;
 
 import javax.swing.JOptionPane;
 
-import br.com.ufc.es.BancoImb.model.Casa;
+import br.com.ufc.es.BancoImb.model.CasaDoTabuleiro;
 import br.com.ufc.es.BancoImb.model.Jogador;
 
-public class VerificarEstadoCasa {
-	Jogador jogador;
-
-	public void verificarEstado(Jogador jogador, Casa casa) {
+public class ExecutaComportamentoDaCasa {
+	public void executarComportamento(Jogador jogador, CasaDoTabuleiro casa) {
 		if(casa.getValor() != 0){
 		
 		if (!casa.isVendido()) {
-			int resposta = JOptionPane.showConfirmDialog(null, "Essa casa não possui proprietário, quer compra-la ?",
+			int respostaDoJogador = JOptionPane.showConfirmDialog(null, "Essa casa não possui proprietário, quer compra-la ?",
 					"Comprar Casa", JOptionPane.YES_NO_OPTION);
 			
-			if(resposta == 0){
+			if(respostaDoJogador == 0){
 				jogador.comprar(casa);
 				
 				JOptionPane.showMessageDialog(null, "O jogador " + jogador.getNome() + " comprou a casa " + casa.getNome() + "\n" + 
@@ -32,7 +30,7 @@ public class VerificarEstadoCasa {
 		
 	}
 		else{
-			casa.efeitoDaCasa(jogador);
+			casa.executarComportamento(jogador);
 		}
 			
 
