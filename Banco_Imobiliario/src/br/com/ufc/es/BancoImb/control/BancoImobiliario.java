@@ -57,10 +57,6 @@ public class BancoImobiliario {
 		tabuleiroJogo.adiconarJogadoresACasa(posicao, jogador);
 	}
 
-	public void moverJogador(Jogador jogador, Casa origem, Casa destino) {
-		tabuleiroJogo.moverJogador(jogador, origem, destino);
-	}
-
 	public List<Jogador> getJodagores() {
 		return jodagores;
 	}
@@ -107,7 +103,7 @@ public class BancoImobiliario {
 			temp = indiceProx % jodagores.size();
 			indiceProx = temp;
 		}
-			setJogadorNaVEZ(tabuleiroJogo.getJogadorASerMovido(indiceProx));
+			setJogadorNaVEZ(tabuleiroJogo.getJogadorByID(indiceProx));
 	}
 
 	public void iniciarJogo(){
@@ -127,10 +123,10 @@ public class BancoImobiliario {
 				int resultadoDados = entrada.nextInt();
 				if (resultadoDados <= 12) {
 					int indiceCasaDestino = tabuleiroJogo.calculaIndiceProximaCasa(jogador.getPosicaoJogador(),resultadoDados);
-					destino = tabuleiroJogo.getCasaPeloIndice(indiceCasaDestino);
+					destino = tabuleiroJogo.getCasaByIndice(indiceCasaDestino);
 					
 					System.out.println("\t Nome da casa destino: "+ destino.getNome());
-					System.out.println("\t O indice da casa destino é: "+ tabuleiroJogo.getIndiceCasa(destino));
+					System.out.println("\t O indice da casa destino é: "+ tabuleiroJogo.getIndiceByCasa(destino));
 					System.out.println("\t Possui: "+ destino.getNumJogadoresCasa()	+ " jogadores na casa");
 
 					tabuleiroJogo.moverJogador(jogador,destino);

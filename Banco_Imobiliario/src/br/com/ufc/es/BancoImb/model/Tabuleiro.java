@@ -69,39 +69,20 @@ public class Tabuleiro {
 	public void adiconarJogadoresACasa(int indice, Jogador jogador) {
 		tabuleiro.get(indice).adicionarJogadoresNaLista(jogador);
 	}
-
-	public void moverJogador(Jogador jogador, Casa origem, Casa destino) {
-		origem.removerJogador(jogador);
-		jogador.setPosicaoJogador(getIndiceCasa(destino));
-		destino.adicionarJogadoresNaLista(jogador);
-		
-		System.out.println("A casa de origem é a casa: " + origem.getNome() + " | " + getIndiceCasa(origem));
-		System.out.println("A casa de destino é a casa: " + destino.getNome()+ " | " + getIndiceCasa(destino));
-		
-		System.out.println("<<<<<<<<<<==============================================================================>>>>>>>>>>");
-		System.out.println("O Jogador "+jogador.getNome()+ " foi movido da casa " +
-		getIndiceCasa(origem)+ " para a casa " + getIndiceCasa(destino) + " | a casa " +
-		destino.getNome() + " possui " + destino.getNumJogadoresCasa() + " jogadores");
-		System.out.println("<<<<<<<<<<==============================================================================>>>>>>>>>>");
-		
-		//System.out.println("Agora o jogador esta na casa de posicao: " + jogador.getPosicaoJogador());
-		
-	}
 	public void moverJogador(Jogador jogador, Casa destino) {
-		Casa origem = getCasaPeloIndice(jogador.getPosicaoJogador());
-		
-		//System.out.println("A casa de origem é a casa: " + origem.getNome() + " | " + getIndiceCasa(origem));
-		//System.out.println("A casa de destino é a casa: " + destino.getNome()+ " | " + getIndiceCasa(destino));
+		Casa origem = getCasaByIndice(jogador.getPosicaoJogador());
 		
 		origem.removerJogador(jogador);
-		jogador.setPosicaoJogador(getIndiceCasa(destino));
+		jogador.setPosicaoJogador(getIndiceByCasa(destino));
 		destino.adicionarJogadoresNaLista(jogador);
 		
 		System.out.println("\n");
 		System.out.println("<<<<<<<<<<==============================================================================>>>>>>>>>>");
+		
 		System.out.println("\t" + "O Jogador "+jogador.getNome()+ " foi movido da casa " +
-				getIndiceCasa(origem)+ " para a casa " + getIndiceCasa(destino) + " | a casa " +
+				getIndiceByCasa(origem)+ " para a casa " + getIndiceByCasa(destino) + " | a casa " +
 				destino.getNome() + " possui " + destino.getNumJogadoresCasa() + " jogadores");
+		
 		System.out.println("\t" + "Agora o jogador esta na casa de posicao: " + jogador.getPosicaoJogador());
 		
 	}
@@ -115,10 +96,10 @@ public class Tabuleiro {
 		return indiceProximaCasa;
 	}
 
-	public Casa getCasaPeloIndice(int indice) {
+	public Casa getCasaByIndice(int indice) {
 		return tabuleiro.get(indice);
 	}
-	public int getIndiceCasa(Casa casa){
+	public int getIndiceByCasa(Casa casa){
 		int indice = 0;
 		for(int i = 0 ; i < tabuleiro.size() ; i++){
 			if(tabuleiro.get(i).equals(casa)){
@@ -136,34 +117,17 @@ public class Tabuleiro {
 		this.tabuleiro = tabuleiro;
 	}
 	
-	public Jogador getJogadorASerMovido(int id, Casa origem){
-		Jogador jogador = null;
-		for(Jogador j : origem.getJogadoresNaCasa()){
-			if(j.getID() == id){
-				jogador = j;
-				System.out.println("Jogador: " + jogador.getNome() + " " + jogador.getSaldo() + " | ID = " + jogador.getID());
-			}
-		}
-		 
-		return jogador;
-	}
-	
-	public Jogador getJogadorASerMovido(int id){
+	public Jogador getJogadorByID(int id){
 		Jogador jogador = null;
 		for (int i = 0; i < tabuleiro.size(); i++) {
 			for (Jogador jog : tabuleiro.get(i).getJogadoresNaCasa()) {
 				if (jog.getID() == id) {
 					jogador = jog;
-					//System.out.println("o jogador com id " + jog.getID()	+ " é o jogador de nome " + jog.getNome());
-
 				}
-
 			}
-		}
-		 
+		}	 
 		return jogador;
 	}
-	
 	
 	public void imprimiTabuleiro() {
 		for (Casa c : tabuleiro) {
@@ -172,7 +136,7 @@ public class Tabuleiro {
 	}
 	
 	public void imprimirJogadoresNaCasa(int indice){
-		for(Jogador jogador : getCasaPeloIndice(indice).getJogadoresNaCasa()){
+		for(Jogador jogador : getCasaByIndice(indice).getJogadoresNaCasa()){
 			System.out.println("Nome: " + jogador.getNome() + " ID: " +jogador.getID());
 		}
 	}
