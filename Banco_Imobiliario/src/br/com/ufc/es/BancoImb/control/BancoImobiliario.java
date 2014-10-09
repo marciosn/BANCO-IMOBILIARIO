@@ -1,7 +1,6 @@
 package br.com.ufc.es.BancoImb.control;
 
 import java.awt.Color;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,9 +8,9 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import br.com.ufc.es.BancoImb.LogradourComercializavel.Jogador;
 import br.com.ufc.es.BancoImb.model.Casa;
 import br.com.ufc.es.BancoImb.model.ContaBancaria;
-import br.com.ufc.es.BancoImb.model.Jogador;
 import br.com.ufc.es.BancoImb.model.Tabuleiro;
 
 /**

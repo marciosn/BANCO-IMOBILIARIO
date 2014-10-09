@@ -1,4 +1,4 @@
-package br.com.ufc.es.BancoImb.model;
+package br.com.ufc.es.BancoImb.LogradourComercializavel;
 
 public class Empresa extends LogradouroComercializavel{
 

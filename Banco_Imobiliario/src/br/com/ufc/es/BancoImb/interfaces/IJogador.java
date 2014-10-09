@@ -1,6 +1,6 @@
 package br.com.ufc.es.BancoImb.interfaces;
 
-import br.com.ufc.es.BancoImb.model.LogradouroComercializavel;
+import br.com.ufc.es.BancoImb.LogradourComercializavel.LogradouroComercializavel;
 
 public interface IJogador {
 	

@@ -1,25 +1,20 @@
 package br.com.testandoAPLICACAO;
 
-import br.com.ufc.es.BancoImb.control.BancoImobiliario;
+import br.com.ufc.es.BancoImb.LogradourComercializavel.Empresa;
+import br.com.ufc.es.BancoImb.LogradourComercializavel.Imovel;
+import br.com.ufc.es.BancoImb.LugarEspecial.LogradouroEspecial;
+import br.com.ufc.es.BancoImb.LugarEspecial.Partida;
 import br.com.ufc.es.BancoImb.control.VerificarEstadoCasa;
-import br.com.ufc.es.BancoImb.model.ContaBancaria;
-import br.com.ufc.es.BancoImb.model.Empresa;
-import br.com.ufc.es.BancoImb.model.Imovel;
-import br.com.ufc.es.BancoImb.model.Jogador;
-import br.com.ufc.es.BancoImb.model.LugarEspecial;
-import br.com.ufc.es.BancoImb.model.Tabuleiro;
 
 public class TestandoTabuleiro {
 	public static void main(String[] args) {
-/*		
+		
 		VerificarEstadoCasa casa = new VerificarEstadoCasa();
 		Imovel imovel = new Imovel("teste", 5, 5);
 		Empresa empresa = new Empresa("teste1", 5, 6);
-		LugarEspecial especial = new LugarEspecial("nomeff");
-		
-		casa.verificarEstado(imovel);
-		casa.verificarEstado(empresa);
-		casa.verificarEstado(especial);*/
+
+/*		Partida partida = new Partida("partida");
+		partida.efeitoDaCasa();*/
 		
 		
 		

@@ -3,6 +3,8 @@ package br.com.ufc.es.BancoImb.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.ufc.es.BancoImb.LogradourComercializavel.Jogador;
+
 public class Casa {
 	String nome;
 	List<Jogador> jogadoresNaCasa;
@@ -33,6 +35,10 @@ public class Casa {
 	public void removerJogador(Jogador jogador){
 		jogadoresNaCasa.remove(jogador);
 	}
+	
+	public void efeitoDaCasa(Jogador jogador){
+	}
+	
 	public String getNome(){
 		return nome;
 	}

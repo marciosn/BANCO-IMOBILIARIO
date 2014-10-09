@@ -1,4 +1,6 @@
-package br.com.ufc.es.BancoImb.model;
+package br.com.ufc.es.BancoImb.LugarEspecial;
+
+import br.com.ufc.es.BancoImb.model.Casa;
 
 public class LogradouroEspecial extends Casa{
 	private String nome;

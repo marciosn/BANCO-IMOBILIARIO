@@ -6,9 +6,9 @@ import java.util.Scanner;
 
 import javax.swing.JFrame;
 
+import br.com.ufc.es.BancoImb.LogradourComercializavel.Jogador;
 import br.com.ufc.es.BancoImb.model.Casa;
 import br.com.ufc.es.BancoImb.model.ContaBancaria;
-import br.com.ufc.es.BancoImb.model.Jogador;
 import br.com.ufc.es.BancoImb.model.Portifolio;
 import br.com.ufc.es.BancoImb.model.Tabuleiro;
 

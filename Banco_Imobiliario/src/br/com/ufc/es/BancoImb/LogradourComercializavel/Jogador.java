@@ -1,9 +1,11 @@
-package br.com.ufc.es.BancoImb.model;
+package br.com.ufc.es.BancoImb.LogradourComercializavel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.ufc.es.BancoImb.interfaces.IJogador;
+import br.com.ufc.es.BancoImb.model.Casa;
+import br.com.ufc.es.BancoImb.model.ContaBancaria;
 
 public class Jogador{
 	private static int ultimoID = 0;
@@ -29,8 +31,15 @@ public class Jogador{
 	public void pagarTaxa(Casa logradouro) {
 		conta.sacar(logradouro.getTaxa());
 	}
+	public void pagarTaxa(float taxa) {
+		conta.sacar(taxa);
+	}
 	public void receberTaxa(Casa logradouro) {
 		conta.depositar(logradouro.getTaxa());
+		
+	}
+	public void receberTaxa(float taxa) {
+		conta.depositar(taxa);
 		
 	}
 	public float getSaldoJogador(){

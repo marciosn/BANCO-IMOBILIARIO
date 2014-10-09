@@ -2,13 +2,15 @@ package br.com.ufc.es.BancoImb.control;
 
 import javax.swing.JOptionPane;
 
+import br.com.ufc.es.BancoImb.LogradourComercializavel.Jogador;
 import br.com.ufc.es.BancoImb.model.Casa;
-import br.com.ufc.es.BancoImb.model.Jogador;
 
 public class VerificarEstadoCasa {
 	Jogador jogador;
 
 	public void verificarEstado(Jogador jogador, Casa casa) {
+		if(casa.getValor() != 0){
+		
 		if (!casa.isVendido()) {
 			int resposta = JOptionPane.showConfirmDialog(null, "Essa casa não possui proprietário, quer compra-la ?",
 					"Comprar Casa", JOptionPane.YES_NO_OPTION);
@@ -27,6 +29,13 @@ public class VerificarEstadoCasa {
 					"Você precisa pagar uma taxa por passar aqui, seu novo saldo é: " + jogador.getSaldo() + "\n" +
 					 casa.getProprietario().getNome() + "agora possui saldo = " + casa.getProprietario().getSaldo());
 		}
+		
+	}
+		else{
+			casa.efeitoDaCasa(jogador);
+			JOptionPane.showMessageDialog(null, "É uma casa especial");
+		}
+			
 
 	}
 
