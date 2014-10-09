@@ -3,6 +3,7 @@ package br.com.ufc.es.BancoImb.control;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -26,10 +27,18 @@ public class BancoImobiliario {
 	Tabuleiro tabuleiroJogo;
 	List<Jogador> jodagores;
 	Jogador jogadorNaVEZ;
+	Jogador jogador;
+	Scanner entrada = new Scanner(System.in);
+	boolean executando = true;
+	Casa destino;
+	VerificarEstadoCasa verif;
 
 	public BancoImobiliario() {
 		tabuleiroJogo = new Tabuleiro();
 		jodagores = new ArrayList<Jogador>();
+		criarJogadores();
+		verif = new VerificarEstadoCasa();
+		iniciarJogo();
 	}
 	public void InserindoJogadores(Jogador jogador) {
 		jodagores.add(jogador);
@@ -101,4 +110,44 @@ public class BancoImobiliario {
 			setJogadorNaVEZ(tabuleiroJogo.getJogadorASerMovido(indiceProx));
 	}
 
+	public void iniciarJogo(){
+		System.out.println("Digite 1 para iniciar a logica do jogo");
+		
+		int opcao = entrada.nextInt();
+		while (executando) {
+			switch (opcao) {
+
+			case 1:
+				System.out.println("\t A vez de jogar é do jogador " + jogadorNaVEZ.getNome() +" que possui ID: "+ jogadorNaVEZ.getID());
+				System.out.println("\n");
+
+				jogador =  jogadorNaVEZ;
+
+				System.out.println("Digite o resultado do lançamento dos dados");
+				int resultadoDados = entrada.nextInt();
+				if (resultadoDados <= 12) {
+					int indiceCasaDestino = tabuleiroJogo.calculaIndiceProximaCasa(jogador.getPosicaoJogador(),resultadoDados);
+					destino = tabuleiroJogo.getCasaPeloIndice(indiceCasaDestino);
+					
+					System.out.println("\t Nome da casa destino: "+ destino.getNome());
+					System.out.println("\t O indice da casa destino é: "+ tabuleiroJogo.getIndiceCasa(destino));
+					System.out.println("\t Possui: "+ destino.getNumJogadoresCasa()	+ " jogadores na casa");
+
+					tabuleiroJogo.moverJogador(jogador,destino);
+				}
+				
+				verif.verificarEstado(jogador,destino);
+				
+				System.out.println("<<<<<<<<<<==============================================================================>>>>>>>>>>");
+					mudarVezDeJogar(jogador.getID());
+				System.out.println("<<<<<<<<<<==============================================================================>>>>>>>>>>");
+				
+				break;
+
+			default:
+				break;
+			}
+
+		}
+	}
 }

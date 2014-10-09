@@ -5,20 +5,14 @@ import br.com.ufc.es.BancoImb.LogradourComercializavel.Imovel;
 import br.com.ufc.es.BancoImb.LugarEspecial.LogradouroEspecial;
 import br.com.ufc.es.BancoImb.LugarEspecial.Partida;
 import br.com.ufc.es.BancoImb.LugarEspecial.VaParaAPrisao;
+import br.com.ufc.es.BancoImb.control.BancoImobiliario;
 import br.com.ufc.es.BancoImb.control.VerificarEstadoCasa;
 import br.com.ufc.es.BancoImb.model.ContaBancaria;
 import br.com.ufc.es.BancoImb.model.Jogador;
 
 public class TestandoTabuleiro {
 	public static void main(String[] args) {
-		
-		Jogador jogador = new Jogador("marcio", new ContaBancaria(1000));
-		VerificarEstadoCasa casa = new VerificarEstadoCasa();
-		Imovel imovel = new Imovel("teste", 5, 5);
-		Empresa empresa = new Empresa("teste1", 5, 6);
-		VaParaAPrisao vp = new VaParaAPrisao("vaprisao");
-		
-		vp.efeitoDaCasa(jogador);
+		new BancoImobiliario();
 
 /*		Partida partida = new Partida("partida");
 		partida.efeitoDaCasa();*/
