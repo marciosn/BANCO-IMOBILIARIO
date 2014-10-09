@@ -2,8 +2,8 @@ package br.com.ufc.es.BancoImb.control;
 
 import javax.swing.JOptionPane;
 
-import br.com.ufc.es.BancoImb.LogradourComercializavel.Jogador;
 import br.com.ufc.es.BancoImb.model.Casa;
+import br.com.ufc.es.BancoImb.model.Jogador;
 
 public class VerificarEstadoCasa {
 	Jogador jogador;
@@ -33,7 +33,6 @@ public class VerificarEstadoCasa {
 	}
 		else{
 			casa.efeitoDaCasa(jogador);
-			JOptionPane.showMessageDialog(null, "É uma casa especial");
 		}
 			
 

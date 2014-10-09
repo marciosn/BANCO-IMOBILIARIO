@@ -1,11 +1,9 @@
-package br.com.ufc.es.BancoImb.LogradourComercializavel;
+package br.com.ufc.es.BancoImb.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.ufc.es.BancoImb.interfaces.IJogador;
-import br.com.ufc.es.BancoImb.model.Casa;
-import br.com.ufc.es.BancoImb.model.ContaBancaria;
 
 public class Jogador{
 	private static int ultimoID = 0;

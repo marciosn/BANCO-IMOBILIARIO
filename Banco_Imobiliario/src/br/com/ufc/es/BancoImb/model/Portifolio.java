@@ -1,6 +1,5 @@
 package br.com.ufc.es.BancoImb.model;
 
-import br.com.ufc.es.BancoImb.LogradourComercializavel.Jogador;
 
 public class Portifolio {
 	

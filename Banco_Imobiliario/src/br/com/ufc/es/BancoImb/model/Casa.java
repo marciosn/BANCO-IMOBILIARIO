@@ -3,8 +3,6 @@ package br.com.ufc.es.BancoImb.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.ufc.es.BancoImb.LogradourComercializavel.Jogador;
-
 public class Casa {
 	String nome;
 	List<Jogador> jogadoresNaCasa;

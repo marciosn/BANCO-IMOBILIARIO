@@ -6,10 +6,10 @@ import org.junit.Test;
 
 import br.com.ufc.es.BancoImb.LogradourComercializavel.Empresa;
 import br.com.ufc.es.BancoImb.LogradourComercializavel.Imovel;
-import br.com.ufc.es.BancoImb.LogradourComercializavel.Jogador;
 import br.com.ufc.es.BancoImb.control.BancoImobiliario;
 import br.com.ufc.es.BancoImb.model.Casa;
 import br.com.ufc.es.BancoImb.model.ContaBancaria;
+import br.com.ufc.es.BancoImb.model.Jogador;
 import br.com.ufc.es.BancoImb.model.Tabuleiro;
 
 public class TestTabuleiro {

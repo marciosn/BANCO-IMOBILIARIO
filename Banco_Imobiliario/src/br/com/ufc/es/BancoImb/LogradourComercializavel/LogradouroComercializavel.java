@@ -1,6 +1,7 @@
 package br.com.ufc.es.BancoImb.LogradourComercializavel;
 
 import br.com.ufc.es.BancoImb.model.Casa;
+import br.com.ufc.es.BancoImb.model.Jogador;
 
 public class LogradouroComercializavel extends Casa{
 	private String nome;

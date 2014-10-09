@@ -1,7 +1,9 @@
 package br.com.ufc.es.BancoImb.LugarEspecial;
 
-import br.com.ufc.es.BancoImb.LogradourComercializavel.Jogador;
+import javax.swing.JOptionPane;
+
 import br.com.ufc.es.BancoImb.interfaces.ILogradouroEspecial;
+import br.com.ufc.es.BancoImb.model.Jogador;
 
 public class LucrosEDividendos extends LogradouroEspecial implements ILogradouroEspecial{
 
@@ -12,7 +14,9 @@ public class LucrosEDividendos extends LogradouroEspecial implements ILogradouro
 
 	@Override
 	public void efeitoDaCasa(Jogador jogador) {
-		// TODO Auto-generated method stub
+		jogador.receberTaxa(200);
+		JOptionPane.showMessageDialog(null, "Lucros ou Dividendos" + "\n" +
+				"Receba 200"+ "\n" +"Seu novo Saldo é " + jogador.getSaldo());
 		
 	}
 

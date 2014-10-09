@@ -1,7 +1,10 @@
 package br.com.ufc.es.BancoImb.LugarEspecial;
 
-import br.com.ufc.es.BancoImb.LogradourComercializavel.Jogador;
+import javax.swing.JOptionPane;
+
 import br.com.ufc.es.BancoImb.interfaces.ILogradouroEspecial;
+import br.com.ufc.es.BancoImb.model.Jogador;
+import br.com.ufc.es.BancoImb.model.Tabuleiro;
 
 public class VaParaAPrisao extends LogradouroEspecial implements ILogradouroEspecial{
 
@@ -12,7 +15,7 @@ public class VaParaAPrisao extends LogradouroEspecial implements ILogradouroEspe
 
 	@Override
 	public void efeitoDaCasa(Jogador jogador) {
-		// TODO Auto-generated method stub
+		JOptionPane.showMessageDialog(null, "Mover Jogador");
 		
 	}
 

@@ -1,7 +1,9 @@
 package br.com.ufc.es.BancoImb.LugarEspecial;
 
-import br.com.ufc.es.BancoImb.LogradourComercializavel.Jogador;
+import javax.swing.JOptionPane;
+
 import br.com.ufc.es.BancoImb.interfaces.ILogradouroEspecial;
+import br.com.ufc.es.BancoImb.model.Jogador;
 
 public class ParadaLivre extends LogradouroEspecial implements ILogradouroEspecial{
 
@@ -12,7 +14,7 @@ public class ParadaLivre extends LogradouroEspecial implements ILogradouroEspeci
 
 	@Override
 	public void efeitoDaCasa(Jogador jogador) {
-		// TODO Auto-generated method stub
+		JOptionPane.showMessageDialog(null, "Parada Livre" + "\n" + "Não precisa pagar impostos!");
 		
 	}
 
