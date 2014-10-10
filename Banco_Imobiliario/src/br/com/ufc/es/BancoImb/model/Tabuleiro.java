@@ -89,6 +89,9 @@ public class Tabuleiro {
 		
 		System.out.println("\t" + "Agora o jogador esta na casa de posicao: " + jogador.getPosicaoJogador());
 		
+		System.out.println("\t" + "Posicao Origem: " + origem.getPosicao());
+		System.out.println("\t" + "Posicao Destino: " + destino.getPosicao());
+		
 	}
 	
 	public int calculaIndiceProximaCasa(int indiceAtual, int resultDado) {
