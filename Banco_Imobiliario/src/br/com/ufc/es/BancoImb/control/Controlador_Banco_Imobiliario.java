@@ -74,6 +74,12 @@ public class Controlador_Banco_Imobiliario extends JFrame{
 	}
 	public void moverJogador(Jogador jogador, CasaDoTabuleiro casa){
 		tabuleiroJogo.moverJogador(jogador, casa);
+		
+		Point posicao = casa.getPosicao();
+        System.out.println("Position: " + posicao);
+        System.out.println(posicao.getX() + " | " + posicao.getY());
+        peca.x = posicao.x;  
+        peca.y = posicao.y;  
 	}
 	
 	public void inserirJogadorNaCasa(int posicao, Jogador jogador) {
@@ -157,7 +163,7 @@ public class Controlador_Banco_Imobiliario extends JFrame{
             {  
                 Point posicao = mouse.getPosition();
                 System.out.println("Position: " + posicao);
-                System.out.println(posicao.getX() + " | " + posicao.getY());
+                System.out.println(posicao.getX() + "," + posicao.getY());
                 peca.x = posicao.x;  
                 peca.y = posicao.y;  
             } 
