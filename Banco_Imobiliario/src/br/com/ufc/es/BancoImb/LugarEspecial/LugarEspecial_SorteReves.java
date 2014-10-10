@@ -1,5 +1,6 @@
 package br.com.ufc.es.BancoImb.LugarEspecial;
 
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,13 +12,14 @@ import br.com.ufc.es.BancoImb.model.Jogador;
 
 public class LugarEspecial_SorteReves extends LogradouroEspecial implements ILogradouroEspecial{
 	
+	public LugarEspecial_SorteReves(String nome, Point posicao) {
+		super(nome, posicao);
+		// TODO Auto-generated constructor stub
+	}
+
 	private List<Float> cartas;
 	private int indice;
-	public LugarEspecial_SorteReves(String nome) {
-		super(nome);
-		cartas  = new ArrayList<Float>();
-		criarDeckCartas();
-	}
+
 
 	@Override
 	public void executarComportamento(Jogador jogador) {

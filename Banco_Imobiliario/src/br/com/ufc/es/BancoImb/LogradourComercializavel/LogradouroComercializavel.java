@@ -1,5 +1,7 @@
 package br.com.ufc.es.BancoImb.LogradourComercializavel;
 
+import java.awt.Point;
+
 import br.com.ufc.es.BancoImb.model.CasaDoTabuleiro;
 import br.com.ufc.es.BancoImb.model.Jogador;
 
@@ -9,13 +11,15 @@ public class LogradouroComercializavel extends CasaDoTabuleiro{
 	private Jogador proprietario;
 	private float taxa;
 	private boolean vendido;
+	private Point posicao;
 	
-	public LogradouroComercializavel(String nome, float valor, float taxa) {
+	public LogradouroComercializavel(String nome, float valor, float taxa, Point posicao) {
 		this.nome = nome;
 		this.valor = valor;
 		this.vendido = false;
 		this.taxa = taxa;
 		this.proprietario = null;
+		this.posicao = posicao;
 	}
 
 	public String getNome() {
@@ -38,6 +42,14 @@ public class LogradouroComercializavel extends CasaDoTabuleiro{
 	}
 	public void setVendido(boolean vendido) {
 		this.vendido = vendido;
+	}
+
+	public Point getPosicao() {
+		return posicao;
+	}
+
+	public void setPosicao(Point posicao) {
+		this.posicao = posicao;
 	}
 
 }

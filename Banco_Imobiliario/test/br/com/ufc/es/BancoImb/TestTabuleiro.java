@@ -2,6 +2,8 @@ package br.com.ufc.es.BancoImb;
 
 import static org.junit.Assert.assertTrue;
 
+import java.awt.Point;
+
 import org.junit.Test;
 
 import br.com.ufc.es.BancoImb.LogradourComercializavel.LogradouroComercializavel_Empresa;
@@ -10,15 +12,16 @@ import br.com.ufc.es.BancoImb.control.Controlador_Banco_Imobiliario;
 import br.com.ufc.es.BancoImb.model.CasaDoTabuleiro;
 import br.com.ufc.es.BancoImb.model.ContaBancaria;
 import br.com.ufc.es.BancoImb.model.Jogador;
+import br.com.ufc.es.BancoImb.model.Peca;
 import br.com.ufc.es.BancoImb.model.Tabuleiro;
 
 public class TestTabuleiro {
 
-	LogradouroComercializavel_Empresa empresa = new LogradouroComercializavel_Empresa("Google", 5000, 1000);
-	LogradouroComercializavel_Imovel imovel = new LogradouroComercializavel_Imovel("Apartamento", 3000, 1000);
-	Jogador marcio = new Jogador("Marcio", new ContaBancaria(10000));
-	Jogador jose = new Jogador("Jose", new ContaBancaria(10000));
-	Jogador joao = new Jogador("Joao", new ContaBancaria(10000));
+	LogradouroComercializavel_Empresa empresa = new LogradouroComercializavel_Empresa("Google", 5000, 1000, new Point(32, 26));
+	LogradouroComercializavel_Imovel imovel = new LogradouroComercializavel_Imovel("Apartamento", 3000, 1000, new Point(32, 26));
+	Jogador marcio = new Jogador("Marcio", new ContaBancaria(10000), new Peca());
+	Jogador jose = new Jogador("Jose", new ContaBancaria(10000), new Peca());
+	Jogador joao = new Jogador("Joao", new ContaBancaria(10000), new Peca());
 	CasaDoTabuleiro casa = new CasaDoTabuleiro();
 	CasaDoTabuleiro casa2 = new CasaDoTabuleiro();
 	Tabuleiro tab = new Tabuleiro();
@@ -60,11 +63,11 @@ public class TestTabuleiro {
 	
 	@Test
 	public void testPegaJogadorASerMovido() {
-		Jogador marcio = new Jogador("marcio", new ContaBancaria(10000));
-		Jogador souza = new Jogador("souza", new ContaBancaria(10000));
-		Jogador nobre = new Jogador("nobre", new ContaBancaria(10000));
-		Jogador edu = new Jogador("edu", new ContaBancaria(10000));
-		Jogador dudu = new Jogador("dudu", new ContaBancaria(10000));
+		Jogador marcio = new Jogador("marcio", new ContaBancaria(10000), new Peca());
+		Jogador souza = new Jogador("souza", new ContaBancaria(10000), new Peca());
+		Jogador nobre = new Jogador("nobre", new ContaBancaria(10000), new Peca());
+		Jogador edu = new Jogador("edu", new ContaBancaria(10000), new Peca());
+		Jogador dudu = new Jogador("dudu", new ContaBancaria(10000), new Peca());
 		
 		bancoImobiliario.InserindoJogadores(marcio);
 		bancoImobiliario.InserindoJogadores(souza);

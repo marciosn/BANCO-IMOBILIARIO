@@ -3,8 +3,6 @@ package br.com.ufc.es.BancoImb.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.ufc.es.BancoImb.interfaces.IJogador;
-
 public class Jogador{
 	private static int ultimoID = 0;
 	private int id;
@@ -12,13 +10,15 @@ public class Jogador{
 	private ContaBancaria conta;
 	private List<CasaDoTabuleiro> meusLogradouros;
 	private int posicaoJogador;
+	private Peca peca;
 	
-	public Jogador(String nome, ContaBancaria conta) {
+	public Jogador(String nome, ContaBancaria conta, Peca peca) {
 		this.nome = nome;
 		this.conta = conta;
 		meusLogradouros = new ArrayList<CasaDoTabuleiro>();
 		this.id = ultimoID++;
 		this.posicaoJogador = 0;
+		this.peca = peca;
 	}
 	public void comprar(CasaDoTabuleiro logradouro) {
 		logradouro.setProprietario(this);
@@ -34,11 +34,9 @@ public class Jogador{
 	}
 	public void receberTaxa(CasaDoTabuleiro logradouro) {
 		conta.depositar(logradouro.getTaxa());
-		
 	}
 	public void receberTaxa(float taxa) {
 		conta.depositar(taxa);
-		
 	}
 	public void adicionarNovoLogradouroALista(CasaDoTabuleiro logradouro){
 		meusLogradouros.add(logradouro);

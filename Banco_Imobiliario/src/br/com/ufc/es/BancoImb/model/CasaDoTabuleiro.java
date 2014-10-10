@@ -1,5 +1,6 @@
 package br.com.ufc.es.BancoImb.model;
 
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,7 @@ public class CasaDoTabuleiro {
 	boolean vendido;
 	float valor;
 	float taxa;
+	Point posicao;
 	
 	public CasaDoTabuleiro() {
 		jogadoresNaCasa = new ArrayList<Jogador>();
@@ -71,6 +73,14 @@ public class CasaDoTabuleiro {
 
 	public void setTaxa(float taxa) {
 		this.taxa = taxa;
+	}
+
+	public Point getPosicao() {
+		return posicao;
+	}
+
+	public void setPosicao(Point posicao) {
+		this.posicao = posicao;
 	}
 
 }

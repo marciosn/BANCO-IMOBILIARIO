@@ -1,5 +1,7 @@
 package br.com.ufc.es.BancoImb.LugarEspecial;
 
+import java.awt.Point;
+
 import javax.swing.JOptionPane;
 
 import br.com.ufc.es.BancoImb.interfaces.ILogradouroEspecial;
@@ -7,8 +9,9 @@ import br.com.ufc.es.BancoImb.model.Jogador;
 
 public class LugarEspecial_Partida extends LogradouroEspecial implements ILogradouroEspecial{
 
-	public LugarEspecial_Partida(String nome) {
-		super(nome);
+
+	public LugarEspecial_Partida(String nome, Point posicao) {
+		super(nome, posicao);
 		// TODO Auto-generated constructor stub
 	}
 
