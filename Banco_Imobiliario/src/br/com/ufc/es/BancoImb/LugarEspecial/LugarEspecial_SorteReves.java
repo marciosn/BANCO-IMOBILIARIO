@@ -7,29 +7,31 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import br.com.ufc.es.BancoImb.interfaces.ILogradouroEspecial;
-import br.com.ufc.es.BancoImb.model.CasaDoTabuleiro;
 import br.com.ufc.es.BancoImb.model.Jogador;
 
 public class LugarEspecial_SorteReves extends LogradouroEspecial implements ILogradouroEspecial{
 	
-	public LugarEspecial_SorteReves(String nome, Point posicao) {
-		super(nome, posicao);
-		// TODO Auto-generated constructor stub
-	}
-
 	private List<Float> cartas;
 	private int indice;
-
+	
+	public LugarEspecial_SorteReves(String nome, Point posicao) {
+		super(nome, posicao);
+		cartas = new ArrayList<Float>();
+		criarDeckCartas();
+	}
 
 	@Override
 	public void executarComportamento(Jogador jogador) {
 		sorteReves();		
 		if((indice % 2)  == 0){
+			System.out.println("passou no IF");
+			System.out.println(cartas.get(indice));
 			jogador.receberTaxa(cartas.get(indice));
 			JOptionPane.showMessageDialog(null, "Sorte"+ "\n" + "Receba: "+
 			cartas.get(indice) + "\n" +
 			"Seu novo saldo é: " + jogador.getSaldo());
 		}else{
+			System.out.println("Não passou no IF");
 			jogador.pagarTaxa(cartas.get(indice));
 			JOptionPane.showMessageDialog(null, "Revés"+"\n" + "Pague: "+
 			cartas.get(indice) +
@@ -39,14 +41,13 @@ public class LugarEspecial_SorteReves extends LogradouroEspecial implements ILog
 	
 	public int sorteReves(){
 		indice = ((int) ( (Math.random() * 19) + 1 ));
+		System.out.println("INDICE "+indice);
 		return indice;
+
 	}
-	
-	public void Sr(int indice){
 		
-	}
-	
 	public void criarDeckCartas(){
+		
 		cartas.add((float) 200);
 		cartas.add((float) 100);
 		cartas.add((float) 150);

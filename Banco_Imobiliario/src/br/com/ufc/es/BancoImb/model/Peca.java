@@ -1,11 +1,11 @@
 package br.com.ufc.es.BancoImb.model;
 
-import jplay.Sprite;
+import jplay.GameImage;
 
-public class Peca extends Sprite{
+public class Peca extends GameImage{
 
 	public Peca() {
-		super("peca2.png", 3);
+		super("peca2.png");
 	}
 
 }

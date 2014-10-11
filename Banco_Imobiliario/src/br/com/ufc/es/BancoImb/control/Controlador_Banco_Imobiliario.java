@@ -125,10 +125,9 @@ public class Controlador_Banco_Imobiliario extends JFrame{
 
 				System.out.println("Digite o resultado do lançamento dos dados");
 				
-				int resultadoDados = entrada.nextInt(); 
-				//JOptionPane.showInputDialog(null, "Digite o resultado dos dados", "Jogada", JOptionPane.OK_OPTION);
+				String resultado = JOptionPane.showInputDialog(null, "Digite o resultado dos dados", "Jogada", JOptionPane.OK_OPTION);
 								
-				//int resultadoDados = Integer.valueOf(resultado);
+				int resultadoDados = Integer.valueOf(resultado);
 				
 				if (resultadoDados <= 12) {
 					int indiceCasaDestino = tabuleiroJogo.calculaIndiceProximaCasa(jogador.getPosicaoJogador(),resultadoDados);
@@ -137,7 +136,6 @@ public class Controlador_Banco_Imobiliario extends JFrame{
 					System.out.println("\t Nome da casa destino: "+ destino.getNome() + " A posicao é: " + destino.getPosicao());
 					System.out.println("\t O indice da casa destino é: "+ tabuleiroJogo.getIndiceByCasa(destino));
 					System.out.println("\t Possui: "+ destino.getNumJogadoresCasa()	+ " jogadores na casa");
-
 					moverJogador(jogador,destino);
 				}
 				
