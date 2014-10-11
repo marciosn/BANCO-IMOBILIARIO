@@ -23,7 +23,7 @@ import br.com.ufc.es.BancoImb.model.Tabuleiro;
 /**
  * https://github.com/marciosn/Banco-Imobiliario.git
  * **/
-public class Controlador_Banco_Imobiliario extends JFrame{
+public class Controlador_Banco_Imobiliario{
 
 	Tabuleiro tabuleiroJogo;
 	List<Jogador> jodagores;
@@ -49,9 +49,10 @@ public class Controlador_Banco_Imobiliario extends JFrame{
         scene.loadFromFile("scene2.scn");  
         scene.setDrawStartPos(0, 1);  
 
-        peca = new Peca();  
+        peca = new Peca();
         peca.x = 32;  
-        peca.y = 22;  
+        peca.y = 22;
+        
         scene.addOverlay(peca);
 		
 		tabuleiroJogo = new Tabuleiro();
@@ -74,10 +75,6 @@ public class Controlador_Banco_Imobiliario extends JFrame{
 	}
 	public void moverJogador(Jogador jogador, CasaDoTabuleiro casa){
 		tabuleiroJogo.moverJogador(jogador, casa);
-		
-		Point posicao = casa.getPosicao();
-        peca.x = posicao.x;  
-        peca.y = posicao.y;
 	}
 	
 	public void inserirJogadorNaCasa(int posicao, Jogador jogador) {
@@ -89,12 +86,12 @@ public class Controlador_Banco_Imobiliario extends JFrame{
 	public Tabuleiro getTabuleiroJogo() {
 		return tabuleiroJogo;
 	}
-	public void criarJogadores(){	
+	public void criarJogadores(){   
 		InserindoJogadores(new Jogador("marcio", new ContaBancaria(1000), new Peca()));
 		InserindoJogadores(new Jogador("marcio", new ContaBancaria(1000), new Peca()));
-		InserindoJogadores(new Jogador("nobre", new ContaBancaria(1000), new Peca()));
+		/*InserindoJogadores(new Jogador("nobre", new ContaBancaria(1000), new Peca()));
 		InserindoJogadores(new Jogador("edu", new ContaBancaria(1000), new Peca()));
-		InserindoJogadores(new Jogador("dudu", new ContaBancaria(1000), new Peca()));
+		InserindoJogadores(new Jogador("dudu", new ContaBancaria(1000), new Peca()));*/
 		adicionarJogadoresNaCasaDePartida(jodagores);
 	}
 	public Jogador getJogadorNaVEZ() {
@@ -114,7 +111,6 @@ public class Controlador_Banco_Imobiliario extends JFrame{
 	}
 
 	public void iniciarJogo(){
-		//run();
 		while (executando) {
 			draw(); 
 			
@@ -125,13 +121,18 @@ public class Controlador_Banco_Imobiliario extends JFrame{
 
 				System.out.println("Digite o resultado do lançamento dos dados");
 				
-				String resultado = JOptionPane.showInputDialog(null, "Digite o resultado dos dados", "Jogada", JOptionPane.OK_OPTION);
-								
+				String resultado = JOptionPane.showInputDialog(null, "Digite o resultado dos dados");
+				
 				int resultadoDados = Integer.valueOf(resultado);
 				
 				if (resultadoDados <= 12) {
+					
 					int indiceCasaDestino = tabuleiroJogo.calculaIndiceProximaCasa(jogador.getPosicaoJogador(),resultadoDados);
 					destino = tabuleiroJogo.getCasaByIndice(indiceCasaDestino);
+					
+					Point posicao = destino.getPosicao();
+			        peca.x = posicao.x;  
+			        peca.y = posicao.y;
 					
 					System.out.println("\t Nome da casa destino: "+ destino.getNome() + " A posicao é: " + destino.getPosicao());
 					System.out.println("\t O indice da casa destino é: "+ tabuleiroJogo.getIndiceByCasa(destino));
@@ -151,29 +152,6 @@ public class Controlador_Banco_Imobiliario extends JFrame{
 		
 	}
 	
-	public void run() {  
-        boolean loop = true;  
-        while(loop)  
-        {  
-            draw();  
-            
-            if (mouse.isLeftButtonPressed() == true)  
-            {  
-                Point posicao = mouse.getPosition();
-                System.out.println("Position: " + posicao);
-                System.out.println(posicao.getX() + "," + posicao.getY());
-                peca.x = posicao.x;  
-                peca.y = posicao.y;  
-            } 
-            
-
-            if (keyboard.keyDown(Keyboard.ESCAPE_KEY))  
-                loop = false;  
-            window.delay(3);  
-        }  
-        window.exit();  
-	}  
-
 	public void draw(){  
         scene.draw();  
         window.update();  
