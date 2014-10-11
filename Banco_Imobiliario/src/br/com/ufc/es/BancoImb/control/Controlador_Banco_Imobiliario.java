@@ -1,15 +1,12 @@
 package br.com.ufc.es.BancoImb.control;
 
-import java.awt.EventQueue;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import jplay.GameImage;
 import jplay.Keyboard;
 import jplay.Mouse;
 import jplay.Scene;
@@ -49,11 +46,11 @@ public class Controlador_Banco_Imobiliario{
         scene.loadFromFile("scene2.scn");  
         scene.setDrawStartPos(0, 1);  
 
-        peca = new Peca();
+        /*peca = new Peca();
         peca.x = 32;  
         peca.y = 22;
         
-        scene.addOverlay(peca);
+        scene.addOverlay(peca);*/
 		
 		tabuleiroJogo = new Tabuleiro();
 		jodagores = new ArrayList<Jogador>();
@@ -80,19 +77,14 @@ public class Controlador_Banco_Imobiliario{
 	public void inserirJogadorNaCasa(int posicao, Jogador jogador) {
 		tabuleiroJogo.adiconarJogadoresACasa(posicao, jogador);
 	}
-	public List<Jogador> getJodagores() {
-		return jodagores;
-	}
-	public Tabuleiro getTabuleiroJogo() {
-		return tabuleiroJogo;
-	}
 	public void criarJogadores(){   
 		InserindoJogadores(new Jogador("marcio", new ContaBancaria(1000), new Peca()));
 		InserindoJogadores(new Jogador("marcio", new ContaBancaria(1000), new Peca()));
-		/*InserindoJogadores(new Jogador("nobre", new ContaBancaria(1000), new Peca()));
+		InserindoJogadores(new Jogador("nobre", new ContaBancaria(1000), new Peca()));
 		InserindoJogadores(new Jogador("edu", new ContaBancaria(1000), new Peca()));
-		InserindoJogadores(new Jogador("dudu", new ContaBancaria(1000), new Peca()));*/
+		InserindoJogadores(new Jogador("dudu", new ContaBancaria(1000), new Peca()));
 		adicionarJogadoresNaCasaDePartida(jodagores);
+		iniciarPecas();
 	}
 	public Jogador getJogadorNaVEZ() {
 		return jogadorNaVEZ;
@@ -108,6 +100,12 @@ public class Controlador_Banco_Imobiliario{
 			indiceProx = temp;
 		}
 			setJogadorNaVEZ(tabuleiroJogo.getJogadorByID(indiceProx));
+	}
+	
+	public void iniciarPecas(){
+		for(Jogador j : tabuleiroJogo.getTabuleiro().get(0).getJogadoresNaCasa()){
+			 scene.addOverlay(j.getPeca());
+		}
 	}
 
 	public void iniciarJogo(){
@@ -131,8 +129,11 @@ public class Controlador_Banco_Imobiliario{
 					destino = tabuleiroJogo.getCasaByIndice(indiceCasaDestino);
 					
 					Point posicao = destino.getPosicao();
-			        peca.x = posicao.x;  
-			        peca.y = posicao.y;
+			        //peca.x = posicao.x;  
+			        //peca.y = posicao.y;
+			        
+			        jogador.getPeca().x = posicao.x;
+			        jogador.getPeca().y = posicao.y;
 					
 					System.out.println("\t Nome da casa destino: "+ destino.getNome() + " A posicao é: " + destino.getPosicao());
 					System.out.println("\t O indice da casa destino é: "+ tabuleiroJogo.getIndiceByCasa(destino));
@@ -156,7 +157,12 @@ public class Controlador_Banco_Imobiliario{
         scene.draw();  
         window.update();  
 	}
-	
+	public List<Jogador> getJodagores() {
+		return jodagores;
+	}
+	public Tabuleiro getTabuleiroJogo() {
+		return tabuleiroJogo;
+	}
 }
 
 

@@ -11,6 +11,7 @@ import br.com.ufc.es.BancoImb.LogradourComercializavel.LogradouroComercializavel
 import br.com.ufc.es.BancoImb.model.ContaBancaria;
 import br.com.ufc.es.BancoImb.model.Jogador;
 import br.com.ufc.es.BancoImb.model.Peca;
+import br.com.ufc.es.BancoImb.model.PecaJogador;
 import br.com.ufc.es.BancoImb.model.Tabuleiro;
 
 public class TestJogador {

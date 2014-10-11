@@ -59,5 +59,8 @@ public class Jogador{
 	public void setPosicaoJogador(int posicaoJogador) {
 		this.posicaoJogador = posicaoJogador;
 	}
+	public Peca getPeca() {
+		return peca;
+	}
 	
 }

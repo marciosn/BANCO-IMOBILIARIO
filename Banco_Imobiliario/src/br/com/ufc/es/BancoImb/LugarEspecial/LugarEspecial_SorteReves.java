@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import jplay.Sound;
 import br.com.ufc.es.BancoImb.interfaces.ILogradouroEspecial;
 import br.com.ufc.es.BancoImb.model.Jogador;
 
@@ -24,7 +25,7 @@ public class LugarEspecial_SorteReves extends LogradouroEspecial implements ILog
 	public void executarComportamento(Jogador jogador) {
 		sorteReves();		
 		if((indice % 2)  == 0){
-			System.out.println("passou no IF");
+			new Sound("caixinha.wav").play();;
 			System.out.println(cartas.get(indice));
 			jogador.receberTaxa(cartas.get(indice));
 			JOptionPane.showMessageDialog(null, "Sorte"+ "\n" + "Receba: "+
@@ -41,7 +42,6 @@ public class LugarEspecial_SorteReves extends LogradouroEspecial implements ILog
 	
 	public int sorteReves(){
 		indice = ((int) ( (Math.random() * 19) + 1 ));
-		System.out.println("INDICE "+indice);
 		return indice;
 
 	}
