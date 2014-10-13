@@ -10,9 +10,9 @@ public class Jogador{
 	private ContaBancaria conta;
 	private List<CasaDoTabuleiro> meusLogradouros;
 	private int posicaoJogador;
-	private Peca peca;
+	private PecaJogador peca;
 	
-	public Jogador(String nome, ContaBancaria conta, Peca peca) {
+	public Jogador(String nome, ContaBancaria conta, PecaJogador peca) {
 		this.nome = nome;
 		this.conta = conta;
 		meusLogradouros = new ArrayList<CasaDoTabuleiro>();
@@ -59,7 +59,7 @@ public class Jogador{
 	public void setPosicaoJogador(int posicaoJogador) {
 		this.posicaoJogador = posicaoJogador;
 	}
-	public Peca getPeca() {
+	public PecaJogador getPeca() {
 		return peca;
 	}
 	

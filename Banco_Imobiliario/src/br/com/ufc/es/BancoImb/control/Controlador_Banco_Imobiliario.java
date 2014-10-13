@@ -15,10 +15,12 @@ import br.com.ufc.es.BancoImb.model.CasaDoTabuleiro;
 import br.com.ufc.es.BancoImb.model.ContaBancaria;
 import br.com.ufc.es.BancoImb.model.Jogador;
 import br.com.ufc.es.BancoImb.model.Peca;
+import br.com.ufc.es.BancoImb.model.PecaJogador;
 import br.com.ufc.es.BancoImb.model.Tabuleiro;
 
 /**
  * https://github.com/marciosn/Banco-Imobiliario.git
+ * 
  * **/
 public class Controlador_Banco_Imobiliario{
 
@@ -78,11 +80,11 @@ public class Controlador_Banco_Imobiliario{
 		tabuleiroJogo.adiconarJogadoresACasa(posicao, jogador);
 	}
 	public void criarJogadores(){   
-		InserindoJogadores(new Jogador("marcio", new ContaBancaria(1000), new Peca()));
-		InserindoJogadores(new Jogador("marcio", new ContaBancaria(1000), new Peca()));
-		InserindoJogadores(new Jogador("nobre", new ContaBancaria(1000), new Peca()));
-		InserindoJogadores(new Jogador("edu", new ContaBancaria(1000), new Peca()));
-		InserindoJogadores(new Jogador("dudu", new ContaBancaria(1000), new Peca()));
+		InserindoJogadores(new Jogador("marcio", new ContaBancaria(1000), new PecaJogador("peca1.png")));
+		InserindoJogadores(new Jogador("marcio", new ContaBancaria(1000), new PecaJogador("peca2.png")));
+		InserindoJogadores(new Jogador("nobre", new ContaBancaria(1000), new PecaJogador("peca3.png")));
+		InserindoJogadores(new Jogador("edu", new ContaBancaria(1000), new PecaJogador("peca4.png")));
+		InserindoJogadores(new Jogador("dudu", new ContaBancaria(1000), new PecaJogador("peca5.png")));
 		adicionarJogadoresNaCasaDePartida(jodagores);
 		iniciarPecas();
 	}

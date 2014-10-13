@@ -11,7 +11,7 @@ public class ExecutaComportamentoDaCasa {
 		
 		if (!casa.isVendido()) {
 			int respostaDoJogador = JOptionPane.showConfirmDialog(null, "Essa casa não possui proprietário, quer compra-la ?",
-					"Comprar Casa", JOptionPane.YES_NO_OPTION);
+					 casa.getNome(), JOptionPane.YES_NO_OPTION);
 			
 			if(respostaDoJogador == 0){
 				jogador.comprar(casa);

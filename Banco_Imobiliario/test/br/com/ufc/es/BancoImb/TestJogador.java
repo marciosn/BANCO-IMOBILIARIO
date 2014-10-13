@@ -25,7 +25,7 @@ public class TestJogador {
 	LogradouroComercializavel_Imovel imovel3 = new LogradouroComercializavel_Imovel("Sobrado", 700, 200,new Point(32, 26));
 	LogradouroComercializavel_Imovel imovel4 = new LogradouroComercializavel_Imovel("Galpao", 500, 200, new Point(32, 26));
 	
-	Jogador jogador = new Jogador("Marcio", new ContaBancaria(10000), new Peca());
+	/*Jogador jogador = new Jogador("Marcio", new ContaBancaria(10000), new Peca());
 	Jogador jogador2 = new Jogador("Souza", new ContaBancaria(10000), new Peca());
 	
 	float saldo = jogador.getSaldo(); 
@@ -139,7 +139,7 @@ public class TestJogador {
 			jogador.comprar(empresa);	
 		}
 		assertTrue(jogador.getSaldo() == (saldo -= empresa.getValor()));
-	}
+	}*/
 }
 
 
