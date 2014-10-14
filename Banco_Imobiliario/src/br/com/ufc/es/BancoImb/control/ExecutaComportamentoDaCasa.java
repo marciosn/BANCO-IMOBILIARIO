@@ -25,7 +25,7 @@ public class ExecutaComportamentoDaCasa {
 			casa.getProprietario().receberTaxa(casa);
 			JOptionPane.showMessageDialog(null, "Esta casa é de propriedade do jogador " + casa.getProprietario().getNome() +"\n" +
 					"Você precisa pagar uma taxa por passar aqui, seu novo saldo é: " + jogador.getSaldo() + "\n" +
-					 casa.getProprietario().getNome() + "agora possui saldo = " + casa.getProprietario().getSaldo());
+					 casa.getProprietario().getNome() + " agora possui saldo = " + casa.getProprietario().getSaldo());
 		}
 		
 	}

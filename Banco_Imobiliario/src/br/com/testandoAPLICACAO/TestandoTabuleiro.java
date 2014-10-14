@@ -13,6 +13,10 @@ import br.com.ufc.es.BancoImb.model.Jogador;
 public class TestandoTabuleiro {
 	public static void main(String[] args) {
 		new Controlador_Banco_Imobiliario();
+		
+		
+		
+		
 
 /*		Partida partida = new Partida("partida");
 		partida.efeitoDaCasa();*/

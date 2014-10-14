@@ -1,0 +1,36 @@
+<project name="Hello World" default="testa">
+	
+	<target name="clean">
+		<delete dir="bin"/>
+		<mkdir dir="bin"/>
+	</target>
+	
+	<target name="compila">
+		<javac srcdir="src"
+			destdir="bin"
+			debug="on"/>
+	</target>
+	
+	<target name="testa" depends="compila">
+			<java classname="br.com.ufc.es.BancoImb.control.Jogo" classpath="bin"/>
+	</target>
+	
+	<target name="gerarJar">
+		<delete dir="jogoJAR"/>
+		<mkdir dir="jogoJAR"/>
+		<jar destfile="jogoJAR/BancoImobiliario.jar" basedir="bin" filesetmanifest="mergewithoutmain">
+			<manifest>
+				<attribute name="Main-Class" value="br.com.ufc.es.BancoImb.control.Jogo"/>
+			</manifest>	
+		</jar>
+	</target>
+	
+	<target name="assinar" depends="gerarJar">
+		<signjar alias="android" storepass="kp570marcio" keystore="key/key">
+			<path>
+				<fileset dir="lib" includes="**/*.jar"/>
+			</path>
+		</signjar>
+		
+	</target>
+</project>

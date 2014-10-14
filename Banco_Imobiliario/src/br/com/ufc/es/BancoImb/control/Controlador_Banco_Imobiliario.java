@@ -25,7 +25,8 @@ import br.com.ufc.es.BancoImb.model.Tabuleiro;
 public class Controlador_Banco_Imobiliario{
 
 	Tabuleiro tabuleiroJogo;
-	List<Jogador> jodagores;
+	List<Jogador> jogadores;
+	List<Jogador> jogadoresAindaJogando;
 	Jogador jogadorNaVEZ;
 	Jogador jogador;
 	Scanner entrada = new Scanner(System.in);
@@ -47,25 +48,23 @@ public class Controlador_Banco_Imobiliario{
         scene = new Scene();  
         scene.loadFromFile("scene2.scn");  
         scene.setDrawStartPos(0, 1);  
-
-        /*peca = new Peca();
-        peca.x = 32;  
-        peca.y = 22;
-        
-        scene.addOverlay(peca);*/
 		
 		tabuleiroJogo = new Tabuleiro();
-		jodagores = new ArrayList<Jogador>();
-		criarJogadores();
+		jogadores = new ArrayList<Jogador>();
+		jogadoresAindaJogando = new ArrayList<Jogador>();
+		//criarJogadores();
+		draw();
+		inserirJogador();
 		executar = new ExecutaComportamentoDaCasa();
 		iniciarJogo();
 		
 	}
 	public void InserindoJogadores(Jogador jogador) {
-		jodagores.add(jogador);
+		jogadores.add(jogador);
 	}
 	public void adicionarJogadoresNaCasaDePartida(List<Jogador> jogadores) {
 		for (Jogador j : jogadores) {
+			jogadoresAindaJogando.add(j);
 			tabuleiroJogo.adiconarJogadoresACasa(0, j);
 			System.out.println("Classe: Banco Imobiliario"
 					+ " ----> Inserindo o jogador " + j.getNome() + " ID = " + j.getID());			
@@ -80,14 +79,33 @@ public class Controlador_Banco_Imobiliario{
 		tabuleiroJogo.adiconarJogadoresACasa(posicao, jogador);
 	}
 	public void criarJogadores(){   
-		InserindoJogadores(new Jogador("marcio", new ContaBancaria(1000), new PecaJogador("peca1.png")));
-		InserindoJogadores(new Jogador("marcio", new ContaBancaria(1000), new PecaJogador("peca2.png")));
-		InserindoJogadores(new Jogador("nobre", new ContaBancaria(1000), new PecaJogador("peca3.png")));
+		InserindoJogadores(new Jogador("Brocador", new ContaBancaria(1000), new PecaJogador("peca0.png")));
+		InserindoJogadores(new Jogador("Pet", new ContaBancaria(1000), new PecaJogador("peca1.png")));
+		/*InserindoJogadores(new Jogador("nobre", new ContaBancaria(1000), new PecaJogador("peca3.png")));
 		InserindoJogadores(new Jogador("edu", new ContaBancaria(1000), new PecaJogador("peca4.png")));
-		InserindoJogadores(new Jogador("dudu", new ContaBancaria(1000), new PecaJogador("peca5.png")));
-		adicionarJogadoresNaCasaDePartida(jodagores);
+		InserindoJogadores(new Jogador("dudu", new ContaBancaria(1000), new PecaJogador("peca5.png")));*/
+		adicionarJogadoresNaCasaDePartida(jogadores);
 		iniciarPecas();
 	}
+	public void inserirJogador(){
+		
+		String qtd = JOptionPane.showInputDialog(null, "Digite a quantidade de jogadores do Jogo!");
+		int qtd_jogadores = Integer.valueOf(qtd);
+		
+		if(qtd_jogadores > 0 && qtd_jogadores < 6){
+		for(int i = 0 ; i < qtd_jogadores;){
+			String nomeJogador = JOptionPane.showInputDialog(null, "Digite o nome do jogador de ID = " + i);
+			String peca = "peca" + jogadores.size() + ".png";
+			System.out.println(peca);
+			InserindoJogadores(new Jogador(nomeJogador, new ContaBancaria(1000), new PecaJogador(peca)));
+			i++;
+		}
+		adicionarJogadoresNaCasaDePartida(jogadores);
+		iniciarPecas();
+		}
+		
+	}
+	
 	public Jogador getJogadorNaVEZ() {
 		return jogadorNaVEZ;
 	}
@@ -97,8 +115,8 @@ public class Controlador_Banco_Imobiliario{
 	public void mudarVezDeJogar(int indiceJogador){
 		int indiceProx = 0, temp = 0;
 		indiceProx = indiceJogador + 1;
-		if(indiceProx > jodagores.size()- 1){
-			temp = indiceProx % jodagores.size();
+		if(indiceProx > jogadores.size()- 1){
+			temp = indiceProx % jogadores.size();
 			indiceProx = temp;
 		}
 			setJogadorNaVEZ(tabuleiroJogo.getJogadorByID(indiceProx));
@@ -112,6 +130,11 @@ public class Controlador_Banco_Imobiliario{
 
 	public void iniciarJogo(){
 		while (executando) {
+			if(jogadoresAindaJogando.size() == 1){
+				JOptionPane.showMessageDialog(null, "O jogador "+jogadoresAindaJogando.get(0).getNome() + "\n" + "Venceu o jogo", "Vencedor", JOptionPane.OK_OPTION);
+				executando = false;
+				window.exit(); 
+			}
 			draw(); 
 			
 				System.out.println("\t A vez de jogar é do jogador " + jogadorNaVEZ.getNome() +" que possui ID: "+ jogadorNaVEZ.getID());
@@ -146,6 +169,12 @@ public class Controlador_Banco_Imobiliario{
 			
 				executar.executarComportamento(jogador,destino);
 				
+				if(!possuiSaldoParaContinuar(jogador)){
+					jogadoresAindaJogando.remove(jogador);
+				JOptionPane.showMessageDialog(null, "O jogador "+jogador.getNome() + "\n" +
+					"Não possui mais saldo e vai deixar o jogo" + "\n" +
+					"Exitem agora " + jogadoresAindaJogando.size(), "Jogador Sai do Jogo", JOptionPane.OK_OPTION);
+				}
 				System.out.println("<<<<<<<<<<==============================================================================>>>>>>>>>>");
 					mudarVezDeJogar(jogador.getID());
 				System.out.println("<<<<<<<<<<==============================================================================>>>>>>>>>>");
@@ -159,8 +188,19 @@ public class Controlador_Banco_Imobiliario{
         scene.draw();  
         window.update();  
 	}
+	
+	public boolean possuiSaldoParaContinuar(Jogador jogador){
+		boolean possuiSaldo = false;
+		if(jogador.getSaldo() < 0){
+			return possuiSaldo;
+		}
+		else{
+		possuiSaldo = true;
+		}
+		return possuiSaldo;
+	}
 	public List<Jogador> getJodagores() {
-		return jodagores;
+		return jogadores;
 	}
 	public Tabuleiro getTabuleiroJogo() {
 		return tabuleiroJogo;
