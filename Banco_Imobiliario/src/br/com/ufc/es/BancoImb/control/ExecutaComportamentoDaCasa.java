@@ -8,6 +8,11 @@ import br.com.ufc.es.BancoImb.model.Jogador;
 public class ExecutaComportamentoDaCasa {
 	
 	public void executarComportamento(Jogador jogador, CasaDoTabuleiro casa) {
+		
+		/**
+		 * se o valor da casa é diferente de 0 quer dizer q ela é comercializavel e pode ser comprada
+		 * caso contrario ela é uma casa especial e seu efeito deve ser ativado
+		 * */
 		if(casa.getValor() != 0){
 		
 		if (!casa.isVendido()) {
