@@ -6,6 +6,7 @@ import br.com.ufc.es.BancoImb.model.CasaDoTabuleiro;
 import br.com.ufc.es.BancoImb.model.Jogador;
 
 public class ExecutaComportamentoDaCasa {
+	
 	public void executarComportamento(Jogador jogador, CasaDoTabuleiro casa) {
 		if(casa.getValor() != 0){
 		

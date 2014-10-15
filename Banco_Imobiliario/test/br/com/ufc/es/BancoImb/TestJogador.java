@@ -1,6 +1,7 @@
 package br.com.ufc.es.BancoImb;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.awt.Point;
 
@@ -10,9 +11,7 @@ import br.com.ufc.es.BancoImb.LogradourComercializavel.LogradouroComercializavel
 import br.com.ufc.es.BancoImb.LogradourComercializavel.LogradouroComercializavel_Imovel;
 import br.com.ufc.es.BancoImb.model.ContaBancaria;
 import br.com.ufc.es.BancoImb.model.Jogador;
-import br.com.ufc.es.BancoImb.model.Peca;
 import br.com.ufc.es.BancoImb.model.PecaJogador;
-import br.com.ufc.es.BancoImb.model.Tabuleiro;
 
 public class TestJogador {
 	LogradouroComercializavel_Empresa empresa = new LogradouroComercializavel_Empresa("Google", 1000, 400, new Point(32, 26));
@@ -25,8 +24,8 @@ public class TestJogador {
 	LogradouroComercializavel_Imovel imovel3 = new LogradouroComercializavel_Imovel("Sobrado", 700, 200,new Point(32, 26));
 	LogradouroComercializavel_Imovel imovel4 = new LogradouroComercializavel_Imovel("Galpao", 500, 200, new Point(32, 26));
 	
-	/*Jogador jogador = new Jogador("Marcio", new ContaBancaria(10000), new Peca());
-	Jogador jogador2 = new Jogador("Souza", new ContaBancaria(10000), new Peca());
+	Jogador jogador = new Jogador("Marcio", new ContaBancaria(10000), new PecaJogador(""));
+	Jogador jogador2 = new Jogador("Souza", new ContaBancaria(10000), new PecaJogador(""));
 	
 	float saldo = jogador.getSaldo(); 
 
@@ -139,7 +138,7 @@ public class TestJogador {
 			jogador.comprar(empresa);	
 		}
 		assertTrue(jogador.getSaldo() == (saldo -= empresa.getValor()));
-	}*/
+	}
 }
 
 
