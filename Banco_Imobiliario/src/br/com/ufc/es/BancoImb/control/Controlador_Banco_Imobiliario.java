@@ -1,12 +1,18 @@
 package br.com.ufc.es.BancoImb.control;
 
+import java.awt.Container;
 import java.awt.Point;
+import java.awt.event.WindowListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
 import javax.swing.JOptionPane;
 
+import jplay.Animation;
 import jplay.Keyboard;
 import jplay.Mouse;
 import jplay.Scene;
@@ -24,21 +30,22 @@ import br.com.ufc.es.BancoImb.model.Tabuleiro;
  * **/
 public class Controlador_Banco_Imobiliario{
 
-	Tabuleiro tabuleiroJogo;
-	List<Jogador> jogadores;
-	List<Jogador> jogadoresAindaJogando;
-	Jogador jogadorNaVEZ;
-	Jogador jogador;
+	private Tabuleiro tabuleiroJogo;
+	private List<Jogador> jogadores;
+	private List<Jogador> jogadoresAindaJogando;
+	private Jogador jogadorNaVEZ;
+	private Jogador jogador;
 	Scanner entrada = new Scanner(System.in);
-	boolean executando = true;
-	CasaDoTabuleiro destino;
-	ExecutaComportamentoDaCasa executar;
+	private boolean executando = true;
+	private CasaDoTabuleiro destino;
+	private ExecutaComportamentoDaCasa executar;
 	
 	private Window window;  
     private Keyboard keyboard;  
     private Scene scene;  
     private Peca peca;
     private Mouse mouse;
+    private Animation botao;
 
 	public Controlador_Banco_Imobiliario() {
 		
@@ -47,18 +54,24 @@ public class Controlador_Banco_Imobiliario{
         mouse = window.getMouse();
         scene = new Scene();  
         scene.loadFromFile("scene2.scn");  
-        scene.setDrawStartPos(0, 1);  
-		
+        scene.setDrawStartPos(0, 1);
+        
 		tabuleiroJogo = new Tabuleiro();
 		jogadores = new ArrayList<Jogador>();
 		jogadoresAindaJogando = new ArrayList<Jogador>();
-		//criarJogadores();
 		draw();
 		inserirJogador();
 		executar = new ExecutaComportamentoDaCasa();
 		iniciarJogo();
-		
 	}
+	
+	public void desenhaBotao(){
+		botao = new Animation("botao.png");
+		botao.x = 183;
+		botao.y = 104;
+		botao.draw();
+	}
+	
 	public void InserindoJogadores(Jogador jogador) {
 		jogadores.add(jogador);
 	}
@@ -67,7 +80,7 @@ public class Controlador_Banco_Imobiliario{
 			jogadoresAindaJogando.add(j);
 			tabuleiroJogo.adiconarJogadoresACasa(0, j);
 			System.out.println("Classe: Banco Imobiliario"
-					+ " ----> Inserindo o jogador " + j.getNome() + " ID = " + j.getID());			
+					+ " -> Inserindo o jogador " + j.getNome() + " ID = " + j.getID());			
 		}
 		jogadorNaVEZ = jogadores.get(0);
 	}
@@ -78,21 +91,12 @@ public class Controlador_Banco_Imobiliario{
 	public void inserirJogadorNaCasa(int posicao, Jogador jogador) {
 		tabuleiroJogo.adiconarJogadoresACasa(posicao, jogador);
 	}
-	public void criarJogadores(){   
-		InserindoJogadores(new Jogador("Brocador", new ContaBancaria(1000), new PecaJogador("peca0.png")));
-		InserindoJogadores(new Jogador("Pet", new ContaBancaria(1000), new PecaJogador("peca1.png")));
-		/*InserindoJogadores(new Jogador("nobre", new ContaBancaria(1000), new PecaJogador("peca3.png")));
-		InserindoJogadores(new Jogador("edu", new ContaBancaria(1000), new PecaJogador("peca4.png")));
-		InserindoJogadores(new Jogador("dudu", new ContaBancaria(1000), new PecaJogador("peca5.png")));*/
-		adicionarJogadoresNaCasaDePartida(jogadores);
-		iniciarPecas();
-	}
 	public void inserirJogador(){
 		
 		String qtd = JOptionPane.showInputDialog(null, "Digite a quantidade de jogadores do Jogo!");
 		int qtd_jogadores = Integer.valueOf(qtd);
 		
-		if(qtd_jogadores > 0 && qtd_jogadores < 6){
+		if(qtd_jogadores > 1 && qtd_jogadores < 6){
 		for(int i = 0 ; i < qtd_jogadores;){
 			String nomeJogador = JOptionPane.showInputDialog(null, "Digite o nome do jogador de ID = " + i);
 			String peca = "peca" + jogadores.size() + ".png";
@@ -102,16 +106,12 @@ public class Controlador_Banco_Imobiliario{
 		}
 		adicionarJogadoresNaCasaDePartida(jogadores);
 		iniciarPecas();
-		}
+		}else
+			JOptionPane.showMessageDialog(null, "Você digitou uma quantidade invalida de jogadores");
 		
 	}
 	
-	public Jogador getJogadorNaVEZ() {
-		return jogadorNaVEZ;
-	}
-	public void setJogadorNaVEZ(Jogador jogadorDaVEZ) {
-		this.jogadorNaVEZ = jogadorDaVEZ;
-	}
+	
 	public void mudarVezDeJogar(int indiceJogador){
 		int indiceProx = 0, temp = 0;
 		indiceProx = indiceJogador + 1;
@@ -122,14 +122,9 @@ public class Controlador_Banco_Imobiliario{
 			setJogadorNaVEZ(tabuleiroJogo.getJogadorByID(indiceProx));
 	}
 	
-	public void iniciarPecas(){
-		for(Jogador j : tabuleiroJogo.getTabuleiro().get(0).getJogadoresNaCasa()){
-			 scene.addOverlay(j.getPeca());
-		}
-	}
-
 	public void iniciarJogo(){
 		while (executando) {
+			
 			if(jogadoresAindaJogando.size() == 1){
 				JOptionPane.showMessageDialog(null, "O jogador "+jogadoresAindaJogando.get(0).getNome() + "\n" + "Venceu o jogo", "Vencedor", JOptionPane.OK_OPTION);
 				executando = false;
@@ -145,18 +140,13 @@ public class Controlador_Banco_Imobiliario{
 				System.out.println("Digite o resultado do lançamento dos dados");
 				
 				String resultado = JOptionPane.showInputDialog(null, "Digite o resultado dos dados");
-				
 				int resultadoDados = Integer.valueOf(resultado);
-				
 				if (resultadoDados <= 12) {
 					
 					int indiceCasaDestino = tabuleiroJogo.calculaIndiceProximaCasa(jogador.getPosicaoJogador(),resultadoDados);
 					destino = tabuleiroJogo.getCasaByIndice(indiceCasaDestino);
 					
 					Point posicao = destino.getPosicao();
-			        //peca.x = posicao.x;  
-			        //peca.y = posicao.y;
-			        
 			        jogador.getPeca().x = posicao.x;
 			        jogador.getPeca().y = posicao.y;
 					
@@ -185,7 +175,11 @@ public class Controlador_Banco_Imobiliario{
 	}
 	
 	public void draw(){  
-        scene.draw();  
+        scene.draw();
+        botao = new Animation("botao.png");
+		botao.x = 183;
+		botao.y = 104;
+		botao.draw();
         window.update();  
 	}
 	
@@ -199,11 +193,22 @@ public class Controlador_Banco_Imobiliario{
 		}
 		return possuiSaldo;
 	}
+	public void iniciarPecas(){
+		for(Jogador j : tabuleiroJogo.getTabuleiro().get(0).getJogadoresNaCasa()){
+			 scene.addOverlay(j.getPeca());
+		}
+	}
 	public List<Jogador> getJodagores() {
 		return jogadores;
 	}
 	public Tabuleiro getTabuleiroJogo() {
 		return tabuleiroJogo;
+	}
+	public Jogador getJogadorNaVEZ() {
+		return jogadorNaVEZ;
+	}
+	public void setJogadorNaVEZ(Jogador jogadorDaVEZ) {
+		this.jogadorNaVEZ = jogadorDaVEZ;
 	}
 }
 
