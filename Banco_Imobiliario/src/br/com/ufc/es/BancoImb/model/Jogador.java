@@ -62,5 +62,11 @@ public class Jogador{
 	public PecaJogador getPeca() {
 		return peca;
 	}
+	public List<CasaDoTabuleiro> getMeusLogradouros() {
+		return meusLogradouros;
+	}
+	public void setMeusLogradouros(List<CasaDoTabuleiro> meusLogradouros) {
+		this.meusLogradouros = meusLogradouros;
+	}
 	
 }

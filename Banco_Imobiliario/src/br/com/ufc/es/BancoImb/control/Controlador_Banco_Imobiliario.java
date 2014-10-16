@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 import jplay.Animation;
 import jplay.Keyboard;
@@ -41,6 +43,8 @@ public class Controlador_Banco_Imobiliario {
 	private Scene scene;
 	private Mouse mouse;
 	private Animation botao;
+	private Animation portfolioButton0, portfolioButton1, portfolioButton2, portfolioButton3, portfolioButton4;
+	JTextArea portfolio;
 
 	public Controlador_Banco_Imobiliario() {
 		constante = new Constantes();
@@ -49,12 +53,14 @@ public class Controlador_Banco_Imobiliario {
 		 * objeto referentes a interface grafica
 		 * */
 		window = new Window(1080, 720);
+		window.setCursor( window.createCustomCursor(constante.PATH_IMAGE + "mouse.png") );
 		keyboard = window.getKeyboard();
 		mouse = window.getMouse();
+		portfolio = new JTextArea();
 		scene = new Scene();
 		scene.loadFromFile(constante.PATH_SCENE + "scene2.scn");
 		scene.setDrawStartPos(0, 1);
-
+		
 		tabuleiroJogo = new Tabuleiro();
 		jogadores = new ArrayList<Jogador>();
 		jogadoresAindaJogando = new ArrayList<Jogador>();
@@ -101,6 +107,7 @@ public class Controlador_Banco_Imobiliario {
 	 * depois informa seus nomes e entao o jogo começa
 	 * **/
 	public void inserirJogador() {
+		
 		String qtd = JOptionPane.showInputDialog(null,"Digite a quantidade de jogadores do Jogo!");
 		int qtd_jogadores = Integer.valueOf(qtd);
 		if (qtd_jogadores > 1 && qtd_jogadores < 6) {
@@ -160,6 +167,9 @@ public class Controlador_Banco_Imobiliario {
 	 * **/
 	public void iniciarJogo() {
 		while (executando) {
+			
+			if(mouse.isOverObject(botao) && mouse.isLeftButtonPressed()){
+				
 			/**
 			 * esse if verifica a quantidade de jogadores ainda no jogo
 			 * se a quantidade for igual a 1 quer dizer q ja existe um vencedor
@@ -182,7 +192,7 @@ public class Controlador_Banco_Imobiliario {
 
 			jogador = jogadorNaVEZ;
 
-			String resultado = JOptionPane.showInputDialog(null,"Digite o resultado dos dados");
+			String resultado = JOptionPane.showInputDialog(null,"Digite quantas casas o jogador " + jogador.getNome() + " vai andar!");
 
 			if (!resultado.equals("") || !resultado.equals(null)) { //se o resultado do input for vazio nao pode entrar no laço
 				int resultadoDados = Integer.valueOf(resultado);
@@ -233,7 +243,7 @@ public class Controlador_Banco_Imobiliario {
 						JOptionPane.showMessageDialog(null, "O jogador "
 								+ jogador.getNome() + "\n"
 								+ "Não possui mais saldo e vai deixar o jogo"
-								+ "\n" + "Exitem agora "
+								+ "\n" + "Exite agora "
 								+ jogadoresAindaJogando.size(),
 								"Jogador Sai do Jogo", JOptionPane.OK_OPTION);
 					}
@@ -245,21 +255,105 @@ public class Controlador_Banco_Imobiliario {
 				JOptionPane.showMessageDialog(null,"O input não pode ser vazio");
 			}
 			System.out.println("<<<<<<<<<<==============================================================================>>>>>>>>>>");
-
+			
+		}
+			/**
+			 * essas condições ativam os botoes que exibem o portfolio do jogador
+			 * 
+			 * repare que o objeto jogador é passando como parametro, mas tambem um inteiro
+			 * esse inteiro corresponde a quantidade de jogadores, ou seja
+			 * imagine que existem apenas dois jogadores no jogo, alguem clicou no botao portfolio
+			 * do jogador 5, o objeto jogador 4 sera enviado ao metodo, mas foi enviado tambem o numero de jogadores
+			 * que deveriam estar no jogo para que esse botao estivesse ativo, chagando no metodo
+			 * um if verifica se o inteiro que foi enviado é menor ou igual a quantidade de jogadores ativos
+			 * se for ele passa, senao nada acontece ao clicar no botao
+			 * 
+			 * verificando posteriormente percebi que esse inteiro poderia ser retirado dos paramentros do metodo
+			 * ao inves disso, o if poderia verificar apenas se o objeto jogador é igual a null
+			 * caso fosse nada acontecia
+			 * 
+			 * enfim uma dica para refatoração
+			 * */
+			
+			if(mouse.isOverObject(portfolioButton0) && mouse.isLeftButtonPressed()){
+				exibeLogradourosJogador(getJodagores().get(0), 1);
+			}
+			if(mouse.isOverObject(portfolioButton1) && mouse.isLeftButtonPressed()){
+				exibeLogradourosJogador(getJodagores().get(1), 2);
+			}
+			if(mouse.isOverObject(portfolioButton2) && mouse.isLeftButtonPressed()){
+				exibeLogradourosJogador(getJodagores().get(2), 3);
+			}
+			if(mouse.isOverObject(portfolioButton3) && mouse.isLeftButtonPressed()){
+				exibeLogradourosJogador(getJodagores().get(3), 4);
+			}
+			if(mouse.isOverObject(portfolioButton4) && mouse.isLeftButtonPressed()){
+				exibeLogradourosJogador(getJodagores().get(4), 5);
+			}
+			
+			/**
+			 * 
+			 * */
+		
 		}
 		window.exit();
-
 	}
 
+	public void exibeLogradourosJogador(Jogador jogador, int qtdJogadores){
+		portfolio.setText("");
+		if(qtdJogadores <= getJodagores().size()){
+		for(CasaDoTabuleiro c : jogador.getMeusLogradouros()){
+			portfolio.append("["+c.getNome()+ " "+ c.getValor() +"]" + "\n");
+		}
+		JOptionPane.showMessageDialog(null,"Nome: "+jogador.getNome() + " Saldo Atual: "+
+		jogador.getSaldo() +"\n" + "Total de propriedades "+ jogador.getMeusLogradouros().size() + "\n" + portfolio.getText());
+		
+		}
+	}
+	
 	public void draw() {
 		scene.draw();
-		/*botao = new Animation(constante.PATH_IMAGE + "botao.png");
-		botao.x = 183;
-		botao.y = 104;
-		botao.draw();*/
+		desenhaDadoBotao();
+		desenhaPortfolioBotao();
 		window.update();
 	}
-
+	
+	public void desenhaDadoBotao(){
+		botao = new Animation(constante.PATH_IMAGE + "dado.png");
+		botao.x = 800;
+		botao.y = 110;
+		botao.draw();
+	}
+	/**
+	 * isso pode vir a ser uma classe separada quando o projeto for refatorado
+	 * **/
+	public void desenhaPortfolioBotao(){
+		portfolioButton0 = new Animation(constante.PATH_IMAGE + "portfolio.png");
+		portfolioButton0.x = 240;
+		portfolioButton0.y = 140;
+		portfolio.setText("Márcio");
+		portfolioButton0.draw();
+		
+		portfolioButton1 = new Animation(constante.PATH_IMAGE + "portfolio.png");
+		portfolioButton1.x = 340;
+		portfolioButton1.y = 140;
+		portfolioButton1.draw();
+		
+		portfolioButton2 = new Animation(constante.PATH_IMAGE + "portfolio.png");
+		portfolioButton2.x = 440;
+		portfolioButton2.y = 140;
+		portfolioButton2.draw();
+		
+		portfolioButton3 = new Animation(constante.PATH_IMAGE + "portfolio.png");
+		portfolioButton3.x = 540;
+		portfolioButton3.y = 140;
+		portfolioButton3.draw();
+		
+		portfolioButton4 = new Animation(constante.PATH_IMAGE + "portfolio.png");
+		portfolioButton4.x = 640;
+		portfolioButton4.y = 140;
+		portfolioButton4.draw();
+	}
 	/**
 	 * verifica que recebe um objeto jogador e verifica se saldo é maior que 0
 	 * retorna um boolean
