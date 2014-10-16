@@ -1,10 +1,10 @@
 package br.com.ufc.es.BancoImb.LugarEspecial;
 
-import java.awt.Container;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 import jplay.Sound;
@@ -33,11 +33,11 @@ public class LugarEspecial_SorteReves extends LogradouroEspecial implements ILog
 			System.out.println(cartas.get(indice));
 			jogador.receberTaxa(cartas.get(indice));
 			JOptionPane.showMessageDialog(null, "Sorte"+ "\n" + "Receba: "+	cartas.get(indice) + "\n" +
-			"Seu novo saldo é: " + jogador.getSaldo());
+			"Seu novo saldo é: " + jogador.getSaldo(), "Sorte", JOptionPane.PLAIN_MESSAGE, new ImageIcon(constante.PATH_IMAGE + "happy.png"));
 		}else{
 			jogador.pagarTaxa(cartas.get(indice));
 			JOptionPane.showMessageDialog(null, "Revés"+"\n" + "Pague: "+cartas.get(indice) +
-			"\n" + "Seu novo saldo é: " + jogador.getSaldo());
+			"\n" + "Seu novo saldo é: " + jogador.getSaldo(), "Reves", JOptionPane.PLAIN_MESSAGE, new ImageIcon(constante.PATH_IMAGE + "sad.png"));
 		}		
 	}
 	

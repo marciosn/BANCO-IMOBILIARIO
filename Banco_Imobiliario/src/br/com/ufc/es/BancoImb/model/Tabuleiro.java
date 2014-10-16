@@ -93,6 +93,15 @@ public class Tabuleiro {
 		System.out.println("\t" + "Posicao Destino: " + destino.getPosicao());
 		
 	}
+	public void removeJogadorDefinitivo(Jogador jogador){
+		try {
+			getCasaByJogador(jogador).getJogadoresNaCasa().remove(jogador);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+		}
+		
+	}
 	
 	public int calculaIndiceProximaCasa(int indiceAtual, int resultDado) {
 		indiceProximaCasa = indiceAtual + resultDado;
@@ -134,6 +143,18 @@ public class Tabuleiro {
 			}
 		}	 
 		return jogador;
+	}
+	public CasaDoTabuleiro getCasaByJogador(Jogador jogador){
+		CasaDoTabuleiro casaT = null;
+		for(CasaDoTabuleiro casa : tabuleiro){
+			for(Jogador j : casa.getJogadoresNaCasa()){
+				if(j.equals(jogador)){
+					casaT = casa;
+				}
+			}
+		}
+		
+		return casaT;
 	}
 	
 	public void imprimiTabuleiro() {

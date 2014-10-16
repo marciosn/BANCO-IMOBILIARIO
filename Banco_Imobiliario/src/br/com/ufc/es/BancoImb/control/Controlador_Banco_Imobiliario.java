@@ -4,11 +4,13 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import jplay.Animation;
+import jplay.GameImage;
 import jplay.Keyboard;
 import jplay.Mouse;
 import jplay.Scene;
@@ -100,6 +102,10 @@ public class Controlador_Banco_Imobiliario {
 	public void moverJogador(Jogador jogador, CasaDoTabuleiro casa) {
 		tabuleiroJogo.moverJogador(jogador, casa);
 	}
+	
+	public void removerJogadorQueNaoPossuiSaldo(Jogador jogador){
+		tabuleiroJogo.removeJogadorDefinitivo(jogador);
+	}
 
 	/***
 	 * Esse método é responsavel pela insercao manual dos jogadores
@@ -113,10 +119,12 @@ public class Controlador_Banco_Imobiliario {
 		if (qtd_jogadores > 1 && qtd_jogadores < 6) {
 			for (int i = 0; i < qtd_jogadores;) {
 				String nomeJogador = JOptionPane.showInputDialog(null,"Digite o nome do jogador de ID = " + i);
+				if(!nomeJogador.equals("")){
 				String peca = "peca" + jogadores.size() + ".png";
 				System.out.println(peca);
-				InserindoJogadores(new Jogador(nomeJogador, new ContaBancaria(1000), new PecaJogador(constante.PATH_IMAGE + peca)));
+				InserindoJogadores(new Jogador(nomeJogador, new ContaBancaria(500), new PecaJogador(constante.PATH_IMAGE + peca)));
 				i++;
+				}
 				
 				/**
 				 * a chamada de metodo InserindoJogadores, faz com que o objeto jogador que acabou de ser criado pelo usuario
@@ -150,9 +158,14 @@ public class Controlador_Banco_Imobiliario {
 	 * fazendo uma chamada a classe tabuleiro e recupera o objeto jogador que esta na vez agora
 	 * **/
 	public void mudarVezDeJogar(int indiceJogador) {
+		System.out.println("\t Entrou no mudar vez");
+		System.out.println("\t quantidade jogadores ainda jogando " + jogadores.size());
 		int indiceProx = 0, temp = 0;
+		System.out.println("\t indice do jogador que veio como paramentro é: " + indiceJogador);
 		indiceProx = indiceJogador + 1;
+		System.out.println("\t indiceprox é: " + indiceProx);
 		if (indiceProx > jogadores.size() - 1) {
+			System.out.println("\t entrou no if dentro do metodo mudar vez");
 			temp = indiceProx % jogadores.size();
 			indiceProx = temp;
 		}
@@ -167,7 +180,6 @@ public class Controlador_Banco_Imobiliario {
 	 * **/
 	public void iniciarJogo() {
 		while (executando) {
-			
 			if(mouse.isOverObject(botao) && mouse.isLeftButtonPressed()){
 				
 			/**
@@ -179,7 +191,7 @@ public class Controlador_Banco_Imobiliario {
 				
 				JOptionPane.showMessageDialog(null, "O jogador "
 						+ jogadoresAindaJogando.get(0).getNome() + "\n"
-						+ "Venceu o jogo", "Vencedor", JOptionPane.OK_OPTION);
+						+ "Venceu o jogo", "Vencedor", JOptionPane.PLAIN_MESSAGE, new ImageIcon(constante.PATH_IMAGE + "win.png"));
 				executando = false;
 				window.exit();
 			}
@@ -191,10 +203,9 @@ public class Controlador_Banco_Imobiliario {
 					+ jogadorNaVEZ.getID());
 
 			jogador = jogadorNaVEZ;
-
 			String resultado = JOptionPane.showInputDialog(null,"Digite quantas casas o jogador " + jogador.getNome() + " vai andar!");
 
-			if (!resultado.equals("") || !resultado.equals(null)) { //se o resultado do input for vazio nao pode entrar no laço
+			if (!resultado.equals("") && !resultado.equals(null)) { //se o resultado do input for vazio nao pode entrar no laço
 				int resultadoDados = Integer.valueOf(resultado);
 				if (resultadoDados <= 12 || resultadoDados < 1) {
 					/**
@@ -237,15 +248,25 @@ public class Controlador_Banco_Imobiliario {
 					 * verificada, e casa haja apenas um, temos um vencedor.
 					 * **/
 					if (possuiSaldoParaContinuar(jogador)) {
+						System.out.println("\t entrou no if pra mudar a vez");
 						mudarVezDeJogar(jogador.getID());
 					}else{
+						System.out.println("\t entrou no else pra mudar a vez");
 						jogadoresAindaJogando.remove(jogador);
+						jogadores.remove(jogador);
+						//removerJogadorQueNaoPossuiSaldo(jogador);
+						jogador.getPeca().loadImage(constante.PATH_IMAGE + "dead.png");
+						
 						JOptionPane.showMessageDialog(null, "O jogador "
 								+ jogador.getNome() + "\n"
 								+ "Não possui mais saldo e vai deixar o jogo"
 								+ "\n" + "Exite agora "
 								+ jogadoresAindaJogando.size(),
-								"Jogador Sai do Jogo", JOptionPane.OK_OPTION);
+								"Jogador Sai do Jogo", JOptionPane.PLAIN_MESSAGE, new ImageIcon(constante.PATH_IMAGE + "sad.png"));
+						
+						//JOptionPane.showMessageDialog(null,"Um jogador saiu", "Menos um no jogo" , JOptionPane.PLAIN_MESSAGE, new ImageIcon(constante.PATH_IMAGE + "sad.png"));
+						
+						mudarVezDeJogar(jogador.getID());
 					}
 
 				} else {
@@ -254,41 +275,27 @@ public class Controlador_Banco_Imobiliario {
 			}else{
 				JOptionPane.showMessageDialog(null,"O input não pode ser vazio");
 			}
-			System.out.println("<<<<<<<<<<==============================================================================>>>>>>>>>>");
 			
 		}
 			/**
 			 * essas condições ativam os botoes que exibem o portfolio do jogador
 			 * 
-			 * repare que o objeto jogador é passando como parametro, mas tambem um inteiro
-			 * esse inteiro corresponde a quantidade de jogadores, ou seja
-			 * imagine que existem apenas dois jogadores no jogo, alguem clicou no botao portfolio
-			 * do jogador 5, o objeto jogador 4 sera enviado ao metodo, mas foi enviado tambem o numero de jogadores
-			 * que deveriam estar no jogo para que esse botao estivesse ativo, chagando no metodo
-			 * um if verifica se o inteiro que foi enviado é menor ou igual a quantidade de jogadores ativos
-			 * se for ele passa, senao nada acontece ao clicar no botao
-			 * 
-			 * verificando posteriormente percebi que esse inteiro poderia ser retirado dos paramentros do metodo
-			 * ao inves disso, o if poderia verificar apenas se o objeto jogador é igual a null
-			 * caso fosse nada acontecia
-			 * 
-			 * enfim uma dica para refatoração
 			 * */
 			
 			if(mouse.isOverObject(portfolioButton0) && mouse.isLeftButtonPressed()){
-				exibeLogradourosJogador(getJodagores().get(0), 1);
+				exibeLogradourosJogador(getJodagores().get(0));
 			}
 			if(mouse.isOverObject(portfolioButton1) && mouse.isLeftButtonPressed()){
-				exibeLogradourosJogador(getJodagores().get(1), 2);
+				exibeLogradourosJogador(getJodagores().get(1));
 			}
-			if(mouse.isOverObject(portfolioButton2) && mouse.isLeftButtonPressed()){
-				exibeLogradourosJogador(getJodagores().get(2), 3);
+			if(mouse.isOverObject(portfolioButton2) && mouse.isLeftButtonPressed() && jogadores.size() == 3){
+				exibeLogradourosJogador(getJodagores().get(2));
 			}
-			if(mouse.isOverObject(portfolioButton3) && mouse.isLeftButtonPressed()){
-				exibeLogradourosJogador(getJodagores().get(3), 4);
+			if(mouse.isOverObject(portfolioButton3) && mouse.isLeftButtonPressed() && jogadores.size() == 4){
+				exibeLogradourosJogador(getJodagores().get(3));
 			}
-			if(mouse.isOverObject(portfolioButton4) && mouse.isLeftButtonPressed()){
-				exibeLogradourosJogador(getJodagores().get(4), 5);
+			if(mouse.isOverObject(portfolioButton4) && mouse.isLeftButtonPressed() && jogadores.size() == 5){
+				exibeLogradourosJogador(getJodagores().get(4));
 			}
 			
 			/**
@@ -299,16 +306,14 @@ public class Controlador_Banco_Imobiliario {
 		window.exit();
 	}
 
-	public void exibeLogradourosJogador(Jogador jogador, int qtdJogadores){
+	public void exibeLogradourosJogador(Jogador jogador){
 		portfolio.setText("");
-		if(qtdJogadores <= getJodagores().size()){
 		for(CasaDoTabuleiro c : jogador.getMeusLogradouros()){
 			portfolio.append("["+c.getNome()+ " "+ c.getValor() +"]" + "\n");
 		}
 		JOptionPane.showMessageDialog(null,"Nome: "+jogador.getNome() + " Saldo Atual: "+
-		jogador.getSaldo() +"\n" + "Total de propriedades "+ jogador.getMeusLogradouros().size() + "\n" + portfolio.getText());
-		
-		}
+		jogador.getSaldo() +"\n" + "Total de propriedades "+ jogador.getMeusLogradouros().size() +
+		"\n" + portfolio.getText(), "Portfolio: " +jogador.getNome(), JOptionPane.PLAIN_MESSAGE, new ImageIcon(constante.PATH_IMAGE + "portfolio.png"));
 	}
 	
 	public void draw() {
@@ -331,7 +336,6 @@ public class Controlador_Banco_Imobiliario {
 		portfolioButton0 = new Animation(constante.PATH_IMAGE + "portfolio.png");
 		portfolioButton0.x = 240;
 		portfolioButton0.y = 140;
-		portfolio.setText("Márcio");
 		portfolioButton0.draw();
 		
 		portfolioButton1 = new Animation(constante.PATH_IMAGE + "portfolio.png");
