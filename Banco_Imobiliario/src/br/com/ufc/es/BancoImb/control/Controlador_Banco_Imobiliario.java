@@ -220,19 +220,20 @@ public class Controlador_Banco_Imobiliario {
 					destino = tabuleiroJogo.getCasaByIndice(indiceCasaDestino);
 					
 					/**
+					 * aqui o jogador é realmente movido de casa no tabuleiro
+					 * ele é retitado da casa que se encontra e adicionado na casa destino
+					 * 
+					 * **/
+					moverJogador(jogador, destino);
+					
+					/**
 					 * uma vez que ja possuimos a casa de destino ja é possivel pegar a posicao da casa
 					 * na qual o icone do jogador devera ser movida
 					 * **/
 					Point posicao = destino.getPosicao();
 					jogador.getPeca().x = posicao.x;
 					jogador.getPeca().y = posicao.y;
-
-					/**
-					 * aqui o jogador é realmente movido de casa no tabuleiro
-					 * ele é retitado da casa que se encontra e adicionado na casa destino
-					 * 
-					 * **/
-					moverJogador(jogador, destino);
+					draw();
 
 					/**
 					 * essa chamada de método é usada por todos os tipos de logradouros
@@ -311,7 +312,7 @@ public class Controlador_Banco_Imobiliario {
 		for(CasaDoTabuleiro c : jogador.getMeusLogradouros()){
 			portfolio.append("["+c.getNome()+ " "+ c.getValor() +"]" + "\n");
 		}
-		JOptionPane.showMessageDialog(null,"Nome: "+jogador.getNome() + " Saldo Atual: "+
+		JOptionPane.showMessageDialog(null," Saldo Atual: "+
 		jogador.getSaldo() +"\n" + "Total de propriedades "+ jogador.getMeusLogradouros().size() +
 		"\n" + portfolio.getText(), "Portfolio: " +jogador.getNome(), JOptionPane.PLAIN_MESSAGE, new ImageIcon(constante.PATH_IMAGE + "portfolio.png"));
 	}

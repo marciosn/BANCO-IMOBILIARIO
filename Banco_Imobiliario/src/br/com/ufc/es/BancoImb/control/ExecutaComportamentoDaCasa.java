@@ -16,13 +16,13 @@ public class ExecutaComportamentoDaCasa {
 		if(casa.getValor() != 0){
 		
 		if (!casa.isVendido()) {
-			int respostaDoJogador = JOptionPane.showConfirmDialog(null, "Essa casa não possui proprietário, quer compra-la ?",
+			int respostaDoJogador = JOptionPane.showConfirmDialog(null, "Essa casa não possui proprietário, quer compra-la?",
 					 casa.getNome(), JOptionPane.YES_NO_OPTION);
 			
 			if(respostaDoJogador == 0){
 				jogador.comprar(casa);
 				
-				JOptionPane.showMessageDialog(null, "O jogador " + jogador.getNome() + " comprou a casa " + casa.getNome() + "\n" + 
+				JOptionPane.showMessageDialog(null, "O jogador " + jogador.getNome() + " comprou a casa " +"["+ casa.getNome() +"]"+ "\n" + 
 				"O novo saldo do jogador é: " + jogador.getSaldo());
 			}
 			
