@@ -12,13 +12,12 @@ public class LugarEspecial_Partida extends LogradouroEspecial implements ILograd
 
 	public LugarEspecial_Partida(String nome, Point posicao) {
 		super(nome, posicao);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void executarComportamento(Jogador jogador) {
 		jogador.receberTaxa(200);
-		JOptionPane.showMessageDialog(null, "Você está passando pela casa de partida, merece um prêmio" + "\n" +
+		JOptionPane.showMessageDialog(null, "Você passou pela casa de partida, merece um prêmio" + "\n" +
 		"Receba 200"+ "\n" +"Seu novo Saldo é " + jogador.getSaldo());
 	}
 

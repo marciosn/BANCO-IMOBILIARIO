@@ -169,6 +169,9 @@ public class Controlador_Banco_Imobiliario {
 			temp = indiceProx % jogadores.size();
 			indiceProx = temp;
 		}
+		
+		if(!jogadores.contains(tabuleiroJogo.getJogadorByID(indiceProx)))
+			System.out.println("\t"+ tabuleiroJogo.getJogadorByID(indiceProx).getNome() +"  nao esta na lista de jogadores");
 		/**
 		 * aqui o retorno do metodo getJogadorByID é setado na variavel jogador da vez
 		 * para obter um objeto jogador apenas é necessário possuir um indice
@@ -257,7 +260,7 @@ public class Controlador_Banco_Imobiliario {
 						jogadores.remove(jogador);
 						//removerJogadorQueNaoPossuiSaldo(jogador);
 						jogador.getPeca().loadImage(constante.PATH_IMAGE + "dead.png");
-						
+						draw();
 						JOptionPane.showMessageDialog(null, "O jogador "
 								+ jogador.getNome() + "\n"
 								+ "Não possui mais saldo e vai deixar o jogo"

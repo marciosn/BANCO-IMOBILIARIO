@@ -12,7 +12,6 @@ public class LugarEspecial_VaParaAPrisao extends LogradouroEspecial implements I
 
 	public LugarEspecial_VaParaAPrisao(String nome, Point posicao) {
 		super(nome, posicao);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
