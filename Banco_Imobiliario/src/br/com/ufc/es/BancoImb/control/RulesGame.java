@@ -10,16 +10,22 @@ import br.com.ufc.es.BancoImb.constantes.Constantes;
 import br.com.ufc.es.BancoImb.model.Jogador;
 
 public class RulesGame {
-	public boolean verificaJogadoresAindaNoJogo(List<Jogador> jogadoresNoJogo){
-		boolean aindaJogando = false;
+	private br.com.ufc.es.BancoImb.sound.Sound som;
+	public RulesGame() {
+		som = new br.com.ufc.es.BancoImb.sound.Sound();
+	}
+	
+	public boolean verificaSeExisteVencedor(List<Jogador> jogadoresNoJogo){
+		boolean existeVencedor = false;
 		if (jogadoresNoJogo.size() == 1) {
-			new Sound(new Constantes().PATH_AUDIO + "champions.wav").play();
+			existeVencedor = true;
+			som.winSound();
 			JOptionPane.showMessageDialog(null, "O jogador "
 					+ jogadoresNoJogo.get(0).getNome() + "\n"
 					+ "Venceu o jogo", "Vencedor", JOptionPane.PLAIN_MESSAGE, new ImageIcon(new Constantes().PATH_IMAGE + "win.png"));
 			
 		}
-		return aindaJogando;
+		return existeVencedor;
 	}
 	
 	public boolean verificaSeJogadorAindaPossuiSaldo(Jogador jogador){
@@ -31,6 +37,22 @@ public class RulesGame {
 		}
 		return possuiSaldo;
 		
+	}
+	public boolean jogadaIsValida(String resultado){
+		boolean isValida = false;
+		if (!resultado.equals("") && !resultado.equals(null)) {
+			isValida = true;
+		}
+		return isValida;	
+	}
+	public boolean tamanhoJogadaIsValida(int resultadoDados){
+		boolean tamanhoIsValido = false;
+		//int resultadoDados = Integer.valueOf(resultado);
+		
+		if (resultadoDados <= 12 || resultadoDados < 1) {
+			tamanhoIsValido = true;
+		}
+		return tamanhoIsValido;
 	}
 
 }

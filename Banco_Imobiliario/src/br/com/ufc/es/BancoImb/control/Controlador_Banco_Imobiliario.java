@@ -1,19 +1,11 @@
 package br.com.ufc.es.BancoImb.control;
 
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
 
-import jplay.Animation;
-import jplay.Keyboard;
-import jplay.Mouse;
-import jplay.Scene;
-import jplay.Sound;
-import jplay.Window;
 import br.com.ufc.es.BancoImb.constantes.Constantes;
 import br.com.ufc.es.BancoImb.model.CasaDoTabuleiro;
 import br.com.ufc.es.BancoImb.model.ContaBancaria;
@@ -32,8 +24,7 @@ public class Controlador_Banco_Imobiliario {
 	private Tabuleiro tabuleiroJogo;
 	private List<Jogador> jogadores;
 	private List<Jogador> jogadoresAindaJogando;
-	private Jogador jogadorNaVEZ;
-	private Jogador jogador;
+	private Jogador jogadorDaVEZ;
 	private boolean executando = true;
 	private CasaDoTabuleiro destino;
 	private ExecutaComportamentoDaCasa executar;
@@ -41,12 +32,14 @@ public class Controlador_Banco_Imobiliario {
 	private MudarJogadorNaVez mudarVez;
 	private TabuleiroInterfaceGrafica view;
 	private RulesGame rules;
+	private br.com.ufc.es.BancoImb.sound.Sound som;
 
 	public Controlador_Banco_Imobiliario() {
 		constante = new Constantes();
 		mudarVez = new MudarJogadorNaVez();
 		view = new TabuleiroInterfaceGrafica();
 		rules = new RulesGame();
+		som = new br.com.ufc.es.BancoImb.sound.Sound();
 
 		tabuleiroJogo = new Tabuleiro();
 		jogadores = new ArrayList<Jogador>();
@@ -67,7 +60,7 @@ public class Controlador_Banco_Imobiliario {
 			tabuleiroJogo.adiconarJogadoresACasa(0, j);
 			System.out.println("Classe: Banco Imobiliario"+ " -> Inserindo o jogador " + j.getNome() + " ID = "	+ j.getID());
 		}
-		jogadorNaVEZ = jogadores.get(0);
+		jogadorDaVEZ = jogadores.get(0);
 	}
 
 	public void moverJogador(Jogador jogador, CasaDoTabuleiro casa) {
@@ -109,46 +102,40 @@ public class Controlador_Banco_Imobiliario {
 		while (executando) {
 			if(view.getMouse().isOverObject(view.getBotao()) && view.getMouse().isLeftButtonPressed()){
 				
-			if (jogadoresAindaJogando.size() == 1) {
-				new Sound(constante.PATH_AUDIO + "champions.wav").play();
-				
-				JOptionPane.showMessageDialog(null, "O jogador "
-						+ jogadoresAindaJogando.get(0).getNome() + "\n"
-						+ "Venceu o jogo", "Vencedor", JOptionPane.PLAIN_MESSAGE, new ImageIcon(constante.PATH_IMAGE + "win.png"));
+			if (rules.verificaSeExisteVencedor(jogadoresAindaJogando)) {
 				executando = false;
 				view.getWindow().exit();
 			}
 			
-			view.draw();  //chama o metodo que desenha a tela do jogo
+			view.draw();
 			
 			System.out.println(" A vez de jogar é do jogador "
-					+ jogadorNaVEZ.getNome() + " que possui ID: "
-					+ jogadorNaVEZ.getID());
+					+ jogadorDaVEZ.getNome() + " que possui ID: "
+					+ jogadorDaVEZ.getID());
 
-			jogador = jogadorNaVEZ;
-			String resultado = JOptionPane.showInputDialog(null,"Digite quantas casas o jogador " + jogador.getNome() + " vai andar!");
+			String resultado = view.entradaDados(jogadorDaVEZ);
 
-			if (!resultado.equals("") && !resultado.equals(null)) { //se o resultado do input for vazio nao pode entrar no laço
+			if (rules.jogadaIsValida(resultado)) { //se o resultado do input for vazio nao pode entrar no laço
 				int resultadoDados = Integer.valueOf(resultado);
-				if (resultadoDados <= 12 || resultadoDados < 1) {
+				if (rules.tamanhoJogadaIsValida(resultadoDados)) {
 					
-					int indiceCasaDestino = tabuleiroJogo.calculaIndiceProximaCasa(jogador.getPosicaoJogador(), resultadoDados);
+					int indiceCasaDestino = tabuleiroJogo.calculaIndiceProximaCasa(jogadorDaVEZ.getPosicaoJogador(), resultadoDados);
 					
 					destino = tabuleiroJogo.getCasaByIndice(indiceCasaDestino);
 					
-					moverJogador(jogador, destino);
-					view.moverPecaJogador(destino, jogador);
-					executar.executarComportamento(jogador, destino);
+					moverJogador(jogadorDaVEZ, destino);
+					view.moverPecaJogador(destino, jogadorDaVEZ);
+					executar.executarComportamento(jogadorDaVEZ, destino);
 
-					if (rules.verificaSeJogadorAindaPossuiSaldo(jogador)) {
-						mudaJogadorVEZ(jogador.getID(), jogadores);
+					if (rules.verificaSeJogadorAindaPossuiSaldo(jogadorDaVEZ)) {
+						mudaJogadorVEZ(jogadorDaVEZ.getID(), jogadores);
 					}else{
 						System.out.println("\t entrou no else pra mudar a vez");
-						jogadoresAindaJogando.remove(jogador);
-						jogadores.remove(jogador);
+						jogadoresAindaJogando.remove(jogadorDaVEZ);
+						jogadores.remove(jogadorDaVEZ);
 						
-						view.jogadorNaoPossuiSaldo(jogador, jogadoresAindaJogando);
-						mudaJogadorVEZ(jogador.getID(), jogadores);
+						view.jogadorNaoPossuiSaldo(jogadorDaVEZ, jogadoresAindaJogando);
+						mudaJogadorVEZ(jogadorDaVEZ.getID(), jogadores);
 					}
 
 				} else {
@@ -193,10 +180,10 @@ public class Controlador_Banco_Imobiliario {
 	}
 
 	public Jogador getJogadorNaVEZ() {
-		return jogadorNaVEZ;
+		return jogadorDaVEZ;
 	}
 
 	public void setJogadorNaVEZ(Jogador jogadorDaVEZ) {
-		this.jogadorNaVEZ = jogadorDaVEZ;
+		this.jogadorDaVEZ = jogadorDaVEZ;
 	}
 }

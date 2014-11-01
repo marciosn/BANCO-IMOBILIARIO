@@ -83,6 +83,10 @@ public class TabuleiroInterfaceGrafica {
 				"Jogador Sai do Jogo", JOptionPane.PLAIN_MESSAGE, new ImageIcon(constante.PATH_IMAGE + "sad.png"));
 		
 	}
+	public String entradaDados(Jogador jogador){
+		String dados = JOptionPane.showInputDialog(null,"Digite quantas casas o jogador " + jogador.getNome() + " vai andar!");
+		return dados;
+	}
 	public void desenhaPortfolioBotao(){
 		portfolioButton0 = new Animation(constante.PATH_IMAGE + "portfolio.png");
 		portfolioButton0.x = 240;
