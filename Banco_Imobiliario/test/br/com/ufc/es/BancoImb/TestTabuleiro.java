@@ -69,11 +69,11 @@ public class TestTabuleiro {
 		Jogador edu = new Jogador("edu", new ContaBancaria(10000), new PecaJogador(""));
 		Jogador dudu = new Jogador("dudu", new ContaBancaria(10000), new PecaJogador(""));
 		
-		bancoImobiliario.InserindoJogadores(marcio);
-		bancoImobiliario.InserindoJogadores(souza);
-		bancoImobiliario.InserindoJogadores(nobre);
-		bancoImobiliario.InserindoJogadores(edu);
-		bancoImobiliario.InserindoJogadores(dudu);
+		bancoImobiliario.InserindoJogadorNoJogo(marcio);
+		bancoImobiliario.InserindoJogadorNoJogo(souza);
+		bancoImobiliario.InserindoJogadorNoJogo(nobre);
+		bancoImobiliario.InserindoJogadorNoJogo(edu);
+		bancoImobiliario.InserindoJogadorNoJogo(dudu);
 		
 		bancoImobiliario.adicionarJogadoresNaCasaDePartida(bancoImobiliario.getJodagores());
 		

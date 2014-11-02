@@ -4,10 +4,10 @@ import java.awt.Point;
 
 import javax.swing.JOptionPane;
 
-import br.com.ufc.es.BancoImb.interfaces.ILogradouroEspecial;
+import br.com.ufc.es.BancoImb.interfaces.IComportamentoLogradouro;
 import br.com.ufc.es.BancoImb.model.Jogador;
 
-public class LugarEspecial_Partida extends LogradouroEspecial implements ILogradouroEspecial{
+public class LugarEspecial_Partida extends LogradouroEspecial implements IComportamentoLogradouro{
 
 
 	public LugarEspecial_Partida(String nome, Point posicao) {

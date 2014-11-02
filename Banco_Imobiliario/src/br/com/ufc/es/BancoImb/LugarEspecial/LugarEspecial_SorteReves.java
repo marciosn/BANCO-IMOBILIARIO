@@ -9,10 +9,10 @@ import javax.swing.JOptionPane;
 
 import jplay.Sound;
 import br.com.ufc.es.BancoImb.constantes.Constantes;
-import br.com.ufc.es.BancoImb.interfaces.ILogradouroEspecial;
+import br.com.ufc.es.BancoImb.interfaces.IComportamentoLogradouro;
 import br.com.ufc.es.BancoImb.model.Jogador;
 
-public class LugarEspecial_SorteReves extends LogradouroEspecial implements ILogradouroEspecial{
+public class LugarEspecial_SorteReves extends LogradouroEspecial implements IComportamentoLogradouro{
 	
 	private List<Float> cartas;
 	private int indice;

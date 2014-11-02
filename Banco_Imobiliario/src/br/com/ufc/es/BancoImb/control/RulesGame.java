@@ -46,13 +46,18 @@ public class RulesGame {
 		return isValida;	
 	}
 	public boolean tamanhoJogadaIsValida(int resultadoDados){
-		boolean tamanhoIsValido = false;
-		//int resultadoDados = Integer.valueOf(resultado);
-		
-		if (resultadoDados <= 12 || resultadoDados < 1) {
+		boolean tamanhoIsValido = false;		
+		if (resultadoDados <= 12 && resultadoDados > 0) {
 			tamanhoIsValido = true;
 		}
 		return tamanhoIsValido;
+	}
+	public boolean qtdJogadoresIsValida(int qtd_jogadores){
+		boolean qtdIsValida = false;
+		if (qtd_jogadores > 1 && qtd_jogadores < 6) {
+			qtdIsValida = true;
+		}
+		return qtdIsValida;
 	}
 
 }

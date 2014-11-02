@@ -87,6 +87,19 @@ public class TabuleiroInterfaceGrafica {
 		String dados = JOptionPane.showInputDialog(null,"Digite quantas casas o jogador " + jogador.getNome() + " vai andar!");
 		return dados;
 	}
+	public String qtdJogadoresDesejada(){
+		String qtd = JOptionPane.showInputDialog(null,"Digite a quantidade de jogadores do Jogo!");
+		return qtd;
+	}
+	public void quantidadeInvalidaJogadores(){
+		JOptionPane.showMessageDialog(null,	"Você digitou uma quantidade invalida de jogadores");
+	}
+	public void numeroDeEntradaDadosInvalido(){
+		JOptionPane.showMessageDialog(null,"Você digitou o numero dos dados de maneira errada");
+	}
+	public void inputVazio(){
+		JOptionPane.showMessageDialog(null,"O input não pode ser vazio");
+	}
 	public void desenhaPortfolioBotao(){
 		portfolioButton0 = new Animation(constante.PATH_IMAGE + "portfolio.png");
 		portfolioButton0.x = 240;

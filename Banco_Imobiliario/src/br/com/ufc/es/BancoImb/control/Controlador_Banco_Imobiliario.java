@@ -50,7 +50,7 @@ public class Controlador_Banco_Imobiliario {
 		iniciarJogo();
 	}
 
-	public void InserindoJogadores(Jogador jogador) {
+	public void InserindoJogadorNoJogo(Jogador jogador) {
 		jogadores.add(jogador);
 	}
 	
@@ -73,15 +73,15 @@ public class Controlador_Banco_Imobiliario {
 
 	public void inserirJogador() {
 		
-		String qtd = JOptionPane.showInputDialog(null,"Digite a quantidade de jogadores do Jogo!");
+		String qtd = view.qtdJogadoresDesejada();
 		int qtd_jogadores = Integer.valueOf(qtd);
-		if (qtd_jogadores > 1 && qtd_jogadores < 6) {
+		if (rules.qtdJogadoresIsValida(qtd_jogadores)) {
 			for (int i = 0; i < qtd_jogadores;) {
 				String nomeJogador = JOptionPane.showInputDialog(null,"Digite o nome do jogador de ID = " + i);
 				if(!nomeJogador.equals("")){
 				String peca = "peca" + jogadores.size() + ".png";
 				System.out.println(peca);
-				InserindoJogadores(new Jogador(nomeJogador, new ContaBancaria(500), new PecaJogador(constante.PATH_IMAGE + peca)));
+				InserindoJogadorNoJogo(new Jogador(nomeJogador, new ContaBancaria(500), new PecaJogador(constante.PATH_IMAGE + peca)));
 				i++;
 				}
 			}
@@ -89,7 +89,7 @@ public class Controlador_Banco_Imobiliario {
 			
 			view.iniciarPecas(tabuleiroJogo.getTabuleiro());
 		} else {
-			JOptionPane.showMessageDialog(null,	"Você digitou uma quantidade invalida de jogadores");
+			view.quantidadeInvalidaJogadores();
 			inserirJogador();
 		}
 
@@ -115,7 +115,7 @@ public class Controlador_Banco_Imobiliario {
 
 			String resultado = view.entradaDados(jogadorDaVEZ);
 
-			if (rules.jogadaIsValida(resultado)) { //se o resultado do input for vazio nao pode entrar no laço
+			if (rules.jogadaIsValida(resultado)) {
 				int resultadoDados = Integer.valueOf(resultado);
 				if (rules.tamanhoJogadaIsValida(resultadoDados)) {
 					
@@ -139,15 +139,13 @@ public class Controlador_Banco_Imobiliario {
 					}
 
 				} else {
-					JOptionPane.showMessageDialog(null,"Você digitou o numero dos dados de maneira errada");
+					view.numeroDeEntradaDadosInvalido();
 				}
 			}else{
-				JOptionPane.showMessageDialog(null,"O input não pode ser vazio");
+				view.inputVazio();
 			}
 			
 		}
-
-			
 			if(view.getMouse().isOverObject(view.getPortfolioButton0()) && view.getMouse().isLeftButtonPressed()){
 				view.exibeLogradourosJogador(getJodagores().get(0));
 			}
@@ -163,10 +161,6 @@ public class Controlador_Banco_Imobiliario {
 			if(view.getMouse().isOverObject(view.getPortfolioButton4()) && view.getMouse().isLeftButtonPressed() && jogadores.size() == 5){
 				view.exibeLogradourosJogador(getJodagores().get(4));
 			}
-			
-			/**
-			 * 
-			 * */
 		
 		}
 		view.getWindow().exit();
