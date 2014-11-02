@@ -17,7 +17,7 @@ import jplay.Scene;
 import jplay.Window;
 
 
-public class TabuleiroInterfaceGrafica {
+public class BIInterfaceGrafica {
 	private Window window;
 	private Keyboard keyboard;
 	private Scene scene;
@@ -27,7 +27,7 @@ public class TabuleiroInterfaceGrafica {
 	private JTextArea portfolio;
 	private Constantes constante;
 	
-	public TabuleiroInterfaceGrafica() {
+	public BIInterfaceGrafica() {
 		constante = new Constantes();
 		window = new Window(1080, 720);
 		window.setCursor( window.createCustomCursor(constante.PATH_IMAGE + "mouse.png") );
@@ -81,8 +81,8 @@ public class TabuleiroInterfaceGrafica {
 				+ "\n" + "Exite agora "
 				+ jogadoresAindaJogando.size(),
 				"Jogador Sai do Jogo", JOptionPane.PLAIN_MESSAGE, new ImageIcon(constante.PATH_IMAGE + "sad.png"));
-		
 	}
+
 	public String entradaDados(Jogador jogador){
 		String dados = JOptionPane.showInputDialog(null,"Digite quantas casas o jogador " + jogador.getNome() + " vai andar!");
 		return dados;
@@ -99,6 +99,27 @@ public class TabuleiroInterfaceGrafica {
 	}
 	public void inputVazio(){
 		JOptionPane.showMessageDialog(null,"O input não pode ser vazio");
+	}
+	public void ativaBotaoPortifolio(Mouse mouse, List<Jogador> jogadores){
+		if(mouse.isOverObject(portfolioButton0) && mouse.isLeftButtonPressed()){
+			exibeLogradourosJogador(jogadores.get(0));
+		}
+		if(mouse.isOverObject(portfolioButton1) && mouse.isLeftButtonPressed()){
+			exibeLogradourosJogador(jogadores.get(1));
+		}
+		if(mouse.isOverObject(portfolioButton2) && mouse.isLeftButtonPressed()){
+			if(jogadores.size() >= 3)
+			exibeLogradourosJogador(jogadores.get(2));
+		}
+		if(mouse.isOverObject(portfolioButton3) && mouse.isLeftButtonPressed()){
+			if(jogadores.size() >= 4)
+			exibeLogradourosJogador(jogadores.get(3));
+		}
+		if(mouse.isOverObject(portfolioButton4) && mouse.isLeftButtonPressed()){
+			if(jogadores.size() == 5)
+			exibeLogradourosJogador(jogadores.get(4));
+		}
+		
 	}
 	public void desenhaPortfolioBotao(){
 		portfolioButton0 = new Animation(constante.PATH_IMAGE + "portfolio.png");

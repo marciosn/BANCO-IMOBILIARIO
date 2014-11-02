@@ -5,6 +5,8 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
+import jplay.Animation;
+import jplay.Mouse;
 import jplay.Sound;
 import br.com.ufc.es.BancoImb.constantes.Constantes;
 import br.com.ufc.es.BancoImb.model.Jogador;
@@ -58,6 +60,20 @@ public class RulesGame {
 			qtdIsValida = true;
 		}
 		return qtdIsValida;
+	}
+	public boolean verificaNome(String nomeJogador){
+		boolean nomeIsValido = false;
+		if(!nomeJogador.equals("")){
+			nomeIsValido = true;
+		}
+		return nomeIsValido;
+	}
+	public boolean isPressed(Mouse mouse, Animation botao){
+		boolean isPressed = false;
+		if(mouse.isOverObject(botao) && mouse.isLeftButtonPressed()){
+			isPressed = true;
+		}
+		return isPressed;
 	}
 
 }
