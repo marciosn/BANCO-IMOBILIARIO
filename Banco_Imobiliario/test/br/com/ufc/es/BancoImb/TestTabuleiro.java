@@ -6,26 +6,26 @@ import java.awt.Point;
 
 import org.junit.Test;
 
-import br.com.ufc.es.BancoImb.LogradourComercializavel.LogradouroComercializavel_Empresa;
-import br.com.ufc.es.BancoImb.LogradourComercializavel.LogradouroComercializavel_Imovel;
-import br.com.ufc.es.BancoImb.control.Controlador_Banco_Imobiliario;
-import br.com.ufc.es.BancoImb.model.CasaDoTabuleiro;
-import br.com.ufc.es.BancoImb.model.ContaBancaria;
-import br.com.ufc.es.BancoImb.model.Jogador;
-import br.com.ufc.es.BancoImb.model.PecaJogador;
-import br.com.ufc.es.BancoImb.model.Tabuleiro;
+import br.ufc.es.com.BancoImb.LogradouroComum.LogradouroComumEmpresa;
+import br.ufc.es.com.BancoImb.LogradouroComum.LogradouroComumImovel;
+import br.ufc.es.com.BancoImb.control.ControladorBancoImobiliario;
+import br.ufc.es.com.BancoImb.model.CasaDoTabuleiro;
+import br.ufc.es.com.BancoImb.model.ContaBancaria;
+import br.ufc.es.com.BancoImb.model.Jogador;
+import br.ufc.es.com.BancoImb.model.PecaJogador;
+import br.ufc.es.com.BancoImb.tabuleiro.Tabuleiro;
 
 public class TestTabuleiro {
 
-	LogradouroComercializavel_Empresa empresa = new LogradouroComercializavel_Empresa("Google", 5000, 1000, new Point(32, 26));
-	LogradouroComercializavel_Imovel imovel = new LogradouroComercializavel_Imovel("Apartamento", 3000, 1000, new Point(32, 26));
+	LogradouroComumEmpresa empresa = new LogradouroComumEmpresa("Google", 5000, 1000, new Point(32, 26));
+	LogradouroComumImovel imovel = new LogradouroComumImovel("Apartamento", 3000, 1000, new Point(32, 26));
 	Jogador marcio = new Jogador("Marcio", new ContaBancaria(10000), new PecaJogador(""));
 	Jogador jose = new Jogador("Jose", new ContaBancaria(10000), new PecaJogador(""));
 	Jogador joao = new Jogador("Joao", new ContaBancaria(10000), new PecaJogador(""));
 	CasaDoTabuleiro casa = new CasaDoTabuleiro();
 	CasaDoTabuleiro casa2 = new CasaDoTabuleiro();
 	Tabuleiro tab = new Tabuleiro();
-	Controlador_Banco_Imobiliario bancoImobiliario = new Controlador_Banco_Imobiliario();
+	ControladorBancoImobiliario bancoImobiliario = new ControladorBancoImobiliario();
 	
 	@Test
 	public void testAdcionarJogadorCasa() {

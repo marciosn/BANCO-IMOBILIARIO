@@ -7,22 +7,22 @@ import java.awt.Point;
 
 import org.junit.Test;
 
-import br.com.ufc.es.BancoImb.LogradourComercializavel.LogradouroComercializavel_Empresa;
-import br.com.ufc.es.BancoImb.LogradourComercializavel.LogradouroComercializavel_Imovel;
-import br.com.ufc.es.BancoImb.model.ContaBancaria;
-import br.com.ufc.es.BancoImb.model.Jogador;
-import br.com.ufc.es.BancoImb.model.PecaJogador;
+import br.ufc.es.com.BancoImb.LogradouroComum.LogradouroComumEmpresa;
+import br.ufc.es.com.BancoImb.LogradouroComum.LogradouroComumImovel;
+import br.ufc.es.com.BancoImb.model.ContaBancaria;
+import br.ufc.es.com.BancoImb.model.Jogador;
+import br.ufc.es.com.BancoImb.model.PecaJogador;
 
 public class TestJogador {
-	LogradouroComercializavel_Empresa empresa = new LogradouroComercializavel_Empresa("Google", 1000, 400, new Point(32, 26));
-	LogradouroComercializavel_Empresa empresa2 = new LogradouroComercializavel_Empresa("Facebook", 4000, 400, new Point(32, 26));
-	LogradouroComercializavel_Empresa empresa3 = new LogradouroComercializavel_Empresa("Twitter", 2000, 400, new Point(32, 26));
-	LogradouroComercializavel_Empresa empresa4 = new LogradouroComercializavel_Empresa("Sony", 2500, 400, new Point(32, 26));
+	LogradouroComumEmpresa empresa = new LogradouroComumEmpresa("Google", 1000, 400, new Point(32, 26));
+	LogradouroComumEmpresa empresa2 = new LogradouroComumEmpresa("Facebook", 4000, 400, new Point(32, 26));
+	LogradouroComumEmpresa empresa3 = new LogradouroComumEmpresa("Twitter", 2000, 400, new Point(32, 26));
+	LogradouroComumEmpresa empresa4 = new LogradouroComumEmpresa("Sony", 2500, 400, new Point(32, 26));
 	
-	LogradouroComercializavel_Imovel imovel = new LogradouroComercializavel_Imovel("Casa", 500, 200, new Point(32, 26));
-	LogradouroComercializavel_Imovel imovel2 = new LogradouroComercializavel_Imovel("Apartamento", 1500, 200, new Point(32, 26));
-	LogradouroComercializavel_Imovel imovel3 = new LogradouroComercializavel_Imovel("Sobrado", 700, 200,new Point(32, 26));
-	LogradouroComercializavel_Imovel imovel4 = new LogradouroComercializavel_Imovel("Galpao", 500, 200, new Point(32, 26));
+	LogradouroComumImovel imovel = new LogradouroComumImovel("Casa", 500, 200, new Point(32, 26));
+	LogradouroComumImovel imovel2 = new LogradouroComumImovel("Apartamento", 1500, 200, new Point(32, 26));
+	LogradouroComumImovel imovel3 = new LogradouroComumImovel("Sobrado", 700, 200,new Point(32, 26));
+	LogradouroComumImovel imovel4 = new LogradouroComumImovel("Galpao", 500, 200, new Point(32, 26));
 	
 	Jogador jogador = new Jogador("Marcio", new ContaBancaria(10000), new PecaJogador(""));
 	Jogador jogador2 = new Jogador("Souza", new ContaBancaria(10000), new PecaJogador(""));
