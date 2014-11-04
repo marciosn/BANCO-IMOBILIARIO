@@ -30,15 +30,15 @@ public class LogradouroEspecialSorteReves extends LogradouroEspecial implements 
 	public void ativarEfeito(Jogador jogador) {
 		sorteReves();		
 		if((indice % 2)  == 0){
-			new Sound(constante.PATH_AUDIO + "caixinha.wav").play();;
+			new Sound(constante.CAIXINHA).play();;
 			System.out.println(cartas.get(indice));
 			jogador.receberTaxa(cartas.get(indice));
 			JOptionPane.showMessageDialog(null, "Sorte"+ "\n" + "Receba: "+	cartas.get(indice) + "\n" +
-			"Seu novo saldo é: " + jogador.getSaldo(), "Sorte", JOptionPane.PLAIN_MESSAGE, new ImageIcon(constante.PATH_IMAGE + "happy.png"));
+			"Seu novo saldo é: " + jogador.getSaldo(), "Sorte", JOptionPane.PLAIN_MESSAGE, new ImageIcon(constante.FELIZ));
 		}else{
 			jogador.pagarTaxa(cartas.get(indice));
 			JOptionPane.showMessageDialog(null, "Revés"+"\n" + "Pague: "+cartas.get(indice) +
-			"\n" + "Seu novo saldo é: " + jogador.getSaldo(), "Reves", JOptionPane.PLAIN_MESSAGE, new ImageIcon(constante.PATH_IMAGE + "sad.png"));
+			"\n" + "Seu novo saldo é: " + jogador.getSaldo(), "Reves", JOptionPane.PLAIN_MESSAGE, new ImageIcon(constante.TRISTE));
 		}		
 	}
 	

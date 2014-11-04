@@ -57,7 +57,10 @@ public class ControladorBancoImobiliario {
 			String nomeJogador = desenha.messageDigiteONomeDoJogador(i);
 			if(verifica.verificaNomeIsValido(nomeJogador)){
 				String peca = constante.PECA + jogadores.size() + constante.FORMATO_IMAGEM;
-				InserirJogadorNaListaDeJogadores(new Jogador(nomeJogador, new ContaBancaria(500), new PecaJogador(constante.PATH_IMAGE + peca)));
+				InserirJogadorNaListaDeJogadores(
+						new Jogador(nomeJogador,
+						new ContaBancaria(500), 
+						new PecaJogador(constante.PATH_IMAGE + peca)));
 			i++;
 			}else
 			desenha.messageNomeInvalido();

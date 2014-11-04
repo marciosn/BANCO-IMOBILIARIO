@@ -29,11 +29,11 @@ public class DesenhaComponentesGraficos {
 	public DesenhaComponentesGraficos() {
 		constante = new Constantes();
 		window = new Window(1080, 720);
-		window.setCursor( window.createCustomCursor(constante.PATH_IMAGE + "mouse.png") );
+		window.setCursor( window.createCustomCursor(constante.MOUSE) );
 		mouse = window.getMouse();
 		portfolio = new JTextArea();
 		scene = new Scene();
-		scene.loadFromFile(constante.PATH_SCENE + "scene2.scn");
+		scene.loadFromFile(constante.CENARIO);
 		scene.setDrawStartPos(0, 1);
 	}
 
@@ -55,10 +55,10 @@ public class DesenhaComponentesGraficos {
 		}
 		JOptionPane.showMessageDialog(null," Saldo Atual: "+
 		jogador.getSaldo() +"\n" + "Total de propriedades "+ jogador.getMeusLogradouros().size() +
-		"\n" + portfolio.getText(), "Portfolio: " +jogador.getNome(), JOptionPane.PLAIN_MESSAGE, new ImageIcon(constante.PATH_IMAGE + "portfolio.png"));
+		"\n" + portfolio.getText(), "Portfolio: " +jogador.getNome(), JOptionPane.PLAIN_MESSAGE, new ImageIcon(constante.PORTFOLIO));
 	}
 	public void desenhaBotaoDados(){
-		botao = new Animation(constante.PATH_IMAGE + "dado.png");
+		botao = new Animation(constante.DADOS);
 		botao.x = 800;
 		botao.y = 110;
 		botao.draw();
@@ -70,20 +70,20 @@ public class DesenhaComponentesGraficos {
 		draw();
 	}
 	public void messageJogadorNaoPossuiSaldo(Jogador jogador, List<Jogador> jogadoresAindaJogando){
-		jogador.getPeca().loadImage(constante.PATH_IMAGE + "dead.png");
+		jogador.getPeca().loadImage(constante.FORA_DO_JOGO);
 		draw();
 		JOptionPane.showMessageDialog(null, "O jogador "
 				+ jogador.getNome() + "\n"
 				+ "Não possui mais saldo e vai deixar o jogo"
 				+ "\n" + "Exite agora "
 				+ jogadoresAindaJogando.size(),
-				"Jogador Sai do Jogo", JOptionPane.PLAIN_MESSAGE, new ImageIcon(constante.PATH_IMAGE + "sad.png"));
+				"Jogador Sai do Jogo", JOptionPane.PLAIN_MESSAGE, new ImageIcon(constante.TRISTE));
 	}
 	public void messageExisteUmCampeao(List<Jogador> jogadoresAindaJogando){
 		new Sound().winSound();
 		JOptionPane.showMessageDialog(null, "O jogador "
 				+ jogadoresAindaJogando.get(0).getNome() + "\n"
-				+ "Venceu o jogo", "Vencedor", JOptionPane.PLAIN_MESSAGE, new ImageIcon(new Constantes().PATH_IMAGE + "win.png"));
+				+ "Venceu o jogo", "Vencedor", JOptionPane.PLAIN_MESSAGE, new ImageIcon(constante.TROFEU));
 	}
 	public String messageDigiteONomeDoJogador(int id){
 		String nome = JOptionPane.showInputDialog(null,"Digite o nome do jogador de ID = " + id);
@@ -115,12 +115,12 @@ public class DesenhaComponentesGraficos {
 		}		
 	}
 	public void desenhaBotaoPortifolio(){
-		portfolioButton0 = new Animation(constante.PATH_IMAGE + "portfolio.png");
+		portfolioButton0 = new Animation(constante.PORTFOLIO);
 		portfolioButton0.x = 240;
 		portfolioButton0.y = 140;
 		portfolioButton0.draw();
 		
-		portfolioButton1 = new Animation(constante.PATH_IMAGE + "portfolio.png");
+		portfolioButton1 = new Animation(constante.PORTFOLIO);
 		portfolioButton1.x = 340;
 		portfolioButton1.y = 140;
 		portfolioButton1.draw();
