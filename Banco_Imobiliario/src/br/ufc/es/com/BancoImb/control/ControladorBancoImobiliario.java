@@ -54,7 +54,7 @@ public class ControladorBancoImobiliario {
 	}
 	public void inserirJogador() {
 		for (int i = 0; i < constante.QUANTIDADE_jOGADORES;) {
-			String nomeJogador = desenha.messageDigiteONomeDoJogador(i);
+			String nomeJogador = desenha.inputDigiteONomeDoJogador(i);
 			if(verifica.verificaNomeIsValido(nomeJogador)){
 				String peca = constante.PECA + jogadores.size() + constante.FORMATO_IMAGEM;
 				InserirJogadorNaListaDeJogadores(
@@ -90,7 +90,7 @@ public class ControladorBancoImobiliario {
 			if(verifica.verificaIsPressed(desenha.getMouse(), desenha.getBotao())){
 				
 			desenha.draw();
-			String resultado = desenha.entradaDados(jogadorDaVEZ);
+			String resultado = desenha.inputEntradaDados(jogadorDaVEZ);
 
 			if (verifica.verificaJogadaIsValida(resultado)) {
 				int resultadoDados = Integer.valueOf(resultado);
@@ -101,7 +101,7 @@ public class ControladorBancoImobiliario {
 					
 					moverJogador(jogadorDaVEZ, destino);
 					desenha.moverPecaJogador(destino, jogadorDaVEZ);
-					efeito.executarComportamento(jogadorDaVEZ, destino);
+					efeito.ativarEfeito(jogadorDaVEZ, destino);
 
 					if (verifica.verificaSeJogadorAindaPossuiSaldo(jogadorDaVEZ)) {
 						mudaJogadorDaVez(jogadorDaVEZ.getID(), jogadores);

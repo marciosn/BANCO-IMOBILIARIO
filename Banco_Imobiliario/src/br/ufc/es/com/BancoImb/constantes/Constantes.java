@@ -27,5 +27,6 @@ public class Constantes {
 	public final int QUANTIDADE_DE_CASAS_DO_TABULEIRO = 40;
 	public final String PECA = "peca";
 	public final String FORMATO_IMAGEM = ".png";
+	public final int ESPACAMENTO_HORIZONTAL = 20;
 
 }

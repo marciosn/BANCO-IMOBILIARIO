@@ -22,7 +22,7 @@ public class DesenhaComponentesGraficos {
 	private Scene scene;
 	private Mouse mouse;
 	private Animation botao;
-	private Animation portfolioButton0, portfolioButton1, portfolioButton2, portfolioButton3, portfolioButton4;
+	private Animation portfolioButton0, portfolioButton1;
 	private JTextArea portfolio;
 	private Constantes constante;
 	
@@ -38,8 +38,8 @@ public class DesenhaComponentesGraficos {
 	}
 
 	public void desenhaPecasNoTabuleiro(List<CasaDoTabuleiro> tabuleiro) {
-		for (Jogador j : tabuleiro.get(0).getJogadoresNaCasa()) {
-			scene.addOverlay(j.getPeca());
+		for (Jogador jogador : tabuleiro.get(constante.INDICE_DA_CASA_DE_PARTIDA).getJogadoresNaCasa()) {
+			scene.addOverlay(jogador.getPeca());
 		}
 	}
 	public void draw() {
@@ -85,17 +85,13 @@ public class DesenhaComponentesGraficos {
 				+ jogadoresAindaJogando.get(0).getNome() + "\n"
 				+ "Venceu o jogo", "Vencedor", JOptionPane.PLAIN_MESSAGE, new ImageIcon(constante.TROFEU));
 	}
-	public String messageDigiteONomeDoJogador(int id){
+	public String inputDigiteONomeDoJogador(int id){
 		String nome = JOptionPane.showInputDialog(null,"Digite o nome do jogador de ID = " + id);
 		return nome;
 	}
-	public String entradaDados(Jogador jogador){
+	public String inputEntradaDados(Jogador jogador){
 		String dados = JOptionPane.showInputDialog(null,"Digite quantas casas o jogador " + jogador.getNome() + " vai andar!");
 		return dados;
-	}
-	public String qtdJogadoresDesejada(){
-		String qtd = JOptionPane.showInputDialog(null,"Digite a quantidade de jogadores do Jogo!");
-		return qtd;
 	}
 	public void messageNumeroDeEntradaDadosInvalido(){
 		JOptionPane.showMessageDialog(null,"Você digitou o numero dos dados de maneira errada");
@@ -172,29 +168,5 @@ public class DesenhaComponentesGraficos {
 
 	public void setPortfolioButton1(Animation portfolioButton1) {
 		this.portfolioButton1 = portfolioButton1;
-	}
-
-	public Animation getPortfolioButton2() {
-		return portfolioButton2;
-	}
-
-	public void setPortfolioButton2(Animation portfolioButton2) {
-		this.portfolioButton2 = portfolioButton2;
-	}
-
-	public Animation getPortfolioButton3() {
-		return portfolioButton3;
-	}
-
-	public void setPortfolioButton3(Animation portfolioButton3) {
-		this.portfolioButton3 = portfolioButton3;
-	}
-
-	public Animation getPortfolioButton4() {
-		return portfolioButton4;
-	}
-
-	public void setPortfolioButton4(Animation portfolioButton4) {
-		this.portfolioButton4 = portfolioButton4;
 	}
 }

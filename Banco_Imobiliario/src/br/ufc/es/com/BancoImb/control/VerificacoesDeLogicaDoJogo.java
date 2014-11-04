@@ -15,13 +15,12 @@ public class VerificacoesDeLogicaDoJogo implements IVerificacoesDeLogicaDoJogo{
 		} else {
 			possuiSaldo = true;
 		}
-		return possuiSaldo;
-		
+		return possuiSaldo;	
 	}
 	@Override
 	public boolean verificaJogadaIsValida(String resultado){
 		boolean isValida = false;
-		if (!resultado.equals("") && !resultado.equals(null)) {
+		if (!inputDiferentedeNull(resultado) && !resultado.equals("") && !resultado.equals(null)) {
 			isValida = true;
 		}
 		return isValida;	
@@ -45,7 +44,7 @@ public class VerificacoesDeLogicaDoJogo implements IVerificacoesDeLogicaDoJogo{
 	@Override
 	public boolean verificaNomeIsValido(String nomeJogador){
 		boolean nomeIsValido = false;
-		if(!nomeJogador.equals("") && nomeJogador.length() >= 3){
+		if(!inputDiferentedeNull(nomeJogador) && !nomeJogador.equals("") && nomeJogador.length() >= 3){
 			nomeIsValido = true;
 		}
 		return nomeIsValido;
@@ -57,5 +56,13 @@ public class VerificacoesDeLogicaDoJogo implements IVerificacoesDeLogicaDoJogo{
 			isPressed = true;
 		}
 		return isPressed;
+	}
+	@Override
+	public boolean inputDiferentedeNull(String entrada){
+		boolean isNull = false;
+		if(entrada == null){
+			isNull = true;
+		}
+		return isNull;
 	}
 }
