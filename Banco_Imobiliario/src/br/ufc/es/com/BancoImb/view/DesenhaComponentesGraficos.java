@@ -14,6 +14,7 @@ import jplay.Window;
 import br.ufc.es.com.BancoImb.constantes.Constantes;
 import br.ufc.es.com.BancoImb.model.CasaDoTabuleiro;
 import br.ufc.es.com.BancoImb.model.Jogador;
+import br.ufc.es.com.BancoImb.sound.Sound;
 
 
 public class DesenhaComponentesGraficos {
@@ -68,7 +69,7 @@ public class DesenhaComponentesGraficos {
 		jogador.getPeca().y = posicao.y;
 		draw();
 	}
-	public void jogadorNaoPossuiSaldo(Jogador jogador, List<Jogador> jogadoresAindaJogando){
+	public void messageJogadorNaoPossuiSaldo(Jogador jogador, List<Jogador> jogadoresAindaJogando){
 		jogador.getPeca().loadImage(constante.PATH_IMAGE + "dead.png");
 		draw();
 		JOptionPane.showMessageDialog(null, "O jogador "
@@ -78,6 +79,16 @@ public class DesenhaComponentesGraficos {
 				+ jogadoresAindaJogando.size(),
 				"Jogador Sai do Jogo", JOptionPane.PLAIN_MESSAGE, new ImageIcon(constante.PATH_IMAGE + "sad.png"));
 	}
+	public void messageExisteUmCampeao(List<Jogador> jogadoresAindaJogando){
+		new Sound().winSound();
+		JOptionPane.showMessageDialog(null, "O jogador "
+				+ jogadoresAindaJogando.get(0).getNome() + "\n"
+				+ "Venceu o jogo", "Vencedor", JOptionPane.PLAIN_MESSAGE, new ImageIcon(new Constantes().PATH_IMAGE + "win.png"));
+	}
+	public String messageDigiteONomeDoJogador(int id){
+		String nome = JOptionPane.showInputDialog(null,"Digite o nome do jogador de ID = " + id);
+		return nome;
+	}
 	public String entradaDados(Jogador jogador){
 		String dados = JOptionPane.showInputDialog(null,"Digite quantas casas o jogador " + jogador.getNome() + " vai andar!");
 		return dados;
@@ -86,11 +97,11 @@ public class DesenhaComponentesGraficos {
 		String qtd = JOptionPane.showInputDialog(null,"Digite a quantidade de jogadores do Jogo!");
 		return qtd;
 	}
-	public void messageQuantidadeInvalidaJogadores(){
-		JOptionPane.showMessageDialog(null,	"Você digitou uma quantidade invalida de jogadores");
-	}
 	public void messageNumeroDeEntradaDadosInvalido(){
 		JOptionPane.showMessageDialog(null,"Você digitou o numero dos dados de maneira errada");
+	}
+	public void messageNomeInvalido(){
+		JOptionPane.showMessageDialog(null,"Nome não pode ser vazio e deve conter no minimo 3 letras");
 	}
 	public void messageInputVazio(){
 		JOptionPane.showMessageDialog(null,"O input não pode ser vazio");
@@ -101,20 +112,7 @@ public class DesenhaComponentesGraficos {
 		}
 		if(mouse.isOverObject(portfolioButton1) && mouse.isLeftButtonPressed()){
 			exibeLogradourosDoJogador(jogadores.get(1));
-		}
-		if(mouse.isOverObject(portfolioButton2) && mouse.isLeftButtonPressed()){
-			if(jogadores.size() >= 3)
-			exibeLogradourosDoJogador(jogadores.get(2));
-		}
-		if(mouse.isOverObject(portfolioButton3) && mouse.isLeftButtonPressed()){
-			if(jogadores.size() >= 4)
-			exibeLogradourosDoJogador(jogadores.get(3));
-		}
-		if(mouse.isOverObject(portfolioButton4) && mouse.isLeftButtonPressed()){
-			if(jogadores.size() == 5)
-			exibeLogradourosDoJogador(jogadores.get(4));
-		}
-		
+		}		
 	}
 	public void desenhaBotaoPortifolio(){
 		portfolioButton0 = new Animation(constante.PATH_IMAGE + "portfolio.png");
@@ -126,21 +124,6 @@ public class DesenhaComponentesGraficos {
 		portfolioButton1.x = 340;
 		portfolioButton1.y = 140;
 		portfolioButton1.draw();
-		
-		portfolioButton2 = new Animation(constante.PATH_IMAGE + "portfolio.png");
-		portfolioButton2.x = 440;
-		portfolioButton2.y = 140;
-		portfolioButton2.draw();
-		
-		portfolioButton3 = new Animation(constante.PATH_IMAGE + "portfolio.png");
-		portfolioButton3.x = 540;
-		portfolioButton3.y = 140;
-		portfolioButton3.draw();
-		
-		portfolioButton4 = new Animation(constante.PATH_IMAGE + "portfolio.png");
-		portfolioButton4.x = 640;
-		portfolioButton4.y = 140;
-		portfolioButton4.draw();
 	}
 
 	public Window getWindow() {

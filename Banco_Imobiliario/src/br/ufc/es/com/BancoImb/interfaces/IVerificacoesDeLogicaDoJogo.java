@@ -8,7 +8,6 @@ import jplay.Mouse;
 import br.ufc.es.com.BancoImb.model.Jogador;
 
 public interface IVerificacoesDeLogicaDoJogo {
-	public boolean verificaSeExisteVencedor(List<Jogador> jogadoresNoJogo);
 	public boolean verificaSeJogadorAindaPossuiSaldo(Jogador jogador);
 	public boolean verificaJogadaIsValida(String resultado);
 	public boolean verificaTamanhoJogadaIsValida(int resultadoDados);
