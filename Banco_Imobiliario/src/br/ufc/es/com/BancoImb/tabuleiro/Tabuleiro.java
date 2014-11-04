@@ -13,17 +13,67 @@ import br.ufc.es.com.BancoImb.LugradouroEspecial.LogradouroEspecialPartida;
 import br.ufc.es.com.BancoImb.LugradouroEspecial.LogradouroEspecialPrisao;
 import br.ufc.es.com.BancoImb.LugradouroEspecial.LogradouroEspecialSorteReves;
 import br.ufc.es.com.BancoImb.LugradouroEspecial.LogradouroEspecialVaParaAPrisao;
+import br.ufc.es.com.BancoImb.interfaces.ITabuleiro;
 import br.ufc.es.com.BancoImb.model.CasaDoTabuleiro;
 import br.ufc.es.com.BancoImb.model.Jogador;
 
-public class Tabuleiro {
+public class Tabuleiro implements ITabuleiro{
 	private List<CasaDoTabuleiro> tabuleiro;
 	
 	public Tabuleiro() {
 		tabuleiro = new ArrayList<CasaDoTabuleiro>();
 		criarCasasNoTabuleiro();
 	}
-
+	@Override
+	public void adiconarJogadoresACasaDePartida(int indice, Jogador jogador) {
+		tabuleiro.get(indice).adicionarJogadoresNaListaDaCasa(jogador);
+	}
+	@Override
+	public void moverJogador(Jogador jogador, CasaDoTabuleiro destino) {
+		CasaDoTabuleiro origem = getCasaByIndice(jogador.getPosicaoAtualJogador());
+		origem.removerJogador(jogador);
+		jogador.setPosicaoAtualJogador(getIndiceByCasa(destino));
+		destino.adicionarJogadoresNaListaDaCasa(jogador);
+	}
+	@Override
+	public CasaDoTabuleiro getCasaByIndice(int indice) {
+		return tabuleiro.get(indice);
+	}
+	@Override
+	public int getIndiceByCasa(CasaDoTabuleiro casa){
+		int indice = 0;
+		for(int i = 0 ; i < tabuleiro.size() ; i++){
+			if(tabuleiro.get(i).equals(casa)){
+				indice = i;
+			}
+		}
+		return indice;
+	}
+	@Override
+	public Jogador getJogadorByID(int id){
+		Jogador jogador = null;
+		for (int i = 0; i < tabuleiro.size(); i++) {
+			for (Jogador jog : tabuleiro.get(i).getJogadoresNaCasa()) {
+				if (jog.getID() == id) {
+					jogador = jog;
+				}
+			}
+		}	 
+		return jogador;
+	}
+	@Override
+	public CasaDoTabuleiro getCasaByJogador(Jogador jogador){
+		CasaDoTabuleiro casa = null;
+		for(CasaDoTabuleiro c : tabuleiro){
+			for(Jogador j : c.getJogadoresNaCasa()){
+				if(j.equals(jogador)){
+					casa = c;
+				}
+			}
+		}
+		return casa;
+	}
+	@Override
 	public void criarCasasNoTabuleiro() {
 		tabuleiro.add(new LogradouroEspecialPartida("Partida", new Point(13, 12)));														//POSICAO 00
 		tabuleiro.add(new LogradouroComumImovel("Brooklin", 260 , 260, new Point(13, 107)));								//POSICAO 01
@@ -65,51 +115,6 @@ public class Tabuleiro {
 		tabuleiro.add(new LogradouroComumImovel("Avenida Presidente Vargas", 60 , 60, new Point(341, 10)));				//POSICAO 37
 		tabuleiro.add(new LogradouroEspecialSorteReves("Sorte Reves", new Point(253, 10)));												//POSICAO 38
 		tabuleiro.add(new LogradouroComumImovel("Leblon", 100 , 100, new Point(171, 10)));								//POSICAO 39
-	}
-
-	public void adiconarJogadoresACasaDePartida(int indice, Jogador jogador) {
-		tabuleiro.get(indice).adicionarJogadoresNaListaDaCasa(jogador);
-	}
-	public void moverJogador(Jogador jogador, CasaDoTabuleiro destino) {
-		CasaDoTabuleiro origem = getCasaByIndice(jogador.getPosicaoAtualJogador());
-		origem.removerJogador(jogador);
-		jogador.setPosicaoAtualJogador(getIndiceByCasa(destino));
-		destino.adicionarJogadoresNaListaDaCasa(jogador);
-	}
-	
-	public CasaDoTabuleiro getCasaByIndice(int indice) {
-		return tabuleiro.get(indice);
-	}
-	public int getIndiceByCasa(CasaDoTabuleiro casa){
-		int indice = 0;
-		for(int i = 0 ; i < tabuleiro.size() ; i++){
-			if(tabuleiro.get(i).equals(casa)){
-				indice = i;
-			}
-		}
-		return indice;
-	}
-	public Jogador getJogadorByID(int id){
-		Jogador jogador = null;
-		for (int i = 0; i < tabuleiro.size(); i++) {
-			for (Jogador jog : tabuleiro.get(i).getJogadoresNaCasa()) {
-				if (jog.getID() == id) {
-					jogador = jog;
-				}
-			}
-		}	 
-		return jogador;
-	}
-	public CasaDoTabuleiro getCasaByJogador(Jogador jogador){
-		CasaDoTabuleiro casa = null;
-		for(CasaDoTabuleiro c : tabuleiro){
-			for(Jogador j : c.getJogadoresNaCasa()){
-				if(j.equals(jogador)){
-					casa = c;
-				}
-			}
-		}
-		return casa;
 	}
 	public List<CasaDoTabuleiro> getTabuleiro() {
 		return tabuleiro;

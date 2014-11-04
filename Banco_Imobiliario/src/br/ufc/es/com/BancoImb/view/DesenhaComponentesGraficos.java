@@ -36,18 +36,18 @@ public class DesenhaComponentesGraficos {
 		scene.setDrawStartPos(0, 1);
 	}
 
-	public void iniciarPecas(List<CasaDoTabuleiro> tabuleiro) {
+	public void desenhaPecasNoTabuleiro(List<CasaDoTabuleiro> tabuleiro) {
 		for (Jogador j : tabuleiro.get(0).getJogadoresNaCasa()) {
 			scene.addOverlay(j.getPeca());
 		}
 	}
 	public void draw() {
 		scene.draw();
-		desenhaDadoBotao();
-		desenhaPortfolioBotao();
+		desenhaBotaoDados();
+		desenhaBotaoPortifolio();
 		window.update();
 	}
-	public void exibeLogradourosJogador(Jogador jogador){
+	public void exibeLogradourosDoJogador(Jogador jogador){
 		portfolio.setText("");
 		for(CasaDoTabuleiro c : jogador.getMeusLogradouros()){
 			portfolio.append("["+c.getNome()+ " "+ c.getValor() +"]" + "\n");
@@ -56,7 +56,7 @@ public class DesenhaComponentesGraficos {
 		jogador.getSaldo() +"\n" + "Total de propriedades "+ jogador.getMeusLogradouros().size() +
 		"\n" + portfolio.getText(), "Portfolio: " +jogador.getNome(), JOptionPane.PLAIN_MESSAGE, new ImageIcon(constante.PATH_IMAGE + "portfolio.png"));
 	}
-	public void desenhaDadoBotao(){
+	public void desenhaBotaoDados(){
 		botao = new Animation(constante.PATH_IMAGE + "dado.png");
 		botao.x = 800;
 		botao.y = 110;
@@ -86,37 +86,37 @@ public class DesenhaComponentesGraficos {
 		String qtd = JOptionPane.showInputDialog(null,"Digite a quantidade de jogadores do Jogo!");
 		return qtd;
 	}
-	public void quantidadeInvalidaJogadores(){
+	public void messageQuantidadeInvalidaJogadores(){
 		JOptionPane.showMessageDialog(null,	"Você digitou uma quantidade invalida de jogadores");
 	}
-	public void numeroDeEntradaDadosInvalido(){
+	public void messageNumeroDeEntradaDadosInvalido(){
 		JOptionPane.showMessageDialog(null,"Você digitou o numero dos dados de maneira errada");
 	}
-	public void inputVazio(){
+	public void messageInputVazio(){
 		JOptionPane.showMessageDialog(null,"O input não pode ser vazio");
 	}
 	public void ativaBotaoPortifolio(Mouse mouse, List<Jogador> jogadores){
 		if(mouse.isOverObject(portfolioButton0) && mouse.isLeftButtonPressed()){
-			exibeLogradourosJogador(jogadores.get(0));
+			exibeLogradourosDoJogador(jogadores.get(0));
 		}
 		if(mouse.isOverObject(portfolioButton1) && mouse.isLeftButtonPressed()){
-			exibeLogradourosJogador(jogadores.get(1));
+			exibeLogradourosDoJogador(jogadores.get(1));
 		}
 		if(mouse.isOverObject(portfolioButton2) && mouse.isLeftButtonPressed()){
 			if(jogadores.size() >= 3)
-			exibeLogradourosJogador(jogadores.get(2));
+			exibeLogradourosDoJogador(jogadores.get(2));
 		}
 		if(mouse.isOverObject(portfolioButton3) && mouse.isLeftButtonPressed()){
 			if(jogadores.size() >= 4)
-			exibeLogradourosJogador(jogadores.get(3));
+			exibeLogradourosDoJogador(jogadores.get(3));
 		}
 		if(mouse.isOverObject(portfolioButton4) && mouse.isLeftButtonPressed()){
 			if(jogadores.size() == 5)
-			exibeLogradourosJogador(jogadores.get(4));
+			exibeLogradourosDoJogador(jogadores.get(4));
 		}
 		
 	}
-	public void desenhaPortfolioBotao(){
+	public void desenhaBotaoPortifolio(){
 		portfolioButton0 = new Animation(constante.PATH_IMAGE + "portfolio.png");
 		portfolioButton0.x = 240;
 		portfolioButton0.y = 140;

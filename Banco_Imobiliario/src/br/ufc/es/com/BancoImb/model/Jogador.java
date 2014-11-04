@@ -3,7 +3,9 @@ package br.ufc.es.com.BancoImb.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Jogador{
+import br.ufc.es.com.BancoImb.interfaces.IJogador;
+
+public class Jogador implements IJogador{
 	private static int ultimoID = 0;
 	private int id;
 	private String nome;
@@ -20,25 +22,31 @@ public class Jogador{
 		this.posicaoAtualJogador = 0;
 		this.peca = peca;
 	}
+	@Override
 	public void comprar(CasaDoTabuleiro logradouro) {
 		logradouro.setProprietario(this);
 		logradouro.setVendido(true);
 		conta.sacar(logradouro.getValor());
-		adicionarNovoLogradouroALista(logradouro);
+		adicionarLogradouroAOPortifolio(logradouro);
 	}
+	@Override
 	public void pagarTaxa(CasaDoTabuleiro logradouro) {
 		conta.sacar(logradouro.getTaxa());
 	}
+	@Override
 	public void pagarTaxa(float taxa) {
 		conta.sacar(taxa);
 	}
+	@Override
 	public void receberTaxa(CasaDoTabuleiro logradouro) {
 		conta.depositar(logradouro.getTaxa());
 	}
+	@Override
 	public void receberTaxa(float taxa) {
 		conta.depositar(taxa);
 	}
-	public void adicionarNovoLogradouroALista(CasaDoTabuleiro logradouro){
+	@Override
+	public void adicionarLogradouroAOPortifolio(CasaDoTabuleiro logradouro){
 		meusLogradouros.add(logradouro);
 	}
 	public int quantidadeLogradouros(){
