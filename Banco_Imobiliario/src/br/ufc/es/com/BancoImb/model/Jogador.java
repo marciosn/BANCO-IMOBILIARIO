@@ -9,7 +9,7 @@ public class Jogador{
 	private String nome;
 	private ContaBancaria conta;
 	private List<CasaDoTabuleiro> meusLogradouros;
-	private int posicaoJogador;
+	private int posicaoAtualJogador;
 	private PecaJogador peca;
 	
 	public Jogador(String nome, ContaBancaria conta, PecaJogador peca) {
@@ -17,7 +17,7 @@ public class Jogador{
 		this.conta = conta;
 		meusLogradouros = new ArrayList<CasaDoTabuleiro>();
 		this.id = ultimoID++;
-		this.posicaoJogador = 0;
+		this.posicaoAtualJogador = 0;
 		this.peca = peca;
 	}
 	public void comprar(CasaDoTabuleiro logradouro) {
@@ -53,11 +53,11 @@ public class Jogador{
 	public int getID(){
 		return id;
 	}
-	public int getPosicaoJogador() {
-		return posicaoJogador;
+	public int getPosicaoAtualJogador() {
+		return posicaoAtualJogador;
 	}
-	public void setPosicaoJogador(int posicaoJogador) {
-		this.posicaoJogador = posicaoJogador;
+	public void setPosicaoAtualJogador(int posicaoAtualJogador) {
+		this.posicaoAtualJogador = posicaoAtualJogador;
 	}
 	public PecaJogador getPeca() {
 		return peca;

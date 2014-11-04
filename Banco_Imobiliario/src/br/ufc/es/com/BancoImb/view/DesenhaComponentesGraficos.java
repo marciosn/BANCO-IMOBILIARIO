@@ -37,8 +37,7 @@ public class DesenhaComponentesGraficos {
 	}
 
 	public void iniciarPecas(List<CasaDoTabuleiro> tabuleiro) {
-		for (Jogador j : tabuleiro.get(0)
-				.getJogadoresNaCasa()) {
+		for (Jogador j : tabuleiro.get(0).getJogadoresNaCasa()) {
 			scene.addOverlay(j.getPeca());
 		}
 	}
@@ -79,7 +78,6 @@ public class DesenhaComponentesGraficos {
 				+ jogadoresAindaJogando.size(),
 				"Jogador Sai do Jogo", JOptionPane.PLAIN_MESSAGE, new ImageIcon(constante.PATH_IMAGE + "sad.png"));
 	}
-
 	public String entradaDados(Jogador jogador){
 		String dados = JOptionPane.showInputDialog(null,"Digite quantas casas o jogador " + jogador.getNome() + " vai andar!");
 		return dados;

@@ -4,10 +4,6 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
-import jplay.Keyboard;
-import jplay.Mouse;
-import jplay.Scene;
-import jplay.Window;
 import br.ufc.es.com.BancoImb.LogradouroComum.LogradouroComumEmpresa;
 import br.ufc.es.com.BancoImb.LogradouroComum.LogradouroComumImovel;
 import br.ufc.es.com.BancoImb.LugradouroEspecial.LogradouroEspecialImpostoDeRenda;
@@ -22,8 +18,7 @@ import br.ufc.es.com.BancoImb.model.Jogador;
 
 public class Tabuleiro {
 	private List<CasaDoTabuleiro> tabuleiro;
-	private int indiceProximaCasa;
-
+	
 	public Tabuleiro() {
 		tabuleiro = new ArrayList<CasaDoTabuleiro>();
 		criarCasasNoTabuleiro();
@@ -72,48 +67,16 @@ public class Tabuleiro {
 		tabuleiro.add(new LogradouroComumImovel("Leblon", 100 , 100, new Point(171, 10)));								//POSICAO 39
 	}
 
-	public void adiconarJogadoresACasa(int indice, Jogador jogador) {
-		tabuleiro.get(indice).adicionarJogadoresNaLista(jogador);
+	public void adiconarJogadoresACasaDePartida(int indice, Jogador jogador) {
+		tabuleiro.get(indice).adicionarJogadoresNaListaDaCasa(jogador);
 	}
 	public void moverJogador(Jogador jogador, CasaDoTabuleiro destino) {
-		CasaDoTabuleiro origem = getCasaByIndice(jogador.getPosicaoJogador());
-		
+		CasaDoTabuleiro origem = getCasaByIndice(jogador.getPosicaoAtualJogador());
 		origem.removerJogador(jogador);
-		jogador.setPosicaoJogador(getIndiceByCasa(destino));
-		destino.adicionarJogadoresNaLista(jogador);
-		
-		System.out.println("\n");
-		System.out.println("<<<<<<<<<<==============================================================================>>>>>>>>>>");
-		
-		System.out.println("\t" + "O Jogador "+jogador.getNome()+ " foi movido da casa " +
-				getIndiceByCasa(origem)+ " para a casa " + getIndiceByCasa(destino) + " | a casa " +
-				destino.getNome() + " possui " + destino.getNumJogadoresCasa() + " jogadores");
-		
-		System.out.println("\t" + "Agora o jogador esta na casa de posicao: " + jogador.getPosicaoJogador());
-		
-		System.out.println("\t" + "Posicao Origem: " + origem.getPosicao());
-		System.out.println("\t" + "Posicao Destino: " + destino.getPosicao());
-		
-	}
-	public void removeJogadorDefinitivo(Jogador jogador){
-		try {
-			getCasaByJogador(jogador).getJogadoresNaCasa().remove(jogador);
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-		}
-		
+		jogador.setPosicaoAtualJogador(getIndiceByCasa(destino));
+		destino.adicionarJogadoresNaListaDaCasa(jogador);
 	}
 	
-	public int calculaIndiceProximaCasa(int indiceAtual, int resultDado) {
-		indiceProximaCasa = indiceAtual + resultDado;
-		if(indiceProximaCasa > 39){
-			int percent = indiceProximaCasa % 40;
-			indiceProximaCasa = percent;
-		}
-		return indiceProximaCasa;
-	}
-
 	public CasaDoTabuleiro getCasaByIndice(int indice) {
 		return tabuleiro.get(indice);
 	}
@@ -126,15 +89,6 @@ public class Tabuleiro {
 		}
 		return indice;
 	}
-	
-	public List<CasaDoTabuleiro> getTabuleiro() {
-		return tabuleiro;
-	}
-
-	public void setTabuleiro(List<CasaDoTabuleiro> tabuleiro) {
-		this.tabuleiro = tabuleiro;
-	}
-	
 	public Jogador getJogadorByID(int id){
 		Jogador jogador = null;
 		for (int i = 0; i < tabuleiro.size(); i++) {
@@ -147,28 +101,21 @@ public class Tabuleiro {
 		return jogador;
 	}
 	public CasaDoTabuleiro getCasaByJogador(Jogador jogador){
-		CasaDoTabuleiro casaT = null;
-		for(CasaDoTabuleiro casa : tabuleiro){
-			for(Jogador j : casa.getJogadoresNaCasa()){
+		CasaDoTabuleiro casa = null;
+		for(CasaDoTabuleiro c : tabuleiro){
+			for(Jogador j : c.getJogadoresNaCasa()){
 				if(j.equals(jogador)){
-					casaT = casa;
+					casa = c;
 				}
 			}
 		}
-		
-		return casaT;
+		return casa;
 	}
-	
-	public void imprimiTabuleiro() {
-		for (CasaDoTabuleiro c : tabuleiro) {
-			System.out.println(c.getNome() + " || " + c.getNumJogadoresCasa());
-		}
-	}
-	
-	public void imprimirJogadoresNaCasa(int indice){
-		for(Jogador jogador : getCasaByIndice(indice).getJogadoresNaCasa()){
-			System.out.println("Nome: " + jogador.getNome() + " ID: " +jogador.getID());
-		}
+	public List<CasaDoTabuleiro> getTabuleiro() {
+		return tabuleiro;
 	}
 
+	public void setTabuleiro(List<CasaDoTabuleiro> tabuleiro) {
+		this.tabuleiro = tabuleiro;
+	}
 }

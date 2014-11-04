@@ -17,7 +17,7 @@ public class CasaDoTabuleiro {
 		jogadoresNaCasa = new ArrayList<Jogador>();
 	}
 
-	public void adicionarJogadoresNaLista(Jogador jogador){
+	public void adicionarJogadoresNaListaDaCasa(Jogador jogador){
 		jogadoresNaCasa.add(jogador);
 	}
 	

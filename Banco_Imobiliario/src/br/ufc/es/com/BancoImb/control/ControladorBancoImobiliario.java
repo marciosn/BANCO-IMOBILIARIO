@@ -29,15 +29,17 @@ public class ControladorBancoImobiliario {
 	private CasaDoTabuleiro destino;
 	private EfeitoDaCasa efeito;
 	private Constantes constante;
-	private MudarJogadorDaVez mudarVez;
+	private CalculaIndiceJogadorDaVez calculaProximoJogador;
 	private DesenhaComponentesGraficos desenha;
-	private RulesGame rules;
+	private VerificacoesDeLogicaDoJogo verifica;
+	private CalcularIndiceProximaCasa calculaProximaCasa;
 
 	public ControladorBancoImobiliario() {
 		constante = new Constantes();
-		mudarVez = new MudarJogadorDaVez();
+		calculaProximoJogador = new CalculaIndiceJogadorDaVez();
 		desenha = new DesenhaComponentesGraficos();
-		rules = new RulesGame();
+		verifica = new VerificacoesDeLogicaDoJogo();
+		calculaProximaCasa = new CalcularIndiceProximaCasa();
 
 		tabuleiro = new Tabuleiro();
 		jogadores = new ArrayList<Jogador>();
@@ -48,43 +50,24 @@ public class ControladorBancoImobiliario {
 		iniciarJogo();
 	}
 
-	public void InserindoJogadorNoJogo(Jogador jogador) {
+	public void InserirJogadorNaListaDeJogadores(Jogador jogador) {
 		jogadores.add(jogador);
 	}
-	
-	public void adicionarJogadoresNaCasaDePartida(List<Jogador> jogadores) {
-		for (Jogador j : jogadores) {
-			jogadoresAindaJogando.add(j);
-			tabuleiro.adiconarJogadoresACasa(0, j);
-			System.out.println("Classe: Banco Imobiliario"+ " -> Inserindo o jogador " + j.getNome() + " ID = "	+ j.getID());
-		}
-		jogadorDaVEZ = jogadores.get(0);
-	}
-
-	public void moverJogador(Jogador jogador, CasaDoTabuleiro casa) {
-		tabuleiro.moverJogador(jogador, casa);
-	}
-	
-	public void removerJogadorQueNaoPossuiSaldo(Jogador jogador){
-		tabuleiro.removeJogadorDefinitivo(jogador);
-	}
-
 	public void inserirJogador() {
-		
 		String qtd = desenha.qtdJogadoresDesejada();
 		int qtd_jogadores = Integer.valueOf(qtd);
-		if (rules.verificaQuantidadeJogadoresIsValida(qtd_jogadores)) {
+		if (verifica.verificaQuantidadeJogadoresIsValida(qtd_jogadores)) {
 			for (int i = 0; i < qtd_jogadores;) {
 				String nomeJogador = JOptionPane.showInputDialog(null,"Digite o nome do jogador de ID = " + i);
-				if(rules.verificaNomeIsValido(nomeJogador)){
+				if(verifica.verificaNomeIsValido(nomeJogador)){
 				String peca = "peca" + jogadores.size() + ".png";
 				System.out.println(peca);
-				InserindoJogadorNoJogo(new Jogador(nomeJogador, new ContaBancaria(500), new PecaJogador(constante.PATH_IMAGE + peca)));
+				InserirJogadorNaListaDeJogadores(new Jogador(nomeJogador, new ContaBancaria(500), new PecaJogador(constante.PATH_IMAGE + peca)));
 				i++;
 				}
 			}
-			adicionarJogadoresNaCasaDePartida(jogadores);
-			
+			adicionarListaDeJogadoresNaCasaDePartida(jogadores);
+			iniciaJogadorDaVez();
 			desenha.iniciarPecas(tabuleiro.getTabuleiro());
 		} else {
 			desenha.quantidadeInvalidaJogadores();
@@ -92,56 +75,58 @@ public class ControladorBancoImobiliario {
 		}
 
 	}
-	public void mudaJogadorVEZ(int IdJogadorAtual, List<Jogador> jogadores){
-		setJogadorNaVEZ(tabuleiro.getJogadorByID(mudarVez.mudarVezDeJogar(IdJogadorAtual, jogadores)));
+	public void adicionarListaDeJogadoresNaCasaDePartida(List<Jogador> jogadores) {
+		for (Jogador j : jogadores) {
+			jogadoresAindaJogando.add(j);
+			tabuleiro.adiconarJogadoresACasaDePartida(0, j);
+			System.out.println("Classe: Banco Imobiliario"+ " -> Inserindo o jogador " + j.getNome() + " ID = "	+ j.getID());
+		}
 	}
-
+	public void iniciaJogadorDaVez(){
+		jogadorDaVEZ = jogadores.get(0);
+	}
+	public void moverJogador(Jogador jogador, CasaDoTabuleiro casa) {
+		tabuleiro.moverJogador(jogador, casa);
+	}
+	public void mudaJogadorDaVez(int IdJogadorAtual, List<Jogador> jogadores){
+		setJogadorDaVEZ(tabuleiro.getJogadorByID(calculaProximoJogador.calculaIndiceProximoJogador(IdJogadorAtual, jogadores)));
+	}
 	public void iniciarJogo() {
 		while (executando) {
-			if(rules.verificaIsPressed(desenha.getMouse(), desenha.getBotao())){
+			if(verifica.verificaIsPressed(desenha.getMouse(), desenha.getBotao())){
 				
-			if (rules.verificaSeExisteVencedor(jogadoresAindaJogando)) {
+			if (verifica.verificaSeExisteVencedor(jogadoresAindaJogando)) {
 				executando = false;
 				desenha.getWindow().exit();
 			}
 			
 			desenha.draw();
-			
-			System.out.println(" A vez de jogar é do jogador "
-					+ jogadorDaVEZ.getNome() + " que possui ID: "
-					+ jogadorDaVEZ.getID());
-
 			String resultado = desenha.entradaDados(jogadorDaVEZ);
 
-			if (rules.verificaJogadaIsValida(resultado)) {
+			if (verifica.verificaJogadaIsValida(resultado)) {
 				int resultadoDados = Integer.valueOf(resultado);
-				if (rules.verificaTamanhoJogadaIsValida(resultadoDados)) {
+				if (verifica.verificaTamanhoJogadaIsValida(resultadoDados)) {
 					
-					int indiceCasaDestino = tabuleiro.calculaIndiceProximaCasa(jogadorDaVEZ.getPosicaoJogador(), resultadoDados);
-					
+					int indiceCasaDestino = calculaProximaCasa.obterIndiceProximaCasa(jogadorDaVEZ.getPosicaoAtualJogador(), resultadoDados);
 					destino = tabuleiro.getCasaByIndice(indiceCasaDestino);
 					
 					moverJogador(jogadorDaVEZ, destino);
 					desenha.moverPecaJogador(destino, jogadorDaVEZ);
 					efeito.executarComportamento(jogadorDaVEZ, destino);
 
-					if (rules.verificaSeJogadorAindaPossuiSaldo(jogadorDaVEZ)) {
-						mudaJogadorVEZ(jogadorDaVEZ.getID(), jogadores);
+					if (verifica.verificaSeJogadorAindaPossuiSaldo(jogadorDaVEZ)) {
+						mudaJogadorDaVez(jogadorDaVEZ.getID(), jogadores);
 					}else{
 						jogadoresAindaJogando.remove(jogadorDaVEZ);
 						jogadores.remove(jogadorDaVEZ);
 						
 						desenha.jogadorNaoPossuiSaldo(jogadorDaVEZ, jogadoresAindaJogando);
-						mudaJogadorVEZ(jogadorDaVEZ.getID(), jogadores);
+						mudaJogadorDaVez(jogadorDaVEZ.getID(), jogadores);
 					}
-
-				} else {
+				} else
 					desenha.numeroDeEntradaDadosInvalido();
-				}
-			}else{
+			}else
 				desenha.inputVazio();
-			}
-			
 		}
 			desenha.ativaBotaoPortifolio(desenha.getMouse(), jogadores);		
 		}
@@ -155,11 +140,11 @@ public class ControladorBancoImobiliario {
 		return tabuleiro;
 	}
 
-	public Jogador getJogadorNaVEZ() {
+	public Jogador getJogadorDaVEZ() {
 		return jogadorDaVEZ;
 	}
 
-	public void setJogadorNaVEZ(Jogador jogadorDaVEZ) {
+	public void setJogadorDaVEZ(Jogador jogadorDaVEZ) {
 		this.jogadorDaVEZ = jogadorDaVEZ;
 	}
 }

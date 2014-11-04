@@ -11,9 +11,10 @@ import jplay.Sound;
 import br.ufc.es.com.BancoImb.constantes.Constantes;
 import br.ufc.es.com.BancoImb.model.Jogador;
 
-public class RulesGame {
+public class VerificacoesDeLogicaDoJogo {
+	
 	private br.ufc.es.com.BancoImb.sound.Sound som;
-	public RulesGame() {
+	public VerificacoesDeLogicaDoJogo() {
 		som = new br.ufc.es.com.BancoImb.sound.Sound();
 	}
 	
@@ -24,8 +25,7 @@ public class RulesGame {
 			som.winSound();
 			JOptionPane.showMessageDialog(null, "O jogador "
 					+ jogadoresNoJogo.get(0).getNome() + "\n"
-					+ "Venceu o jogo", "Vencedor", JOptionPane.PLAIN_MESSAGE, new ImageIcon(new Constantes().PATH_IMAGE + "win.png"));
-			
+					+ "Venceu o jogo", "Vencedor", JOptionPane.PLAIN_MESSAGE, new ImageIcon(new Constantes().PATH_IMAGE + "win.png"));		
 		}
 		return existeVencedor;
 	}

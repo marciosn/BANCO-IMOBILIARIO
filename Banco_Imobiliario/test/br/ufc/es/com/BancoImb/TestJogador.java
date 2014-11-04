@@ -1,4 +1,4 @@
-package br.com.ufc.es.BancoImb;
+package br.ufc.es.com.BancoImb;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
