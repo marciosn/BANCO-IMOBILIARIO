@@ -27,6 +27,9 @@ public class DesenhaComponentesGraficos {
 	private Constantes constante;
 	
 	public DesenhaComponentesGraficos() {
+	}
+	
+	public void instanciaObjetos(){
 		constante = new Constantes();
 		window = new Window(1080, 720);
 		window.setCursor( window.createCustomCursor(constante.MOUSE) );
@@ -42,7 +45,7 @@ public class DesenhaComponentesGraficos {
 			scene.addOverlay(jogador.getPeca());
 		}
 	}
-	public void draw() {
+	public void atualizaTabuleiro() {
 		scene.draw();
 		desenhaBotaoDados();
 		desenhaBotaoPortifolio();
@@ -53,9 +56,15 @@ public class DesenhaComponentesGraficos {
 		for(CasaDoTabuleiro c : jogador.getMeusLogradouros()){
 			portfolio.append("["+c.getNome()+ " "+ c.getValor() +"]" + "\n");
 		}
-		JOptionPane.showMessageDialog(null," Saldo Atual: "+
-		jogador.getSaldo() +"\n" + "Total de propriedades "+ jogador.getMeusLogradouros().size() +
-		"\n" + portfolio.getText(), "Portfolio: " +jogador.getNome(), JOptionPane.PLAIN_MESSAGE, new ImageIcon(constante.PORTFOLIO));
+		JOptionPane.showMessageDialog(null," Saldo Atual: "
+				+ jogador.getSaldo() 
+				+"\n" + "Total de propriedades "
+				+ jogador.getMeusLogradouros().size() 
+				+"\n" + portfolio.getText(),
+				"Portfolio: " 
+				+jogador.getNome(),
+				JOptionPane.PLAIN_MESSAGE,
+				new ImageIcon(constante.PORTFOLIO));
 	}
 	public void desenhaBotaoDados(){
 		botao = new Animation(constante.DADOS);
@@ -67,41 +76,21 @@ public class DesenhaComponentesGraficos {
 		Point posicao = destino.getPosicao();
 		jogador.getPeca().x = posicao.x;
 		jogador.getPeca().y = posicao.y;
-		draw();
+		atualizaTabuleiro();
 	}
 	public void messageJogadorNaoPossuiSaldo(Jogador jogador, List<Jogador> jogadoresAindaJogando){
 		jogador.getPeca().loadImage(constante.FORA_DO_JOGO);
-		draw();
+		atualizaTabuleiro();
 		JOptionPane.showMessageDialog(null, "O jogador "
 				+ jogador.getNome() + "\n"
 				+ "Não possui mais saldo e vai deixar o jogo"
 				+ "\n" + "Exite agora "
 				+ jogadoresAindaJogando.size(),
-				"Jogador Sai do Jogo", JOptionPane.PLAIN_MESSAGE, new ImageIcon(constante.TRISTE));
+				"Jogador Sai do Jogo",
+				JOptionPane.PLAIN_MESSAGE,
+				new ImageIcon(constante.TRISTE));
 	}
-	public void messageExisteUmCampeao(List<Jogador> jogadoresAindaJogando){
-		new Sound().winSound();
-		JOptionPane.showMessageDialog(null, "O jogador "
-				+ jogadoresAindaJogando.get(0).getNome() + "\n"
-				+ "Venceu o jogo", "Vencedor", JOptionPane.PLAIN_MESSAGE, new ImageIcon(constante.TROFEU));
-	}
-	public String inputDigiteONomeDoJogador(int id){
-		String nome = JOptionPane.showInputDialog(null,"Digite o nome do jogador de ID = " + id);
-		return nome;
-	}
-	public String inputEntradaDados(Jogador jogador){
-		String dados = JOptionPane.showInputDialog(null,"Digite quantas casas o jogador " + jogador.getNome() + " vai andar!");
-		return dados;
-	}
-	public void messageNumeroDeEntradaDadosInvalido(){
-		JOptionPane.showMessageDialog(null,"Você digitou o numero dos dados de maneira errada");
-	}
-	public void messageNomeInvalido(){
-		JOptionPane.showMessageDialog(null,"Nome não pode ser vazio e deve conter no minimo 3 letras");
-	}
-	public void messageInputVazio(){
-		JOptionPane.showMessageDialog(null,"O input não pode ser vazio");
-	}
+	
 	public void ativaBotaoPortifolio(Mouse mouse, List<Jogador> jogadores){
 		if(mouse.isOverObject(portfolioButton0) && mouse.isLeftButtonPressed()){
 			exibeLogradourosDoJogador(jogadores.get(0));
@@ -121,7 +110,59 @@ public class DesenhaComponentesGraficos {
 		portfolioButton1.y = 140;
 		portfolioButton1.draw();
 	}
-
+	public String inputDigiteONomeDoJogador(int id){
+		String nome = JOptionPane.showInputDialog(null,"Digite o nome do jogador de ID = " + id);
+		return nome;
+	}
+	public String inputEntradaDados(Jogador jogador){
+		String dados = JOptionPane.showInputDialog(null,"Digite quantas casas o jogador " 
+				+jogador.getNome()
+				+ " vai andar!");
+		return dados;
+	}
+	public int inputRepostaDoJogadorSobreCompraLogradouro(String nomeLogradouro){
+		int respostaDoJogador = JOptionPane.showConfirmDialog(null, "Essa casa não possui proprietário," 
+				+" quer compra-la?",
+				nomeLogradouro,
+				JOptionPane.YES_NO_OPTION);
+		
+		return respostaDoJogador;
+	}
+	public void messageExisteUmCampeao(List<Jogador> jogadoresAindaJogando){
+		new Sound().winSound();
+		JOptionPane.showMessageDialog(null, "O jogador "
+				+ jogadoresAindaJogando.get(0).getNome() + "\n"
+				+ "Venceu o jogo",
+				"Vencedor",
+				JOptionPane.PLAIN_MESSAGE,
+				new ImageIcon(constante.TROFEU));
+	}
+	public void messageNumeroDeEntradaDadosInvalido(){
+		JOptionPane.showMessageDialog(null,"Você digitou o numero dos dados de maneira errada");
+	}
+	public void messageNomeInvalido(){
+		JOptionPane.showMessageDialog(null,"Nome não pode ser vazio e deve conter no minimo 3 letras");
+	}
+	public void messageInputVazio(){
+		JOptionPane.showMessageDialog(null,"O input não pode ser vazio");
+	}
+	public void messageJogadorComprouLogradouro(Jogador jogador, String nomeLogradouro){
+		JOptionPane.showMessageDialog(null, "O jogador " 
+				+ jogador.getNome() 
+				+ " comprou a casa " 
+				+"["+ nomeLogradouro +"]"+ "\n" 
+				+"O novo saldo do jogador é: " 
+				+ jogador.getSaldo());
+	}
+	public void messageJogadorPagouTaxa(Jogador jogador, Jogador proprietario){
+		JOptionPane.showMessageDialog(null, "Esta casa é de propriedade do jogador " 
+				+ proprietario.getNome() +"\n" 
+				+ "Você precisa pagar uma taxa por passar aqui, seu novo saldo é: " 
+				+ jogador.getSaldo() + "\n" 
+				+ proprietario.getNome() 
+				+ " agora possui saldo = " 
+				+ proprietario.getSaldo());
+	}
 	public Window getWindow() {
 		return window;
 	}

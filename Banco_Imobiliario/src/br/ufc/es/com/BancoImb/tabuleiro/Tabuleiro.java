@@ -1,7 +1,6 @@
 package br.ufc.es.com.BancoImb.tabuleiro;
 
 import java.awt.Point;
-import java.util.ArrayList;
 import java.util.List;
 
 import br.ufc.es.com.BancoImb.LogradouroComum.LogradouroComumEmpresa;
@@ -20,8 +19,8 @@ import br.ufc.es.com.BancoImb.model.Jogador;
 public class Tabuleiro implements ITabuleiro{
 	private List<CasaDoTabuleiro> tabuleiro;
 	
-	public Tabuleiro() {
-		tabuleiro = new ArrayList<CasaDoTabuleiro>();
+	public Tabuleiro(List<CasaDoTabuleiro> tabuleiroList) {
+		tabuleiro = tabuleiroList;
 		criarCasasNoTabuleiro();
 	}
 	@Override
@@ -65,8 +64,8 @@ public class Tabuleiro implements ITabuleiro{
 	public CasaDoTabuleiro getCasaByJogador(Jogador jogador){
 		CasaDoTabuleiro casa = null;
 		for(CasaDoTabuleiro c : tabuleiro){
-			for(Jogador j : c.getJogadoresNaCasa()){
-				if(j.equals(jogador)){
+			for(Jogador jog : c.getJogadoresNaCasa()){
+				if(jog.equals(jogador)){
 					casa = c;
 				}
 			}

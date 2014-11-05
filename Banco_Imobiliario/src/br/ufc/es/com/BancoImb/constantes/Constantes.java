@@ -2,6 +2,8 @@ package br.ufc.es.com.BancoImb.constantes;
 
 import java.io.File;
 
+import br.ufc.es.com.BancoImb.tabuleiro.Tabuleiro;
+
 public class Constantes {
 	//cenario
 	public final String CENARIO = "resources" + File.separator + "cenario" + File.separator + "scene2.scn";
@@ -28,5 +30,18 @@ public class Constantes {
 	public final String PECA = "peca";
 	public final String FORMATO_IMAGEM = ".png";
 	public final int ESPACAMENTO_HORIZONTAL = 20;
+	
+	//instancias
+	private Tabuleiro tabuleiro;
+
+	public Tabuleiro getTabuleiro() {
+		return tabuleiro;
+	}
+
+	public void setTabuleiro(Tabuleiro tabuleiro) {
+		this.tabuleiro = tabuleiro;
+	}
+	
+	
 
 }

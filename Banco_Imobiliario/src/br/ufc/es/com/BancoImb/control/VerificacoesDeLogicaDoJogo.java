@@ -50,7 +50,7 @@ public class VerificacoesDeLogicaDoJogo implements IVerificacoesDeLogicaDoJogo{
 		return nomeIsValido;
 	}
 	@Override
-	public boolean verificaIsPressed(Mouse mouse, Animation botao){
+	public boolean verificaIsPressionado(Mouse mouse, Animation botao){
 		boolean isPressed = false;
 		if(mouse.isOverObject(botao) && mouse.isLeftButtonPressed()){
 			isPressed = true;
