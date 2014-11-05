@@ -25,7 +25,7 @@ public class LogradouroEspecialVaParaAPrisao extends LogradouroEspecial implemen
 	public void ativarEfeito(Jogador jogador) {
 		JOptionPane.showMessageDialog(null, "Mover Jogador");
 		constante.getTabuleiro().moverJogador(jogador, prisao);
-		desenha.moverPecaJogador(prisao, jogador);
+		desenha.moverPecaJogador(jogador, prisao);
 	}
 
 }

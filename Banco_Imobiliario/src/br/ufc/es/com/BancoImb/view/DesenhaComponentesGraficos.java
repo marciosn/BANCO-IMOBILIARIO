@@ -72,7 +72,7 @@ public class DesenhaComponentesGraficos {
 		botao.y = 110;
 		botao.draw();
 	}
-	public void moverPecaJogador(CasaDoTabuleiro destino, Jogador jogador){
+	public void moverPecaJogador(Jogador jogador, CasaDoTabuleiro destino){
 		Point posicao = destino.getPosicao();
 		jogador.getPeca().x = posicao.x;
 		jogador.getPeca().y = posicao.y;

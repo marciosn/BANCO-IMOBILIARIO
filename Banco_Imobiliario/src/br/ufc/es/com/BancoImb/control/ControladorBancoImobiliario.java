@@ -44,15 +44,6 @@ public class ControladorBancoImobiliario {
 		inserirJogador();
 		iniciarJogo();
 	}
-	public void instanciaComponentesGraficos(){
-		desenha.instanciaObjetos();
-	}
-	public void InserirJogadorNaListaDeJogadores(Jogador jogador) {
-		repo.getJogadores().add(jogador);
-	}
-	public void salvarIntaciaTabuleiro(){
-		constante.setTabuleiro(tabuleiro);
-	}
 	public void inserirJogador() {
 		for (int i = 0; i < constante.QUANTIDADE_jOGADORES;) {
 			String nomeJogador = desenha.inputDigiteONomeDoJogador(i);
@@ -62,7 +53,7 @@ public class ControladorBancoImobiliario {
 						new Jogador(nomeJogador,
 						new ContaBancaria(500), 
 						new PecaJogador(constante.PATH_IMAGE + peca)));
-			i++;
+		i++;
 			}else
 			desenha.messageNomeInvalido();
 		}
@@ -70,20 +61,14 @@ public class ControladorBancoImobiliario {
 		iniciaJogadorDaVez();
 		desenha.desenhaPecasNoTabuleiro(tabuleiro.getTabuleiro());
 	}
+	public void InserirJogadorNaListaDeJogadores(Jogador jogador) {
+		repo.getJogadores().add(jogador);
+	}
 	public void adicionarListaDeJogadoresNaCasaDePartida(List<Jogador> jogadores) {
 		for (Jogador jogador : jogadores) {
 			repo.getJogadoresAindaJogando().add(jogador);
 			tabuleiro.adiconarJogadoresACasaDePartida(constante.INDICE_DA_CASA_DE_PARTIDA, jogador);
 		}
-	}
-	public void iniciaJogadorDaVez(){
-		jogadorDaVEZ = repo.getJogadores().get(constante.JOGADOR_NA_PRIMEIRA_POSICAO_DA_LISTA);
-	}
-	public void moverJogador(Jogador jogador, CasaDoTabuleiro casa) {
-		tabuleiro.moverJogador(jogador, casa);
-	}
-	public void mudaJogadorDaVez(int IdJogadorAtual, List<Jogador> jogadores){
-		setJogadorDaVEZ(tabuleiro.getJogadorByID(calculaIndiceJogador.calculaIndiceProximoJogador(IdJogadorAtual, jogadores)));
 	}
 	public void iniciarJogo() {
 		CasaDoTabuleiro destino;
@@ -101,8 +86,6 @@ public class ControladorBancoImobiliario {
 					destino = tabuleiro.getCasaByIndice(indiceCasaDestino);
 					
 					moverJogador(jogadorDaVEZ, destino);
-					desenha.moverPecaJogador(destino, jogadorDaVEZ);
-					efeito.ativarEfeito(jogadorDaVEZ, destino);
 
 					if (verifica.verificaSeJogadorAindaPossuiSaldo(jogadorDaVEZ)) {
 						mudaJogadorDaVez(jogadorDaVEZ.getID(), repo.getJogadores());
@@ -121,15 +104,32 @@ public class ControladorBancoImobiliario {
 		}
 		desenha.getWindow().exit();
 	}
-
+	public void salvarIntaciaTabuleiro(){
+		constante.setTabuleiro(tabuleiro);
+	}
+	public void instanciaComponentesGraficos(){
+		desenha.instanciaObjetos();
+	}
+	public void iniciaJogadorDaVez(){
+		jogadorDaVEZ = repo.getJogadores().get(constante.JOGADOR_NA_PRIMEIRA_POSICAO_DA_LISTA);
+	}
+	public void moverJogador(Jogador jogador, CasaDoTabuleiro destino) {
+		tabuleiro.moverJogador(jogador, destino);
+		desenha.moverPecaJogador(jogador, destino);
+		ativarEfeitoDaCasa(jogador, destino);
+	}
+	public void ativarEfeitoDaCasa(Jogador jogador, CasaDoTabuleiro destino){
+		efeito.ativarEfeito(jogador, destino);
+	}
+	public void mudaJogadorDaVez(int IdJogadorAtual, List<Jogador> jogadores){
+		setJogadorDaVEZ(tabuleiro.getJogadorByID(calculaIndiceJogador.calculaIndiceProximoJogador(IdJogadorAtual, jogadores)));
+	}
 	public Tabuleiro getTabuleiroJogo() {
 		return tabuleiro;
 	}
-
 	public Jogador getJogadorDaVEZ() {
 		return jogadorDaVEZ;
 	}
-
 	public void setJogadorDaVEZ(Jogador jogadorDaVEZ) {
 		this.jogadorDaVEZ = jogadorDaVEZ;
 	}
