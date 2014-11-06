@@ -3,10 +3,8 @@ package br.ufc.es.com.BancoImb.control;
 import java.util.List;
 
 import br.ufc.es.com.BancoImb.model.CasaDoTabuleiro;
-import br.ufc.es.com.BancoImb.model.ContaBancaria;
 import br.ufc.es.com.BancoImb.model.Jogador;
-import br.ufc.es.com.BancoImb.model.PecaJogador;
-import br.ufc.es.com.BancoImb.repositorios.Repositorio;
+import br.ufc.es.com.BancoImb.repositorios.RepositorioLists;
 import br.ufc.es.com.BancoImb.tabuleiro.Tabuleiro;
 import br.ufc.es.com.BancoImb.utils.CalculaIndices;
 import br.ufc.es.com.BancoImb.utils.Constantes;
@@ -30,21 +28,24 @@ public class ControladorBancoImobiliario {
 	private Constantes constante;
 	private DesenhaComponentesGraficos desenha;
 	private VerificacoesDeLogicaDoJogo verifica;
-	private Repositorio repo;
+	private RepositorioLists repositorioLists;
 	private InsereJogadores insereJogadores;
 	private CalculaIndices calcula;
 
 	public ControladorBancoImobiliario() {
 		constante = new Constantes();
 		desenha = new DesenhaComponentesGraficos();
+		
+		//inicia a construção dos componentes graficos
 		instanciaComponentesGraficos();
+		
 		verifica = new VerificacoesDeLogicaDoJogo();
-		repo = new Repositorio();
+		repositorioLists = new RepositorioLists();
 		efeito = new EfeitoDaCasa();
-		tabuleiro = new Tabuleiro(repo.getTabuleiro());
+		tabuleiro = new Tabuleiro(repositorioLists.getTabuleiro());
 		desenha.atualizaTabuleiro();
 		calcula = new CalculaIndices();
-		insereJogadores = new InsereJogadores(repo);
+		insereJogadores = new InsereJogadores(repositorioLists);
 		inserirJogadores();
 		iniciarJogo();
 	}
@@ -73,11 +74,11 @@ public class ControladorBancoImobiliario {
 					moverJogador(jogadorDaVEZ, destino);
 
 					if (verifica.verificaSeJogadorAindaPossuiSaldo(jogadorDaVEZ)) {
-						mudaJogadorDaVez(jogadorDaVEZ.getID(), repo.getJogadores());
+						mudaJogadorDaVez(jogadorDaVEZ.getID(), repositorioLists.getJogadores());
 					}else{
-						repo.getJogadoresAindaJogando().remove(jogadorDaVEZ);
-						desenha.messageJogadorNaoPossuiSaldo(jogadorDaVEZ, repo.getJogadoresAindaJogando());
-						desenha.messageExisteUmCampeao(repo.getJogadoresAindaJogando());
+						repositorioLists.getJogadoresAindaJogando().remove(jogadorDaVEZ);
+						desenha.messageJogadorNaoPossuiSaldo(jogadorDaVEZ, repositorioLists.getJogadoresAindaJogando());
+						desenha.messageExisteUmCampeao(repositorioLists.getJogadoresAindaJogando());
 						executando = false;
 					}
 				} else
@@ -85,7 +86,7 @@ public class ControladorBancoImobiliario {
 			}else
 				desenha.messageInputVazio();
 		}
-			desenha.ativaBotaoPortifolio(desenha.getMouse(), repo.getJogadores());		
+			desenha.ativaBotaoPortifolio(desenha.getMouse(), repositorioLists.getJogadores());		
 		}
 		desenha.getWindow().exit();
 	}
@@ -96,7 +97,7 @@ public class ControladorBancoImobiliario {
 		desenha.instanciaObjetos();
 	}
 	public void iniciaJogadorDaVez(){
-		jogadorDaVEZ = repo.getJogadores().get(constante.JOGADOR_NA_PRIMEIRA_POSICAO_DA_LISTA);
+		jogadorDaVEZ = repositorioLists.getJogadores().get(constante.JOGADOR_NA_PRIMEIRA_POSICAO_DA_LISTA);
 	}
 	public void moverJogador(Jogador jogador, CasaDoTabuleiro destino) {
 		tabuleiro.moverJogador(jogador, destino);

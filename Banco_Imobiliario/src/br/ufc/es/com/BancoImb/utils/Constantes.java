@@ -35,6 +35,7 @@ public class Constantes {
 	public final float LUCROS_DIVIDENDOS = 200;
 	public final float IMPOSTO_DE_RENDA = 200;
 	public final float BONUS_CADA_DE_PARTIDA = 200;
+	public final float SALDO_CONTA_BANCARIA = 500;
 	
 	//instancias
 	private Tabuleiro tabuleiro;

@@ -7,13 +7,13 @@ import br.ufc.es.com.BancoImb.model.CasaDoTabuleiro;
 import br.ufc.es.com.BancoImb.model.Jogador;
 import br.ufc.es.com.BancoImb.utils.Constantes;
 
-public class Repositorio {
+public class RepositorioLists {
 	private List<Jogador> jogadores;
 	private List<Jogador> jogadoresAindaJogando;
 	private List<CasaDoTabuleiro> tabuleiro;
 	private Constantes constante;
 	
-	public Repositorio() {
+	public RepositorioLists() {
 		jogadores = new ArrayList<Jogador>();
 		jogadoresAindaJogando = new ArrayList<Jogador>();
 		tabuleiro = new ArrayList<CasaDoTabuleiro>();
