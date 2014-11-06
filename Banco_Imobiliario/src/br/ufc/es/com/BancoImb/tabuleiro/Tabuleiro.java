@@ -23,10 +23,10 @@ public class Tabuleiro implements ITabuleiro{
 		tabuleiro = tabuleiroList;
 		criarCasasNoTabuleiro();
 	}
-	@Override
+	/*@Override
 	public void adiconarJogadoresACasaDePartida(int indice, Jogador jogador) {
 		tabuleiro.get(indice).adicionarJogadoresNaListaDaCasa(jogador);
-	}
+	}*/
 	@Override
 	public void moverJogador(Jogador jogador, CasaDoTabuleiro destino) {
 		CasaDoTabuleiro origem = getCasaByIndice(jogador.getPosicaoAtualJogador());

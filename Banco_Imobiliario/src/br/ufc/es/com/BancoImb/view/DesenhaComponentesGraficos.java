@@ -189,14 +189,14 @@ public class DesenhaComponentesGraficos {
 	}
 	public void messageSorte(Jogador jogador, float sorteValor){
 		JOptionPane.showMessageDialog(null, "Sorte"+ "\n" + "Receba: "
-				+ sorteValor + "\n" +	"Seu novo saldo é: " 
+				+ sorteValor + "\n" +"Seu novo saldo é: " 
 				+ jogador.getSaldo(), "Sorte",
 				JOptionPane.PLAIN_MESSAGE,
 				new ImageIcon(constante.FELIZ));
 	}
 	public void messageReves(Jogador jogador, float revesValor){
-		JOptionPane.showMessageDialog(null, "Revés"+"\n" + "Pague: " +revesValor 
-				+"\n" + "Seu novo saldo é: " 
+		JOptionPane.showMessageDialog(null, "Reves"+ "\n" + "Pague: " 
+				+revesValor	+"\n" + "Seu novo saldo é: " 
 				+ jogador.getSaldo(), "Reves",
 				JOptionPane.PLAIN_MESSAGE,
 				new ImageIcon(constante.TRISTE));

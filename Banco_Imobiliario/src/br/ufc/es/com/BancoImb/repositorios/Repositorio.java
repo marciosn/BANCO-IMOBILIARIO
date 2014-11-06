@@ -5,18 +5,32 @@ import java.util.List;
 
 import br.ufc.es.com.BancoImb.model.CasaDoTabuleiro;
 import br.ufc.es.com.BancoImb.model.Jogador;
+import br.ufc.es.com.BancoImb.utils.Constantes;
 
 public class Repositorio {
 	private List<Jogador> jogadores;
 	private List<Jogador> jogadoresAindaJogando;
 	private List<CasaDoTabuleiro> tabuleiro;
+	private Constantes constante;
 	
 	public Repositorio() {
 		jogadores = new ArrayList<Jogador>();
 		jogadoresAindaJogando = new ArrayList<Jogador>();
 		tabuleiro = new ArrayList<CasaDoTabuleiro>();
+		constante = new Constantes();
 	}
-
+	public void adicionaJogador(Jogador jogador){
+		jogadores.add(jogador);
+	}
+	public void adicionaJogadoresAindaJogando(Jogador jogador){
+		jogadores.add(jogador);
+	}
+	public void adicionaListaDeJogadoresNaCasaDePartida(){
+		for (Jogador jogador : this.jogadores) {
+			jogadoresAindaJogando.add(jogador);
+			tabuleiro.get(constante.INDICE_DA_CASA_DE_PARTIDA).adicionarJogadoresNaListaDaCasa(jogador);
+		}
+	}
 	public List<Jogador> getJogadores() {
 		return jogadores;
 	}

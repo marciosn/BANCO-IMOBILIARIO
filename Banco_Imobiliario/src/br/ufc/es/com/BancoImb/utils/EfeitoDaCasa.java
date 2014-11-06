@@ -6,6 +6,7 @@ import br.ufc.es.com.BancoImb.model.Jogador;
 public class EfeitoDaCasa {
 	
 	public void ativarEfeito(Jogador jogador, CasaDoTabuleiro casa) {
+		
 		casa.ativarEfeito(jogador);
 	}
 
