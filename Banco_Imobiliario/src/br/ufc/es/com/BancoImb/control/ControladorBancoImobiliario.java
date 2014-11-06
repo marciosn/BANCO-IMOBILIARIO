@@ -45,36 +45,16 @@ public class ControladorBancoImobiliario {
 		desenha.atualizaTabuleiro();
 		calcula = new CalculaIndices();
 		insereJogadores = new InsereJogadores(repo);
-		//inserirJogador();
-		insere();
+		inserirJogadores();
 		iniciarJogo();
 	}
 	
-	public void insere(){
+	public void inserirJogadores(){
 		insereJogadores.inserirJogador();
 		iniciaJogadorDaVez();
 		desenha.desenhaPecasNoTabuleiro(tabuleiro.getTabuleiro());
 	}
 	
-	public void inserirJogador() {
-		for (int i = 0; i < constante.QUANTIDADE_jOGADORES;) {
-			String nomeJogador = desenha.inputDigiteONomeDoJogador(i);
-			if(verifica.verificaNomeIsValido(nomeJogador)){
-				String peca = constante.PECA + repo.getJogadores().size() + constante.FORMATO_IMAGEM;
-				
-				repo.adicionaJogador(new Jogador(nomeJogador,
-						new ContaBancaria(500), 
-						new PecaJogador(constante.PATH_IMAGE + peca)));
-				
-		i++;
-			}else
-			desenha.messageNomeInvalido();
-		}
-		repo.adicionaListaDeJogadoresNaCasaDePartida();
-		iniciaJogadorDaVez();
-		desenha.desenhaPecasNoTabuleiro(tabuleiro.getTabuleiro());
-	}
-
 	public void iniciarJogo() {
 		CasaDoTabuleiro destino;
 		while (executando) {
