@@ -146,6 +146,30 @@ public class DesenhaComponentesGraficos {
 	public void messageInputVazio(){
 		JOptionPane.showMessageDialog(null,"O input não pode ser vazio");
 	}
+	public void messageLucrosDividendos(Jogador jogador, float lucrosDividendos){
+		JOptionPane.showMessageDialog(null, "Lucros ou Dividendos" 
+				+ "\n" +"Receba " + lucrosDividendos
+				+ "\n" +"Seu novo Saldo é " 
+				+ jogador.getSaldo());
+	}
+	public void messageImpostoDeRenda(Jogador jogador, float imposto){
+		JOptionPane.showMessageDialog(null, "Imposto de renda, você precisa pagar seus impostos" 
+				+ "\n" + "Pague "+imposto
+				+ "\n" +"Seu novo Saldo é " 
+				+ jogador.getSaldo());
+	}
+	public void messageParadaLivre(Jogador jogador){
+		JOptionPane.showMessageDialog(null, "Olá "+jogador.getNome() 
+				+"\n"+"Esta casa é uma Parada Livre" 
+				+ "\n"+ "Não precisa pagar impostos!");
+	}
+	public void messageCasaDePartida(Jogador jogador, float bonus){
+		JOptionPane.showMessageDialog(null, "Você passou pela casa de partida, merece um prêmio" 
+				+ "\n" +"Receba "+bonus
+				+ "\n" +"Seu novo Saldo é " 
+				+ jogador.getSaldo());
+	}
+
 	public void messageJogadorComprouLogradouro(Jogador jogador, String nomeLogradouro){
 		JOptionPane.showMessageDialog(null, "O jogador " 
 				+ jogador.getNome() 
@@ -163,51 +187,36 @@ public class DesenhaComponentesGraficos {
 				+ " agora possui saldo = " 
 				+ proprietario.getSaldo());
 	}
+	public void messageSorte(Jogador jogador, float sorteValor){
+		JOptionPane.showMessageDialog(null, "Sorte"+ "\n" + "Receba: "
+				+ sorteValor + "\n" +	"Seu novo saldo é: " 
+				+ jogador.getSaldo(), "Sorte",
+				JOptionPane.PLAIN_MESSAGE,
+				new ImageIcon(constante.FELIZ));
+	}
+	public void messageReves(Jogador jogador, float revesValor){
+		JOptionPane.showMessageDialog(null, "Revés"+"\n" + "Pague: " +revesValor 
+				+"\n" + "Seu novo saldo é: " 
+				+ jogador.getSaldo(), "Reves",
+				JOptionPane.PLAIN_MESSAGE,
+				new ImageIcon(constante.TRISTE));
+	}
 	public Window getWindow() {
 		return window;
 	}
-
 	public void setWindow(Window window) {
 		this.window = window;
 	}
-
 	public Mouse getMouse() {
 		return mouse;
 	}
-
 	public void setMouse(Mouse mouse) {
 		this.mouse = mouse;
 	}
-
 	public Animation getBotao() {
 		return botao;
 	}
-
 	public void setBotao(Animation botao) {
 		this.botao = botao;
-	}
-
-	public JTextArea getPortfolio() {
-		return portfolio;
-	}
-
-	public void setPortfolio(JTextArea portfolio) {
-		this.portfolio = portfolio;
-	}
-
-	public Animation getPortfolioButton0() {
-		return portfolioButton0;
-	}
-
-	public void setPortfolioButton0(Animation portfolioButton0) {
-		this.portfolioButton0 = portfolioButton0;
-	}
-
-	public Animation getPortfolioButton1() {
-		return portfolioButton1;
-	}
-
-	public void setPortfolioButton1(Animation portfolioButton1) {
-		this.portfolioButton1 = portfolioButton1;
 	}
 }

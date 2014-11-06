@@ -12,18 +12,21 @@ import br.ufc.es.com.BancoImb.constantes.Constantes;
 import br.ufc.es.com.BancoImb.interfaces.IEfeitoCasa;
 import br.ufc.es.com.BancoImb.model.Jogador;
 import br.ufc.es.com.BancoImb.model.LogradouroEspecial;
+import br.ufc.es.com.BancoImb.view.DesenhaComponentesGraficos;
 
 public class LogradouroEspecialSorteReves extends LogradouroEspecial implements IEfeitoCasa{
 	
 	private List<Float> cartas;
 	private int indice;
 	private Constantes constante;
+	private DesenhaComponentesGraficos desenha;
 	
 	public LogradouroEspecialSorteReves(String nome, Point posicao) {
 		super(nome, posicao);
 		cartas = new ArrayList<Float>();
 		criarDeckCartas();
 		constante = new Constantes();
+		desenha = new DesenhaComponentesGraficos();
 	}
 
 	@Override
@@ -31,25 +34,20 @@ public class LogradouroEspecialSorteReves extends LogradouroEspecial implements 
 		sorteReves();		
 		if((indice % 2)  == 0){
 			new Sound(constante.CAIXINHA).play();;
-			System.out.println(cartas.get(indice));
 			jogador.receberTaxa(cartas.get(indice));
-			JOptionPane.showMessageDialog(null, "Sorte"+ "\n" + "Receba: "+	cartas.get(indice) + "\n" +
-			"Seu novo saldo é: " + jogador.getSaldo(), "Sorte", JOptionPane.PLAIN_MESSAGE, new ImageIcon(constante.FELIZ));
+			desenha.messageSorte(jogador, cartas.get(indice));
 		}else{
 			jogador.pagarTaxa(cartas.get(indice));
-			JOptionPane.showMessageDialog(null, "Revés"+"\n" + "Pague: "+cartas.get(indice) +
-			"\n" + "Seu novo saldo é: " + jogador.getSaldo(), "Reves", JOptionPane.PLAIN_MESSAGE, new ImageIcon(constante.TRISTE));
+			desenha.messageReves(jogador, cartas.get(indice));
 		}		
 	}
 	
 	public int sorteReves(){
 		indice = ((int) ( (Math.random() * 19) + 1 ));
 		return indice;
-
 	}
-		
+	
 	public void criarDeckCartas(){
-		
 		cartas.add((float) 200);
 		cartas.add((float) 100);
 		cartas.add((float) 150);

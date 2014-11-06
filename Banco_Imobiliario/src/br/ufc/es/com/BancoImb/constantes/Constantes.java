@@ -31,6 +31,11 @@ public class Constantes {
 	public final String FORMATO_IMAGEM = ".png";
 	public final int ESPACAMENTO_HORIZONTAL = 20;
 	
+	//valores constantes das casas especiais
+	public final float LUCROS_DIVIDENDOS = 200;
+	public final float IMPOSTO_DE_RENDA = 200;
+	public final float BONUS_CADA_DE_PARTIDA = 200;
+	
 	//instancias
 	private Tabuleiro tabuleiro;
 
