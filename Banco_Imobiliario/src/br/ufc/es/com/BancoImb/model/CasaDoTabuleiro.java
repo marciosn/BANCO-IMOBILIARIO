@@ -32,7 +32,7 @@ public class CasaDoTabuleiro {
 	public void setJogadoresNaCasa(List<Jogador> jogadoresNaCasa) {
 		this.jogadoresNaCasa = jogadoresNaCasa;
 	}
-	public void removerJogador(Jogador jogador){
+	public void removerJogadoresDaListaDaCasa(Jogador jogador){
 		jogadoresNaCasa.remove(jogador);
 	}
 	

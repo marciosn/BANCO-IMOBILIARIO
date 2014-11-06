@@ -26,7 +26,7 @@ public class Tabuleiro implements ITabuleiro{
 	@Override
 	public void moverJogador(Jogador jogador, CasaDoTabuleiro destino) {
 		CasaDoTabuleiro origem = getCasaByIndice(jogador.getPosicaoAtualJogador());
-		origem.removerJogador(jogador);
+		origem.removerJogadoresDaListaDaCasa(jogador);
 		jogador.setPosicaoAtualJogador(getIndiceByCasa(destino));
 		destino.adicionarJogadoresNaListaDaCasa(jogador);
 	}

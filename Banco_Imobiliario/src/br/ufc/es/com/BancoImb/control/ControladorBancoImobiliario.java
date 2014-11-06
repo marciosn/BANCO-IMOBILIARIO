@@ -55,7 +55,6 @@ public class ControladorBancoImobiliario {
 		iniciaJogadorDaVez();
 		desenha.desenhaPecasNoTabuleiro(tabuleiro.getTabuleiro());
 	}
-	
 	public void iniciarJogo() {
 		CasaDoTabuleiro destino;
 		while (executando) {
@@ -76,7 +75,7 @@ public class ControladorBancoImobiliario {
 					if (verifica.verificaSeJogadorAindaPossuiSaldo(jogadorDaVEZ)) {
 						mudaJogadorDaVez(jogadorDaVEZ.getID(), repositorioLists.getJogadores());
 					}else{
-						repositorioLists.getJogadoresAindaJogando().remove(jogadorDaVEZ);
+						repositorioLists.removerDeJogadoresAindaJogando(jogadorDaVEZ);
 						desenha.messageJogadorNaoPossuiSaldo(jogadorDaVEZ, repositorioLists.getJogadoresAindaJogando());
 						desenha.messageExisteUmCampeao(repositorioLists.getJogadoresAindaJogando());
 						executando = false;
@@ -97,7 +96,7 @@ public class ControladorBancoImobiliario {
 		desenha.instanciaObjetos();
 	}
 	public void iniciaJogadorDaVez(){
-		jogadorDaVEZ = repositorioLists.getJogadores().get(constante.JOGADOR_NA_PRIMEIRA_POSICAO_DA_LISTA);
+		jogadorDaVEZ = repositorioLists.getPrimeiroJogadorDaLista();
 	}
 	public void moverJogador(Jogador jogador, CasaDoTabuleiro destino) {
 		tabuleiro.moverJogador(jogador, destino);

@@ -31,6 +31,12 @@ public class RepositorioLists {
 			tabuleiro.get(constante.INDICE_DA_CASA_DE_PARTIDA).adicionarJogadoresNaListaDaCasa(jogador);
 		}
 	}
+	public void removerDeJogadoresAindaJogando(Jogador jogador){
+		jogadoresAindaJogando.remove(jogador);
+	}
+	public Jogador getPrimeiroJogadorDaLista(){
+		return jogadores.get(constante.JOGADOR_NA_PRIMEIRA_POSICAO_DA_LISTA);
+	}
 	public List<Jogador> getJogadores() {
 		return jogadores;
 	}
