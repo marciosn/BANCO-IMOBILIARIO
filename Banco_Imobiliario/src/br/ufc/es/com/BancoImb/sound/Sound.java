@@ -1,7 +1,7 @@
 package br.ufc.es.com.BancoImb.sound;
 
 
-import br.ufc.es.com.BancoImb.constantes.Constantes;
+import br.ufc.es.com.BancoImb.utils.Constantes;
 
 public class Sound {
 	private Constantes constante;

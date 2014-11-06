@@ -4,11 +4,10 @@ import java.awt.Point;
 
 import javax.swing.JOptionPane;
 
-import br.ufc.es.com.BancoImb.constantes.Constantes;
 import br.ufc.es.com.BancoImb.interfaces.IEfeitoCasa;
 import br.ufc.es.com.BancoImb.model.Jogador;
 import br.ufc.es.com.BancoImb.model.LogradouroEspecial;
-import br.ufc.es.com.BancoImb.tabuleiro.Tabuleiro;
+import br.ufc.es.com.BancoImb.utils.Constantes;
 import br.ufc.es.com.BancoImb.view.DesenhaComponentesGraficos;
 
 public class LogradouroEspecialVaParaAPrisao extends LogradouroEspecial implements IEfeitoCasa{

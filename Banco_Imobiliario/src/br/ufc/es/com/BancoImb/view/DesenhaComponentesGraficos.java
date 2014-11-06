@@ -11,10 +11,10 @@ import jplay.Animation;
 import jplay.Mouse;
 import jplay.Scene;
 import jplay.Window;
-import br.ufc.es.com.BancoImb.constantes.Constantes;
 import br.ufc.es.com.BancoImb.model.CasaDoTabuleiro;
 import br.ufc.es.com.BancoImb.model.Jogador;
 import br.ufc.es.com.BancoImb.sound.Sound;
+import br.ufc.es.com.BancoImb.utils.Constantes;
 
 
 public class DesenhaComponentesGraficos {

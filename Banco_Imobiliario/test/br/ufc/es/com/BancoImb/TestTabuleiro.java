@@ -8,7 +8,6 @@ import org.junit.Test;
 
 import br.ufc.es.com.BancoImb.LogradouroComum.LogradouroComumEmpresa;
 import br.ufc.es.com.BancoImb.LogradouroComum.LogradouroComumImovel;
-import br.ufc.es.com.BancoImb.control.CalcularIndiceProximaCasa;
 import br.ufc.es.com.BancoImb.control.ControladorBancoImobiliario;
 import br.ufc.es.com.BancoImb.model.CasaDoTabuleiro;
 import br.ufc.es.com.BancoImb.model.ContaBancaria;
@@ -16,6 +15,7 @@ import br.ufc.es.com.BancoImb.model.Jogador;
 import br.ufc.es.com.BancoImb.model.PecaJogador;
 import br.ufc.es.com.BancoImb.repositorios.Repositorio;
 import br.ufc.es.com.BancoImb.tabuleiro.Tabuleiro;
+import br.ufc.es.com.BancoImb.utils.CalcularIndiceProximaCasa;
 
 public class TestTabuleiro {
 

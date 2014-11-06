@@ -1,4 +1,4 @@
-package br.ufc.es.com.BancoImb.control;
+package br.ufc.es.com.BancoImb.utils;
 
 import java.util.List;
 

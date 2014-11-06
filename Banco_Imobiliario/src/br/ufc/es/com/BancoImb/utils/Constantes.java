@@ -1,4 +1,4 @@
-package br.ufc.es.com.BancoImb.constantes;
+package br.ufc.es.com.BancoImb.utils;
 
 import java.io.File;
 

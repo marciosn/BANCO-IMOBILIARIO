@@ -1,6 +1,5 @@
-package br.ufc.es.com.BancoImb.control;
+package br.ufc.es.com.BancoImb.utils;
 
-import br.ufc.es.com.BancoImb.constantes.Constantes;
 
 public class CalcularIndiceProximaCasa {
 	private Constantes constante;

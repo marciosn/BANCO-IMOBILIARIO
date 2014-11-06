@@ -2,8 +2,6 @@ package br.ufc.es.com.BancoImb.model;
 
 import java.awt.Point;
 
-import br.ufc.es.com.BancoImb.tabuleiro.Tabuleiro;
-
 
 public class LogradouroEspecial extends CasaDoTabuleiro{
 	private String nome;

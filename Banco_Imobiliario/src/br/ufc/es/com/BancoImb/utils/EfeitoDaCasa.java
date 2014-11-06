@@ -1,4 +1,4 @@
-package br.ufc.es.com.BancoImb.control;
+package br.ufc.es.com.BancoImb.utils;
 
 import br.ufc.es.com.BancoImb.model.CasaDoTabuleiro;
 import br.ufc.es.com.BancoImb.model.Jogador;

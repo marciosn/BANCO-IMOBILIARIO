@@ -2,13 +2,17 @@ package br.ufc.es.com.BancoImb.control;
 
 import java.util.List;
 
-import br.ufc.es.com.BancoImb.constantes.Constantes;
 import br.ufc.es.com.BancoImb.model.CasaDoTabuleiro;
 import br.ufc.es.com.BancoImb.model.ContaBancaria;
 import br.ufc.es.com.BancoImb.model.Jogador;
 import br.ufc.es.com.BancoImb.model.PecaJogador;
 import br.ufc.es.com.BancoImb.repositorios.Repositorio;
 import br.ufc.es.com.BancoImb.tabuleiro.Tabuleiro;
+import br.ufc.es.com.BancoImb.utils.CalculaIndiceJogadorDaVez;
+import br.ufc.es.com.BancoImb.utils.CalcularIndiceProximaCasa;
+import br.ufc.es.com.BancoImb.utils.Constantes;
+import br.ufc.es.com.BancoImb.utils.EfeitoDaCasa;
+import br.ufc.es.com.BancoImb.utils.VerificacoesDeLogicaDoJogo;
 import br.ufc.es.com.BancoImb.view.DesenhaComponentesGraficos;
 
 /**

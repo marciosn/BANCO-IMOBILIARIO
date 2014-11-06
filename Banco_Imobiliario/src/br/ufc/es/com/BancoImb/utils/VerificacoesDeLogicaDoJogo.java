@@ -1,8 +1,7 @@
-package br.ufc.es.com.BancoImb.control;
+package br.ufc.es.com.BancoImb.utils;
 
 import jplay.Animation;
 import jplay.Mouse;
-import br.ufc.es.com.BancoImb.constantes.Constantes;
 import br.ufc.es.com.BancoImb.interfaces.IVerificacoesDeLogicaDoJogo;
 import br.ufc.es.com.BancoImb.model.Jogador;
 
