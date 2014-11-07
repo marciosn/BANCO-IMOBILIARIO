@@ -8,28 +8,25 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 import jplay.Sound;
-import br.ufc.es.com.BancoImb.interfaces.IEfeitoCasa;
 import br.ufc.es.com.BancoImb.model.Jogador;
 import br.ufc.es.com.BancoImb.model.LogradouroEspecial;
 import br.ufc.es.com.BancoImb.utils.Constantes;
 import br.ufc.es.com.BancoImb.view.DesenhaComponentesGraficos;
 
-public class LogradouroEspecialSorteReves extends LogradouroEspecial implements IEfeitoCasa{
+public class LogradouroEspecialSorteReves extends LogradouroEspecial{
 	
 	private List<Float> cartas;
 	private int indice;
 	private Constantes constante;
-	private DesenhaComponentesGraficos desenha;
+	//private DesenhaComponentesGraficos desenha;
 	
 	public LogradouroEspecialSorteReves(String nome, Point posicao) {
 		super(nome, posicao);
 		cartas = new ArrayList<Float>();
 		criarDeckCartas();
 		constante = new Constantes();
-		desenha = new DesenhaComponentesGraficos();
+		//desenha = new DesenhaComponentesGraficos();
 	}
-
-	@Override
 	public void ativarEfeito(Jogador jogador) {
 		sorteReves();
 		if((indice % 2)  == 0){

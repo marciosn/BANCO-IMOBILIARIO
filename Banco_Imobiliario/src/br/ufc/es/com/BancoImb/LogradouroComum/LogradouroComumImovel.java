@@ -2,12 +2,11 @@ package br.ufc.es.com.BancoImb.LogradouroComum;
 
 import java.awt.Point;
 
-import br.ufc.es.com.BancoImb.interfaces.IEfeitoCasa;
 import br.ufc.es.com.BancoImb.model.Jogador;
 import br.ufc.es.com.BancoImb.model.LogradouroComum;
 import br.ufc.es.com.BancoImb.view.DesenhaComponentesGraficos;
 
-public class LogradouroComumImovel extends LogradouroComum implements IEfeitoCasa{
+public class LogradouroComumImovel extends LogradouroComum{
 	private DesenhaComponentesGraficos desenha;
 	
 	public LogradouroComumImovel(String nome, float valor, float taxa, Point posicao) {
@@ -25,8 +24,8 @@ public class LogradouroComumImovel extends LogradouroComum implements IEfeitoCas
 			}
 			
 		}else{
-			jogador.pagarTaxa(this);
-			this.getProprietario().receberTaxa(this);
+			jogador.pagarTaxa(this.getTaxa());
+			this.getProprietario().receberTaxa(this.getTaxa());
 			desenha.messageJogadorPagouTaxa(jogador, this.getProprietario());
 		}
 		

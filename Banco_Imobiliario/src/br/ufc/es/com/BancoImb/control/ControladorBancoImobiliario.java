@@ -6,8 +6,9 @@ import br.ufc.es.com.BancoImb.model.CasaDoTabuleiro;
 import br.ufc.es.com.BancoImb.model.Jogador;
 import br.ufc.es.com.BancoImb.repositorios.RepositorioLists;
 import br.ufc.es.com.BancoImb.tabuleiro.Tabuleiro;
-import br.ufc.es.com.BancoImb.utils.CalculaIndices;
+import br.ufc.es.com.BancoImb.utils.ObterProximoIndice;
 import br.ufc.es.com.BancoImb.utils.Constantes;
+import br.ufc.es.com.BancoImb.utils.DisparaEfeitoCasaPartida;
 import br.ufc.es.com.BancoImb.utils.EfeitoDaCasa;
 import br.ufc.es.com.BancoImb.utils.InsereJogadores;
 import br.ufc.es.com.BancoImb.utils.VerificacoesDeLogicaDoJogo;
@@ -25,15 +26,13 @@ public class ControladorBancoImobiliario {
 	private Jogador jogadorDaVEZ;
 	private boolean executando = true;
 	private EfeitoDaCasa efeito;
-	private Constantes constante;
 	private DesenhaComponentesGraficos desenha;
 	private VerificacoesDeLogicaDoJogo verifica;
 	private RepositorioLists repositorioLists;
 	private InsereJogadores insereJogadores;
-	private CalculaIndices calcula;
+	private ObterProximoIndice obterIndice;
 
 	public ControladorBancoImobiliario() {
-		constante = new Constantes();
 		desenha = new DesenhaComponentesGraficos();
 		
 		//inicia a construção dos componentes graficos
@@ -44,7 +43,7 @@ public class ControladorBancoImobiliario {
 		efeito = new EfeitoDaCasa();
 		tabuleiro = new Tabuleiro(repositorioLists.getTabuleiro());
 		desenha.atualizaTabuleiro();
-		calcula = new CalculaIndices();
+		obterIndice = new ObterProximoIndice();
 		insereJogadores = new InsereJogadores(repositorioLists);
 		inserirJogadores();
 		iniciarJogo();
@@ -54,6 +53,23 @@ public class ControladorBancoImobiliario {
 		insereJogadores.inserirJogador();
 		iniciaJogadorDaVez();
 		desenha.desenhaPecasNoTabuleiro(tabuleiro.getTabuleiro());
+	}
+	public void instanciaComponentesGraficos(){
+		desenha.instanciaObjetos();
+	}
+	public void iniciaJogadorDaVez(){
+		jogadorDaVEZ = repositorioLists.getPrimeiroJogadorDaLista();
+	}
+	public void moverJogador(Jogador jogador, CasaDoTabuleiro destino) {
+		tabuleiro.moverJogador(jogador, destino);
+		desenha.moverPecaJogador(jogador, destino);
+		ativarEfeitoDaCasa(jogador, destino);
+	}
+	public void ativarEfeitoDaCasa(Jogador jogador, CasaDoTabuleiro destino){
+		efeito.ativarEfeito(jogador, destino);
+	}
+	public void mudaJogadorDaVez(int IdJogadorAtual, List<Jogador> jogadores){
+		setJogadorDaVEZ(tabuleiro.getJogadorByID(obterIndice.obterIndiceProxJogador(IdJogadorAtual, jogadores)));
 	}
 	public void iniciarJogo() {
 		CasaDoTabuleiro destino;
@@ -67,7 +83,7 @@ public class ControladorBancoImobiliario {
 				int resultadoDados = Integer.valueOf(resultado);
 				if (verifica.verificaTamanhoJogadaIsValida(resultadoDados)) {
 					
-					int indiceCasaDestino = calcula.obterIndiceProxCasa(jogadorDaVEZ.getPosicaoAtualJogador(), resultadoDados);
+					int indiceCasaDestino = obterIndice.obterIndiceProxCasa(jogadorDaVEZ.getPosicaoAtualJogador(), resultadoDados);
 					destino = tabuleiro.getCasaByIndice(indiceCasaDestino);
 					
 					moverJogador(jogadorDaVEZ, destino);
@@ -88,32 +104,6 @@ public class ControladorBancoImobiliario {
 			desenha.ativaBotaoPortifolio(desenha.getMouse(), repositorioLists.getJogadores());		
 		}
 		desenha.getWindow().exit();
-	}
-	public void salvarIntaciaTabuleiro(){
-		constante.setTabuleiro(tabuleiro);
-	}
-	public void instanciaComponentesGraficos(){
-		desenha.instanciaObjetos();
-	}
-	public void iniciaJogadorDaVez(){
-		jogadorDaVEZ = repositorioLists.getPrimeiroJogadorDaLista();
-	}
-	public void moverJogador(Jogador jogador, CasaDoTabuleiro destino) {
-		tabuleiro.moverJogador(jogador, destino);
-		desenha.moverPecaJogador(jogador, destino);
-		ativarEfeitoDaCasa(jogador, destino);
-	}
-	public void ativarEfeitoDaCasa(Jogador jogador, CasaDoTabuleiro destino){
-		efeito.ativarEfeito(jogador, destino);
-	}
-	public void mudaJogadorDaVez(int IdJogadorAtual, List<Jogador> jogadores){
-		setJogadorDaVEZ(tabuleiro.getJogadorByID(calcula.obterIndiceProxJogador(IdJogadorAtual, jogadores)));
-	}
-	public Tabuleiro getTabuleiroJogo() {
-		return tabuleiro;
-	}
-	public Jogador getJogadorDaVEZ() {
-		return jogadorDaVEZ;
 	}
 	public void setJogadorDaVEZ(Jogador jogadorDaVEZ) {
 		this.jogadorDaVEZ = jogadorDaVEZ;

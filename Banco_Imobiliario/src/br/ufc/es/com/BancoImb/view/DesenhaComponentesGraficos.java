@@ -13,7 +13,6 @@ import jplay.Scene;
 import jplay.Window;
 import br.ufc.es.com.BancoImb.model.CasaDoTabuleiro;
 import br.ufc.es.com.BancoImb.model.Jogador;
-import br.ufc.es.com.BancoImb.sound.Sound;
 import br.ufc.es.com.BancoImb.utils.Constantes;
 
 
@@ -129,7 +128,7 @@ public class DesenhaComponentesGraficos {
 		return respostaDoJogador;
 	}
 	public void messageExisteUmCampeao(List<Jogador> jogadoresAindaJogando){
-		new Sound().winSound();
+		new jplay.Sound(constante.CHAMPIONS).play();
 		JOptionPane.showMessageDialog(null, "O jogador "
 				+ jogadoresAindaJogando.get(0).getNome() + "\n"
 				+ "Venceu o jogo",

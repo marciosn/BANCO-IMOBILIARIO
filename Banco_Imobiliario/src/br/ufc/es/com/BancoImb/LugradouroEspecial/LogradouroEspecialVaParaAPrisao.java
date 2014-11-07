@@ -10,7 +10,7 @@ import br.ufc.es.com.BancoImb.model.LogradouroEspecial;
 import br.ufc.es.com.BancoImb.utils.Constantes;
 import br.ufc.es.com.BancoImb.view.DesenhaComponentesGraficos;
 
-public class LogradouroEspecialVaParaAPrisao extends LogradouroEspecial implements IEfeitoCasa{
+public class LogradouroEspecialVaParaAPrisao extends LogradouroEspecial{
 	private LogradouroEspecialPrisao prisao;
 	private DesenhaComponentesGraficos desenha;
 	private Constantes constante;
@@ -19,12 +19,10 @@ public class LogradouroEspecialVaParaAPrisao extends LogradouroEspecial implemen
 		super(nome, posicao);
 		constante = new Constantes();
 	}
-
-	@Override
 	public void ativarEfeito(Jogador jogador) {
 		JOptionPane.showMessageDialog(null, "Mover Jogador");
-		constante.getTabuleiro().moverJogador(jogador, prisao);
-		desenha.moverPecaJogador(jogador, prisao);
+		//constante.getTabuleiro().moverJogador(jogador, prisao);
+		//desenha.moverPecaJogador(jogador, prisao);
 	}
 
 }

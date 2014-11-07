@@ -2,20 +2,17 @@ package br.ufc.es.com.BancoImb.LugradouroEspecial;
 
 import java.awt.Point;
 
-import br.ufc.es.com.BancoImb.interfaces.IEfeitoCasa;
 import br.ufc.es.com.BancoImb.model.Jogador;
 import br.ufc.es.com.BancoImb.model.LogradouroEspecial;
 import br.ufc.es.com.BancoImb.view.DesenhaComponentesGraficos;
 
-public class LogradouroEspecialParadaLivre extends LogradouroEspecial implements IEfeitoCasa{
+public class LogradouroEspecialParadaLivre extends LogradouroEspecial{
 	private DesenhaComponentesGraficos desenha;
 
 	public LogradouroEspecialParadaLivre(String nome, Point posicao) {
 		super(nome, posicao);
 		desenha = new DesenhaComponentesGraficos();
 	}
-
-	@Override
 	public void ativarEfeito(Jogador jogador) {
 		desenha.messageParadaLivre(jogador);
 		

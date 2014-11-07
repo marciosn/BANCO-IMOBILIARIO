@@ -5,8 +5,7 @@ import jplay.Mouse;
 import br.ufc.es.com.BancoImb.interfaces.IVerificacoesDeLogicaDoJogo;
 import br.ufc.es.com.BancoImb.model.Jogador;
 
-public class VerificacoesDeLogicaDoJogo implements IVerificacoesDeLogicaDoJogo{
-	@Override
+public class VerificacoesDeLogicaDoJogo{
 	public boolean verificaSeJogadorAindaPossuiSaldo(Jogador jogador){
 		boolean possuiSaldo = false;
 		if (jogador.getSaldo() <= 0) {
@@ -16,15 +15,13 @@ public class VerificacoesDeLogicaDoJogo implements IVerificacoesDeLogicaDoJogo{
 		}
 		return possuiSaldo;	
 	}
-	@Override
 	public boolean verificaJogadaIsValida(String resultado){
 		boolean isValida = false;
-		if (!inputDiferentedeNull(resultado) && !resultado.equals("") && !resultado.equals(null)) {
+		if (!verificaInputDiferentedeNull(resultado) && !resultado.equals("") && !resultado.equals(null)) {
 			isValida = true;
 		}
 		return isValida;	
 	}
-	@Override
 	public boolean verificaTamanhoJogadaIsValida(int resultadoDados){
 		boolean tamanhoIsValido = false;		
 		if (resultadoDados <= 12 && resultadoDados > 0) {
@@ -32,7 +29,6 @@ public class VerificacoesDeLogicaDoJogo implements IVerificacoesDeLogicaDoJogo{
 		}
 		return tamanhoIsValido;
 	}
-	@Override
 	public boolean verificaQuantidadeJogadoresIsValida(int qtd_jogadores){
 		boolean qtdIsValida = false;
 		if (qtd_jogadores == new Constantes().QUANTIDADE_jOGADORES) {
@@ -40,15 +36,13 @@ public class VerificacoesDeLogicaDoJogo implements IVerificacoesDeLogicaDoJogo{
 		}
 		return qtdIsValida;
 	}
-	@Override
 	public boolean verificaNomeIsValido(String nomeJogador){
 		boolean nomeIsValido = false;
-		if(!inputDiferentedeNull(nomeJogador) && !nomeJogador.equals("") && nomeJogador.length() >= 3){
+		if(!verificaInputDiferentedeNull(nomeJogador) && !nomeJogador.equals("") && nomeJogador.length() >= 3){
 			nomeIsValido = true;
 		}
 		return nomeIsValido;
 	}
-	@Override
 	public boolean verificaIsPressionado(Mouse mouse, Animation botao){
 		boolean isPressed = false;
 		if(mouse.isOverObject(botao) && mouse.isLeftButtonPressed()){
@@ -56,8 +50,7 @@ public class VerificacoesDeLogicaDoJogo implements IVerificacoesDeLogicaDoJogo{
 		}
 		return isPressed;
 	}
-	@Override
-	public boolean inputDiferentedeNull(String entrada){
+	public boolean verificaInputDiferentedeNull(String entrada){
 		boolean isNull = false;
 		if(entrada == null){
 			isNull = true;

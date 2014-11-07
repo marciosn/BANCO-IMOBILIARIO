@@ -4,19 +4,19 @@ import java.util.List;
 
 import br.ufc.es.com.BancoImb.model.Jogador;
 
-public class CalculaIndices {
+public class ObterProximoIndice {
 	private Constantes constante;
 	
-	public CalculaIndices() {
+	public ObterProximoIndice() {
 		constante = new Constantes();
 	}
 	
 	public int obterIndiceProxCasa(int indiceAtual, int resultDado) {
-		int indiceProximaCasa;
+		int indiceProximaCasa, temp = 0;
 		indiceProximaCasa = indiceAtual + resultDado;
 		if(indiceProximaCasa > (constante.QUANTIDADE_DE_CASAS_DO_TABULEIRO - 1)){
-			int percent = indiceProximaCasa % constante.QUANTIDADE_DE_CASAS_DO_TABULEIRO;
-			indiceProximaCasa = percent;
+			temp = indiceProximaCasa % constante.QUANTIDADE_DE_CASAS_DO_TABULEIRO;
+			indiceProximaCasa = temp;
 		}
 		return indiceProximaCasa;
 	}

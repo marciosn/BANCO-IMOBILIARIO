@@ -16,25 +16,23 @@ import br.ufc.es.com.BancoImb.interfaces.ITabuleiro;
 import br.ufc.es.com.BancoImb.model.CasaDoTabuleiro;
 import br.ufc.es.com.BancoImb.model.Jogador;
 
-public class Tabuleiro implements ITabuleiro{
+public class Tabuleiro{
 	private List<CasaDoTabuleiro> tabuleiro;
 	
 	public Tabuleiro(List<CasaDoTabuleiro> tabuleiroList) {
 		tabuleiro = tabuleiroList;
 		criarCasasNoTabuleiro();
 	}
-	@Override
 	public void moverJogador(Jogador jogador, CasaDoTabuleiro destino) {
+		
 		CasaDoTabuleiro origem = getCasaByIndice(jogador.getPosicaoAtualJogador());
 		origem.removerJogadoresDaListaDaCasa(jogador);
 		jogador.setPosicaoAtualJogador(getIndiceByCasa(destino));
 		destino.adicionarJogadoresNaListaDaCasa(jogador);
 	}
-	@Override
 	public CasaDoTabuleiro getCasaByIndice(int indice) {
 		return tabuleiro.get(indice);
 	}
-	@Override
 	public int getIndiceByCasa(CasaDoTabuleiro casa){
 		int indice = 0;
 		for(int i = 0 ; i < tabuleiro.size() ; i++){
@@ -44,7 +42,6 @@ public class Tabuleiro implements ITabuleiro{
 		}
 		return indice;
 	}
-	@Override
 	public Jogador getJogadorByID(int id){
 		Jogador jogador = null;
 		for (int i = 0; i < tabuleiro.size(); i++) {
@@ -56,7 +53,6 @@ public class Tabuleiro implements ITabuleiro{
 		}	 
 		return jogador;
 	}
-	@Override
 	public CasaDoTabuleiro getCasaByJogador(Jogador jogador){
 		CasaDoTabuleiro casa = null;
 		for(CasaDoTabuleiro c : tabuleiro){
@@ -68,7 +64,6 @@ public class Tabuleiro implements ITabuleiro{
 		}
 		return casa;
 	}
-	@Override
 	public void criarCasasNoTabuleiro() {
 		tabuleiro.add(new LogradouroEspecialPartida("Partida", new Point(13, 12)));											//POSICAO 00
 		tabuleiro.add(new LogradouroComumImovel("Brooklin", 260 , 260, new Point(13, 107)));								//POSICAO 01

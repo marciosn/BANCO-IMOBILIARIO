@@ -34,20 +34,7 @@ public class Constantes {
 	//valores constantes das casas especiais
 	public final float LUCROS_DIVIDENDOS = 200;
 	public final float IMPOSTO_DE_RENDA = 200;
-	public final float BONUS_CADA_DE_PARTIDA = 200;
+	public final float BONUS_CASA_DE_PARTIDA = 200;
 	public final float SALDO_CONTA_BANCARIA = 500;
 	
-	//instancias
-	private Tabuleiro tabuleiro;
-
-	public Tabuleiro getTabuleiro() {
-		return tabuleiro;
-	}
-
-	public void setTabuleiro(Tabuleiro tabuleiro) {
-		this.tabuleiro = tabuleiro;
-	}
-	
-	
-
 }

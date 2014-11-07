@@ -11,6 +11,6 @@ public interface IVerificacoesDeLogicaDoJogo {
 	public boolean verificaQuantidadeJogadoresIsValida(int qtd_jogadores);
 	public boolean verificaNomeIsValido(String nomeJogador);
 	public boolean verificaIsPressionado(Mouse mouse, Animation botao);
-	public boolean inputDiferentedeNull(String entrada);
+	public boolean verificaInputDiferentedeNull(String entrada);
 
 }

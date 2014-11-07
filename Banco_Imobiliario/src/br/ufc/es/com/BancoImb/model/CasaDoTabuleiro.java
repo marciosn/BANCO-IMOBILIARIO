@@ -4,14 +4,16 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CasaDoTabuleiro {
-	String nome;
-	List<Jogador> jogadoresNaCasa;
-	Jogador proprietario;
-	boolean vendido;
-	float valor;
-	float taxa;
-	Point posicao;
+import br.ufc.es.com.BancoImb.interfaces.IEfeitoCasa;
+
+public class CasaDoTabuleiro implements IEfeitoCasa{
+	private String nome;
+	private List<Jogador> jogadoresNaCasa;
+	private Jogador proprietario;
+	private boolean vendido;
+	private float valor;
+	private float taxa;
+	private Point posicao;
 	
 	public CasaDoTabuleiro() {
 		jogadoresNaCasa = new ArrayList<Jogador>();
@@ -19,10 +21,6 @@ public class CasaDoTabuleiro {
 
 	public void adicionarJogadoresNaListaDaCasa(Jogador jogador){
 		jogadoresNaCasa.add(jogador);
-	}
-	
-	public int getNumJogadoresCasa(){
-		return jogadoresNaCasa.size();
 	}
 	
 	public List<Jogador> getJogadoresNaCasa() {
@@ -35,10 +33,11 @@ public class CasaDoTabuleiro {
 	public void removerJogadoresDaListaDaCasa(Jogador jogador){
 		jogadoresNaCasa.remove(jogador);
 	}
-	
-	public void ativarEfeito(Jogador jogador){
+
+	@Override
+	public void ativarEfeito(Jogador jogador) {
+		// TODO Auto-generated method stub		
 	}
-	
 	public String getNome(){
 		return nome;
 	}
