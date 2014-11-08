@@ -1,4 +1,4 @@
-package br.ufc.es.com.BancoImb.tabuleiro;
+package br.ufc.es.com.BancoImb.control;
 
 import java.awt.Point;
 import java.util.List;
@@ -12,14 +12,13 @@ import br.ufc.es.com.BancoImb.LugradouroEspecial.LogradouroEspecialPartida;
 import br.ufc.es.com.BancoImb.LugradouroEspecial.LogradouroEspecialPrisao;
 import br.ufc.es.com.BancoImb.LugradouroEspecial.LogradouroEspecialSorteReves;
 import br.ufc.es.com.BancoImb.LugradouroEspecial.LogradouroEspecialVaParaAPrisao;
-import br.ufc.es.com.BancoImb.interfaces.ITabuleiro;
 import br.ufc.es.com.BancoImb.model.CasaDoTabuleiro;
 import br.ufc.es.com.BancoImb.model.Jogador;
 
-public class Tabuleiro{
+public class ControllTabuleiro{
 	private List<CasaDoTabuleiro> tabuleiro;
 	
-	public Tabuleiro(List<CasaDoTabuleiro> tabuleiroList) {
+	public ControllTabuleiro(List<CasaDoTabuleiro> tabuleiroList) {
 		tabuleiro = tabuleiroList;
 		criarCasasNoTabuleiro();
 	}

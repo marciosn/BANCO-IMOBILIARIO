@@ -9,10 +9,6 @@ import br.ufc.es.com.BancoImb.interfaces.IEfeitoCasa;
 public class CasaDoTabuleiro implements IEfeitoCasa{
 	private String nome;
 	private List<Jogador> jogadoresNaCasa;
-	private Jogador proprietario;
-	private boolean vendido;
-	private float valor;
-	private float taxa;
 	private Point posicao;
 	
 	public CasaDoTabuleiro() {
@@ -40,38 +36,6 @@ public class CasaDoTabuleiro implements IEfeitoCasa{
 	}
 	public String getNome(){
 		return nome;
-	}
-
-	public Jogador getProprietario() {
-		return proprietario;
-	}
-
-	public void setProprietario(Jogador proprietario) {
-		this.proprietario = proprietario;
-	}
-
-	public boolean isVendido() {
-		return vendido;
-	}
-
-	public void setVendido(boolean vendido) {
-		this.vendido = vendido;
-	}
-
-	public float getValor() {
-		return valor;
-	}
-
-	public void setValor(float valor) {
-		this.valor = valor;
-	}
-
-	public float getTaxa() {
-		return taxa;
-	}
-
-	public void setTaxa(float taxa) {
-		this.taxa = taxa;
 	}
 
 	public Point getPosicao() {

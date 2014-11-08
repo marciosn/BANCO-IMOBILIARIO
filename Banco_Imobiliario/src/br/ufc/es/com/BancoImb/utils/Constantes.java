@@ -2,7 +2,7 @@ package br.ufc.es.com.BancoImb.utils;
 
 import java.io.File;
 
-import br.ufc.es.com.BancoImb.tabuleiro.Tabuleiro;
+import br.ufc.es.com.BancoImb.control.ControllTabuleiro;
 
 public class Constantes {
 	//cenario

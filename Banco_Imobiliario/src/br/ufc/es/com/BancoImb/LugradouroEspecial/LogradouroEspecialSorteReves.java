@@ -17,33 +17,33 @@ public class LogradouroEspecialSorteReves extends LogradouroEspecial{
 	
 	private List<Float> cartas;
 	private int indice;
-	private Constantes constante;
+	//private Constantes constante;
 	//private DesenhaComponentesGraficos desenha;
 	
 	public LogradouroEspecialSorteReves(String nome, Point posicao) {
 		super(nome, posicao);
 		cartas = new ArrayList<Float>();
 		criarDeckCartas();
-		constante = new Constantes();
+		//constante = new Constantes();
 		//desenha = new DesenhaComponentesGraficos();
 	}
 	public void ativarEfeito(Jogador jogador) {
 		sorteReves();
 		if((indice % 2)  == 0){
-			new Sound(constante.CAIXINHA).play();
+			new Sound(new Constantes().CAIXINHA).play();
 			jogador.receberTaxa(cartas.get(indice));
 			
 			//desenha.messageSorte(jogador, cartas.get(indice));
 			
 			JOptionPane.showMessageDialog(null, "Sorte"+ "\n" + "Receba: "+	cartas.get(indice) + "\n" +
-					"Seu novo saldo é: " + jogador.getSaldo(), "Sorte", JOptionPane.PLAIN_MESSAGE, new ImageIcon(constante.FELIZ));
+					"Seu novo saldo é: " + jogador.getSaldo(), "Sorte", JOptionPane.PLAIN_MESSAGE, new ImageIcon(new Constantes().FELIZ));
 		}else{
 			jogador.pagarTaxa(cartas.get(indice));
 			
 			//desenha.messageReves(jogador, cartas.get(indice));
 			
 			JOptionPane.showMessageDialog(null, "Revés"+"\n" + "Pague: "+cartas.get(indice) +
-					"\n" + "Seu novo saldo é: " + jogador.getSaldo(), "Reves", JOptionPane.PLAIN_MESSAGE, new ImageIcon(constante.TRISTE));
+					"\n" + "Seu novo saldo é: " + jogador.getSaldo(), "Reves", JOptionPane.PLAIN_MESSAGE, new ImageIcon(new Constantes().TRISTE));
 		}		
 	}
 	

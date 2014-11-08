@@ -11,13 +11,13 @@ public class RepositorioLists {
 	private List<Jogador> jogadores;
 	private List<Jogador> jogadoresAindaJogando;
 	private List<CasaDoTabuleiro> tabuleiro;
-	private Constantes constante;
+	//private Constantes constante;
 	
 	public RepositorioLists() {
 		jogadores = new ArrayList<Jogador>();
 		jogadoresAindaJogando = new ArrayList<Jogador>();
 		tabuleiro = new ArrayList<CasaDoTabuleiro>();
-		constante = new Constantes();
+		//constante = new Constantes();
 	}
 	public void adicionaJogador(Jogador jogador){
 		jogadores.add(jogador);
@@ -28,14 +28,14 @@ public class RepositorioLists {
 	public void adicionaListaDeJogadoresNaCasaDePartida(){
 		for (Jogador jogador : this.jogadores) {
 			jogadoresAindaJogando.add(jogador);
-			tabuleiro.get(constante.INDICE_DA_CASA_DE_PARTIDA).adicionarJogadoresNaListaDaCasa(jogador);
+			tabuleiro.get(new Constantes().INDICE_DA_CASA_DE_PARTIDA).adicionarJogadoresNaListaDaCasa(jogador);
 		}
 	}
 	public void removerDeJogadoresAindaJogando(Jogador jogador){
 		jogadoresAindaJogando.remove(jogador);
 	}
 	public Jogador getPrimeiroJogadorDaLista(){
-		return jogadores.get(constante.JOGADOR_NA_PRIMEIRA_POSICAO_DA_LISTA);
+		return jogadores.get(new Constantes().JOGADOR_NA_PRIMEIRA_POSICAO_DA_LISTA);
 	}
 	public List<Jogador> getJogadores() {
 		return jogadores;

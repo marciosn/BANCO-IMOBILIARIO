@@ -2,8 +2,9 @@ package br.ufc.es.com.BancoImb.utils;
 
 import jplay.Animation;
 import jplay.Mouse;
-import br.ufc.es.com.BancoImb.interfaces.IVerificacoesDeLogicaDoJogo;
+import br.ufc.es.com.BancoImb.model.CasaDoTabuleiro;
 import br.ufc.es.com.BancoImb.model.Jogador;
+import br.ufc.es.com.BancoImb.model.LogradouroComercializavel;
 
 public class VerificacoesDeLogicaDoJogo{
 	public boolean verificaSeJogadorAindaPossuiSaldo(Jogador jogador){
@@ -56,5 +57,12 @@ public class VerificacoesDeLogicaDoJogo{
 			isNull = true;
 		}
 		return isNull;
+	}
+	public boolean verificaSeJogadorPossuiSaldoParaComprar(Jogador jogador, LogradouroComercializavel casa){
+		boolean possuiSaldo = false;
+		if(jogador.getSaldo() >=  casa.getValor()){
+			possuiSaldo = true;
+		}
+		return possuiSaldo;
 	}
 }

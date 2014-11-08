@@ -3,7 +3,7 @@ package br.ufc.es.com.BancoImb.model;
 import java.awt.Point;
 
 
-public class LogradouroComum extends CasaDoTabuleiro{
+public class LogradouroComercializavel extends CasaDoTabuleiro{
 	private String nome;
 	private float valor;
 	private Jogador proprietario;
@@ -11,7 +11,7 @@ public class LogradouroComum extends CasaDoTabuleiro{
 	private boolean vendido;
 	private Point posicao;
 	
-	public LogradouroComum(String nome, float valor, float taxa, Point posicao) {
+	public LogradouroComercializavel(String nome, float valor, float taxa, Point posicao) {
 		this.nome = nome;
 		this.valor = valor;
 		this.vendido = false;
@@ -49,5 +49,4 @@ public class LogradouroComum extends CasaDoTabuleiro{
 	public void setPosicao(Point posicao) {
 		this.posicao = posicao;
 	}
-
 }

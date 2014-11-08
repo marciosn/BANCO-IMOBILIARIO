@@ -15,7 +15,7 @@ public class LogradouroEspecialLucrosEDividendos extends LogradouroEspecial{
 	}
 	public void ativarEfeito(Jogador jogador) {
 		jogador.receberTaxa(200);
-		desenha.messageLucrosDividendos(jogador, 200);		
+		desenha.messageLucrosDividendos(jogador, 200);
 	}
 
 }

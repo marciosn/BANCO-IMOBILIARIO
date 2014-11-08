@@ -5,12 +5,8 @@ import java.util.List;
 import br.ufc.es.com.BancoImb.model.CasaDoTabuleiro;
 import br.ufc.es.com.BancoImb.model.Jogador;
 import br.ufc.es.com.BancoImb.repositorios.RepositorioLists;
-import br.ufc.es.com.BancoImb.tabuleiro.Tabuleiro;
-import br.ufc.es.com.BancoImb.utils.ObterProximoIndice;
-import br.ufc.es.com.BancoImb.utils.Constantes;
-import br.ufc.es.com.BancoImb.utils.DisparaEfeitoCasaPartida;
-import br.ufc.es.com.BancoImb.utils.EfeitoDaCasa;
 import br.ufc.es.com.BancoImb.utils.InsereJogadores;
+import br.ufc.es.com.BancoImb.utils.ObterProximoIndice;
 import br.ufc.es.com.BancoImb.utils.VerificacoesDeLogicaDoJogo;
 import br.ufc.es.com.BancoImb.view.DesenhaComponentesGraficos;
 
@@ -20,19 +16,18 @@ import br.ufc.es.com.BancoImb.view.DesenhaComponentesGraficos;
  * @author Márcio Souza
  * 
  * **/
-public class ControladorBancoImobiliario {
+public class ControllBancoImobiliario {
 	
-	private Tabuleiro tabuleiro;
+	private ControllTabuleiro tabuleiro;
 	private Jogador jogadorDaVEZ;
 	private boolean executando = true;
-	private EfeitoDaCasa efeito;
 	private DesenhaComponentesGraficos desenha;
 	private VerificacoesDeLogicaDoJogo verifica;
 	private RepositorioLists repositorioLists;
 	private InsereJogadores insereJogadores;
 	private ObterProximoIndice obterIndice;
 
-	public ControladorBancoImobiliario() {
+	public ControllBancoImobiliario() {
 		desenha = new DesenhaComponentesGraficos();
 		
 		//inicia a construção dos componentes graficos
@@ -40,8 +35,7 @@ public class ControladorBancoImobiliario {
 		
 		verifica = new VerificacoesDeLogicaDoJogo();
 		repositorioLists = new RepositorioLists();
-		efeito = new EfeitoDaCasa();
-		tabuleiro = new Tabuleiro(repositorioLists.getTabuleiro());
+		tabuleiro = new ControllTabuleiro(repositorioLists.getTabuleiro());
 		desenha.atualizaTabuleiro();
 		obterIndice = new ObterProximoIndice();
 		insereJogadores = new InsereJogadores(repositorioLists);
@@ -63,11 +57,9 @@ public class ControladorBancoImobiliario {
 	public void moverJogador(Jogador jogador, CasaDoTabuleiro destino) {
 		tabuleiro.moverJogador(jogador, destino);
 		desenha.moverPecaJogador(jogador, destino);
-		ativarEfeitoDaCasa(jogador, destino);
+		destino.ativarEfeito(jogador);
 	}
-	public void ativarEfeitoDaCasa(Jogador jogador, CasaDoTabuleiro destino){
-		efeito.ativarEfeito(jogador, destino);
-	}
+
 	public void mudaJogadorDaVez(int IdJogadorAtual, List<Jogador> jogadores){
 		setJogadorDaVEZ(tabuleiro.getJogadorByID(obterIndice.obterIndiceProxJogador(IdJogadorAtual, jogadores)));
 	}

@@ -15,7 +15,6 @@ public class LogradouroEspecialParadaLivre extends LogradouroEspecial{
 	}
 	public void ativarEfeito(Jogador jogador) {
 		desenha.messageParadaLivre(jogador);
-		
 	}
 
 }

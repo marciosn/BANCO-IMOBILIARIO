@@ -13,6 +13,7 @@ import jplay.Scene;
 import jplay.Window;
 import br.ufc.es.com.BancoImb.model.CasaDoTabuleiro;
 import br.ufc.es.com.BancoImb.model.Jogador;
+import br.ufc.es.com.BancoImb.model.LogradouroComercializavel;
 import br.ufc.es.com.BancoImb.utils.Constantes;
 
 
@@ -23,24 +24,24 @@ public class DesenhaComponentesGraficos {
 	private Animation botao;
 	private Animation portfolioButton0, portfolioButton1;
 	private JTextArea portfolio;
-	private Constantes constante;
+	//private Constantes constante;
 	
 	public DesenhaComponentesGraficos() {
 	}
 	
 	public void instanciaObjetos(){
-		constante = new Constantes();
+		//constante = new Constantes();
 		window = new Window(1080, 720);
-		window.setCursor( window.createCustomCursor(constante.MOUSE) );
+		window.setCursor( window.createCustomCursor(new Constantes().MOUSE) );
 		mouse = window.getMouse();
 		portfolio = new JTextArea();
 		scene = new Scene();
-		scene.loadFromFile(constante.CENARIO);
+		scene.loadFromFile(new Constantes().CENARIO);
 		scene.setDrawStartPos(0, 1);
 	}
 
 	public void desenhaPecasNoTabuleiro(List<CasaDoTabuleiro> tabuleiro) {
-		for (Jogador jogador : tabuleiro.get(constante.INDICE_DA_CASA_DE_PARTIDA).getJogadoresNaCasa()) {
+		for (Jogador jogador : tabuleiro.get(new Constantes().INDICE_DA_CASA_DE_PARTIDA).getJogadoresNaCasa()) {
 			scene.addOverlay(jogador.getPeca());
 		}
 	}
@@ -52,7 +53,7 @@ public class DesenhaComponentesGraficos {
 	}
 	public void exibeLogradourosDoJogador(Jogador jogador){
 		portfolio.setText("");
-		for(CasaDoTabuleiro c : jogador.getMeusLogradouros()){
+		for(LogradouroComercializavel c : jogador.getMeusLogradouros()){
 			portfolio.append("["+c.getNome()+ " "+ c.getValor() +"]" + "\n");
 		}
 		JOptionPane.showMessageDialog(null," Saldo Atual: "
@@ -63,10 +64,10 @@ public class DesenhaComponentesGraficos {
 				"Portfolio: " 
 				+jogador.getNome(),
 				JOptionPane.PLAIN_MESSAGE,
-				new ImageIcon(constante.PORTFOLIO));
+				new ImageIcon(new Constantes().PORTFOLIO));
 	}
 	public void desenhaBotaoDados(){
-		botao = new Animation(constante.DADOS);
+		botao = new Animation(new Constantes().DADOS);
 		botao.x = 800;
 		botao.y = 110;
 		botao.draw();
@@ -78,7 +79,7 @@ public class DesenhaComponentesGraficos {
 		atualizaTabuleiro();
 	}
 	public void messageJogadorNaoPossuiSaldo(Jogador jogador, List<Jogador> jogadoresAindaJogando){
-		jogador.getPeca().loadImage(constante.FORA_DO_JOGO);
+		jogador.getPeca().loadImage(new Constantes().FORA_DO_JOGO);
 		atualizaTabuleiro();
 		JOptionPane.showMessageDialog(null, "O jogador "
 				+ jogador.getNome() + "\n"
@@ -87,7 +88,7 @@ public class DesenhaComponentesGraficos {
 				+ jogadoresAindaJogando.size(),
 				"Jogador Sai do Jogo",
 				JOptionPane.PLAIN_MESSAGE,
-				new ImageIcon(constante.TRISTE));
+				new ImageIcon(new Constantes().TRISTE));
 	}
 	
 	public void ativaBotaoPortifolio(Mouse mouse, List<Jogador> jogadores){
@@ -99,12 +100,12 @@ public class DesenhaComponentesGraficos {
 		}		
 	}
 	public void desenhaBotaoPortifolio(){
-		portfolioButton0 = new Animation(constante.PORTFOLIO);
+		portfolioButton0 = new Animation(new Constantes().PORTFOLIO);
 		portfolioButton0.x = 240;
 		portfolioButton0.y = 140;
 		portfolioButton0.draw();
 		
-		portfolioButton1 = new Animation(constante.PORTFOLIO);
+		portfolioButton1 = new Animation(new Constantes().PORTFOLIO);
 		portfolioButton1.x = 340;
 		portfolioButton1.y = 140;
 		portfolioButton1.draw();
@@ -128,13 +129,13 @@ public class DesenhaComponentesGraficos {
 		return respostaDoJogador;
 	}
 	public void messageExisteUmCampeao(List<Jogador> jogadoresAindaJogando){
-		new jplay.Sound(constante.CHAMPIONS).play();
+		new jplay.Sound(new Constantes().CHAMPIONS).play();
 		JOptionPane.showMessageDialog(null, "O jogador "
 				+ jogadoresAindaJogando.get(0).getNome() + "\n"
 				+ "Venceu o jogo",
 				"Vencedor",
 				JOptionPane.PLAIN_MESSAGE,
-				new ImageIcon(constante.TROFEU));
+				new ImageIcon(new Constantes().TROFEU));
 	}
 	public void messageNumeroDeEntradaDadosInvalido(){
 		JOptionPane.showMessageDialog(null,"Você digitou o numero dos dados de maneira errada");
@@ -190,15 +191,18 @@ public class DesenhaComponentesGraficos {
 		JOptionPane.showMessageDialog(null, "Sorte"+ "\n" + "Receba: "
 				+ sorteValor + "\n" +"Seu novo saldo é: " 
 				+ jogador.getSaldo(), "Sorte",
-				JOptionPane.PLAIN_MESSAGE,
-				new ImageIcon(constante.FELIZ));
+				JOptionPane.PLAIN_MESSAGE, new ImageIcon(new Constantes().FELIZ));
 	}
 	public void messageReves(Jogador jogador, float revesValor){
 		JOptionPane.showMessageDialog(null, "Reves"+ "\n" + "Pague: " 
 				+revesValor	+"\n" + "Seu novo saldo é: " 
 				+ jogador.getSaldo(), "Reves",
-				JOptionPane.PLAIN_MESSAGE,
-				new ImageIcon(constante.TRISTE));
+				JOptionPane.PLAIN_MESSAGE,new ImageIcon(new Constantes().TRISTE));
+	}
+	public void messageNaoPossuiSaldoParaComprar(){
+		JOptionPane.showMessageDialog(null, "Não possui Saldo"+ "\n" 
+				+ "Você não possui saldo suficiente para comprar este logradouro",
+				"Não possui saldo",JOptionPane.PLAIN_MESSAGE);
 	}
 	public Window getWindow() {
 		return window;

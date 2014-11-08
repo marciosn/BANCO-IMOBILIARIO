@@ -7,26 +7,26 @@ import br.ufc.es.com.BancoImb.repositorios.RepositorioLists;
 import br.ufc.es.com.BancoImb.view.DesenhaComponentesGraficos;
 
 public class InsereJogadores {
-	private Constantes constante;
+	//private Constantes constante;
 	private DesenhaComponentesGraficos desenha;
 	private VerificacoesDeLogicaDoJogo verifica;
 	private RepositorioLists repositorioLits;
 	
 	public InsereJogadores(RepositorioLists repositorio) {
-		constante = new Constantes();
+		//constante = new Constantes();
 		desenha = new DesenhaComponentesGraficos();
 		verifica = new VerificacoesDeLogicaDoJogo();
 		repositorioLits = repositorio;
 	}
 	
 	public void inserirJogador() {
-		for (int i = 0; i < constante.QUANTIDADE_jOGADORES;) {
+		for (int i = 0; i < new Constantes().QUANTIDADE_jOGADORES;) {
 			String nomeJogador = desenha.inputDigiteONomeDoJogador(i);
 			if(verifica.verificaNomeIsValido(nomeJogador)){
-				String peca = constante.PECA + repositorioLits.getJogadores().size() + constante.FORMATO_IMAGEM;
+				String peca = new Constantes().PECA + repositorioLits.getJogadores().size() + new Constantes().FORMATO_IMAGEM;
 				repositorioLits.adicionaJogador(new Jogador(nomeJogador,
-						new ContaBancaria(constante.SALDO_CONTA_BANCARIA), 
-						new PecaJogador(constante.PATH_IMAGE + peca)));
+						new ContaBancaria(new Constantes().SALDO_CONTA_BANCARIA), 
+						new PecaJogador(new Constantes().PATH_IMAGE + peca)));
 		i++;
 			}else
 			desenha.messageNomeInvalido();
