@@ -10,14 +10,14 @@ import br.ufc.es.com.BancoImb.utils.Constantes;
 public class RepositorioLists {
 	private List<Jogador> jogadores;
 	private List<Jogador> jogadoresAindaJogando;
+	private List<Jogador> jogadoresPresos;
 	private List<CasaDoTabuleiro> tabuleiro;
-	//private Constantes constante;
 	
 	public RepositorioLists() {
 		jogadores = new ArrayList<Jogador>();
 		jogadoresAindaJogando = new ArrayList<Jogador>();
 		tabuleiro = new ArrayList<CasaDoTabuleiro>();
-		//constante = new Constantes();
+		jogadoresPresos = new ArrayList<Jogador>();
 	}
 	public void adicionaJogador(Jogador jogador){
 		jogadores.add(jogador);
@@ -34,8 +34,22 @@ public class RepositorioLists {
 	public void removerDeJogadoresAindaJogando(Jogador jogador){
 		jogadoresAindaJogando.remove(jogador);
 	}
+	public CasaDoTabuleiro getCasaByIndice(int indice) {
+		return tabuleiro.get(indice);
+	}
 	public Jogador getPrimeiroJogadorDaLista(){
 		return jogadores.get(new Constantes().JOGADOR_NA_PRIMEIRA_POSICAO_DA_LISTA);
+	}
+	public Jogador getJogadorByID(int id){
+		Jogador jogador = null;
+		for (int i = 0; i < tabuleiro.size(); i++) {
+			for (Jogador jog : tabuleiro.get(i).getJogadoresNaCasa()) {
+				if (jog.getID() == id) {
+					jogador = jog;
+				}
+			}
+		}	 
+		return jogador;
 	}
 	public List<Jogador> getJogadores() {
 		return jogadores;
@@ -59,6 +73,11 @@ public class RepositorioLists {
 	public void setTabuleiro(List<CasaDoTabuleiro> tabuleiro) {
 		this.tabuleiro = tabuleiro;
 	}
-	
+	public List<Jogador> getJogadoresPresos() {
+		return jogadoresPresos;
+	}
+	public void setJogadoresPresos(List<Jogador> jogadoresPresos) {
+		this.jogadoresPresos = jogadoresPresos;
+	}
 
 }

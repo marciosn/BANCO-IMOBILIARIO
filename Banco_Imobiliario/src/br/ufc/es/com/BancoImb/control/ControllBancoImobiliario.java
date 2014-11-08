@@ -2,6 +2,9 @@ package br.ufc.es.com.BancoImb.control;
 
 import java.util.List;
 
+import javax.jws.Oneway;
+import javax.swing.JOptionPane;
+
 import br.ufc.es.com.BancoImb.model.CasaDoTabuleiro;
 import br.ufc.es.com.BancoImb.model.Jogador;
 import br.ufc.es.com.BancoImb.repositorios.RepositorioLists;
@@ -18,27 +21,24 @@ import br.ufc.es.com.BancoImb.view.DesenhaComponentesGraficos;
  * **/
 public class ControllBancoImobiliario {
 	
-	private ControllTabuleiro tabuleiro;
+	private Tabuleiro tabuleiro;
 	private Jogador jogadorDaVEZ;
 	private boolean executando = true;
 	private DesenhaComponentesGraficos desenha;
 	private VerificacoesDeLogicaDoJogo verifica;
-	private RepositorioLists repositorioLists;
+	private RepositorioLists lists;
 	private InsereJogadores insereJogadores;
 	private ObterProximoIndice obterIndice;
 
 	public ControllBancoImobiliario() {
 		desenha = new DesenhaComponentesGraficos();
-		
-		//inicia a construção dos componentes graficos
 		instanciaComponentesGraficos();
-		
 		verifica = new VerificacoesDeLogicaDoJogo();
-		repositorioLists = new RepositorioLists();
-		tabuleiro = new ControllTabuleiro(repositorioLists.getTabuleiro());
+		lists = new RepositorioLists();
+		tabuleiro = new Tabuleiro(lists);
 		desenha.atualizaTabuleiro();
 		obterIndice = new ObterProximoIndice();
-		insereJogadores = new InsereJogadores(repositorioLists);
+		insereJogadores = new InsereJogadores(lists);
 		inserirJogadores();
 		iniciarJogo();
 	}
@@ -46,23 +46,38 @@ public class ControllBancoImobiliario {
 	public void inserirJogadores(){
 		insereJogadores.inserirJogador();
 		iniciaJogadorDaVez();
-		desenha.desenhaPecasNoTabuleiro(tabuleiro.getTabuleiro());
+		desenha.desenhaPecasNoTabuleiro(lists.getTabuleiro());
 	}
 	public void instanciaComponentesGraficos(){
 		desenha.instanciaObjetos();
 	}
 	public void iniciaJogadorDaVez(){
-		jogadorDaVEZ = repositorioLists.getPrimeiroJogadorDaLista();
+		jogadorDaVEZ = lists.getPrimeiroJogadorDaLista();
 	}
 	public void moverJogador(Jogador jogador, CasaDoTabuleiro destino) {
-		tabuleiro.moverJogador2(jogador, destino);
 		desenha.moverPecaJogador(jogador, destino);
+		destino.mover(jogadorDaVEZ, destino);
 		destino.ativarEfeito(jogador);
 	}
 
 	public void mudaJogadorDaVez(int IdJogadorAtual, List<Jogador> jogadores){
-		setJogadorDaVEZ(tabuleiro.getJogadorByID(obterIndice.obterIndiceProxJogador(IdJogadorAtual, jogadores)));
+			int id = obterIndice.obterIndiceProxJogador(IdJogadorAtual, jogadores);
+			
+			jogadorDaVEZ = lists.getJogadorByID(id);
+			System.out.println(jogadorDaVEZ.getNome().toUpperCase());
+			JOptionPane.showMessageDialog(null,"É Vez do jogador "+jogadorDaVEZ.getNome().toUpperCase());
+			
+			if(lists.getJogadoresPresos().contains(jogadorDaVEZ)){
+				
+				JOptionPane.showMessageDialog(null,jogadorDaVEZ.getNome().toUpperCase() +" passe a vez de jogar");
+				lists.getJogadoresPresos().remove(jogadorDaVEZ);
+				
+				int newId = jogadorDaVEZ.getID();
+				jogadorDaVEZ = lists.getJogadorByID(obterIndice.obterIndiceProxJogador(newId, jogadores));
+				System.out.println(jogadorDaVEZ.getNome().toUpperCase());
+			}
 	}
+	
 	public void iniciarJogo() {
 		CasaDoTabuleiro destino;
 		while (executando) {
@@ -76,16 +91,16 @@ public class ControllBancoImobiliario {
 				if (verifica.verificaTamanhoJogadaIsValida(resultadoDados)) {
 					
 					int indiceCasaDestino = obterIndice.obterIndiceProxCasa(jogadorDaVEZ.getIndiceAtualJogador(), resultadoDados);
-					destino = tabuleiro.getCasaByIndice(indiceCasaDestino);
+					destino = lists.getCasaByIndice(indiceCasaDestino);
 					
 					moverJogador(jogadorDaVEZ, destino);
-
+					
 					if (verifica.verificaSeJogadorAindaPossuiSaldo(jogadorDaVEZ)) {
-						mudaJogadorDaVez(jogadorDaVEZ.getID(), repositorioLists.getJogadores());
+						mudaJogadorDaVez(jogadorDaVEZ.getID(), lists.getJogadores());
 					}else{
-						repositorioLists.removerDeJogadoresAindaJogando(jogadorDaVEZ);
-						desenha.messageJogadorNaoPossuiSaldo(jogadorDaVEZ, repositorioLists.getJogadoresAindaJogando());
-						desenha.messageExisteUmCampeao(repositorioLists.getJogadoresAindaJogando());
+						lists.removerDeJogadoresAindaJogando(jogadorDaVEZ);
+						desenha.messageJogadorNaoPossuiSaldo(jogadorDaVEZ, lists.getJogadoresAindaJogando());
+						desenha.messageExisteUmCampeao(lists.getJogadoresAindaJogando());
 						executando = false;
 					}
 				} else
@@ -93,11 +108,8 @@ public class ControllBancoImobiliario {
 			}else
 				desenha.messageInputVazio();
 		}
-			desenha.ativaBotaoPortifolio(desenha.getMouse(), repositorioLists.getJogadores());		
+			desenha.ativaBotaoPortifolio(desenha.getMouse(), lists.getJogadores());		
 		}
 		desenha.getWindow().exit();
-	}
-	public void setJogadorDaVEZ(Jogador jogadorDaVEZ) {
-		this.jogadorDaVEZ = jogadorDaVEZ;
 	}
 }

@@ -1,4 +1,4 @@
-package br.ufc.es.com.BancoImb.LugradouroEspecial;
+package br.ufc.es.com.BancoImb.Lugradouros;
 
 import java.awt.Point;
 

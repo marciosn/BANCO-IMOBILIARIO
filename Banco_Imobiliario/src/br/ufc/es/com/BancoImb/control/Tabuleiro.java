@@ -3,73 +3,33 @@ package br.ufc.es.com.BancoImb.control;
 import java.awt.Point;
 import java.util.List;
 
-import br.ufc.es.com.BancoImb.LogradouroComum.LogradouroComumEmpresa;
-import br.ufc.es.com.BancoImb.LogradouroComum.LogradouroComumImovel;
-import br.ufc.es.com.BancoImb.LugradouroEspecial.LogradouroEspecialImpostoDeRenda;
-import br.ufc.es.com.BancoImb.LugradouroEspecial.LogradouroEspecialLucrosEDividendos;
-import br.ufc.es.com.BancoImb.LugradouroEspecial.LogradouroEspecialParadaLivre;
-import br.ufc.es.com.BancoImb.LugradouroEspecial.LogradouroEspecialPartida;
-import br.ufc.es.com.BancoImb.LugradouroEspecial.LogradouroEspecialPrisao;
-import br.ufc.es.com.BancoImb.LugradouroEspecial.LogradouroEspecialSorteReves;
-import br.ufc.es.com.BancoImb.LugradouroEspecial.LogradouroEspecialVaParaAPrisao;
+import br.ufc.es.com.BancoImb.Lugradouros.LogradouroComumEmpresa;
+import br.ufc.es.com.BancoImb.Lugradouros.LogradouroComumImovel;
+import br.ufc.es.com.BancoImb.Lugradouros.LogradouroEspecialImpostoDeRenda;
+import br.ufc.es.com.BancoImb.Lugradouros.LogradouroEspecialLucrosEDividendos;
+import br.ufc.es.com.BancoImb.Lugradouros.LogradouroEspecialParadaLivre;
+import br.ufc.es.com.BancoImb.Lugradouros.LogradouroEspecialPartida;
+import br.ufc.es.com.BancoImb.Lugradouros.LogradouroEspecialPrisao;
+import br.ufc.es.com.BancoImb.Lugradouros.LogradouroEspecialSorteReves;
+import br.ufc.es.com.BancoImb.Lugradouros.LogradouroEspecialVaParaAPrisao;
 import br.ufc.es.com.BancoImb.model.CasaDoTabuleiro;
 import br.ufc.es.com.BancoImb.model.Jogador;
+import br.ufc.es.com.BancoImb.repositorios.RepositorioLists;
 
-public class ControllTabuleiro{
+public class Tabuleiro{
 	private List<CasaDoTabuleiro> tabuleiro;
+	private RepositorioLists repositorioLists;
 	
-	public ControllTabuleiro(List<CasaDoTabuleiro> tabuleiroList) {
+	/*public ControllTabuleiro(List<CasaDoTabuleiro> tabuleiroList) {
 		tabuleiro = tabuleiroList;
 		criarCasasNoTabuleiro();
-	}
-	/*public void moverJogador(Jogador jogador, CasaDoTabuleiro destino) {
-		
-		CasaDoTabuleiro origem = getCasaByIndice(jogador.getPosicaoAtualJogador());
-		origem.removerJogadoresDaListaDaCasa(jogador);
-		jogador.setPosicaoAtualJogador(getIndiceByCasa(destino));
-		destino.adicionarJogadoresNaListaDaCasa(jogador);
 	}*/
-	public void moverJogador2(Jogador jogador, CasaDoTabuleiro destino) {
-		CasaDoTabuleiro origem = jogador.getPosicaoJogador();
-		jogador.setPosicaoJogador(destino);
-		jogador.setIndiceAtualJogador(destino.getIndice());
-		destino.adicionarJogadoresNaListaDaCasa(jogador);
-		origem.removerJogadoresDaListaDaCasa(jogador);
+	public Tabuleiro(RepositorioLists repositorio) {
+		repositorioLists = repositorio;
+		tabuleiro = repositorio.getTabuleiro();
+		criarCasasNoTabuleiro();
 	}
-	public CasaDoTabuleiro getCasaByIndice(int indice) {
-		return tabuleiro.get(indice);
-	}
-	/*public int getIndiceByCasa(CasaDoTabuleiro casa){
-		int indice = 0;
-		for(int i = 0 ; i < tabuleiro.size() ; i++){
-			if(tabuleiro.get(i).equals(casa)){
-				indice = i;
-			}
-		}
-		return indice;
-	}*/
-	public Jogador getJogadorByID(int id){
-		Jogador jogador = null;
-		for (int i = 0; i < tabuleiro.size(); i++) {
-			for (Jogador jog : tabuleiro.get(i).getJogadoresNaCasa()) {
-				if (jog.getID() == id) {
-					jogador = jog;
-				}
-			}
-		}	 
-		return jogador;
-	}
-	/*public CasaDoTabuleiro getCasaByJogador(Jogador jogador){
-		CasaDoTabuleiro casa = null;
-		for(CasaDoTabuleiro c : tabuleiro){
-			for(Jogador jog : c.getJogadoresNaCasa()){
-				if(jog.equals(jogador)){
-					casa = c;
-				}
-			}
-		}
-		return casa;
-	}*/
+	
 	public void criarCasasNoTabuleiro() {
 		tabuleiro.add(new LogradouroEspecialPartida("Partida", new Point(13, 12), 0));											//POSICAO 00
 		tabuleiro.add(new LogradouroComumImovel("Brooklin", 260 , 260, new Point(13, 107), 1));								//POSICAO 01
@@ -81,7 +41,7 @@ public class ControllTabuleiro{
 		tabuleiro.add(new LogradouroComumImovel("Avendia Vieira Souto", 320 , 320, new Point(13, 446), 7));					//POSICAO 07
 		tabuleiro.add(new LogradouroComumEmpresa("Companhia De Aviacao", 200 , 200, new Point(13, 504), 8));					//POSICAO 08
 		tabuleiro.add(new LogradouroComumImovel("Copacabana", 260 , 260, new Point(13, 563), 9));								//POSICAO 09
-		tabuleiro.add(new LogradouroEspecialVaParaAPrisao("Va Para A Prisao", new Point(13, 629), 10));							//POSICAO 10
+		tabuleiro.add(new LogradouroEspecialVaParaAPrisao("Va Para A Prisao", new Point(13, 629), 10, repositorioLists));							//POSICAO 10
 		tabuleiro.add(new LogradouroComumImovel("Jardim Europa", 140, 14, new Point(165, 643), 11));							//POSICAO 11
 		tabuleiro.add(new LogradouroComumImovel("Avendia Paulista", 140 , 140, new Point(248, 643), 12));						//POSICAO 12
 		tabuleiro.add(new LogradouroEspecialSorteReves("Sorte_Reves", new Point(332, 643), 13));								//POSICAO 13
@@ -111,12 +71,5 @@ public class ControllTabuleiro{
 		tabuleiro.add(new LogradouroComumImovel("Avenida Presidente Vargas", 60 , 60, new Point(341, 10), 37));					//POSICAO 37
 		tabuleiro.add(new LogradouroEspecialSorteReves("Sorte Reves", new Point(253, 10), 38));									//POSICAO 38
 		tabuleiro.add(new LogradouroComumImovel("Leblon", 100 , 100, new Point(171, 10), 39));									//POSICAO 39
-	}
-	public List<CasaDoTabuleiro> getTabuleiro() {
-		return tabuleiro;
-	}
-
-	public void setTabuleiro(List<CasaDoTabuleiro> tabuleiro) {
-		this.tabuleiro = tabuleiro;
 	}
 }

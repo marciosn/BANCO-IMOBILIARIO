@@ -1,25 +1,28 @@
-package br.ufc.es.com.BancoImb.LugradouroEspecial;
+package br.ufc.es.com.BancoImb.Lugradouros;
 
 import java.awt.Point;
 
+import br.ufc.es.com.BancoImb.interfaces.IEfeitoCasa;
 import br.ufc.es.com.BancoImb.model.Jogador;
 import br.ufc.es.com.BancoImb.model.LogradouroEspecial;
 import br.ufc.es.com.BancoImb.view.DesenhaComponentesGraficos;
 
-public class LogradouroEspecialParadaLivre extends LogradouroEspecial{
-	public LogradouroEspecialParadaLivre(String nome, Point posicao, int indice) {
+public class LogradouroEspecialImpostoDeRenda extends LogradouroEspecial{
+	public LogradouroEspecialImpostoDeRenda(String nome, Point posicao,
+			int indice) {
 		super(nome, posicao, indice);
 		desenha = new DesenhaComponentesGraficos();
 	}
 
 	private DesenhaComponentesGraficos desenha;
 
-	/*public LogradouroEspecialParadaLivre(String nome, Point posicao) {
+	/*public LogradouroEspecialImpostoDeRenda(String nome, Point posicao) {
 		super(nome, posicao);
 		desenha = new DesenhaComponentesGraficos();
 	}*/
 	public void ativarEfeito(Jogador jogador) {
-		desenha.messageParadaLivre(jogador);
+		jogador.pagarTaxa(200);
+		desenha.messageImpostoDeRenda(jogador, 200);
 	}
 
 }

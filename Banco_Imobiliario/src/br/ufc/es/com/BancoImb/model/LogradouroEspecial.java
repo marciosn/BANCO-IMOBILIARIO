@@ -2,16 +2,25 @@ package br.ufc.es.com.BancoImb.model;
 
 import java.awt.Point;
 
+import br.ufc.es.com.BancoImb.repositorios.RepositorioLists;
+
 
 public class LogradouroEspecial extends CasaDoTabuleiro{
 	private String nome;
 	private Point posicao;
 	private int indice;
+	private RepositorioLists lists;
 	
 	public LogradouroEspecial(String nome, Point posicao, int indice) {
 		this.nome = nome;
 		this.posicao = posicao;
 		this.indice = indice;
+	}
+	public LogradouroEspecial(String nome, Point posicao, int indice, RepositorioLists lists) {
+		this.nome = nome;
+		this.posicao = posicao;
+		this.indice = indice;
+		this.lists = lists;
 	}
 	public String getNome() {
 		return nome;

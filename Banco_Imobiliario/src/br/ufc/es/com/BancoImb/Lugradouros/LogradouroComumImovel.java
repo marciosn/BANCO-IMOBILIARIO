@@ -1,4 +1,4 @@
-package br.ufc.es.com.BancoImb.LogradouroComum;
+package br.ufc.es.com.BancoImb.Lugradouros;
 
 import java.awt.Point;
 
@@ -7,8 +7,8 @@ import br.ufc.es.com.BancoImb.model.LogradouroComercializavel;
 import br.ufc.es.com.BancoImb.utils.VerificacoesDeLogicaDoJogo;
 import br.ufc.es.com.BancoImb.view.DesenhaComponentesGraficos;
 
-public class LogradouroComumEmpresa extends LogradouroComercializavel{
-	public LogradouroComumEmpresa(String nome, float valor, float taxa,
+public class LogradouroComumImovel extends LogradouroComercializavel{
+	public LogradouroComumImovel(String nome, float valor, float taxa,
 			Point posicao, int indice) {
 		super(nome, valor, taxa, posicao, indice);
 		desenha = new DesenhaComponentesGraficos();
@@ -17,8 +17,8 @@ public class LogradouroComumEmpresa extends LogradouroComercializavel{
 
 	private DesenhaComponentesGraficos desenha;
 	private VerificacoesDeLogicaDoJogo verifica;
-
-	/*public LogradouroComumEmpresa(String nome, float valor, float taxa, Point posicao) {
+	
+	/*public LogradouroComumImovel(String nome, float valor, float taxa, Point posicao) {
 		super(nome, valor, taxa, posicao);
 		desenha = new DesenhaComponentesGraficos();
 		verifica = new VerificacoesDeLogicaDoJogo();
@@ -26,7 +26,7 @@ public class LogradouroComumEmpresa extends LogradouroComercializavel{
 	
 	public void ativarEfeito(Jogador jogador){
 		if (!this.isVendido()) {
-			int respostaDoJogador = desenha.inputRepostaDoJogadorSobreCompraLogradouro(this.getNome());
+			int respostaDoJogador = desenha.inputRepostaDoJogadorSobreCompraLogradouro(this.getNome());	
 			
 			if(respostaDoJogador == 0){
 				if(verifica.verificaSeJogadorPossuiSaldoParaComprar(jogador, this)){
@@ -35,6 +35,7 @@ public class LogradouroComumEmpresa extends LogradouroComercializavel{
 				}else
 					desenha.messageNaoPossuiSaldoParaComprar();
 			}
+			
 		}else{
 			if(!verifica.verificaSeACasaEMinha(jogador, this)){
 			jogador.pagarTaxa(this.getTaxa());
@@ -43,6 +44,6 @@ public class LogradouroComumEmpresa extends LogradouroComercializavel{
 			}else
 				desenha.messageACasaJaESua();
 		}
+		
 	}
-	
 }

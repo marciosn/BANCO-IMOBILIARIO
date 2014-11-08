@@ -12,9 +12,8 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="br.ufc.es.com.BancoImb.control.ControllTabuleiro" project="Banco_Imobiliario" 
-    file="/Banco_Imobiliario/src/br/ufc/es/com/BancoImb/control/ControllTabuleiro.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
+  <class id="2" language="java" name="br.ufc.es.com.BancoImb.control.Tabuleiro" project="Banco_Imobiliario" 
+    file="/Banco_Imobiliario/src/br/ufc/es/com/BancoImb/control/Tabuleiro.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="-57" y="277"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -41,9 +40,9 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </interface>  
-  <class id="5" language="java" name="br.ufc.es.com.BancoImb.LogradouroComum.LogradouroComumEmpresa" 
+  <class id="5" language="java" name="br.ufc.es.com.BancoImb.Lugradouros.LogradouroComumEmpresa" 
     project="Banco_Imobiliario" 
-    file="/Banco_Imobiliario/src/br/ufc/es/com/BancoImb/LogradouroComum/LogradouroComumEmpresa.java" binary="false" 
+    file="/Banco_Imobiliario/src/br/ufc/es/com/BancoImb/Lugradouros/LogradouroComumEmpresa.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="82" y="458"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" accessors="true" 
@@ -52,9 +51,9 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="br.ufc.es.com.BancoImb.LogradouroComum.LogradouroComumImovel" 
+  <class id="6" language="java" name="br.ufc.es.com.BancoImb.Lugradouros.LogradouroComumImovel" 
     project="Banco_Imobiliario" 
-    file="/Banco_Imobiliario/src/br/ufc/es/com/BancoImb/LogradouroComum/LogradouroComumImovel.java" binary="false" 
+    file="/Banco_Imobiliario/src/br/ufc/es/com/BancoImb/Lugradouros/LogradouroComumImovel.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="123" y="534"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" accessors="true" 
@@ -133,10 +132,10 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="br.ufc.es.com.BancoImb.LugradouroEspecial.LogradouroEspecialVaParaAPrisao" 
+  <class id="14" language="java" name="br.ufc.es.com.BancoImb.Lugradouros.LogradouroEspecialVaParaAPrisao" 
     project="Banco_Imobiliario" 
-    file="/Banco_Imobiliario/src/br/ufc/es/com/BancoImb/LugradouroEspecial/LogradouroEspecialVaParaAPrisao.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
+    file="/Banco_Imobiliario/src/br/ufc/es/com/BancoImb/Lugradouros/LogradouroEspecialVaParaAPrisao.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="602" y="495"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -144,10 +143,10 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="br.ufc.es.com.BancoImb.LugradouroEspecial.LogradouroEspecialSorteReves" 
+  <class id="15" language="java" name="br.ufc.es.com.BancoImb.Lugradouros.LogradouroEspecialSorteReves" 
     project="Banco_Imobiliario" 
-    file="/Banco_Imobiliario/src/br/ufc/es/com/BancoImb/LugradouroEspecial/LogradouroEspecialSorteReves.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
+    file="/Banco_Imobiliario/src/br/ufc/es/com/BancoImb/Lugradouros/LogradouroEspecialSorteReves.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1097" y="527"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -155,9 +154,9 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="br.ufc.es.com.BancoImb.LugradouroEspecial.LogradouroEspecialPrisao" 
+  <class id="16" language="java" name="br.ufc.es.com.BancoImb.Lugradouros.LogradouroEspecialPrisao" 
     project="Banco_Imobiliario" 
-    file="/Banco_Imobiliario/src/br/ufc/es/com/BancoImb/LugradouroEspecial/LogradouroEspecialPrisao.java" binary="false" 
+    file="/Banco_Imobiliario/src/br/ufc/es/com/BancoImb/Lugradouros/LogradouroEspecialPrisao.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="43" width="159" x="497" y="130"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" accessors="true" 
@@ -166,10 +165,10 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="17" language="java" name="br.ufc.es.com.BancoImb.LugradouroEspecial.LogradouroEspecialPartida" 
+  <class id="17" language="java" name="br.ufc.es.com.BancoImb.Lugradouros.LogradouroEspecialPartida" 
     project="Banco_Imobiliario" 
-    file="/Banco_Imobiliario/src/br/ufc/es/com/BancoImb/LugradouroEspecial/LogradouroEspecialPartida.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
+    file="/Banco_Imobiliario/src/br/ufc/es/com/BancoImb/Lugradouros/LogradouroEspecialPartida.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="935" y="11"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -177,10 +176,10 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="18" language="java" name="br.ufc.es.com.BancoImb.LugradouroEspecial.LogradouroEspecialParadaLivre" 
+  <class id="18" language="java" name="br.ufc.es.com.BancoImb.Lugradouros.LogradouroEspecialParadaLivre" 
     project="Banco_Imobiliario" 
-    file="/Banco_Imobiliario/src/br/ufc/es/com/BancoImb/LugradouroEspecial/LogradouroEspecialParadaLivre.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
+    file="/Banco_Imobiliario/src/br/ufc/es/com/BancoImb/Lugradouros/LogradouroEspecialParadaLivre.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="43" width="191" x="548" y="0"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -188,9 +187,9 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="19" language="java" name="br.ufc.es.com.BancoImb.LugradouroEspecial.LogradouroEspecialLucrosEDividendos" 
+  <class id="19" language="java" name="br.ufc.es.com.BancoImb.Lugradouros.LogradouroEspecialLucrosEDividendos" 
     project="Banco_Imobiliario" 
-    file="/Banco_Imobiliario/src/br/ufc/es/com/BancoImb/LugradouroEspecial/LogradouroEspecialLucrosEDividendos.java" 
+    file="/Banco_Imobiliario/src/br/ufc/es/com/BancoImb/Lugradouros/LogradouroEspecialLucrosEDividendos.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="445" y="28"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" accessors="true" 
@@ -199,9 +198,9 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <class id="20" language="java" name="br.ufc.es.com.BancoImb.LugradouroEspecial.LogradouroEspecialImpostoDeRenda" 
+  <class id="20" language="java" name="br.ufc.es.com.BancoImb.Lugradouros.LogradouroEspecialImpostoDeRenda" 
     project="Banco_Imobiliario" 
-    file="/Banco_Imobiliario/src/br/ufc/es/com/BancoImb/LugradouroEspecial/LogradouroEspecialImpostoDeRenda.java" 
+    file="/Banco_Imobiliario/src/br/ufc/es/com/BancoImb/Lugradouros/LogradouroEspecialImpostoDeRenda.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="43" width="219" x="129" y="5"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" accessors="true" 
@@ -267,40 +266,40 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <generalization id="27">    
-    <end type="SOURCE" refId="20"/>    
+  <association id="27">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="28" name="jogadoresNaCasa"/>      
+      <multiplicity id="29" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="30">    
+    <end type="SOURCE" refId="17"/>    
     <end type="TARGET" refId="25"/>  
   </generalization>  
-  <association id="28">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="29" name="tabuleiro"/>      
-      <multiplicity id="30" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
   <association id="31">    
     <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="32" name="tabuleiro"/>      
+      <attribute id="32" name="jogadores"/>      
       <multiplicity id="33" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
+    <end type="TARGET" refId="23" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="34">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="24"/>  
-  </generalization>  
-  <association id="35">    
+  <association id="34">    
     <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="36" name="repositorioLits"/>      
-      <multiplicity id="37" minimum="0" maximum="1"/>    
+      <attribute id="35" name="verifica"/>      
+      <multiplicity id="36" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
+    <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <generalization id="37">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="25"/>  
+  </generalization>  
   <association id="38">    
-    <end type="SOURCE" refId="17" navigable="false">      
+    <end type="SOURCE" refId="10" navigable="false">      
       <attribute id="39" name="desenha"/>      
       <multiplicity id="40" minimum="0" maximum="1"/>    
     </end>    
@@ -308,225 +307,225 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="41">    
-    <end type="SOURCE" refId="23" navigable="false">      
-      <attribute id="42" name="peca"/>      
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="42" name="desenha"/>      
       <multiplicity id="43" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="26" navigable="true"/>    
+    <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="44">    
-    <end type="SOURCE" refId="17"/>    
-    <end type="TARGET" refId="25"/>  
-  </generalization>  
-  <association id="45">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="46" name="desenha"/>      
-      <multiplicity id="47" minimum="0" maximum="1"/>    
+  <association id="44">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="45" name="desenha"/>      
+      <multiplicity id="46" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="48">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="49" name="jogadores"/>      
-      <multiplicity id="50" minimum="0" maximum="2147483647"/>    
+  <association id="47">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="48" name="tabuleiro"/>      
+      <multiplicity id="49" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="50">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="25"/>  
+  </generalization>  
+  <association id="51">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="52" name="jogadorDaVEZ"/>      
+      <multiplicity id="53" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="23" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="51">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="25"/>  
-  </generalization>  
-  <generalization id="52">    
-    <end type="SOURCE" refId="19"/>    
-    <end type="TARGET" refId="25"/>  
-  </generalization>  
-  <association id="53">    
+  <association id="54">    
     <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="54" name="verifica"/>      
-      <multiplicity id="55" minimum="0" maximum="1"/>    
+      <attribute id="55" name="verifica"/>      
+      <multiplicity id="56" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="56">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="57" name="verifica"/>      
-      <multiplicity id="58" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="59">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="60" name="tabuleiro"/>      
-      <multiplicity id="61" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="62">    
-    <end type="SOURCE" refId="24" navigable="false">      
-      <attribute id="63" name="proprietario"/>      
-      <multiplicity id="64" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="23" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="65">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="66" name="desenha"/>      
-      <multiplicity id="67" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="68">    
+  <association id="57">    
     <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="69" name="desenha"/>      
-      <multiplicity id="70" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="71">    
-    <end type="SOURCE" refId="23" navigable="false">      
-      <attribute id="72" name="meusLogradouros"/>      
-      <multiplicity id="73" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="24" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="74">    
-    <end type="SOURCE" refId="20" navigable="false">      
-      <attribute id="75" name="desenha"/>      
-      <multiplicity id="76" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="77">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="78" name="insereJogadores"/>      
-      <multiplicity id="79" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="80">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="81" name="verifica"/>      
-      <multiplicity id="82" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="83">    
-    <end type="SOURCE" refId="18"/>    
-    <end type="TARGET" refId="25"/>  
-  </generalization>  
-  <association id="84">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="85" name="repositorioLists"/>      
-      <multiplicity id="86" minimum="0" maximum="1"/>    
+      <attribute id="58" name="repositorioLits"/>      
+      <multiplicity id="59" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="87">    
-    <end type="SOURCE" refId="14"/>    
+  <association id="60">    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="61" name="proprietario"/>      
+      <multiplicity id="62" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="63">    
+    <end type="SOURCE" refId="20"/>    
     <end type="TARGET" refId="25"/>  
   </generalization>  
-  <association id="88">    
-    <end type="SOURCE" refId="19" navigable="false">      
-      <attribute id="89" name="desenha"/>      
-      <multiplicity id="90" minimum="0" maximum="1"/>    
+  <association id="64">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="65" name="insereJogadores"/>      
+      <multiplicity id="66" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
+    <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="91">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="92" name="desenha"/>      
-      <multiplicity id="93" minimum="0" maximum="1"/>    
+  <association id="67">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="68" name="meusLogradouros"/>      
+      <multiplicity id="69" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
+    <end type="TARGET" refId="24" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="94">    
-    <end type="SOURCE" refId="25"/>    
-    <end type="TARGET" refId="21"/>  
-  </generalization>  
-  <association id="95">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="96" name="verifica"/>      
-      <multiplicity id="97" minimum="0" maximum="1"/>    
+  <association id="70">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="71" name="verifica"/>      
+      <multiplicity id="72" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="98">    
-    <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="99" name="desenha"/>      
-      <multiplicity id="100" minimum="0" maximum="1"/>    
+  <association id="73">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="74" name="desenha"/>      
+      <multiplicity id="75" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="101">    
-    <end type="SOURCE" refId="16"/>    
+  <association id="76">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="77" name="peca"/>      
+      <multiplicity id="78" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="79">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="80" name="desenha"/>      
+      <multiplicity id="81" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="82">    
+    <end type="SOURCE" refId="18"/>    
     <end type="TARGET" refId="25"/>  
   </generalization>  
-  <association id="102">    
+  <association id="83">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="84" name="verifica"/>      
+      <multiplicity id="85" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="86">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="103" name="jogadorDaVEZ"/>      
-      <multiplicity id="104" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="23" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="105">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="106" name="jogadoresAindaJogando"/>      
-      <multiplicity id="107" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="23" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="108">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="24"/>  
-  </generalization>  
-  <generalization id="109">    
-    <end type="SOURCE" refId="24"/>    
-    <end type="TARGET" refId="21"/>  
-  </generalization>  
-  <association id="110">    
-    <end type="SOURCE" refId="23" navigable="false">      
-      <attribute id="111" name="conta"/>      
-      <multiplicity id="112" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="22" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="113">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="114" name="obterIndice"/>      
-      <multiplicity id="115" minimum="0" maximum="1"/>    
+      <attribute id="87" name="obterIndice"/>      
+      <multiplicity id="88" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="116">    
-    <end type="SOURCE" refId="21" navigable="false">      
-      <attribute id="117" name="jogadoresNaCasa"/>      
-      <multiplicity id="118" minimum="0" maximum="2147483647"/>    
+  <association id="89">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="90" name="desenha"/>      
+      <multiplicity id="91" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="92">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="93" name="tabuleiro"/>      
+      <multiplicity id="94" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="95">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="96" name="lists"/>      
+      <multiplicity id="97" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="98">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="99" name="conta"/>      
+      <multiplicity id="100" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="101">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="102" name="jogadoresAindaJogando"/>      
+      <multiplicity id="103" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="23" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <generalization id="104">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="21"/>  
+  </generalization>  
+  <generalization id="105">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="24"/>  
+  </generalization>  
+  <association id="106">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="107" name="desenha"/>      
+      <multiplicity id="108" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="109">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="110" name="tabuleiro"/>      
+      <multiplicity id="111" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="112">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="24"/>  
+  </generalization>  
+  <association id="113">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="114" name="desenha"/>      
+      <multiplicity id="115" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="116">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="21"/>  
+  </generalization>  
+  <generalization id="117">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="25"/>  
+  </generalization>  
+  <generalization id="118">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="25"/>  
+  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
     accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

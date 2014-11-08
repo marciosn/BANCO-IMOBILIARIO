@@ -72,4 +72,11 @@ public class VerificacoesDeLogicaDoJogo{
 		}
 		return aCasaEMinha;
 	}
+	public boolean verificaSeJogadorEstaPreso(Jogador jogador){
+		boolean estaPreso = false;
+		if(jogador.getIndiceAtualJogador() == 30){
+			estaPreso = true;
+		}
+		return estaPreso;
+	}
 }
