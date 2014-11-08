@@ -8,16 +8,15 @@ public class ContaBancaria {
 		this.saldo = saldo;
 	}
 	
-	public float depositar(float valor){
-		return this.saldo = saldo + valor;
+	public void depositar(float valor){
+		this.saldo = saldo + valor;
 	}
-	public float sacar(float valor){
-		return this.saldo = saldo - valor;
+	public void sacar(float valor){
+		this.saldo = saldo - valor;
 	}
 	public float getSaldo() {
 		return saldo;
 	}
-
 	public void setSaldo(float saldo) {
 		this.saldo = saldo;
 	}

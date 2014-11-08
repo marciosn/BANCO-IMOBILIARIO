@@ -10,14 +10,16 @@ public class LogradouroComercializavel extends CasaDoTabuleiro{
 	private float taxa;
 	private boolean vendido;
 	private Point posicao;
+	private int indice;
 	
-	public LogradouroComercializavel(String nome, float valor, float taxa, Point posicao) {
+	public LogradouroComercializavel(String nome, float valor, float taxa, Point posicao, int indice) {
 		this.nome = nome;
 		this.valor = valor;
 		this.vendido = false;
 		this.taxa = taxa;
 		this.proprietario = null;
 		this.posicao = posicao;
+		this.indice = indice;
 	}
 
 	public String getNome() {
@@ -48,5 +50,13 @@ public class LogradouroComercializavel extends CasaDoTabuleiro{
 
 	public void setPosicao(Point posicao) {
 		this.posicao = posicao;
+	}
+
+	public int getIndice() {
+		return indice;
+	}
+
+	public void setIndice(int indice) {
+		this.indice = indice;
 	}
 }

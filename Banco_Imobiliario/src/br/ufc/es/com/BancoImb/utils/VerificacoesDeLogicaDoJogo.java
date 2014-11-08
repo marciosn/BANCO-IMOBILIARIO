@@ -65,4 +65,11 @@ public class VerificacoesDeLogicaDoJogo{
 		}
 		return possuiSaldo;
 	}
+	public boolean verificaSeACasaEMinha(Jogador jogador, LogradouroComercializavel casa){
+		boolean aCasaEMinha = false;
+		if(casa.getProprietario().equals(jogador)){
+			aCasaEMinha = true;
+		}
+		return aCasaEMinha;
+	}
 }

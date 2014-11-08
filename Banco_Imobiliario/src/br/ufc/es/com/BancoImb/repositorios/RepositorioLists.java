@@ -40,7 +40,6 @@ public class RepositorioLists {
 	public List<Jogador> getJogadores() {
 		return jogadores;
 	}
-
 	public void setJogadores(List<Jogador> jogadores) {
 		this.jogadores = jogadores;
 	}

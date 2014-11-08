@@ -55,7 +55,7 @@ public class ControllBancoImobiliario {
 		jogadorDaVEZ = repositorioLists.getPrimeiroJogadorDaLista();
 	}
 	public void moverJogador(Jogador jogador, CasaDoTabuleiro destino) {
-		tabuleiro.moverJogador(jogador, destino);
+		tabuleiro.moverJogador2(jogador, destino);
 		desenha.moverPecaJogador(jogador, destino);
 		destino.ativarEfeito(jogador);
 	}
@@ -75,7 +75,7 @@ public class ControllBancoImobiliario {
 				int resultadoDados = Integer.valueOf(resultado);
 				if (verifica.verificaTamanhoJogadaIsValida(resultadoDados)) {
 					
-					int indiceCasaDestino = obterIndice.obterIndiceProxCasa(jogadorDaVEZ.getPosicaoAtualJogador(), resultadoDados);
+					int indiceCasaDestino = obterIndice.obterIndiceProxCasa(jogadorDaVEZ.getIndiceAtualJogador(), resultadoDados);
 					destino = tabuleiro.getCasaByIndice(indiceCasaDestino);
 					
 					moverJogador(jogadorDaVEZ, destino);

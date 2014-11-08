@@ -22,7 +22,8 @@ public class DesenhaComponentesGraficos {
 	private Scene scene;
 	private Mouse mouse;
 	private Animation botao;
-	private Animation portfolioButton0, portfolioButton1;
+	private Animation portfolioButton0;
+	private Animation portfolioButton1;
 	private JTextArea portfolio;
 	//private Constantes constante;
 	
@@ -78,18 +79,6 @@ public class DesenhaComponentesGraficos {
 		jogador.getPeca().y = posicao.y;
 		atualizaTabuleiro();
 	}
-	public void messageJogadorNaoPossuiSaldo(Jogador jogador, List<Jogador> jogadoresAindaJogando){
-		jogador.getPeca().loadImage(new Constantes().FORA_DO_JOGO);
-		atualizaTabuleiro();
-		JOptionPane.showMessageDialog(null, "O jogador "
-				+ jogador.getNome() + "\n"
-				+ "Não possui mais saldo e vai deixar o jogo"
-				+ "\n" + "Exite agora "
-				+ jogadoresAindaJogando.size(),
-				"Jogador Sai do Jogo",
-				JOptionPane.PLAIN_MESSAGE,
-				new ImageIcon(new Constantes().TRISTE));
-	}
 	
 	public void ativaBotaoPortifolio(Mouse mouse, List<Jogador> jogadores){
 		if(mouse.isOverObject(portfolioButton0) && mouse.isLeftButtonPressed()){
@@ -127,6 +116,18 @@ public class DesenhaComponentesGraficos {
 				JOptionPane.YES_NO_OPTION);
 		
 		return respostaDoJogador;
+	}
+	public void messageJogadorNaoPossuiSaldo(Jogador jogador, List<Jogador> jogadoresAindaJogando){
+		jogador.getPeca().loadImage(new Constantes().FORA_DO_JOGO);
+		atualizaTabuleiro();
+		JOptionPane.showMessageDialog(null, "O jogador "
+				+ jogador.getNome() + "\n"
+				+ "Não possui mais saldo e vai deixar o jogo"
+				+ "\n" + "Exite agora "
+				+ jogadoresAindaJogando.size(),
+				"Jogador Sai do Jogo",
+				JOptionPane.PLAIN_MESSAGE,
+				new ImageIcon(new Constantes().TRISTE));
 	}
 	public void messageExisteUmCampeao(List<Jogador> jogadoresAindaJogando){
 		new jplay.Sound(new Constantes().CHAMPIONS).play();
@@ -203,6 +204,11 @@ public class DesenhaComponentesGraficos {
 		JOptionPane.showMessageDialog(null, "Não possui Saldo"+ "\n" 
 				+ "Você não possui saldo suficiente para comprar este logradouro",
 				"Não possui saldo",JOptionPane.PLAIN_MESSAGE);
+	}
+	public void messageACasaJaESua(){
+		JOptionPane.showMessageDialog(null, "Esta Casa é sua"+ "\n"
+				+ "Esta casa já é sua, pode ficar a vontade!",
+				"Esta Casa é sua",JOptionPane.PLAIN_MESSAGE);
 	}
 	public Window getWindow() {
 		return window;

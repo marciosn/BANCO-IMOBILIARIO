@@ -26,7 +26,7 @@ public class InsereJogadores {
 				String peca = new Constantes().PECA + repositorioLits.getJogadores().size() + new Constantes().FORMATO_IMAGEM;
 				repositorioLits.adicionaJogador(new Jogador(nomeJogador,
 						new ContaBancaria(new Constantes().SALDO_CONTA_BANCARIA), 
-						new PecaJogador(new Constantes().PATH_IMAGE + peca)));
+						new PecaJogador(new Constantes().PATH_IMAGE + peca), repositorioLits.getTabuleiro().get(0)));
 		i++;
 			}else
 			desenha.messageNomeInvalido();

@@ -14,19 +14,26 @@ import br.ufc.es.com.BancoImb.utils.Constantes;
 import br.ufc.es.com.BancoImb.view.DesenhaComponentesGraficos;
 
 public class LogradouroEspecialSorteReves extends LogradouroEspecial{
-	
 	private List<Float> cartas;
 	private int indice;
+	
+	public LogradouroEspecialSorteReves(String nome, Point posicao, int indice) {
+		super(nome, posicao, indice);
+		cartas = new ArrayList<Float>();
+		criarDeckCartas();
+	}
+
+	
 	//private Constantes constante;
 	//private DesenhaComponentesGraficos desenha;
 	
-	public LogradouroEspecialSorteReves(String nome, Point posicao) {
+	/*public LogradouroEspecialSorteReves(String nome, Point posicao) {
 		super(nome, posicao);
 		cartas = new ArrayList<Float>();
 		criarDeckCartas();
 		//constante = new Constantes();
 		//desenha = new DesenhaComponentesGraficos();
-	}
+	}*/
 	public void ativarEfeito(Jogador jogador) {
 		sorteReves();
 		if((indice % 2)  == 0){

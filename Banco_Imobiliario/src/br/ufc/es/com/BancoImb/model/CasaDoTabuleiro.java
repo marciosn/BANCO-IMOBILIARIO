@@ -9,6 +9,7 @@ import br.ufc.es.com.BancoImb.interfaces.IEfeitoCasa;
 public class CasaDoTabuleiro implements IEfeitoCasa{
 	private String nome;
 	private List<Jogador> jogadoresNaCasa;
+	private int indice;
 	private Point posicao;
 	
 	public CasaDoTabuleiro() {
@@ -44,6 +45,14 @@ public class CasaDoTabuleiro implements IEfeitoCasa{
 
 	public void setPosicao(Point posicao) {
 		this.posicao = posicao;
+	}
+
+	public int getIndice() {
+		return indice;
+	}
+
+	public void setIndice(int indice) {
+		this.indice = indice;
 	}
 
 }
