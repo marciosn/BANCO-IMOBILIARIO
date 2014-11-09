@@ -31,6 +31,21 @@ public class CasaDoTabuleiro implements IEfeitoCasa{
 	public void removerJogadoresDaListaDaCasa(Jogador jogador){
 		jogadoresNaCasa.remove(jogador);
 	}
+
+	@Override
+	public void ativarEfeito(Jogador jogador) {
+		
+	}
+	
+	public void mover(Jogador jogador, CasaDoTabuleiro destino){
+		CasaDoTabuleiro origem = jogador.getPosicaoJogador();
+		jogador.setPosicaoJogador(destino);
+		jogador.setIndiceAtualJogador(destino.getIndice());
+		destino.adicionarJogadoresNaListaDaCasa(jogador);
+		origem.removerJogadoresDaListaDaCasa(jogador);
+		imprimeJogadores(destino);
+	}
+	
 	public String getNome(){
 		return nome;
 	}
@@ -50,21 +65,6 @@ public class CasaDoTabuleiro implements IEfeitoCasa{
 	public void setIndice(int indice) {
 		this.indice = indice;
 	}
-
-	@Override
-	public void ativarEfeito(Jogador jogador) {
-		// TODO Auto-generated method stub
-		
-	}
-	public void mover(Jogador jogador, CasaDoTabuleiro destino){
-		CasaDoTabuleiro origem = jogador.getPosicaoJogador();
-		jogador.setPosicaoJogador(destino);
-		jogador.setIndiceAtualJogador(destino.getIndice());
-		destino.adicionarJogadoresNaListaDaCasa(jogador);
-		origem.removerJogadoresDaListaDaCasa(jogador);
-		imprimeJogadores(destino);
-	}
-	
 	public void imprimeJogadores(CasaDoTabuleiro casa){
 		for(Jogador jogador : casa.getJogadoresNaCasa())
 			System.out.println(jogador.getNome() + " | " + jogador.getPosicaoJogador().getNome() + " | " + jogador.getIndiceAtualJogador());

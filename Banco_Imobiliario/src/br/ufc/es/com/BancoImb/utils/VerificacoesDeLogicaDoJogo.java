@@ -16,14 +16,14 @@ public class VerificacoesDeLogicaDoJogo{
 		}
 		return possuiSaldo;	
 	}
-	public boolean verificaJogadaIsValida(String resultado){
+	public boolean verificaJogadaNaoNulaOuVazia(String resultado){
 		boolean isValida = false;
 		if (!verificaInputDiferentedeNull(resultado) && !resultado.equals("") && !resultado.equals(null)) {
 			isValida = true;
 		}
 		return isValida;	
 	}
-	public boolean verificaTamanhoJogadaIsValida(int resultadoDados){
+	public boolean verificaSeNumerosDosDadosSaoValidos(int resultadoDados){
 		boolean tamanhoIsValido = false;		
 		if (resultadoDados <= 12 && resultadoDados > 0) {
 			tamanhoIsValido = true;

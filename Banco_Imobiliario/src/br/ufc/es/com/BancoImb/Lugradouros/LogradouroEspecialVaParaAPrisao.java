@@ -20,7 +20,6 @@ public class LogradouroEspecialVaParaAPrisao extends LogradouroEspecial{
 		this.lists = lists;
 	}
 
-
 	public void ativarEfeito(Jogador jogador) {
 		CasaDoTabuleiro prisao = lists.getTabuleiro().get(30);
 		jogador.pagarTaxa(100);

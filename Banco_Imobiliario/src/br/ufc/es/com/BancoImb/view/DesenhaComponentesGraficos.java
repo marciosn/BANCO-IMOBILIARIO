@@ -80,7 +80,6 @@ public class DesenhaComponentesGraficos {
 	
 	public void moverPecaJogador(Jogador jogador, CasaDoTabuleiro destino){
 		Point posicao = destino.getPosicao();
-		System.out.println(posicao);
 		jogador.getPeca().x = posicao.x;
 		jogador.getPeca().y = posicao.y;
 		atualizaTabuleiro();
@@ -161,6 +160,13 @@ public class DesenhaComponentesGraficos {
 	
 	public void messageInputVazio(){
 		JOptionPane.showMessageDialog(null,"O input não pode ser vazio");
+	}
+	
+	public void messageJogadorEstaPreso(Jogador jogador){
+		JOptionPane.showMessageDialog(null,"O "+jogador.getNome().toUpperCase() +" está preso e vai passar a vez de jogar");
+	}
+	public void messageJogadorDaVez(Jogador jogador){
+		JOptionPane.showMessageDialog(null,"É Vez do jogador "+jogador.getNome().toUpperCase());
 	}
 	
 	public void messageLucrosDividendos(Jogador jogador, float lucrosDividendos){

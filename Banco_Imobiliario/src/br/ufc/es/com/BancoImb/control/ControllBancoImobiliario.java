@@ -48,12 +48,15 @@ public class ControllBancoImobiliario {
 		iniciaJogadorDaVez();
 		desenha.desenhaPecasNoTabuleiro(lists.getTabuleiro());
 	}
+	
 	public void instanciaComponentesGraficos(){
 		desenha.instanciaObjetos();
 	}
+	
 	public void iniciaJogadorDaVez(){
 		jogadorDaVEZ = lists.getPrimeiroJogadorDaLista();
 	}
+	
 	public void moverJogador(Jogador jogador, CasaDoTabuleiro destino) {
 		desenha.moverPecaJogador(jogador, destino);
 		destino.mover(jogadorDaVEZ, destino);
@@ -64,17 +67,14 @@ public class ControllBancoImobiliario {
 			int id = obterIndice.obterIndiceProxJogador(IdJogadorAtual, jogadores);
 			
 			jogadorDaVEZ = lists.getJogadorByID(id);
-			System.out.println(jogadorDaVEZ.getNome().toUpperCase());
-			JOptionPane.showMessageDialog(null,"É Vez do jogador "+jogadorDaVEZ.getNome().toUpperCase());
+			desenha.messageJogadorDaVez(jogadorDaVEZ);
 			
 			if(lists.getJogadoresPresos().contains(jogadorDaVEZ)){
 				
-				JOptionPane.showMessageDialog(null,jogadorDaVEZ.getNome().toUpperCase() +" passe a vez de jogar");
+				desenha.messageJogadorEstaPreso(jogadorDaVEZ);
 				lists.getJogadoresPresos().remove(jogadorDaVEZ);
-				
 				int newId = jogadorDaVEZ.getID();
 				jogadorDaVEZ = lists.getJogadorByID(obterIndice.obterIndiceProxJogador(newId, jogadores));
-				System.out.println(jogadorDaVEZ.getNome().toUpperCase());
 			}
 	}
 	
@@ -86,9 +86,9 @@ public class ControllBancoImobiliario {
 			desenha.atualizaTabuleiro();
 			String resultado = desenha.inputEntradaDados(jogadorDaVEZ);
 
-			if (verifica.verificaJogadaIsValida(resultado)) {
+			if (verifica.verificaJogadaNaoNulaOuVazia(resultado)) {
 				int resultadoDados = Integer.valueOf(resultado);
-				if (verifica.verificaTamanhoJogadaIsValida(resultadoDados)) {
+				if (verifica.verificaSeNumerosDosDadosSaoValidos(resultadoDados)) {
 					
 					int indiceCasaDestino = obterIndice.obterIndiceProxCasa(jogadorDaVEZ.getIndiceAtualJogador(), resultadoDados);
 					destino = lists.getCasaByIndice(indiceCasaDestino);
