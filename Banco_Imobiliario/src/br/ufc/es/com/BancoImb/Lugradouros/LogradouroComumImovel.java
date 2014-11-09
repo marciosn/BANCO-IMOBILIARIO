@@ -8,21 +8,15 @@ import br.ufc.es.com.BancoImb.utils.VerificacoesDeLogicaDoJogo;
 import br.ufc.es.com.BancoImb.view.DesenhaComponentesGraficos;
 
 public class LogradouroComumImovel extends LogradouroComercializavel{
+	private DesenhaComponentesGraficos desenha;
+	private VerificacoesDeLogicaDoJogo verifica;
+	
 	public LogradouroComumImovel(String nome, float valor, float taxa,
 			Point posicao, int indice) {
 		super(nome, valor, taxa, posicao, indice);
 		desenha = new DesenhaComponentesGraficos();
 		verifica = new VerificacoesDeLogicaDoJogo();
 	}
-
-	private DesenhaComponentesGraficos desenha;
-	private VerificacoesDeLogicaDoJogo verifica;
-	
-	/*public LogradouroComumImovel(String nome, float valor, float taxa, Point posicao) {
-		super(nome, valor, taxa, posicao);
-		desenha = new DesenhaComponentesGraficos();
-		verifica = new VerificacoesDeLogicaDoJogo();
-	}*/
 	
 	public void ativarEfeito(Jogador jogador){
 		if (!this.isVendido()) {

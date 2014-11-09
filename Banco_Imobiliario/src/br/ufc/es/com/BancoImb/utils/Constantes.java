@@ -2,8 +2,6 @@ package br.ufc.es.com.BancoImb.utils;
 
 import java.io.File;
 
-import br.ufc.es.com.BancoImb.control.Tabuleiro;
-
 public class Constantes {
 	//cenario
 	public final String CENARIO = "resources" + File.separator + "cenario" + File.separator + "scene2.scn";

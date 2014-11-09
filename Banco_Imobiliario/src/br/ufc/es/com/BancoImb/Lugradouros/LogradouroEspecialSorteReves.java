@@ -4,26 +4,27 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
-
 import jplay.Sound;
 import br.ufc.es.com.BancoImb.model.CasaDoTabuleiro;
 import br.ufc.es.com.BancoImb.model.Jogador;
 import br.ufc.es.com.BancoImb.model.LogradouroEspecial;
-import br.ufc.es.com.BancoImb.repositorios.RepositorioLists;
+import br.ufc.es.com.BancoImb.repositorio.RepositorioLists;
 import br.ufc.es.com.BancoImb.utils.Constantes;
+import br.ufc.es.com.BancoImb.view.DesenhaComponentesGraficos;
 
 public class LogradouroEspecialSorteReves extends LogradouroEspecial{
 	private RepositorioLists lists;
 	private List<Float> cartas;
 	private int indice;
+	private DesenhaComponentesGraficos desenha;
 	
 	public LogradouroEspecialSorteReves(String nome, Point posicao, int indice, RepositorioLists lists) {
 		super(nome, posicao, indice, lists);
 		this.lists = lists;
 		cartas = new ArrayList<Float>();
 		criarDeckCartas();
+		
+		desenha = new DesenhaComponentesGraficos();
 	}
 
 	public void ativarEfeito(Jogador jogador) {
@@ -36,25 +37,15 @@ public class LogradouroEspecialSorteReves extends LogradouroEspecial{
 			
 			new Sound(new Constantes().CAIXINHA).play();
 			jogador.receberTaxa(cartas.get(indice));
-			
-			JOptionPane.showMessageDialog(null, "Sorte"+ "\n" + "Receba: "+	cartas.get(indice) 
-					+ "\n" +"Seu novo saldo é: " + jogador.getSaldo(),
-					"Sorte", JOptionPane.PLAIN_MESSAGE,
-					new ImageIcon(new Constantes().FELIZ));
+			desenha.messageSorte(jogador, cartas.get(indice));
+
 		}else{
-			
 			jogador.pagarTaxa(cartas.get(indice));
-			
-			JOptionPane.showMessageDialog(null, "Revés"+"\n" + "Pague: "+cartas.get(indice) 
-					+"\n" + "Seu novo saldo é: " + jogador.getSaldo(),
-					"Reves", JOptionPane.PLAIN_MESSAGE,
-					new ImageIcon(new Constantes().TRISTE));
+			desenha.messageReves(jogador, cartas.get(indice));
 		}
 	}else{
 		mover(jogador, destino);
-		JOptionPane.showMessageDialog(null, "Vá para a Casa " + destino.getNome().toUpperCase() + "\n" 
-		+ "Que fica localizada na posicão " + destino.getIndice(),	"Vá Para...", JOptionPane.PLAIN_MESSAGE);
-		
+		desenha.messageVaPara(destino);
 		}
 			
 	}

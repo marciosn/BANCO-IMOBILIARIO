@@ -34,7 +34,7 @@ public class CasaDoTabuleiro implements IEfeitoCasa, ICasaTabuleiro{
 		// TODO Auto-generated method stub
 		jogadoresNaCasa.remove(jogador);
 	}
-	
+	@Override
 	public void mover(Jogador jogador, CasaDoTabuleiro destino){
 		CasaDoTabuleiro origem = jogador.getPosicaoJogador();
 		jogador.setPosicaoJogador(destino);

@@ -2,7 +2,7 @@ package br.ufc.es.com.BancoImb.model;
 
 import java.awt.Point;
 
-import br.ufc.es.com.BancoImb.repositorios.RepositorioLists;
+import br.ufc.es.com.BancoImb.repositorio.RepositorioLists;
 
 
 public class LogradouroEspecial extends CasaDoTabuleiro{

@@ -2,7 +2,6 @@ package br.ufc.es.com.BancoImb.Lugradouros;
 
 import java.awt.Point;
 
-import br.ufc.es.com.BancoImb.model.CasaDoTabuleiro;
 import br.ufc.es.com.BancoImb.model.Jogador;
 import br.ufc.es.com.BancoImb.model.LogradouroComercializavel;
 import br.ufc.es.com.BancoImb.utils.VerificacoesDeLogicaDoJogo;

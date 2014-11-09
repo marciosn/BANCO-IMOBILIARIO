@@ -1,4 +1,4 @@
-package br.ufc.es.com.BancoImb.repositorios;
+package br.ufc.es.com.BancoImb.repositorio;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +24,9 @@ public class RepositorioLists {
 	}
 	public void adicionaJogadoresAindaJogando(Jogador jogador){
 		jogadores.add(jogador);
+	}
+	public void adicionarJogadoresPresos(Jogador jogador){
+		jogadoresPresos.add(jogador);
 	}
 	public void adicionaListaDeJogadoresNaCasaDePartida(){
 		for (Jogador jogador : this.jogadores) {

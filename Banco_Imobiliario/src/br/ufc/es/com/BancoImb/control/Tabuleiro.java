@@ -13,7 +13,7 @@ import br.ufc.es.com.BancoImb.Lugradouros.LogradouroEspecialPrisao;
 import br.ufc.es.com.BancoImb.Lugradouros.LogradouroEspecialSorteReves;
 import br.ufc.es.com.BancoImb.Lugradouros.LogradouroEspecialVaParaAPrisao;
 import br.ufc.es.com.BancoImb.model.CasaDoTabuleiro;
-import br.ufc.es.com.BancoImb.repositorios.RepositorioLists;
+import br.ufc.es.com.BancoImb.repositorio.RepositorioLists;
 
 public class Tabuleiro{
 	private List<CasaDoTabuleiro> tabuleiro;

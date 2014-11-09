@@ -11,13 +11,14 @@ import jplay.Animation;
 import jplay.Mouse;
 import jplay.Scene;
 import jplay.Window;
+import br.ufc.es.com.BancoImb.interfaces.IDesenhaComponentes;
 import br.ufc.es.com.BancoImb.model.CasaDoTabuleiro;
 import br.ufc.es.com.BancoImb.model.Jogador;
 import br.ufc.es.com.BancoImb.model.LogradouroComercializavel;
 import br.ufc.es.com.BancoImb.utils.Constantes;
 
 
-public class DesenhaComponentesGraficos {
+public class DesenhaComponentesGraficos implements IDesenhaComponentes{
 	private Window window;
 	private Scene scene;
 	private Mouse mouse;
@@ -28,7 +29,7 @@ public class DesenhaComponentesGraficos {
 	
 	public DesenhaComponentesGraficos() {
 	}
-	
+	@Override
 	public void instanciaObjetos(){
 		window = new Window(1080, 720);
 		window.setCursor( window.createCustomCursor(new Constantes().MOUSE) );
@@ -38,20 +39,20 @@ public class DesenhaComponentesGraficos {
 		scene.loadFromFile(new Constantes().CENARIO);
 		scene.setDrawStartPos(0, 1);
 	}
-
+	@Override
 	public void desenhaPecasNoTabuleiro(List<CasaDoTabuleiro> tabuleiro) {
 		for (Jogador jogador : tabuleiro.get(new Constantes().INDICE_DA_CASA_DE_PARTIDA).getJogadoresNaCasa()) {
 			scene.addOverlay(jogador.getPeca());
 		}
 	}
-	
+	@Override
 	public void atualizaTabuleiro() {
 		scene.draw();
 		desenhaBotaoDados();
 		desenhaBotaoPortifolio();
 		window.update();
 	}
-	
+	@Override
 	public void exibeLogradourosDoJogador(Jogador jogador){
 		portfolio.setText("");
 		for(LogradouroComercializavel c : jogador.getMeusLogradouros()){
@@ -70,21 +71,21 @@ public class DesenhaComponentesGraficos {
 				JOptionPane.PLAIN_MESSAGE,
 				new ImageIcon(new Constantes().PORTFOLIO));
 	}
-	
+	@Override
 	public void desenhaBotaoDados(){
 		botao = new Animation(new Constantes().DADOS);
 		botao.x = 800;
 		botao.y = 110;
 		botao.draw();
 	}
-
+	@Override
 	public void moverPecaJogador(Jogador jogador){
 		Point posicao = jogador.getPosicaoJogador().getPosicao();
 		jogador.getPeca().x = posicao.x;
 		jogador.getPeca().y = posicao.y;
 		atualizaTabuleiro();
 	}
-	
+	@Override
 	public void ativaBotaoPortifolio(Mouse mouse, List<Jogador> jogadores){
 		if(mouse.isOverObject(portfolioButton0) && mouse.isLeftButtonPressed())
 			exibeLogradourosDoJogador(jogadores.get(0));
@@ -92,7 +93,7 @@ public class DesenhaComponentesGraficos {
 			if(mouse.isOverObject(portfolioButton1) && mouse.isLeftButtonPressed())
 			exibeLogradourosDoJogador(jogadores.get(1));
 	}
-	
+	@Override
 	public void desenhaBotaoPortifolio(){
 		portfolioButton0 = new Animation(new Constantes().PORTFOLIO);
 		portfolioButton0.x = 240;
@@ -104,19 +105,19 @@ public class DesenhaComponentesGraficos {
 		portfolioButton1.y = 140;
 		portfolioButton1.draw();
 	}
-	
+	@Override
 	public String inputDigiteONomeDoJogador(int id){
 		String nome = JOptionPane.showInputDialog(null,"Digite o nome do jogador de ID = " + id);
 		return nome;
 	}
-	
+	@Override
 	public String inputEntradaDados(Jogador jogador){
 		String dados = JOptionPane.showInputDialog(null,"Digite quantas casas o jogador " 
 				+jogador.getNome().toUpperCase()
 				+ " vai andar!");
 		return dados;
 	}
-	
+	@Override
 	public int inputRepostaDoJogadorSobreCompraLogradouro(String nomeLogradouro){
 		int respostaDoJogador = JOptionPane.showConfirmDialog(null,"Você para na casa " 
 				+ nomeLogradouro.toUpperCase()+"\n"+ "Essa casa não possui proprietário," 
@@ -126,7 +127,7 @@ public class DesenhaComponentesGraficos {
 		
 		return respostaDoJogador;
 	}
-	
+	@Override
 	public void messageJogadorNaoPossuiSaldo(Jogador jogador, List<Jogador> jogadoresAindaJogando){
 		jogador.getPeca().loadImage(new Constantes().FORA_DO_JOGO);
 		atualizaTabuleiro();
@@ -139,7 +140,7 @@ public class DesenhaComponentesGraficos {
 				JOptionPane.PLAIN_MESSAGE,
 				new ImageIcon(new Constantes().TRISTE));
 	}
-	
+	@Override
 	public void messageExisteUmCampeao(List<Jogador> jogadoresAindaJogando){
 		new jplay.Sound(new Constantes().CHAMPIONS).play();
 		
@@ -150,53 +151,54 @@ public class DesenhaComponentesGraficos {
 				JOptionPane.PLAIN_MESSAGE,
 				new ImageIcon(new Constantes().TROFEU));
 	}
-	
+	@Override
 	public void messageNumeroDeEntradaDadosInvalido(){
 		JOptionPane.showMessageDialog(null,"Você digitou o numero dos dados de maneira errada");
 	}
-	
+	@Override
 	public void messageNomeInvalido(){
 		JOptionPane.showMessageDialog(null,"Nome não pode ser vazio e deve conter no minimo 3 letras");
 	}
-	
+	@Override
 	public void messageInputVazio(){
 		JOptionPane.showMessageDialog(null,"O input não pode ser vazio");
 	}
-	
+	@Override
 	public void messageJogadorEstaPreso(Jogador jogador){
 		JOptionPane.showMessageDialog(null,"O "+jogador.getNome().toUpperCase() +" está preso e vai passar a vez de jogar");
 	}
+	@Override
 	public void messageJogadorDaVez(Jogador jogador){
 		JOptionPane.showMessageDialog(null,"É Vez do jogador "+jogador.getNome().toUpperCase());
 	}
-	
+	@Override
 	public void messageLucrosDividendos(Jogador jogador, float lucrosDividendos){
 		JOptionPane.showMessageDialog(null, "Lucros ou Dividendos" 
 				+ "\n" +"Receba " + lucrosDividendos
 				+ "\n" +"Seu novo Saldo é " 
 				+ jogador.getSaldo());
 	}
-	
+	@Override
 	public void messageImpostoDeRenda(Jogador jogador, float imposto){
 		JOptionPane.showMessageDialog(null, "Imposto de renda, você precisa pagar seus impostos" 
 				+ "\n" + "Pague "+imposto
 				+ "\n" +"Seu novo Saldo é " 
 				+ jogador.getSaldo());
 	}
-	
+	@Override
 	public void messageParadaLivre(Jogador jogador){
 		JOptionPane.showMessageDialog(null, "Olá "+jogador.getNome().toUpperCase() 
 				+"\n"+"Esta casa é uma Parada Livre" 
 				+ "\n"+ "Não precisa pagar impostos!");
 	}
-	
+	@Override
 	public void messageCasaDePartida(Jogador jogador, float bonus){
 		JOptionPane.showMessageDialog(null, "Você passou pela casa de partida, merece um prêmio" 
 				+ "\n" +"Receba "+bonus
 				+ "\n" +"Seu novo Saldo é " 
 				+ jogador.getSaldo());
 	}
-
+	@Override
 	public void messageJogadorComprouLogradouro(Jogador jogador, String nomeLogradouro){
 		JOptionPane.showMessageDialog(null, "O jogador " 
 				+ jogador.getNome().toUpperCase() 
@@ -205,7 +207,7 @@ public class DesenhaComponentesGraficos {
 				+"O novo saldo do jogador é: " 
 				+ jogador.getSaldo());
 	}
-	
+	@Override
 	public void messageJogadorPagouTaxa(Jogador jogador, Jogador proprietario){
 		JOptionPane.showMessageDialog(null, "Esta casa é de propriedade do jogador " 
 				+ proprietario.getNome().toUpperCase() +"\n" 
@@ -215,7 +217,7 @@ public class DesenhaComponentesGraficos {
 				+ " agora possui saldo = " 
 				+ proprietario.getSaldo());
 	}
-	
+	@Override
 	public void messageSorte(Jogador jogador, float sorteValor){
 		JOptionPane.showMessageDialog(null, "Sorte"+ "\n" + "Receba: "
 				+ sorteValor + "\n" +"Seu novo saldo é: " 
@@ -231,18 +233,43 @@ public class DesenhaComponentesGraficos {
 				JOptionPane.PLAIN_MESSAGE,
 				new ImageIcon(new Constantes().TRISTE));
 	}
-	
+	@Override
 	public void messageNaoPossuiSaldoParaComprar(){
 		JOptionPane.showMessageDialog(null, "Não possui Saldo"+ "\n" 
 				+ "Você não possui saldo suficiente para comprar este logradouro",
 				"Não possui saldo",
 				JOptionPane.PLAIN_MESSAGE);
 	}
-	
+	@Override
 	public void messageACasaJaESua(){
 		JOptionPane.showMessageDialog(null, "Esta Casa é sua"+ "\n"
 				+ "Esta casa já é sua, pode ficar a vontade!",
 				"Esta Casa é sua",
+				JOptionPane.PLAIN_MESSAGE);
+	}
+	@Override
+	public void messageCasaVaParaPrisa(Jogador jogador){
+		JOptionPane.showMessageDialog(null, "Você parou na casa vá para a prisão" 
+				+"\n"+"Vá para a prisao" 
+				+ "\n"+ "Pague uma multa de R$ 100" 
+				+ "\n"	+ "Seu novo Saldo é R$ " 
+				+ jogador.getSaldo());
+	}
+	@Override
+	public void messageVoceParouNaPrisao(Jogador jogador){
+		JOptionPane.showMessageDialog(null, "Você parou na casa vá para a prisão" 
+				+ "\n"+"Vá para a prisao" 
+				+ "\n"+ "Pague uma multa de R$ 100"
+				+ "\n"+"Passe a vez de jogar"
+				+ "\n"+ "Seu novo Saldo é R$ " 
+				+ jogador.getSaldo());
+	}
+	@Override
+	public void messageVaPara(CasaDoTabuleiro destino){
+		JOptionPane.showMessageDialog(null, "Vá para a Casa " + destino.getNome().toUpperCase() 
+				+ "\n"+ "Que fica localizada na posicão " 
+				+ destino.getIndice(),
+				"Vá Para...",
 				JOptionPane.PLAIN_MESSAGE);
 	}
 	

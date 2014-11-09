@@ -3,7 +3,7 @@ package br.ufc.es.com.BancoImb.utils;
 import br.ufc.es.com.BancoImb.model.ContaBancaria;
 import br.ufc.es.com.BancoImb.model.Jogador;
 import br.ufc.es.com.BancoImb.model.PecaJogador;
-import br.ufc.es.com.BancoImb.repositorios.RepositorioLists;
+import br.ufc.es.com.BancoImb.repositorio.RepositorioLists;
 import br.ufc.es.com.BancoImb.view.DesenhaComponentesGraficos;
 
 public class InsereJogadores {

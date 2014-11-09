@@ -4,7 +4,7 @@ import java.util.List;
 
 import br.ufc.es.com.BancoImb.model.CasaDoTabuleiro;
 import br.ufc.es.com.BancoImb.model.Jogador;
-import br.ufc.es.com.BancoImb.repositorios.RepositorioLists;
+import br.ufc.es.com.BancoImb.repositorio.RepositorioLists;
 import br.ufc.es.com.BancoImb.utils.InsereJogadores;
 import br.ufc.es.com.BancoImb.utils.ObterProximoIndice;
 import br.ufc.es.com.BancoImb.utils.VerificacoesDeLogicaDoJogo;
