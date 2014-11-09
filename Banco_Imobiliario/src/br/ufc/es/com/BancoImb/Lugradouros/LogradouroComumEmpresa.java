@@ -37,20 +37,13 @@ public class LogradouroComumEmpresa extends LogradouroComercializavel{
 					desenha.messageNaoPossuiSaldoParaComprar();
 			}
 		}else{
-			if(!verifica.verificaSeACasaEMinha(jogador, this)){
+			if(!verifica.verificaSeACasaJaEDoJogador(jogador, this)){
 			jogador.pagarTaxa(this.getTaxa());
 			this.getProprietario().receberTaxa(this.getTaxa());
 			desenha.messageJogadorPagouTaxa(jogador, this.getProprietario());
 			}else
 				desenha.messageACasaJaESua();
 		}
-	}
-	public void mover(Jogador jogador, CasaDoTabuleiro destino){
-		CasaDoTabuleiro origem = jogador.getPosicaoJogador();
-		jogador.setPosicaoJogador(destino);
-		jogador.setIndiceAtualJogador(destino.getIndice());
-		destino.adicionarJogadoresNaListaDaCasa(jogador);
-		origem.removerJogadoresDaListaDaCasa(jogador);
 	}
 	
 }

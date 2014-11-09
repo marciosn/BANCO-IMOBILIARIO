@@ -2,9 +2,6 @@ package br.ufc.es.com.BancoImb.control;
 
 import java.util.List;
 
-import javax.jws.Oneway;
-import javax.swing.JOptionPane;
-
 import br.ufc.es.com.BancoImb.model.CasaDoTabuleiro;
 import br.ufc.es.com.BancoImb.model.Jogador;
 import br.ufc.es.com.BancoImb.repositorios.RepositorioLists;

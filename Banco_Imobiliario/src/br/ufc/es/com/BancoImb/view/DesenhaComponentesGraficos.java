@@ -118,7 +118,8 @@ public class DesenhaComponentesGraficos {
 	}
 	
 	public int inputRepostaDoJogadorSobreCompraLogradouro(String nomeLogradouro){
-		int respostaDoJogador = JOptionPane.showConfirmDialog(null, "Essa casa não possui proprietário," 
+		int respostaDoJogador = JOptionPane.showConfirmDialog(null,"Você para na casa " 
+				+ nomeLogradouro.toUpperCase()+"\n"+ "Essa casa não possui proprietário," 
 				+" quer compra-la?",
 				nomeLogradouro,
 				JOptionPane.YES_NO_OPTION);

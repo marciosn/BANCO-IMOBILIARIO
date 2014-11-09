@@ -37,7 +37,7 @@ public class LogradouroComumImovel extends LogradouroComercializavel{
 			}
 			
 		}else{
-			if(!verifica.verificaSeACasaEMinha(jogador, this)){
+			if(!verifica.verificaSeACasaJaEDoJogador(jogador, this)){
 			jogador.pagarTaxa(this.getTaxa());
 			this.getProprietario().receberTaxa(this.getTaxa());
 			desenha.messageJogadorPagouTaxa(jogador, this.getProprietario());

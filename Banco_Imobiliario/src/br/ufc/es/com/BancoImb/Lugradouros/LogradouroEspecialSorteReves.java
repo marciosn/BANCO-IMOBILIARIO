@@ -29,9 +29,8 @@ public class LogradouroEspecialSorteReves extends LogradouroEspecial{
 	public void ativarEfeito(Jogador jogador) {
 		indice = sorteReves();
 		CasaDoTabuleiro destino = lists.getCasaByIndice(indice);
-		System.out.println(indice+" Nome da casa de destino "+destino.getNome());
 		
-		if(indice > 20){
+		if(indice > 25){
 			
 		if((indice % 2)  == 0){
 			
