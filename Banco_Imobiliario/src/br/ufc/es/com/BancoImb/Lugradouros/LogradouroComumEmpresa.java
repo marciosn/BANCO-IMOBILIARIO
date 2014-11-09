@@ -18,12 +18,6 @@ public class LogradouroComumEmpresa extends LogradouroComercializavel{
 
 	private DesenhaComponentesGraficos desenha;
 	private VerificacoesDeLogicaDoJogo verifica;
-
-	/*public LogradouroComumEmpresa(String nome, float valor, float taxa, Point posicao) {
-		super(nome, valor, taxa, posicao);
-		desenha = new DesenhaComponentesGraficos();
-		verifica = new VerificacoesDeLogicaDoJogo();
-	}*/
 	
 	public void ativarEfeito(Jogador jogador){
 		if (!this.isVendido()) {

@@ -3,7 +3,9 @@ package br.ufc.es.com.BancoImb.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Jogador{
+import br.ufc.es.com.BancoImb.interfaces.IJogador;
+
+public class Jogador implements IJogador{
 	private static int ultimoID = 0;
 	private int id;
 	private String nome;
@@ -13,14 +15,6 @@ public class Jogador{
 	private CasaDoTabuleiro posicaoJogador;
 	private PecaJogador peca;
 	
-	public Jogador(String nome, ContaBancaria conta, PecaJogador peca) {
-		this.nome = nome;
-		this.conta = conta;
-		meusLogradouros = new ArrayList<LogradouroComercializavel>();
-		this.id = ultimoID++;
-		this.indiceAtualJogador = 0;
-		this.peca = peca;
-	}
 	public Jogador(String nome, ContaBancaria conta, PecaJogador peca, CasaDoTabuleiro posicaoInicial) {
 		this.nome = nome;
 		this.conta = conta;
@@ -30,24 +24,41 @@ public class Jogador{
 		this.peca = peca;
 		this.posicaoJogador = posicaoInicial;
 	}
+	
+	@Override
 	public void comprar(LogradouroComercializavel casa) {
+		// TODO Auto-generated method stub
 		casa.setProprietario(this);
 		casa.setVendido(true);
 		conta.sacar(casa.getValor());
 		adicionarLogradouroAOPortifolio(casa);
 	}
+	
+	@Override
 	public void pagarTaxa(float taxa) {
+		// TODO Auto-generated method stub
 		conta.sacar(taxa);
 	}
+	
+	@Override
 	public void receberTaxa(float taxa) {
+		// TODO Auto-generated method stub
 		conta.depositar(taxa);
 	}
-	public void adicionarLogradouroAOPortifolio(LogradouroComercializavel logradouro){
+	
+	@Override
+	public void adicionarLogradouroAOPortifolio(
+			LogradouroComercializavel logradouro) {
+		// TODO Auto-generated method stub
 		meusLogradouros.add(logradouro);
 	}
-	public int quantidadeLogradouros(){
+	
+	@Override
+	public int getQuantidadeLogradouros() {
+		// TODO Auto-generated method stub
 		return meusLogradouros.size();
 	}
+	
 	public float getSaldo(){
 		return conta.getSaldo();
 	}
@@ -78,5 +89,6 @@ public class Jogador{
 	public void setPosicaoJogador(CasaDoTabuleiro posicaoJogador) {
 		this.posicaoJogador = posicaoJogador;
 	}
+
 	
 }

@@ -4,9 +4,10 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.ufc.es.com.BancoImb.interfaces.ICasaTabuleiro;
 import br.ufc.es.com.BancoImb.interfaces.IEfeitoCasa;
 
-public class CasaDoTabuleiro implements IEfeitoCasa{
+public class CasaDoTabuleiro implements IEfeitoCasa, ICasaTabuleiro{
 	private String nome;
 	private List<Jogador> jogadoresNaCasa;
 	private int indice;
@@ -16,24 +17,22 @@ public class CasaDoTabuleiro implements IEfeitoCasa{
 		jogadoresNaCasa = new ArrayList<Jogador>();
 	}
 
-	public void adicionarJogadoresNaListaDaCasa(Jogador jogador){
-		jogadoresNaCasa.add(jogador);
-	}
-	
-	public List<Jogador> getJogadoresNaCasa() {
-		return jogadoresNaCasa;
-	}
-
-	public void setJogadoresNaCasa(List<Jogador> jogadoresNaCasa) {
-		this.jogadoresNaCasa = jogadoresNaCasa;
-	}
-	public void removerJogadoresDaListaDaCasa(Jogador jogador){
-		jogadoresNaCasa.remove(jogador);
+	@Override
+	public void ativarEfeito(Jogador jogador) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void ativarEfeito(Jogador jogador) {
-		
+	public void adicionarJogadoresNaListaDaCasa(Jogador jogador) {
+		// TODO Auto-generated method stub
+		jogadoresNaCasa.add(jogador);
+	}
+
+	@Override
+	public void removerJogadoresDaListaDaCasa(Jogador jogador) {
+		// TODO Auto-generated method stub
+		jogadoresNaCasa.remove(jogador);
 	}
 	
 	public void mover(Jogador jogador, CasaDoTabuleiro destino){
@@ -42,7 +41,6 @@ public class CasaDoTabuleiro implements IEfeitoCasa{
 		jogador.setIndiceAtualJogador(destino.getIndice());
 		destino.adicionarJogadoresNaListaDaCasa(jogador);
 		origem.removerJogadoresDaListaDaCasa(jogador);
-		imprimeJogadores(destino);
 	}
 	
 	public String getNome(){
@@ -64,9 +62,14 @@ public class CasaDoTabuleiro implements IEfeitoCasa{
 	public void setIndice(int indice) {
 		this.indice = indice;
 	}
-	public void imprimeJogadores(CasaDoTabuleiro casa){
-		for(Jogador jogador : casa.getJogadoresNaCasa())
-			System.out.println(jogador.getNome() + " | " + jogador.getPosicaoJogador().getNome() + " | " + jogador.getIndiceAtualJogador());
+	
+	public List<Jogador> getJogadoresNaCasa() {
+		return jogadoresNaCasa;
 	}
+
+	public void setJogadoresNaCasa(List<Jogador> jogadoresNaCasa) {
+		this.jogadoresNaCasa = jogadoresNaCasa;
+	}
+
 
 }

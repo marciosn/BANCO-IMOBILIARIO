@@ -7,13 +7,11 @@ import br.ufc.es.com.BancoImb.repositorios.RepositorioLists;
 import br.ufc.es.com.BancoImb.view.DesenhaComponentesGraficos;
 
 public class InsereJogadores {
-	//private Constantes constante;
 	private DesenhaComponentesGraficos desenha;
 	private VerificacoesDeLogicaDoJogo verifica;
 	private RepositorioLists repositorioLits;
 	
 	public InsereJogadores(RepositorioLists repositorio) {
-		//constante = new Constantes();
 		desenha = new DesenhaComponentesGraficos();
 		verifica = new VerificacoesDeLogicaDoJogo();
 		repositorioLits = repositorio;
