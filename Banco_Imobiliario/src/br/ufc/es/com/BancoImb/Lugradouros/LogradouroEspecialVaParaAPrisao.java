@@ -23,7 +23,8 @@ public class LogradouroEspecialVaParaAPrisao extends LogradouroEspecial{
 	public void ativarEfeito(Jogador jogador) {
 		CasaDoTabuleiro prisao = lists.getTabuleiro().get(30);
 		jogador.pagarTaxa(100);
-		JOptionPane.showMessageDialog(null, "Você foi preso, vá para a prisao" 
+		JOptionPane.showMessageDialog(null, "Você parou na casa vá para a prisão" 
+				+"\n"+"Vá para a prisao" 
 				+ "\n"+ "Pague uma multa de R$ 100" 
 				+ "\n"	+ "Seu novo Saldo é R$ " 
 				+ jogador.getSaldo());

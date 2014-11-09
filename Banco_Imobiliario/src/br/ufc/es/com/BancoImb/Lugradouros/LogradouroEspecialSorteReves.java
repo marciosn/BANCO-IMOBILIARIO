@@ -28,18 +28,12 @@ public class LogradouroEspecialSorteReves extends LogradouroEspecial{
 
 	public void ativarEfeito(Jogador jogador) {
 		indice = sorteReves();
-		System.out.println(indice);
-		
 		CasaDoTabuleiro destino = lists.getCasaByIndice(indice);
 		System.out.println(indice+" Nome da casa de destino "+destino.getNome());
 		
-		if(indice > 10){
-			
-			System.out.println("INDICE É MAIOR QUE 10");
+		if(indice > 20){
 			
 		if((indice % 2)  == 0){
-			
-			System.out.println("INDICE É PAR");
 			
 			new Sound(new Constantes().CAIXINHA).play();
 			jogador.receberTaxa(cartas.get(indice));
@@ -50,8 +44,6 @@ public class LogradouroEspecialSorteReves extends LogradouroEspecial{
 					new ImageIcon(new Constantes().FELIZ));
 		}else{
 			
-			System.out.println("INDICE É IMPAR");
-			
 			jogador.pagarTaxa(cartas.get(indice));
 			
 			JOptionPane.showMessageDialog(null, "Revés"+"\n" + "Pague: "+cartas.get(indice) 
@@ -61,17 +53,38 @@ public class LogradouroEspecialSorteReves extends LogradouroEspecial{
 		}
 	}else{
 		mover(jogador, destino);
-		JOptionPane.showMessageDialog(null, "Vá para a Casa " + destino.getNome(),	"Vá Para...", JOptionPane.PLAIN_MESSAGE);
+		JOptionPane.showMessageDialog(null, "Vá para a Casa " + destino.getNome().toUpperCase() + "\n" 
+		+ "Que fica localizada na posicão " + destino.getIndice(),	"Vá Para...", JOptionPane.PLAIN_MESSAGE);
 		
 		}
 			
 	}
 	public int sorteReves(){
-		indice = ((int) ( (Math.random() * 19) + 1 ));
+		indice = ((int) ( (Math.random() * 39) + 1 ));
 		return indice;
 	}
 	
 	public void criarDeckCartas(){
+		cartas.add((float) 90);
+		cartas.add((float) 70);
+		cartas.add((float) 130);
+		cartas.add((float) 50);
+		cartas.add((float) 200);
+		cartas.add((float) 120);
+		cartas.add((float) 160);
+		cartas.add((float) 40);
+		cartas.add((float) 10);
+		cartas.add((float) 190);
+		cartas.add((float) 40);
+		cartas.add((float) 70);
+		cartas.add((float) 90);
+		cartas.add((float) 100);
+		cartas.add((float) 110);
+		cartas.add((float) 10);
+		cartas.add((float) 40);
+		cartas.add((float) 60);
+		cartas.add((float) 80);
+		cartas.add((float) 160);
 		cartas.add((float) 90);
 		cartas.add((float) 70);
 		cartas.add((float) 130);

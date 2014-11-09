@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.ufc.es.com.BancoImb.interfaces.IEfeitoCasa;
-import br.ufc.es.com.BancoImb.view.DesenhaComponentesGraficos;
 
 public class CasaDoTabuleiro implements IEfeitoCasa{
 	private String nome;

@@ -58,9 +58,9 @@ public class ControllBancoImobiliario {
 	}
 	
 	public void moverJogador(Jogador jogador, CasaDoTabuleiro destino) {
-		desenha.moverPecaJogador(jogador, destino);
 		destino.mover(jogadorDaVEZ, destino);
 		destino.ativarEfeito(jogador);
+		desenha.moverPecaJogador(jogador);
 	}
 
 	public void mudaJogadorDaVez(int IdJogadorAtual, List<Jogador> jogadores){
