@@ -4,6 +4,7 @@ import java.awt.Point;
 
 import br.ufc.es.com.BancoImb.model.Jogador;
 import br.ufc.es.com.BancoImb.model.LogradouroEspecial;
+import br.ufc.es.com.BancoImb.utils.Constantes;
 import br.ufc.es.com.BancoImb.view.DesenhaComponentesGraficos;
 
 public class LogradouroEspecialPartida extends LogradouroEspecial{
@@ -15,8 +16,8 @@ public class LogradouroEspecialPartida extends LogradouroEspecial{
 	}
 
 	public void ativarEfeito(Jogador jogador) {
-		jogador.receberTaxa(200);
-		desenha.messageCasaDePartida(jogador, 200);
+		jogador.receberTaxa(new Constantes().BONUS_CASA_DE_PARTIDA);
+		desenha.messageCasaDePartida(jogador, new Constantes().BONUS_CASA_DE_PARTIDA);
 	}
 
 }

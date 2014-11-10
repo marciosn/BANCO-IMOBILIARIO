@@ -106,9 +106,19 @@ public class VerificacoesDeLogicaDoJogo implements IVerificacoes{
 	public boolean verificaSeJogadorEstaPreso(Jogador jogador) {
 		// TODO Auto-generated method stub
 		boolean estaPreso = false;
-		if(jogador.getIndiceAtualJogador() == 30){
+		if(jogador.getIndiceAtualJogador() == 30){ //30 é a posição da casa prisão no tabuleiro
 			estaPreso = true;
 		}
 		return estaPreso;
+	}
+	@Override
+	public boolean verificaSeJogadorPassouNaPartida(int posicaoAtual, int resultadoDados){
+		boolean passouNaPartida = false;
+		int soma = posicaoAtual + resultadoDados;
+		if(soma != 39){
+			if(soma > new Constantes().QUANTIDADE_DE_CASAS_DO_TABULEIRO - 1)
+			passouNaPartida = true;
+		}
+		return passouNaPartida;
 	}
 }

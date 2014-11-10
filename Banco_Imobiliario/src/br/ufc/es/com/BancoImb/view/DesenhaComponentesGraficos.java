@@ -107,7 +107,8 @@ public class DesenhaComponentesGraficos implements IDesenhaComponentes{
 	}
 	@Override
 	public String inputDigiteONomeDoJogador(int id){
-		String nome = JOptionPane.showInputDialog(null,"Digite o nome do jogador de ID = " + id);
+		int idJog = id + 1;
+		String nome = JOptionPane.showInputDialog(null,"Digite o nome do jogador " + idJog);
 		return nome;
 	}
 	@Override

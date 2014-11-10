@@ -5,6 +5,7 @@ import java.util.List;
 import br.ufc.es.com.BancoImb.model.CasaDoTabuleiro;
 import br.ufc.es.com.BancoImb.model.Jogador;
 import br.ufc.es.com.BancoImb.repositorio.RepositorioLists;
+import br.ufc.es.com.BancoImb.utils.Constantes;
 import br.ufc.es.com.BancoImb.utils.InsereJogadores;
 import br.ufc.es.com.BancoImb.utils.ObterProximoIndice;
 import br.ufc.es.com.BancoImb.utils.VerificacoesDeLogicaDoJogo;
@@ -54,6 +55,16 @@ public class ControllBancoImobiliario {
 		jogadorDaVEZ = lists.getPrimeiroJogadorDaLista();
 	}
 	
+	public void verificaSePassouNaCasaPartida(Jogador jogador, int resultadoDados, CasaDoTabuleiro destino){
+		float bonus = new Constantes().BONUS_CASA_DE_PARTIDA;
+		if(destino.getIndice() != 0){
+			if(verifica.verificaSeJogadorPassouNaPartida(jogador.getIndiceAtualJogador(), resultadoDados)){
+			jogador.receberTaxa(bonus);
+			desenha.messageCasaDePartida(jogadorDaVEZ, bonus);
+		}
+		}
+	}
+	
 	public void moverJogador(Jogador jogador, CasaDoTabuleiro destino) {
 		destino.mover(jogadorDaVEZ, destino);
 		destino.ativarEfeito(jogador);
@@ -90,6 +101,7 @@ public class ControllBancoImobiliario {
 					int indiceCasaDestino = obterIndice.obterIndiceProxCasa(jogadorDaVEZ.getIndiceAtualJogador(), resultadoDados);
 					destino = lists.getCasaByIndice(indiceCasaDestino);
 					
+					verificaSePassouNaCasaPartida(jogadorDaVEZ, resultadoDados, destino);
 					moverJogador(jogadorDaVEZ, destino);
 					
 					if (verifica.verificaSeJogadorAindaPossuiSaldo(jogadorDaVEZ)) {

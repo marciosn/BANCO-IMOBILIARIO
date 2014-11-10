@@ -7,20 +7,20 @@ import br.ufc.es.com.BancoImb.model.LogradouroComercializavel;
 import br.ufc.es.com.BancoImb.utils.VerificacoesDeLogicaDoJogo;
 import br.ufc.es.com.BancoImb.view.DesenhaComponentesGraficos;
 
-public class LogradouroComumEmpresa extends LogradouroComercializavel{
-	public LogradouroComumEmpresa(String nome, float valor, float taxa,
+public class LogradouroComercializavelImovel extends LogradouroComercializavel{
+	private DesenhaComponentesGraficos desenha;
+	private VerificacoesDeLogicaDoJogo verifica;
+	
+	public LogradouroComercializavelImovel(String nome, float valor, float taxa,
 			Point posicao, int indice) {
 		super(nome, valor, taxa, posicao, indice);
 		desenha = new DesenhaComponentesGraficos();
 		verifica = new VerificacoesDeLogicaDoJogo();
 	}
-
-	private DesenhaComponentesGraficos desenha;
-	private VerificacoesDeLogicaDoJogo verifica;
 	
 	public void ativarEfeito(Jogador jogador){
 		if (!this.isVendido()) {
-			int respostaDoJogador = desenha.inputRepostaDoJogadorSobreCompraLogradouro(this.getNome());
+			int respostaDoJogador = desenha.inputRepostaDoJogadorSobreCompraLogradouro(this.getNome());	
 			
 			if(respostaDoJogador == 0){
 				if(verifica.verificaSeJogadorPossuiSaldoParaComprar(jogador, this)){
@@ -29,6 +29,7 @@ public class LogradouroComumEmpresa extends LogradouroComercializavel{
 				}else
 					desenha.messageNaoPossuiSaldoParaComprar();
 			}
+			
 		}else{
 			if(!verifica.verificaSeACasaJaEDoJogador(jogador, this)){
 			jogador.pagarTaxa(this.getTaxa());
@@ -37,6 +38,6 @@ public class LogradouroComumEmpresa extends LogradouroComercializavel{
 			}else
 				desenha.messageACasaJaESua();
 		}
+		
 	}
-	
 }

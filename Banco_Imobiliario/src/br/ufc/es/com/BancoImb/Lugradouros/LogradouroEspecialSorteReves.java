@@ -31,7 +31,10 @@ public class LogradouroEspecialSorteReves extends LogradouroEspecial{
 		indice = sorteReves();
 		CasaDoTabuleiro destino = lists.getCasaByIndice(indice);
 		
-		if(indice > 25){
+		Integer random =  ((int) ( (Math.random() * sorteReves()) + 1 ));
+		Boolean trueOrFalse = (random % 2 == 0) ? true : false;
+		
+		if(trueOrFalse){
 			
 		if((indice % 2)  == 0){
 			

@@ -16,5 +16,6 @@ public interface IVerificacoes {
 	public boolean verificaSeJogadorPossuiSaldoParaComprar(Jogador jogador, LogradouroComercializavel casa);
 	public boolean verificaSeACasaJaEDoJogador(Jogador jogador, LogradouroComercializavel casa);
 	public boolean verificaSeJogadorEstaPreso(Jogador jogador);
+	public boolean verificaSeJogadorPassouNaPartida(int posicaoAtual, int resultadoDados);
 
 }
